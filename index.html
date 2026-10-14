@@ -165,13 +165,13 @@ a{color:inherit}
 
 /* ---------- カード ---------- */
 .cards{padding:88px 0 100px;text-align:center}
-.cards .deck{list-style:none;margin:36px auto 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:980px}
-@media (min-width:760px){.cards .deck{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}}
-.cards .deck li{border:2px solid var(--cyan);background:var(--navy);padding:4px;transition:transform .2s steps(3)}
-.cards .deck li:nth-child(odd){transform:rotate(-3deg)}
-.cards .deck li:nth-child(even){transform:rotate(3deg) translateY(10px)}
-.cards .deck li:hover{transform:translateY(-10px) rotate(0)}
-.cards .deck img{width:100%;aspect-ratio:196/233;object-fit:cover}
+.cards .deck{list-style:none;margin:36px auto 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;max-width:820px}
+@media (min-width:640px){.cards .deck{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px}}
+.cards .deck li{transition:transform .2s steps(3);filter:drop-shadow(5px 6px 0 var(--pink))}
+.cards .deck li:nth-child(odd){transform:rotate(-2deg)}
+.cards .deck li:nth-child(even){transform:rotate(2deg) translateY(8px)}
+.cards .deck li:hover{transform:translateY(-8px) rotate(0)}
+.cards .deck img{width:100%;height:auto;margin:0 auto;max-width:243px}
 .cards .quote-night{margin:6px 0 0;font-size:clamp(16px,4vw,20px)}
 .cards p.sub{margin:28px 0 0;font-size:clamp(15px,3.8vw,18px)}
 
@@ -349,13 +349,13 @@ footer img{width:32px;height:32px;border-radius:50%;margin-bottom:10px}
     <p class="label">CARDS</p>
     <h2 id="h-cards">描いた絵が、カードになる</h2>
     <p class="quote-night reveal">「僕の力は君の絵から生まれる。」</p>
-    <ul class="deck reveal" aria-label="カードの絵の一部">
-      <li><img src="assets/img/card_ATK_002.webp" width="196" height="233" loading="lazy" alt="カードの絵。拳でバツ印を打ち返すアバター"></li>
-      <li><img src="assets/img/card_DEF_002.webp" width="196" height="233" loading="lazy" alt="カードの絵。盾で攻撃を受け止めるアバター"></li>
-      <li><img src="assets/img/card_TEC_001.webp" width="196" height="233" loading="lazy" alt="カードの絵。おすすめ欄に載ったアバター"></li>
-      <li><img src="assets/img/card_INT_002.webp" width="196" height="233" loading="lazy" alt="カードの絵。炎に放水するアバター"></li>
-      <li><img src="assets/img/card_ACC_001.webp" width="196" height="233" loading="lazy" alt="カードの絵。ピンクの車で走る女の子"></li>
-      <li><img src="assets/img/card_MIX_AA_002.webp" width="196" height="233" loading="lazy" alt="カードの絵。吹き出しの嵐を押し返すアバター"></li>
+    <ul class="deck reveal" aria-label="ゲームに出てくるカードの一部">
+      <li><img src="assets/img/cardface_osusume.webp" width="243" height="347" loading="lazy" alt="カード《おすすめ掲載》"></li>
+      <li><img src="assets/img/cardface_reload.webp" width="243" height="347" loading="lazy" alt="カード《緊急リロード》"></li>
+      <li><img src="assets/img/cardface_scroll.webp" width="243" height="347" loading="lazy" alt="カード《高速スクロール》"></li>
+      <li><img src="assets/img/cardface_fuusa.webp" width="243" height="347" loading="lazy" alt="カード《炎上封鎖》"></li>
+      <li><img src="assets/img/cardface_nenchaku.webp" width="243" height="347" loading="lazy" alt="カード《粘着リプ》"></li>
+      <li><img src="assets/img/cardface_kidoku.webp" width="243" height="347" loading="lazy" alt="カード《既読スルー》"></li>
     </ul>
     <p class="sub reveal">どのカードが手に入るかは、その日の描き方しだい。</p>
   </div>
