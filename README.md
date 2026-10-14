@@ -2,7 +2,7 @@
 
 パズルとオートカードバトルを交互にくり返す、自作エンジン製のゲーム「インターネット・サイハテ・ダンジョン」の紹介ページです。
 
-- 公開ページ: https://ababup1192.github.io/internet-saihate-dungeon/
+- 公開ページ: https://ababup1192.github.io/internet-saihate-dungeon-lp/
 - 出展: 東京ゲームダンジョン14（2026年10月31日・東京・浜松町）ブース 2C-7 / 海老豚シュウマイ
 - 出展ページ: https://gamedungeon.jp/events/tokyo14/exhibit_informations/2888
 
