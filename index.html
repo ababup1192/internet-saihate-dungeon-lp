@@ -398,7 +398,7 @@ footer img{width:32px;height:32px;border-radius:50%;margin-bottom:10px}
   </div>
 </footer>
 
-<a class="dock" href="#event" data-world="day">10.31 東京ゲームダンジョン14 / 2C-7</a>
+<a class="dock hide" href="#event" data-world="day">10.31 東京ゲームダンジョン14 / 2C-7</a>
 
 <script>
 (function(){
@@ -418,8 +418,11 @@ footer img{width:32px;height:32px;border-radius:50%;margin-bottom:10px}
   // 画面下のバッジ: いまいる世界の色に合わせ、出展情報の上では隠す
   var worlds=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)dock.setAttribute('data-world',e.target.getAttribute('data-world'))})},{rootMargin:'-90% 0px 0px 0px'});
   document.querySelectorAll('[data-world]:not(.dock)').forEach(function(e){worlds.observe(e)});
-  var ev=new IntersectionObserver(function(es){es.forEach(function(e){dock.classList.toggle('hide',e.isIntersecting)})});
+  // ヒーローと出展情報が見えている間は隠す（同じ案内が画面にあるため）
+  var seen={};
+  var ev=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target.className]=e.isIntersecting});dock.classList.toggle('hide',Object.keys(seen).some(function(k){return seen[k]}))});
   ev.observe(document.getElementById('event'));
+  ev.observe(document.querySelector('.hero'));
 })();
 </script>
 </body>
