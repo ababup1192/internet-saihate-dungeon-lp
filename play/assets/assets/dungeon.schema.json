@@ -1,0 +1,233 @@
+{
+  "//": "internet_dungeon.dungeon.json の形の宣言（Studio の sections 見出し）。夜にもぐる道すじの節と、夜の画面の文言。規則（いつ次へ降りられるか・撤退で何が起きるか）はコード（src/World.flix）。",
+  "version": 1,
+  "sections": {
+    "nodes": {
+      "kind": "list",
+      "label": "道すじの節",
+      "order": 1,
+      "description": "頭から順に降りる（Ver.0.1 は 1 本道）。最後の行が最深部で、倒すとその夜は終わる。",
+      "fields": {
+        "kind": {
+          "type": { "enum": ["start", "battle"] },
+          "label": "種類（start = 入口 / battle = 戦い）",
+          "order": 1,
+          "default": "battle"
+        },
+        "enemy": {
+          "type": "string",
+          "label": "相手の id（internet_dungeon.enemy.json）",
+          "order": 2
+        },
+        "label": {
+          "type": "string",
+          "label": "画面に出る名前",
+          "order": 3
+        },
+        "kinds": {
+          "type": {
+            "list": { "enum": ["attack", "guard", "skill", "hex", "rush"] }
+          },
+          "label": "この節で出やすい属性",
+          "order": 4
+        }
+      }
+    },
+    "shardPerKill": {
+      "kind": "field",
+      "type": "int",
+      "label": "1 体倒すごとに得る DATA",
+      "order": 3.5,
+      "min": 0,
+      "max": 99,
+      "default": 2
+    },
+    "goOnLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "「すすむ」の文字",
+      "order": 7
+    },
+    "toMorningLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "朝へ戻る案内",
+      "order": 14
+    },
+    "endText": {
+      "kind": "record",
+      "label": "戦いの後の画面の文言",
+      "order": 15,
+      "description": "戦果・力尽きた・潜り切ったの画面（倒した相手の絵の右に、決定打の枠・かけらの行・体力の棒）に出る文言。入りの時刻は cue.json の endScreen。",
+      "fields": {
+        "trendLine": {
+          "type": "string",
+          "label": "潜り切ったときの帯",
+          "order": 1,
+          "description": "最深部を倒したとき、窓の右上に差し込むピンクの帯の字。"
+        },
+        "gainLine": {
+          "type": "string",
+          "label": "かけらの枠の大きな数",
+          "order": 2,
+          "description": "この戦いで増えたかけら。画面でいちばん大きな字。{n} は増えた数。"
+        },
+        "noGainLine": {
+          "type": "string",
+          "label": "かけらが増えなかったとき",
+          "order": 3,
+          "description": "力尽きた画面のかけらの枠に出る大きな字。"
+        },
+        "shardsTotalLine": {
+          "type": "string",
+          "label": "かけらの合計",
+          "order": 4,
+          "description": "かけらの枠の下の小さな字。{n} はいま持っているかけらの合計（朝へ持ち越す）。"
+        },
+        "hpLabel": {
+          "type": "string",
+          "label": "体力の棒の見出し",
+          "order": 6,
+          "description": "2 枠の下の体力の棒の左に出る字（体力は次の節へ持ち越す）。"
+        },
+        "retryLabel": {
+          "type": "string",
+          "label": "力尽きたあとのボタン",
+          "order": 7,
+          "description": "力尽きた画面のボタンの字（押すと救済の演出の後、同じデッキのまま同じ相手と再戦する。救済が一番上の段まで効いていればその節の盤からやり直す）。"
+        }
+      }
+    },
+    "assist": {
+      "kind": "record",
+      "label": "負けた後の救済（下駄）",
+      "order": 17,
+      "description": "負けて「再戦する」を押した後、その節の相手を倒すまで効く救済を告げる短い演出の案内と秒（流れ切ると同じデッキのまま再戦）。段ごとの上乗せ・カード・文言は assistTiers。",
+      "fields": {
+        "skipHint": {
+          "kind": "field",
+          "type": "string",
+          "label": "長押しで飛ばせる案内",
+          "order": 8,
+          "description": "{back} はキーの絵に替わる。"
+        },
+        "gatherSeconds": {
+          "kind": "field",
+          "type": "number",
+          "label": "応援が集まる秒",
+          "order": 9
+        },
+        "glowSeconds": {
+          "kind": "field",
+          "type": "number",
+          "label": "光が弾ける秒",
+          "order": 10
+        },
+        "statSeconds": {
+          "kind": "field",
+          "type": "number",
+          "label": "HP・攻撃力の行 1 つの秒",
+          "order": 11
+        },
+        "deckSeconds": {
+          "kind": "field",
+          "type": "number",
+          "label": "カードが並ぶ秒",
+          "order": 12
+        },
+        "holdSeconds": {
+          "kind": "field",
+          "type": "number",
+          "label": "そろった絵を読ませる秒",
+          "order": 13
+        }
+      }
+    },
+    "assistTiers": {
+      "kind": "list",
+      "label": "救済の段（1 段目から順に）",
+      "order": 17.5,
+      "description": "1 段目 = 負け 1 回目の後 / 2 段目 = 救済ありでもう一度負けた後。上乗せの数はどれも「その段で効く全部」で、前の段への足し算ではない。cards だけは足し算で、その段に上がった拍にデッキの頭へ足すカード（盤から組み直す日は 1 段目からの cards が全部頭に入る）。movesBonus が効くのは盤から組み直す日だけ。上乗せが全部 0 でカードも空の段は無い物として扱い、そこで段が止まる。",
+      "fields": {
+        "maxHpBonus": { "type": "integer", "label": "体力の上限への上乗せ", "order": 1 },
+        "attackBonus": { "type": "integer", "label": "基礎攻撃力への上乗せ", "order": 2 },
+        "movesBonus": { "type": "integer", "label": "盤の手数への上乗せ", "order": 3 },
+        "cards": { "type": { "list": "string" }, "label": "その段に上がった拍にデッキの頭へ足すカードの id（ブースターデッキ。前の段への足し算）", "order": 4 },
+        "hpLine": { "type": "string", "label": "体力の上乗せを告げる行（{n} = 数）", "order": 6 },
+        "attackLine": { "type": "string", "label": "攻撃力の上乗せを告げる行（{n} = 数。0 なら出ない）", "order": 7 },
+        "deckLine": { "type": "string", "label": "カードが入ったことを告げる行", "order": 9 }
+      }
+    },
+    "ending": {
+      "kind": "record",
+      "label": "締めの画面（デモの終わり）",
+      "order": 16,
+      "description": "最深部を倒して潜り切った画面の次に出る、昼と夜を斜めに割った祝いの画面。文言と、入りの尺・紙吹雪・2 人の弾みのつまみ。",
+      "fields": {
+        "kicker": {
+          "type": "string",
+          "label": "カードの上の小さな字",
+          "order": 1,
+          "description": "真ん中のカードの上段（例: デモプレイ）。"
+        },
+        "headline": {
+          "type": "string",
+          "label": "カードの大きな字",
+          "order": 2,
+          "description": "真ん中のカードの大きな字。境目の左は昼の紙とインク、右は夜の深藍とシアンで書かれる。"
+        },
+        "hint": {
+          "type": "string",
+          "label": "下の案内",
+          "order": 3,
+          "description": "画面の下の小さな案内。決定でタイトルへ戻る。"
+        },
+        "introSeconds": {
+          "type": "float",
+          "label": "入りの尺（秒）",
+          "order": 4,
+          "min": 0,
+          "max": 5,
+          "default": 1.4,
+          "description": "昼が差し込み、カードが弾んで、2 人がせり上がるまでの秒。この間の決定は入りを済ませるだけ。"
+        },
+        "confettiCount": {
+          "type": "int",
+          "label": "紙吹雪の数",
+          "order": 5,
+          "min": 0,
+          "max": 300,
+          "default": 110,
+          "description": "昼と夜の両側を合わせた紙吹雪の粒の数。多いほどにぎやか。"
+        },
+        "confettiSpeed": {
+          "type": "float",
+          "label": "紙吹雪の落ちる速さ",
+          "order": 6,
+          "min": 1,
+          "max": 200,
+          "default": 46,
+          "description": "1 秒に何 px 落ちるか（粒ごとに ±35% ばらつく）。"
+        },
+        "hopSeconds": {
+          "type": "float",
+          "label": "弾む 1 周の秒",
+          "order": 7,
+          "min": 0.2,
+          "max": 5,
+          "default": 1.4,
+          "description": "2 人が 1 回弾んで着地するまでの秒。2 人は半周ずれて交互に弾む。"
+        },
+        "hopHeight": {
+          "type": "float",
+          "label": "弾む高さ（px）",
+          "order": 8,
+          "min": 0,
+          "max": 30,
+          "default": 7,
+          "description": "大きな跳ねの高さ。2 回目の小さな跳ねはその 1/3。"
+        }
+      }
+    }
+  }
+}

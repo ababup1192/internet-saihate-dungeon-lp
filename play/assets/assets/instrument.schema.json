@@ -1,0 +1,20 @@
+{
+  "//": "assets/music/internet_dungeon.instrument.json（チップチューンの楽器 = table と波形メモリ。全曲で共有）の形の宣言（Studio の sections 方言）。正は assets/music/internet_dungeon.instrument.json。読み手は art/chip.snd.star（エンジンの snd の song）。",
+  "version": 1,
+  "sections": {
+    "instruments": {
+      "kind": "field",
+      "type": "json",
+      "label": "楽器（名前 → table）",
+      "order": 1,
+      "description": "{\"speed\": 2, \"rows\": [{\"vol\": 15, \"pitch\": 0, \"cents\": 0, \"wave\": \"50\", \"cmd\": \"VIB 6 18\"}, …]}。speed = 1 行を何 tick 鳴らすか。行に書かない欄は前の行のまま。wave はパルスなら 12 / 25 / 50 / 75、雑音なら long / short、波形メモリなら waves の名前。cmd は ARP / VIB / SLD / JMP n / LOOP n k / END。"
+    },
+    "waves": {
+      "kind": "field",
+      "type": "json",
+      "label": "波形メモリ（名前 → 32 段）",
+      "order": 2,
+      "description": "0〜15 の数を 32 個。波形メモリのチャンネル（wave）が 1 周ぶんの形として鳴らす。32 個でない物は捨てる。"
+    }
+  }
+}

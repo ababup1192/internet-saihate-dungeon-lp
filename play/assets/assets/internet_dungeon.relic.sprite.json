@@ -1,0 +1,157 @@
+{
+  "title": "アーティファクトのアイコン",
+  "version": 2,
+  "note": "エゴサーチのアーティファクトのアイコン。art/relic.pxsrc.json を bin/fge px build で描く 32x32。控えめの作り（輪郭 + 平らな面 + 上のつや 1 段）。系統色は relicTeal / relicMag / relicGold。",
+  "paletteFile": "assets/internet_dungeon.palette.json",
+  "entityId": "relic-icons",
+  "legend": {
+    "a": "relicTeal0",
+    "b": "relicTeal1",
+    "c": "relicTeal2",
+    "d": "relicTeal3",
+    "e": "relicTeal4",
+    "f": "relicMag0",
+    "g": "relicMag1",
+    "h": "relicMag2",
+    "i": "relicMag3",
+    "j": "relicMag4",
+    "k": "relicGold0",
+    "l": "relicGold1",
+    "m": "relicGold2",
+    "n": "relicGold3",
+    "o": "relicGold4",
+    "p": "stkInk",
+    "q": "stkSpec"
+  },
+  "sprites": {
+    "relicBattery": {
+      "note": "モバイルバッテリー: 残量が一番下の 1 段だけのバッテリーと稲妻",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................................",
+          "................................",
+          "..............aaaa..............",
+          ".............acccca.............",
+          "...........aaaaaaaaaa...........",
+          ".........aaddddddddddaa.........",
+          ".........adccccccpcccda.........",
+          "........acccccccpepcccca........",
+          "........accpppppeppppcca........",
+          "........accpbbpeppbbpcca........",
+          "........accpbpeeeepbpcca........",
+          "........accpbbppepbbpcca........",
+          "........accppppepppppcca........",
+          "........accpbpepbbbbpcca........",
+          "........accpbbpbbbbbpcca........",
+          "........accpbbbbbbbbpcca........",
+          "........accppppppppppcca........",
+          "........accpbbbbbbbbpcca........",
+          "........accpbbbbbbbbpcca........",
+          "........accpbbbbbbbbpcca........",
+          "........accppppppppppcca........",
+          "........accpddddddddpcca........",
+          "........accpddddddddpcca........",
+          "........accpddddddddpcca........",
+          "........accppppppppppcca........",
+          "........acccccccccccccca........",
+          ".........acccccccccccca.........",
+          ".........aaccccccccccaa.........",
+          "...........aaaaaaaaaa...........",
+          "................................",
+          "................................",
+          "................................"
+        ]
+      }
+    },
+    "relicTypo": {
+      "note": "誤字ハンター: 片眼鏡（1px の金の縁・透けるレンズ・光の反射・垂れたチェーン）",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................................",
+          "................................",
+          "................................",
+          "..........nnnnn.................",
+          "........nnfffffnm...............",
+          "......nnfffffffffmm.............",
+          ".....nffffqffffffffm............",
+          ".....nfffqfffffffffm............",
+          "....nfffqfffffffffffm...........",
+          "....nffqffjfffffffffm...........",
+          "...nffqffjfffffffffffl..........",
+          "...nffffjfffffffffffgl..........",
+          "...nffffffffffffffffgl..........",
+          "...nffffffffffffffffgl..........",
+          "...nfffffffffffffffggl..........",
+          "....nfffffffffffffggl...........",
+          "....mfffffffffffffggl...........",
+          ".....mfffffffffffghl............",
+          ".....mfffffffffgghhl............",
+          "......mmffffffggglln............",
+          "........mmfggggll..l............",
+          "..........lllll....n............",
+          "...................ln........ln.",
+          "....................l.......ln..",
+          "....................nl....nln...",
+          ".....................nlnlnl.....",
+          "................................",
+          "................................",
+          "................................",
+          "................................",
+          "................................",
+          "................................"
+        ]
+      }
+    },
+    "relicNotify": {
+      "note": "通知オン: ベルと通知の点",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................................",
+          ".............kkkk...............",
+          "............knnnnk......k.......",
+          "............kkkkkk....kkokk.....",
+          "...........kknnnnkk..koqqqok....",
+          "..........knnmmmmnnk.kqqqqqk....",
+          "..........kmmmmmmmmkkoqqqqqok...",
+          ".........kmmmmmmmmmmkkqqqqqk....",
+          ".........kmmmmmmmmmmkkoqqqok....",
+          ".........kmmmmmmmmmmk.kkokk.....",
+          ".........kmmmmmmmmmmk...k.......",
+          ".........kmmmmmmmmmmk...........",
+          ".........kmmmmmmmmmmk...........",
+          ".........kmmmmmmmmmmk...........",
+          ".........kmmmmmmmmmmk...........",
+          ".........kmmmmmmmmmmk...........",
+          "........kmmmmmmmmmmmmk..........",
+          "........kmmmmmmmmmmmmk..........",
+          "........kmmmmmmmmmmmmk..........",
+          ".......kmmmmmmmmmmmmmmk.........",
+          ".......kmmmmmmmmmmmmmmk.........",
+          "....kkkllllllllllllllllkkk......",
+          "....knnmmmmmmmmmmmmmmmmnnk......",
+          "...kkkkkkkkkkkkkkkkkkkkkkkk.....",
+          ".............kmmk...............",
+          "............kmllmk..............",
+          "............kllllk..............",
+          ".............kllk...............",
+          "..............kk................",
+          "................................",
+          "................................",
+          "................................"
+        ]
+      }
+    }
+  }
+}

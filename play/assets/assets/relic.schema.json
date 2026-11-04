@@ -1,0 +1,195 @@
+{
+  "//": "internet_dungeon.relic.json（アーティファクト = 夜かぎりのパッシブ）の形の宣言（Studio の sections 方言）。どのイベントが 3 択を出すかは feed.json の events[].offersRelic、規則は src/Battle.flix と src/World.flix。",
+  "version": 1,
+  "sections": {
+    "pickTitle": {
+      "kind": "field",
+      "type": "string",
+      "label": "3 択の窓の見出し",
+      "order": 1,
+      "default": "アーティファクトをひとつ選ぶ",
+      "description": "HP を払った後、同じ窓の中で 3 択に替わった拍の上の見出し。"
+    },
+    "pickHint": {
+      "kind": "field",
+      "type": "string",
+      "label": "3 択の操作の案内",
+      "order": 2,
+      "default": "{leftright} えらぶ　{confirm} けってい",
+      "description": "窓の下の案内。{leftright} と {confirm} はキーの絵に替わる（KeyPrompt）。"
+    },
+    "gotLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "入手の演出の見出し",
+      "default": "{name} を手に入れた！",
+      "description": "選んだカードが真ん中で浮いた後に出る見出し。{name} がアーティファクトの名前に替わる。",
+      "order": 3
+    },
+    "minusLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "COST が下がった拍に浮く字",
+      "order": 4,
+      "default": "−{n}",
+      "description": "通知オンの演出で COST の丸の横に浮く字。{n} が下がった量に替わる。"
+    },
+    "raiseCurrent": {
+      "kind": "field",
+      "type": "bool",
+      "label": "最大 HP が上がるとき今の HP も上げるか",
+      "order": 5,
+      "default": true,
+      "description": "true = モバイルバッテリーを選んだ拍に今の HP も同じだけ上がる。false = 最大だけ上がる（減った分の回復の余地が増えるだけ）。"
+    },
+    "costFloor": {
+      "kind": "field",
+      "type": "int",
+      "label": "COST を下げるときの下限",
+      "order": 6,
+      "min": 1,
+      "max": 9,
+      "default": 1,
+      "description": "通知オンで COST を下げても、この数より下にはならない。COST がもう下限のカードに当たったときは数が変わらず小さく揺れるだけ。"
+    },
+    "rows": {
+      "kind": "list",
+      "label": "アーティファクトの並び（1 行 = 1 つ。3 択の左から）",
+      "order": 7,
+      "description": "3 択に並ぶアーティファクト。並びの順に左から置く。 通知オンは戦いの今の COST が 2 以上のカードだけから選ぶ。",
+      "fields": {
+        "id": {
+          "type": "string",
+          "label": "id（World が覚える名前）",
+          "order": 1,
+          "required": true
+        },
+        "effect": {
+          "type": {
+            "enum": [
+              "maxHp",
+              "swingCrit",
+              "openingDiscount"
+            ]
+          },
+          "label": "効き方の種類",
+          "order": 2,
+          "required": true,
+          "description": "maxHp = 最大 HP +value / swingCrit = 通常攻撃の会心の確率 +value%（カードの効果には掛からない）/ openingDiscount = 戦いの頭にデッキのどれか 1 枚の COST を value 下げる（その戦いの間）。"
+        },
+        "name": {
+          "type": "string",
+          "label": "画面に出る名前",
+          "order": 3,
+          "required": true
+        },
+        "flavor": {
+          "type": "string",
+          "label": "フレーバー（カードの 1 行目）",
+          "description": "軽い一言。効果を言い換えない（説明は text の仕事）。窓の文言なのでかっこは使わない。",
+          "order": 4
+        },
+        "text": {
+          "type": "string",
+          "label": "効果の説明",
+          "description": "端的に 1〜2 行（例: 最大 HP +5）。かっこは使わない。入手の演出の効果の一行にも使う。",
+          "order": 5
+        },
+        "value": {
+          "type": "int",
+          "label": "効く量",
+          "order": 6,
+          "min": 0,
+          "max": 99,
+          "description": "maxHp なら HP の数、swingCrit なら %、openingDiscount なら下げる COST。"
+        },
+        "sprite": {
+          "type": "string",
+          "label": "アイコンのスプライト名",
+          "order": 7,
+          "description": "assets/internet_dungeon.relic.sprite.json の名前（art/relic.pxsrc.json を bin/fge px build で描く 32x32）。"
+        },
+        "ramp": {
+          "type": {
+            "enum": [
+              "relicTeal",
+              "relicMag",
+              "relicGold"
+            ]
+          },
+          "label": "色の系統",
+          "description": "カードの縁・背景の柄・きらめき・入手の光の色（ThemeDoc.resolver の <名前>0〜4）。",
+          "order": 8
+        }
+      }
+    },
+    "get": {
+      "kind": "record",
+      "label": "3 択と入手の演出の秒",
+      "description": "3 択が差し込まれる演出と、3 択で選んだ後の「〜を手に入れた！」の時刻表（選んだ拍から）。演出が出来上がる前の決定は演出を見せ切るだけ。",
+      "fields": {
+        "moveSeconds": {
+          "type": "float",
+          "label": "真ん中へ寄り切るまで",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.05,
+          "max": 2.0,
+          "default": 0.35,
+          "description": "選んだカードが真ん中へ寄って大きくなる長さ。"
+        },
+        "ringSeconds": {
+          "type": "float",
+          "label": "光の輪が開き切るまで",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.05,
+          "max": 2.0,
+          "default": 0.55,
+          "description": "寄り切った拍から、光の輪が広がって消えるまで。きらめきの粒も同じ長さで散る。"
+        },
+        "textAt": {
+          "type": "float",
+          "label": "見出しが出る時刻",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.4,
+          "description": "「〜を手に入れた！」と効果の一行が出る時刻。"
+        },
+        "settleSeconds": {
+          "type": "float",
+          "label": "出来上がる時刻",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.1,
+          "max": 5.0,
+          "default": 1.1,
+          "description": "この時刻を過ぎた後の決定で窓を閉じる。"
+        },
+        "textInSeconds": {
+          "type": "float", "label": "見出しが浮き上がる長さ", "unit": "秒", "order": 5,
+          "min": 0.01, "max": 2.0, "default": 0.25,
+          "description": "「〜を手に入れた！」が少し下から浮き上がって濃くなり切るまで。"
+        },
+        "pickEnterSeconds": {
+          "type": "float", "label": "3 択が差し込まれる長さ", "unit": "秒", "order": 6,
+          "min": 0.01, "max": 2.0, "default": 0.28,
+          "description": "窓が 3 択に替わった拍に、1 枚が下から持ち上がって濃くなり切るまで。"
+        },
+        "pickStaggerSeconds": {
+          "type": "float", "label": "3 択の差し込みのずれ", "unit": "秒", "order": 7,
+          "min": 0.0, "max": 1.0, "default": 0.06,
+          "description": "3 枚が左から順に差し込まれるときの、1 枚ずつの遅れ。"
+        },
+        "pickEnterPixels": {
+          "type": "float", "label": "3 択が差し込まれる距離", "unit": "px", "order": 8,
+          "min": 0.0, "max": 60.0, "default": 10.0,
+          "description": "差し込まれる 1 枚が下から持ち上がる距離。"
+        }
+      },
+      "order": 8
+    }
+  }
+}

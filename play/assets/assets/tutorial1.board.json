@@ -1,0 +1,29 @@
+{
+  "title": "📖 チュートリアル 1",
+  "//": "チュートリアルの固定盤 1 枚。rows の 1 文字 = 1 マス（a=攻撃 g=防御 s=技巧 h=妨害 r=加速。大文字 = 無効マス）。moves = この盤の手数。guide = 正しい手順（from → to。見本 GIF とテストが読む）。色票は assets/board.terrain.json。",
+  "version": 1,
+  "id": "tutorial1",
+  "moves": 1,
+  "rows": [
+    "gshrgs",
+    "ahsgrh",
+    "argshg",
+    "hasrgs",
+    "sgrhsr",
+    "rhgsrg",
+    "gshghs",
+    "srghsh"
+  ],
+  "guide": [
+    {
+      "from": [
+        1,
+        3
+      ],
+      "to": [
+        0,
+        3
+      ]
+    }
+  ]
+}

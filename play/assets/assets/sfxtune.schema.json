@@ -1,0 +1,2763 @@
+{
+  "//": "internet_dungeon.sfxtune.json の形の宣言（Studio の sections 方言）。効果音 1 本 = record 1 つ（音量・高さ・速さ）。効果音のつまみは make bake で WAV に焼き込まれ、BGM の音量は鳴らしながら効く。",
+  "version": 1,
+  "sections": {
+    "cursor": {
+      "kind": "record",
+      "label": "カーソルを動かした音",
+      "order": 1,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.35
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "decide": {
+      "kind": "record",
+      "label": "決めた音",
+      "order": 2,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.55
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "deny": {
+      "kind": "record",
+      "label": "いま選べない音",
+      "order": 3,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.45
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "sleep": {
+      "kind": "record",
+      "label": "眠りに落ちる音",
+      "order": 4,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "wake": {
+      "kind": "record",
+      "label": "朝が来る音",
+      "order": 5,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "swap": {
+      "kind": "record",
+      "label": "ピースをつかんだ音",
+      "order": 6,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.3
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "clear": {
+      "kind": "record",
+      "label": "そろって消えた音",
+      "order": 7,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "chain": {
+      "kind": "record",
+      "label": "連鎖の音",
+      "order": 8,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.55
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "notify": {
+      "kind": "record",
+      "label": "SNS の数が増えた音",
+      "order": 10,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.4
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "scroll": {
+      "kind": "record",
+      "label": "履歴を送った音",
+      "order": 11,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.25
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "page": {
+      "kind": "record",
+      "label": "会話を 1 行送った音",
+      "order": 12,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.35
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "step": {
+      "kind": "record",
+      "label": "夜の町の足音",
+      "order": 13,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.22
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "bump": {
+      "kind": "record",
+      "label": "ぶつかった音",
+      "order": 14,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.3
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "encounter": {
+      "kind": "record",
+      "label": "バトルスタートの帯が開く音",
+      "order": 15,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.62
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "戦いに入った拍（バトルスタートのカットインが始まる拍）に鳴る。電源が入る「ピュン」・消磁の「ボワン」・砂嵐の一吹き。字を打つ音は typeKey、閉じる音は cutInClose。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "trigger": {
+      "kind": "record",
+      "label": "札の発動",
+      "order": 15,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "札の COST が 0 になって効果が発動した拍の音。1 手番に何度も鳴るので、音量は控えめに（大きくすると戦いの他の音が埋もれる）。"
+    },
+    "cardset": {
+      "kind": "record",
+      "label": "札の着地",
+      "order": 15.5,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.4
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "満了したスタンバイのカードが扇から抜けた拍の紙のカシャ。この音だけ pitch と speed のつまみは効かない（噪音主体の波は倍率を掛けると別の材質に聞こえるため。効くのは volume だけ）。"
+    },
+    "slash": {
+      "kind": "record",
+      "label": "当たった音",
+      "order": 16,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "poisonBite": {
+      "kind": "record",
+      "label": "毒が噛んだ音",
+      "order": 16.1,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.9
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "毒が噛んだ拍に、髑髏が噛みつく「ガチッ」と、泡がごぼごぼ昇って濁ったうなりとシューで抜ける音（殴る音の代わりに鳴る）。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "riposte": {
+      "kind": "record",
+      "label": "反撃が跳ね返った音",
+      "order": 16.2,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.8
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "反撃が返った拍に、障壁が受ける高い「キィン」→ 光の矢が抜ける「シュッ」→ 殴った側で弾ける重い「ドン」（当たった音の上に重なる）。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "powerHit": {
+      "kind": "record",
+      "label": "攻撃強化の乗った当たりの音",
+      "order": 16.3,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.8
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "反撃が返った拍に、障壁が受ける高い「キィン」→ 光の矢が抜ける「シュッ」→ 殴った側で弾ける重い「ドン」（当たった音の上に重なる）。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "block": {
+      "kind": "record",
+      "label": "盾で防いだ音（ドゥン + 障壁の震え）",
+      "order": 16.3,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.85
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "shieldBreak": {
+      "kind": "record",
+      "label": "盾が割れた音（パリン。盾の演出の案）",
+      "order": 16.31,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "whiff": {
+      "kind": "record",
+      "label": "解除・浄化の空振りの音（シュッ。空振りの演出の案）",
+      "order": 16.32,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "crit": {
+      "kind": "record",
+      "label": "クリティカルが通った音（速報の帯）",
+      "order": 16.6,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "クリティカルが出て傷が通った拍に、斬撃の音の上へ重ねて鳴る。割れる高い雑音の一撃・8bit の粗い雑音が落ちる・ボワン・砂嵐の尾（速報の帯が裂けて差し込む絵と同じ拍）。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "hurt": {
+      "kind": "record",
+      "label": "受けた音",
+      "order": 17,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.45
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "victory": {
+      "kind": "record",
+      "label": "勝った音",
+      "order": 18,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "vanish": {
+      "kind": "record",
+      "label": "倒した相手が消える音（シュー）",
+      "order": 18.5,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "defeat": {
+      "kind": "record",
+      "label": "負けた音",
+      "order": 19,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "bgmDayVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "自室の曲の音量（即反映）",
+      "order": 21,
+      "min": 0,
+      "max": 1,
+      "default": 0.3
+    },
+    "bgmNightVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "インターネットの曲の音量（即反映）",
+      "order": 22,
+      "min": 0,
+      "max": 1,
+      "default": 0.35
+    },
+    "roomToneVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "自室の空気の音量（秒針・空気の擦れ。即反映）",
+      "order": 26,
+      "min": 0,
+      "max": 1,
+      "default": 0.35
+    },
+    "bgmPuzzleVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "描いている間の曲の音量（即反映）",
+      "order": 23,
+      "min": 0,
+      "max": 1,
+      "default": 0.32
+    },
+    "bgmResultVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "リザルト画面の曲（ファンファーレ）・勝った後の曲（ウィニング・ラン）・負けた後の曲の音量（即反映）",
+      "description": "潜り切ったときのファンファーレ、撃破の会話から戦果の画面までのウィニング・ラン（bgmWin）、力尽きた拍の会話から力尽きた窓までの負けの曲（bgmLose）に掛かる。",
+      "order": 26,
+      "min": 0,
+      "max": 1,
+      "default": 0.34
+    },
+    "applauseVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "リザルト画面の拍手（録音素材）の音量（即反映）",
+      "order": 29,
+      "min": 0,
+      "max": 1,
+      "default": 0.4
+    },
+    "typingVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "タイプ音の音量（即反映）",
+      "order": 27,
+      "min": 0,
+      "max": 1,
+      "default": 0.3
+    },
+    "bgmFightVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "戦いの曲の音量（即反映）",
+      "order": 28,
+      "min": 0,
+      "max": 1,
+      "default": 0.34
+    },
+    "bgmTitleVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "タイトルの曲の音量（即反映）",
+      "order": 20,
+      "min": 0,
+      "max": 1,
+      "default": 0.3
+    },
+    "bgmEndingVolume": {
+      "kind": "field",
+      "type": "float",
+      "label": "締めの画面（エンディング）の曲の音量（即反映）",
+      "order": 20,
+      "min": 0,
+      "max": 1,
+      "default": 0.3
+    },
+    "dayflip": {
+      "kind": "record",
+      "label": "日付札が着地した音（カチッ）",
+      "order": 29,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.4
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      }
+    },
+    "piecePick": {
+      "kind": "record",
+      "label": "駒を選んだ音（ピッ・ピ）",
+      "order": 30,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.25
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "pieceSwap": {
+      "kind": "record",
+      "label": "駒を入れ替えた音",
+      "order": 31,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.24
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "squeeze": {
+      "kind": "record",
+      "label": "駒がぎゅーっと潰れる溜めの音",
+      "order": 32,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.33
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "splat": {
+      "kind": "record",
+      "label": "駒が弾けた音（べちゃっ）",
+      "order": 33,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.47
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。連鎖の段ごとに長音階で 1 音ずつ上げた 8 本（splat1〜splat8）を同じつまみで書き出す。"
+    },
+    "drip": {
+      "kind": "record",
+      "label": "しずくが垂れる音",
+      "order": 34,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.17
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "chainStep": {
+      "kind": "record",
+      "label": "連鎖が伸びた音",
+      "order": 35,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.26
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。連鎖の段ごとに長音階で 1 音ずつ上げた 8 本（chainStep1〜chainStep8）を同じつまみで書き出す。"
+    },
+    "brush": {
+      "kind": "record",
+      "label": "筆の帯が盤を横切る音",
+      "order": 36,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.31
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "pencilSharpen": {
+      "kind": "record",
+      "label": "鉛筆が鉛筆削りで削れて消える音",
+      "order": 37.5,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.3
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "カードを取った拍（取らなかった拍も）に、左の鉛筆立ての一番下の鉛筆が鉛筆削りに吸い込まれて消える音。刃が噛むたびに尖るゴリゴリが続き、削り切った拍にシャッと抜ける。volume 1.0 でピークが 0.5。"
+    },
+    "scoreAdd": {
+      "kind": "record",
+      "label": "+点がスコアへ入った音",
+      "order": 37,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.18
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "昼のパズルの 8bit の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "deckPress": {
+      "kind": "record",
+      "label": "山札ボタンを押した音",
+      "order": 38,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.61
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "cardDraw": {
+      "kind": "record",
+      "label": "カードが山札から飛び出す音",
+      "order": 39,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.35
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "cardSpin": {
+      "kind": "record",
+      "label": "カードが回る風切りの音",
+      "order": 40,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.44
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "cardLand": {
+      "kind": "record",
+      "label": "カードが止まってはずむ音",
+      "order": 41,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.47
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "cardShine": {
+      "kind": "record",
+      "label": "見せ場のキラッ",
+      "order": 42,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.34
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "cardAbsorb": {
+      "kind": "record",
+      "label": "カードが主人公へ吸い込まれる音",
+      "order": 43,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.42
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "fxAttack": {
+      "kind": "record",
+      "label": "攻撃のカードの効果音",
+      "order": 44,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.26
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "fxGuard": {
+      "kind": "record",
+      "label": "防御のカードの効果音",
+      "order": 45,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.33
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "fxSkill": {
+      "kind": "record",
+      "label": "技巧のカードの効果音",
+      "order": 46,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.47
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "fxHex": {
+      "kind": "record",
+      "label": "妨害のカードの効果音（相手が弱る）",
+      "order": 47,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.28
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "fxRush": {
+      "kind": "record",
+      "label": "加速のカードの効果音",
+      "order": 48,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.63
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜の戦闘のブラウン管の効果音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない（フィルタや揺れの速さまで縮めると別の音に聞こえるため）。"
+    },
+    "feedRefresh": {
+      "kind": "record",
+      "label": "引っ張って更新の「シュポッ」",
+      "order": 49,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.54
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜のホーム（X 風フィード）で、引っ張って更新の輪が回り終えた拍に鳴る。空気が吸い込まれる「シュ」と、高さが跳ね上がる短い「ポッ」。X の更新音らしい軽い抜けにしてあり、夜のブラウン管の砂嵐は乗せない。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない。"
+    },
+    "feedGood": {
+      "kind": "record",
+      "label": "イベントポストの良い効果「キラリン」",
+      "order": 72,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜のホームでイベントポストを開き、効果が見えた拍（バナーと中央の「体力 a → b」が出る拍）に鳴る。体力・あすの手数・いいねのかけらのどれかが増えて、体力が減らないとき。長調のド・ミ・ソを駆け上がる短い音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない。"
+    },
+    "feedBad": {
+      "kind": "record",
+      "label": "イベントポストの悪い効果「ブブッ」",
+      "order": 73,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜のホームでイベントポストを開き、効果が見えた拍に鳴る。体力が減るとき（引き換えに何かが増えても）と、あすの手数・かけらが減るとき。こもったのこぎり波が半音ずつ下がる 2 音と低い胸打ち。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない。"
+    },
+    "shardLand": {
+      "kind": "record",
+      "label": "落ちてくるかけらが着地した「チリン」",
+      "order": 74,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "いいねのかけらが増えるイベントポストで、ポップアップの真ん中に落ちてくるかけらが 1 個着地するたびに鳴る（時刻は feed.json の shardDrop）。床に当たる短い粒と、跳ねる高い 2 音。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない。"
+    },
+    "pencilRoll": {
+      "kind": "record",
+      "label": "手数の鉛筆が転がってきて止まる「コロコロ…コトッ」",
+      "order": 75,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "夜のホームでパズルの手数が動くイベントポストを開き、効果が見えてから鉛筆が奥から転がってきて止まるまでに鳴る（転がり始めは feed.json の result.rollDelaySeconds）。六角の面が机を打つ乾いた粒が間を空けながら弱まり、最後に少し低いコトッと揺り戻しのトッ。長さは result.rollSeconds（0.9 秒）に合わせて作ってある。volume 1.0 でピークが 0.5（-6dBFS）。speed は効かない。"
+    },
+    "cutInClose": {
+      "kind": "record",
+      "label": "バトルスタートの帯が閉じた音",
+      "order": 50,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "バトルスタートの帯が尺の終わりに光の線へ閉じた拍に鳴る。ブラウン管の電源が落ちる「ヒュン」と砂嵐の尾。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "typeKey": {
+      "kind": "record",
+      "label": "帯の字を 1 文字打った音",
+      "order": 51,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.3
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "バトルスタート・WIN・LOSE の帯の字が 1 文字打ち込まれるたびに鳴るデータの粒「ピッ」。打つ速さは cue.json の broadcast で決まる。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "turnStart": {
+      "kind": "record",
+      "label": "ターンの頭の音",
+      "order": 52,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.4
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "ターン N の数が入れ替わる拍（ターンの頭）に鳴る。砂嵐の一瞬と下がる粒 3 つ —— チャンネルが合う音。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "winSting": {
+      "kind": "record",
+      "label": "WIN の帯が開いた音",
+      "order": 53,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.66
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "トドメの一撃の消え際の後、WIN の帯が開いた拍に鳴る。電源が入る「ピュン」・消磁の「ボワン」・砂嵐、字を打ち終える頃にこもったやわらかい和音。決着の窓へ移った拍の victory とは別。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "loseSting": {
+      "kind": "record",
+      "label": "LOSE の帯が開いた音",
+      "order": 54,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.62
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "力尽きた一撃の後、LOSE の帯が開いた拍に鳴る。信号が途切れる —— 落ちていくノコギリが途切れ途切れに鳴り、砂嵐がふくらんで残る。決着の窓へ移った拍の defeat とは別。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "expire": {
+      "kind": "record",
+      "label": "強化が切れた音（鎮火）",
+      "order": 55,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.36
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "攻守の強化が切れた拍に鳴る小さな電源オフ。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "phoneShrink": {
+      "kind": "record",
+      "label": "夜 → 昼: フィードがスマホの画面へ縮む音",
+      "order": 56,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "フゥン。PhoneTransition の時刻（cycle.json の phoneDown / phoneIn）で鳴る。"
+    },
+    "phoneSetDown": {
+      "kind": "record",
+      "label": "夜 → 昼: 画面を消して机に置く音",
+      "order": 57,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.68
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "カチ…コト。コトは頭から 0.56 秒後（置き終わりの拍）。PhoneTransition の時刻（cycle.json の phoneDown / phoneIn）で鳴る。"
+    },
+    "phoneRise": {
+      "kind": "record",
+      "label": "昼 → 夜: スマホが下から上がってくる音",
+      "order": 58,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.64
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "スッ。PhoneTransition の時刻（cycle.json の phoneDown / phoneIn）で鳴る。"
+    },
+    "phonePing": {
+      "kind": "record",
+      "label": "昼 → 夜: スマホの通知の音",
+      "order": 59,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.52
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "ピロン。PhoneTransition の時刻（cycle.json の phoneDown / phoneIn）で鳴る。"
+    },
+    "phoneZoom": {
+      "kind": "record",
+      "label": "昼 → 夜: 画面へ寄っていく上昇音",
+      "order": 60,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.68
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "寄り切った拍に和音。PhoneTransition の時刻（cycle.json の phoneDown / phoneIn）で鳴る。"
+    },
+    "interruptGlitch": {
+      "kind": "record",
+      "label": "戦いの入り: 会話が裂ける「ザッ」の刻み",
+      "order": 60.1,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量（0.7 で試作と同じ大きさ）",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さ（この音には効かない —— 拍に合わせた長さを保つ）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "イベント戦の割り込み（cue.json の preRoll.interruptBeats）の間、45ms ごとに帯域の違う雑音の粒が鳴る。 長さは cue.json の preRoll の拍と小節数を、戦いの曲の譜面（bgmFight.chip.json）の bpm で秒にして書き出す。"
+    },
+    "warnKlaxon": {
+      "kind": "record",
+      "label": "戦いの入り: WARNING の「ブーッ」",
+      "order": 60.2,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量（0.7 で試作と同じ大きさ）",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さ（この音には効かない —— 拍に合わせた長さを保つ）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "WARNING の 1 小節の間、1 拍ごとに A4 と B♭4 をぶつけた低い警告音（終わりで G# へずり下がる）と、1・3 拍目の低いキック。 長さは cue.json の preRoll の拍と小節数を、戦いの曲の譜面（bgmFight.chip.json）の bpm で秒にして書き出す。"
+    },
+    "warnDrone": {
+      "kind": "record",
+      "label": "戦いの入り: A の唸り",
+      "order": 60.3,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量（0.7 で試作と同じ大きさ）",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さ（この音には効かない —— 拍に合わせた長さを保つ）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "WARNING の頭から溜めの終わりまで、のこぎり波 3 本の唸りのローパスが開いていく。 長さは cue.json の preRoll の拍と小節数を、戦いの曲の譜面（bgmFight.chip.json）の bpm で秒にして書き出す。"
+    },
+    "buildRoll": {
+      "kind": "record",
+      "label": "戦いの入り: 溜めの鼓動とロール",
+      "order": 60.4,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量（0.7 で試作と同じ大きさ）",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さ（この音には効かない —— 拍に合わせた長さを保つ）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "溜めの間の鼓動のキック 2 連・8 分 → 16 分へ詰まる小太鼓とベース・上昇するのこぎり波。 長さは cue.json の preRoll の拍と小節数を、戦いの曲の譜面（bgmFight.chip.json）の bpm で秒にして書き出す。"
+    },
+    "crtOff": {
+      "kind": "record",
+      "label": "戦いの入り: ブラウン管が切れる音",
+      "order": 60.5,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量（0.7 で試作と同じ大きさ）",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さ（この音には効かない —— 拍に合わせた長さを保つ）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "溜めの後の無音の頭の、短い下降音とカチッ。 長さは cue.json の preRoll の拍と小節数を、戦いの曲の譜面（bgmFight.chip.json）の bpm で秒にして書き出す。"
+    },
+    "chipDrain": {
+      "kind": "record",
+      "label": "HP の帯の減った分が流れ落ちる音",
+      "order": 61,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.3
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "HP の帯の減った分が白く残った後、流れ落ち始める拍に鳴る数え下がるピロロロ（下がっていく細い矩形を刻む）。長さは cue.json の hitFeel.chipDrainSeconds に合わせて書き出す。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "healFill": {
+      "kind": "record",
+      "label": "回復で HP の帯が伸びる音",
+      "order": 61.1,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.4
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "回復（と消す物が無かった浄化の代わりの回復）のアイコンが HP の帯に着いた拍・継続回復の拍に、帯が伸びていく間に鳴る数え上がるキラキラ（上がっていく柔らかい音を刻み、高い鈴を添える）。長さは cue.json の hitFeel.healFillSeconds に合わせて書き出す。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "cleanse": {
+      "kind": "record",
+      "label": "浄化・解除で状態が消える音",
+      "order": 61.2,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.45
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "浄化・解除のアイコンが状態の列に着いて、毒・弱体・盾・強化が弾けて消える拍の「シャラン」（泡が弾ける短い音と、上がって抜ける鈴と空気の掃き）。volume 1.0 でピーク 0.5。"
+    },
+    "endPowerOn": {
+      "kind": "record",
+      "label": "戦いの後: ブラウン管が点く音",
+      "order": 62,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "戦いの後の画面に入った拍に鳴る。低い唸りの上を短い音が駆け上がって高い鳴きで止まる。volume 1.0 がそのままの大きさ（振幅は SfxRender で釣り合いを取ってある）。"
+    },
+    "endType": {
+      "kind": "record",
+      "label": "戦いの後: 本文を打つ音",
+      "order": 63,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "カードの本文が打たれ始める拍に鳴るキーボードの打鍵（擦れの粒 7 つ）。"
+    },
+    "endTick": {
+      "kind": "record",
+      "label": "戦いの後: 数が回る音",
+      "order": 64,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "手番・撃破・いいねの数が 1 つ回るたびに鳴るごく短い高い 1 音。"
+    },
+    "endQuote": {
+      "kind": "record",
+      "label": "戦いの後: 引用の枠がはまる音",
+      "order": 65,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "倒した相手の引用の枠がはまる拍に鳴るカチッ + 上がる 2 音（勝ったときと潜り切ったとき）。"
+    },
+    "endBurst": {
+      "kind": "record",
+      "label": "戦いの後: いいねが弾ける音",
+      "order": 66,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "いいねが回り切って +N とピンクの粒が弾ける拍に鳴る、駆け上がる 4 音と粒の擦れ。"
+    },
+    "endOk": {
+      "kind": "record",
+      "label": "戦いの後: ボタンが出る音",
+      "order": 67,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "ボタンがせり上がる拍に鳴る 2 つのビープ。"
+    },
+    "endLost": {
+      "kind": "record",
+      "label": "戦いの後: 力尽きた音",
+      "order": 68,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "力尽きた画面で「削除されました」の引用の枠が出る拍に鳴る、下がる 4 音と擦れ（電源が抜けていく）。"
+    },
+    "endTrend": {
+      "kind": "record",
+      "label": "戦いの後: トレンド 1 位の音",
+      "order": 69,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "潜り切った画面で「トレンド 1 位」の帯が差し込む拍に鳴る、上がる 3 音と長い 1 音。"
+    },
+    "fanfare": {
+      "kind": "record",
+      "label": "締めの画面: ファンファーレ",
+      "order": 69.5,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 1.0
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（大きいほど短く鋭い）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "潜り切った後の締めの画面（デモプレイ ありがとうございます！）で、真ん中のカードが弾んで出る拍に鳴る短いファンファーレ（タタタ・ターンと長和音）。"
+    },
+    "battleIntro": {
+      "kind": "record",
+      "label": "戦いの入りが始まる拍の一撃",
+      "order": 70,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.6
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "戦いの入りのカットインがスマホの画面で始まる拍（cycle.json の phoneIn.cutInAt）に鳴る。矩形波が駆け上がる「シュイン」と砂嵐の一吹きと高い「キン」。戦いの曲（bgmFight）の頭と同じ拍に重なる。volume 1.0 でピーク 0.5。speed は効かない。"
+    },
+    "introSlam": {
+      "kind": "record",
+      "label": "カットインが叩きつけられた音",
+      "order": 71,
+      "fields": {
+        "volume": {
+          "type": "float",
+          "label": "音量",
+          "order": 1,
+          "min": 0,
+          "max": 1,
+          "default": 0.62
+        },
+        "pitch": {
+          "type": "float",
+          "label": "高さの倍率（テープの速回し。高くすると短くなる）",
+          "order": 2,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        },
+        "speed": {
+          "type": "float",
+          "label": "速さ（この音には効かない）",
+          "order": 3,
+          "min": 0.25,
+          "max": 4,
+          "default": 1.0
+        }
+      },
+      "description": "カットインの 2 人が叩きつけられた拍（cue.json の battleIntro の flash + wipe の終わり。スマホの画面が画面いっぱいになる拍）に鳴る。低く沈む「ドン」と割れる雑音と、落ちる金属音。volume 1.0 でピーク 0.5。speed は効かない。"
+    }
+  }
+}

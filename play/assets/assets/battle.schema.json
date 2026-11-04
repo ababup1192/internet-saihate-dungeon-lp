@@ -1,0 +1,404 @@
+{
+  "//": "internet_dungeon.battle.json の形の宣言（Studio の sections 見出し）。1 手番の COST・手札の枚数・引ける上限と、戦闘画面の文言。規則（いつ何が起きるか）はコード（src/Battle.flix）、相手の中身は internet_dungeon.enemy.json。",
+  "version": 1,
+  "sections": {
+    "heroGuardDx": {
+      "kind": "field", "type": "float", "label": "盾の火花の横のずれ", "order": 900,
+      "description": "盾で防いだ拍の火花を、自分の絵の中心から右へ何 px ずらすか（盾を構える前）。大きくすると火花が相手寄りに出る。"
+    },
+    "heroGuardDy": {
+      "kind": "field", "type": "float", "label": "盾の火花の縦のずれ", "order": 901,
+      "description": "盾で防いだ拍の火花を、自分の絵の上端から何 px 下に出すか。"
+    },
+    "heroOrbDy": {
+      "kind": "field", "type": "float", "label": "相手のカードの玉が着く高さ", "order": 902,
+      "description": "相手のカードから飛ぶ玉が着く場所を、自分の絵の上端から何 px 下にするか（小さいほど頭の上）。"
+    },
+    "heroHp": {
+      "kind": "field",
+      "type": "int",
+      "label": "夜に持ち込む体力",
+      "order": 0,
+      "min": 1,
+      "max": 999,
+      "default": 30,
+      "description": "1 夜ぶんの耐久。敵の攻撃（enemy.json）と合わせて「何節まで潜れるか」が決まる。"
+    },
+    "appearLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "相手が現れた行（名前の後ろに続く）",
+      "order": 10
+    },
+    "deckLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "山札の見出し",
+      "order": 15
+    },
+    "deckPauseNote": {
+      "kind": "field",
+      "type": "string",
+      "label": "デッキ一覧の一時停止の一言",
+      "description": "戦いの最中に開いたデッキ一覧で「とじる」の案内の右に添える一言（開いている間は戦いが止まる）",
+      "order": 16
+    },
+    "nextLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "決着した後の「つぎへ」の案内",
+      "order": 17.5,
+      "description": "WIN / LOSE の帯のすぐ下の真ん中に、帯が出来上がってから少し遅れて点滅する案内（ボタンではない。画面のどこを押しても進む）。{confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる。"
+    },
+    "nextHintDelaySeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "「つぎへ」の案内が出るまでの秒",
+      "description": "WIN / LOSE の帯が出来上がってから数える（逃げ切ったときは決着した拍から）。",
+      "order": 17.51,
+      "min": 0,
+      "max": 5,
+      "default": 1.0
+    },
+    "hitLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "「〜に n の…」の後ろに付く語",
+      "order": 22
+    },
+    "blockedLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "ブロックが受け止めた行",
+      "order": 24
+    },
+    "winLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "勝ったときの行（名前の後ろに続く）",
+      "order": 27
+    },
+    "loseLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "負けたときの行",
+      "order": 28
+    },
+    "replayLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "決着の窓の「ろくがを見る」ボタン",
+      "description": "決着の窓の下に出るボタンの文言。押すと戦いを実機と同じ時刻で流し直す録画が開く。",
+      "order": 29
+    },
+    "endStory": {
+      "kind": "record",
+      "label": "決着の窓の文言",
+      "order": 29.5,
+      "description": "戦いの後の決着の窓（戦果 / 力尽きた / 潜り切った）の右の欄と、ろくがのボタンの下の一言。中身は戦いの録画から拾う。",
+      "fields": {
+        "swingName": {
+          "type": "string",
+          "label": "通常攻撃の名前",
+          "order": 1,
+          "description": "通常攻撃で通った傷を「何が起こしたか」に出すときの名前。"
+        },
+        "boostedSwing": {
+          "type": "string",
+          "label": "強化が効いた通常攻撃の呼び方",
+          "order": 1.5,
+          "description": "攻撃強化・会心のカードが効いている間の通常攻撃を、そのカードの手柄として出すときの呼び方。{card} が強化のカード名に替わる（例「論破の一撃」）。"
+        },
+        "decisiveLabel": {
+          "type": "string",
+          "label": "決定打の見出し",
+          "order": 2,
+          "description": "決定打（負け = こちらの HP がいちばん減った被弾 / 勝ち = 倒した 1 撃）の枠の上に出る小さな見出し。"
+        },
+        "turnTag": {
+          "type": "string",
+          "label": "決定打のターン",
+          "order": 8,
+          "description": "{turn} がターンの数に替わる。"
+        },
+        "critTag": {
+          "type": "string",
+          "label": "決定打のラベル: 会心",
+          "order": 13
+        },
+        "shieldTag": {
+          "type": "string",
+          "label": "決定打のラベル: 盾が割れた",
+          "order": 14
+        },
+        "slowTag": {
+          "type": "string",
+          "label": "決定打のラベル: 減速",
+          "order": 15
+        },
+        "rushTag": {
+          "type": "string",
+          "label": "決定打のラベル: 加速",
+          "order": 16
+        },
+        "replayFrom": {
+          "type": "string",
+          "label": "ろくがのボタンの下の一言",
+          "order": 17,
+          "description": "決定打の拍の少し前から録画が流れることを知らせる一言（例「3ターン目から再生」）。{turn} がターンの数に替わる。"
+        }
+      }
+    },
+    "replayBadge": {
+      "kind": "field",
+      "type": "string",
+      "label": "録画の左上のラベル",
+      "description": "録画の左上に出る再生中の印（はやさの段と並ぶ）。",
+      "order": 32.51
+    },
+    "replayPlayerHint": {
+      "kind": "field",
+      "type": "string",
+      "label": "録画の操作の案内",
+      "description": "録画の右上に出る操作の案内。{confirm} 再生 / 止め・{leftright} 殴った瞬間と効果が出た瞬間への頭出し・{updown} ターン送り・{info} はやさ・{back} 閉じる。{confirm} / {back} / {info} / {updown} / {leftright} はキーの絵に替わる。",
+      "order": 32.52
+    },
+    "replayTurnPrefix": {
+      "kind": "field",
+      "type": "string",
+      "label": "バーの「T3」の頭の字",
+      "description": "録画の下のバーで、こちらの手番の頭に出る「T3」の頭の字。",
+      "order": 32.54
+    },
+    "replaySwingName": {
+      "kind": "field",
+      "type": "string",
+      "label": "通常攻撃の名前（録画）",
+      "description": "録画の決め手を起こしたのがカードでなく通常攻撃のときの名前。",
+      "order": 32.55
+    },
+    "replayTurningLose": {
+      "kind": "field",
+      "type": "string",
+      "label": "敗北タイミングのラベル",
+      "description": "負けた戦いの録画で、バーの分かれ目（こちらの HP がいちばん大きく減った拍）に立てるピンクのラベル。長い文言は「…」で詰める。",
+      "order": 32.64
+    },
+    "replayTurningWin": {
+      "kind": "field",
+      "type": "string",
+      "label": "勝利タイミングのラベル",
+      "description": "勝った戦いの録画で、バーの分かれ目（相手を倒した拍）に立てるピンクのラベル。長い文言は「…」で詰める。",
+      "order": 32.65
+    },
+    "weakenDefenseRate": {
+      "kind": "field",
+      "type": "float",
+      "label": "防御弱体 1 つあたりの被ダメージの増え方",
+      "order": 6.4,
+      "min": 0,
+      "max": 2,
+      "default": 0.25,
+      "description": "防御弱体の量 N が付いた相手は、受けるダメージが ×(1 + この値 × N) になる（掛けた後に切り上げ）。0.25 なら量 1 で 1.25 倍・量 2 で 1.5 倍。毒と反撃には効かない。"
+    },
+    "critChanceBase": {
+      "kind": "field",
+      "type": "float",
+      "label": "クリティカル確率の土台",
+      "order": 6.46,
+      "min": 0,
+      "max": 1,
+      "default": 0.25,
+      "description": "クリティカルの量 N の確率 = この値 + critChance × N（100% で頭打ち）。0.25 と critChance 0.5 で、量 1 = 75%・量 2 = 100%。"
+    },
+    "cutInSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "始まりのカットインの長さ（秒）",
+      "unit": "秒",
+      "order": 6.5,
+      "min": 0.0,
+      "max": 5.0,
+      "default": 1.4,
+      "description": "戦いの始まりに「バトルスタート」の字が出ている時間。この間はターンが進まない。0 にすると出さずにいきなり始まる。"
+    },
+    "cutInLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "カットインに出す字",
+      "order": 6.6,
+      "description": "戦いの始まりに画面へ大きく出す言葉。"
+    },
+    "comboBoostStep": {
+      "kind": "field",
+      "type": "int",
+      "label": "コンボ: 上乗せの筋の量",
+      "order": 6.5,
+      "default": 2,
+      "description": "加速で前倒しされて出たカードの効果値に、前倒しの何枚目かに応じて足す量（0 で切る）。重ねがけは足し算なので、攻撃強化のアイコンの数がそのまま膨らむ。"
+    },
+    "comboBoostFrom": {
+      "kind": "field",
+      "type": "int",
+      "label": "コンボ: 上乗せが付く枚目",
+      "order": 6.51,
+      "default": 1,
+      "description": "同じ手番の前倒しの何枚目から上乗せが付くか。"
+    },
+    "comboHitStep": {
+      "kind": "field",
+      "type": "int",
+      "label": "コンボ: 連撃が続く筋の量",
+      "order": 6.52,
+      "default": 3,
+      "description": "連撃が乗った手番で、前倒しで出たカード 1 枚ごとに足す攻撃の回数（0 で切る）。1 発は小さいまま回数で押す筋。"
+    },
+    "comboTiers": {
+      "kind": "list",
+      "label": "コンボ: ダメージの数の段",
+      "description": "相手に通したダメージの数の段（プチ・すごい・超の順）。at = 相手の最大体力に対する割合（この割合以上の数がこの段）、color = 数の色、scale = 数の大きさの倍率、rainbow = 色を comboRainbow の順に回す（超の域）。",
+      "order": 6.6,
+      "fields": {
+        "at": {
+          "type": "float",
+          "label": "相手の最大体力に対する割合",
+          "order": 1,
+          "min": 0.0,
+          "max": 5.0,
+          "default": 1.0
+        },
+        "color": {
+          "type": "color",
+          "label": "数の色",
+          "order": 2
+        },
+        "scale": {
+          "type": "float",
+          "label": "数の大きさの倍率",
+          "order": 3,
+          "min": 0.5,
+          "max": 3.0,
+          "default": 1.0
+        },
+        "rainbow": {
+          "type": "bool",
+          "label": "虹色に回す",
+          "order": 4,
+          "default": false
+        }
+      }
+    },
+    "comboRainbow": {
+      "kind": "field",
+      "type": "string",
+      "label": "コンボ: 虹色の順",
+      "order": 6.61,
+      "description": "rainbow の段の数が回る色の並び。（\"#rrggbb\" の配列）"
+    },
+    "comboRainbowSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "コンボ: 虹色が 1 周する秒",
+      "order": 6.62,
+      "default": 0.9,
+      "description": "rainbow の段の数の色が 1 周する秒。"
+    },
+    "sameCardRates": {
+      "kind": "field",
+      "type": { "list": "float" },
+      "label": "同じカードの 2 枚目以降の割合（重ねるほど伸びが小さくなる）",
+      "order": 6.65,
+      "description": "同じ id のカードの 2 枚目・3 枚目…の効果の量に掛ける割合（四捨五入。最後の段がその先も続く。空 = 掛けない）。加速と減速にも掛ける（量 1 の 2 枚目は 1 のまま・3 枚目から 0）。"
+    },
+    "stackAddRate": {
+      "kind": "field",
+      "type": "float",
+      "label": "重ねがけの 2 回目からの上乗せの割合（小さいほど伸びにくい）",
+      "order": 6.66,
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "description": "足し算で重なる効果（強化・弱体・反撃・毒・クリティカル）が、まだ効いている所へ重なったときの上乗せに掛ける割合（四捨五入・下限 1）。1.0 でそのまま足す。"
+    },
+    "statusPile": {
+      "kind": "record",
+      "label": "下の効果アイコン: 束（残りターン）の見せ方",
+      "order": 6.66,
+      "description": "効果アイコンの束（枚数 = 残りターン）の扇（fanMax 枚より多いときだけ ×N）。",
+      "fields": {
+        "fanMax":           { "type": "int",    "label": "扇に開く上限の枚数（越えると ×N）",                 "order": 2, "min": 1, "max": 12, "default": 4 },
+        "spreadDegrees":    { "type": "float",  "label": "扇で 1 枚ごとに開く角度（度）",                 "order": 3, "min": 0.1, "max": 30.0, "default": 9.0 },
+        "spreadMaxDegrees": { "type": "float",  "label": "扇全体の角度の上限（度。多いと 1 枚あたりを詰める）", "order": 4, "min": 0.1, "max": 90.0, "default": 27.0 },
+        "stepPixels":       { "type": "float",  "label": "扇で 1 枚ごとの横のずれ（px）",                 "order": 5, "min": 0.0, "max": 12.0, "default": 3.0 },
+        "countFormat":      { "type": "string", "label": "×N の文言（{n} は枚数）",                       "order": 8, "default": "×{n}" }
+      }
+    },
+    "comboHitSize": {
+      "kind": "field",
+      "type": "float",
+      "label": "コンボ: 連撃の小さい数の大きさ",
+      "unit": "px",
+      "order": 6.71,
+      "default": 16.0,
+      "description": "連撃が続く手番の、1 撃ずつのダメージの数の大きさ。小さいほど合計の数との差が付く。"
+    },
+    "comboHitKeep": {
+      "kind": "field",
+      "type": "int",
+      "label": "コンボ: 連撃の小さい数を残す数",
+      "order": 6.715,
+      "default": 4,
+      "description": "連撃の小さい数を、新しい方から何個まで画面に残すか（古いほど薄くなる）。多いほど積み上がって見えるが、重なりやすい。"
+    },
+    "comboTotalSize": {
+      "kind": "field",
+      "type": "float",
+      "label": "コンボ: 合計の数の大きさ",
+      "unit": "px",
+      "order": 6.72,
+      "default": 40.0,
+      "description": "連撃の最後・とどめに出す合計の数の大きさ。段（comboTiers）の scale がさらに掛かる。"
+    },
+    "speedSteps": {
+      "kind": "list",
+      "label": "再生スピードのプリセット",
+      "description": "遊ぶ人が戦闘画面のボタンで選べる速さ。1 行が 1 つのボタンで、遅い順に並べる。label がボタンに出る字、scale が速さの倍率（2.0 なら 1 ビートが半分の長さになる）。字と倍率が対なので、片方だけ直して食い違うことがない。（1 ビートの間隔そのものは internet_dungeon.cue.json の beatSeconds 側）",
+      "order": 6.8,
+      "fields": {
+        "label": {
+          "type": "string",
+          "label": "ボタンに出る字",
+          "order": 1,
+          "required": true
+        },
+        "scale": {
+          "type": "float",
+          "label": "速さの倍率",
+          "order": 2,
+          "min": 0.1,
+          "max": 8.0,
+          "default": 1.0
+        }
+      }
+    },
+    "speedBase": {
+      "kind": "field",
+      "type": "float",
+      "label": "×1 の実際の速さ",
+      "order": 6.81,
+      "min": 0.1,
+      "max": 4.0,
+      "default": 0.65625,
+      "description": "倍率 1.0 の段がどれだけの速さで流れるか。各段の実際の速さ = これ × scale。0.65625 なら ×1 の拍は素の拍の約 1.52 倍の長さ（小さいほど全部の段がゆっくりになる）。オープニングのカードなしの戦いも同じ値で進む。"
+    },
+    "defaultSpeed": {
+      "kind": "field",
+      "type": "int",
+      "label": "最初のはやさの段",
+      "order": 6.82,
+      "min": 0,
+      "default": 2,
+      "description": "戦いを始めたときに選ばれている段（speedSteps の何番目か。0 始まり）。並びの外の数は端の段へ寄せる。"
+    }
+  }
+}

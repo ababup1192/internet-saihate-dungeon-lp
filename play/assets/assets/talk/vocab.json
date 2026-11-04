@@ -1,0 +1,12 @@
+{
+  "speakers": ["girl", "avatar", "me", "sosuke_noodle", "korone_fanart", "trend_now_jp", "kaiga_support_24", "kouryaku_matome", "egosearch_alert", "mofumofu_biyori", "yuno_sksk", "jouikara_slime", "quote_zombie", "pro_tensaku"],
+  "nodes": ["op_desk", "op_post", "op_antis", "op_avatar", "op_lose", "intel_ask_first", "intel_ask", "rematch_first", "tip_op_empty", "tip_feed_home", "tip_fight_turn", "tip_fight_fire", "tip_speed", "tip_day_two", "tip_new_pieces", "tip_rush_piece", "tip_shard", "tip_foe_note", "tip_intel", "tip_pale_match", "tip_card_match", "tip_card_pick", "puzzle_done", "assist_cheer", "thread", "post_sosuke", "post_korone", "post_trend", "post_tensaku", "post_kensho", "post_tetsuya", "post_buzz", "post_egosearch", "post_mofu", "post_matiuke", "post_yuno", "post_yuno_low"],
+  "tags": {
+    "face": ["happy", "neutral", "angry", "surprised", "sad", "excited", "serious", "determined"],
+    "backdrop": ["fight", "board"],
+    "name": ["unknown"],
+    "point": [],
+    "quote": []
+  },
+  "commands": []
+}

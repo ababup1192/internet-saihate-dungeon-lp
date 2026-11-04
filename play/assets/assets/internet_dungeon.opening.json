@@ -1,0 +1,66 @@
+{
+  "title": "🎬 オープニング",
+  "version": 2,
+  "note": "「はじめから」で流れるオープニングの拍の長さと、そこに出る短い文言。机の引きの絵は人が描いた 1 枚絵（deskImage = project.json の textures の名前、deskImageSize = その画素の大きさ。画面 480×300 へ伸縮して貼る）。tablet = 絵の中の液タブの画面の 4 隅（左上 → 右上 → 右下 → 左下。絵の画素）、penTip = ペン先（絵の画素）—— 投稿の窓はこの液タブの傾きに合わせて画面の上へ出て、「ポストする」がペン先の下に来る。postImage = 添付の絵（柴犬の切り抜き）。拍は 机の後ろからの引き（deskSeconds）→ 会話 op_desk → 投稿（glideSeconds でカーソルが「ポストする」へ → pressSeconds 押し込む → diveSeconds で画面の中へ吸い込まれる）→ データが夜のネットへ広がる（diffuseSeconds。光の河をくだる）→ 会話 op_post → クソリプが 1 件ずつ届く（replyGapSeconds × 3 + repliesHoldSeconds）→ 会話 op_antis → 画面が割れてアンチ 3 体が這い出る（glitchSeconds + crawlSeconds）→ 会話 op_avatar → 戦いの入り（eventIntro が true なら、会話の画面が裂ける割り込み → 全面の WARNING → 溜め → 無音 の後に VS のカットイン。長さと文言は cue.json の preRoll）→ カードなしの戦い（相手は foeId、こちらの体力は heroHp、相手の 1 枚目のカードは foeOpenerTurns ターン目に出る、拍の速さは通常の戦いと同じ battle.json の speedBase と段。LOSE の帯の下に「つぎへ」が出たら Z で次へ）→ 負けた後の会話 op_lose → ブラウン管が切れる（夜の画面が上下から閉じて横一本の線になる powerOffSeconds → 線が縮んで消える powerLineSeconds → 暗転 powerDarkSeconds）→ X のホームが点く（線が伸びる powerLineSeconds → 上下に開く powerOnSeconds）、の順。昼のパズルの盤は挟まない。台詞は internet_dungeon.script.json。いじると何が変わるか: diffuseSeconds を伸ばすと同じ演出がゆっくり流れる（中の出来事は割合で並んでいる）/ heroHp を下げるほど負け戦が短くなる（10 = 相手の最初の一撃（会心 -10）で力尽き、「カードが ない！」の吹き出しの次に LOSE の帯が出る。人が決めた —— F8 のチケット f7691） / likers を足すと広がる途中に出る「〜さんがいいね」の名札が増える。オープニングの最中は Z でその拍を飛ばし、X でオープニング全体を飛ばす。",
+  "deskImage": "openingDesk",
+  "deskImageSize": {
+    "x": 1586.0,
+    "y": 992.0
+  },
+  "tablet": [
+    {
+      "x": 378.0,
+      "y": 500.0
+    },
+    {
+      "x": 642.0,
+      "y": 486.0
+    },
+    {
+      "x": 674.0,
+      "y": 668.0
+    },
+    {
+      "x": 420.0,
+      "y": 708.0
+    }
+  ],
+  "penTip": {
+    "x": 610.0,
+    "y": 610.0
+  },
+  "postImage": "openingPost",
+  "deskSeconds": 0.94,
+  "glideSeconds": 1.3,
+  "pressSeconds": 0.22,
+  "diveSeconds": 1.1,
+  "diffuseSeconds": 10.0,
+  "replyGapSeconds": 1.0,
+  "repliesHoldSeconds": 1.8,
+  "glitchSeconds": 1.2,
+  "crawlSeconds": 2.2,
+  "foeId": "op_lizard",
+  "heroHp": 10,
+  "foeOpenerTurns": 1,
+  "powerOffSeconds": 0.26,
+  "powerLineSeconds": 0.18,
+  "powerDarkSeconds": 0.38,
+  "powerOnSeconds": 0.3,
+  "eventIntro": true,
+  "composeTitle": "ポストを作成",
+  "postButton": "ポストする",
+  "likedSuffix": " さんがいいね",
+  "likers": [
+    "ゆの",
+    "もふもふ",
+    "ころね",
+    "通りすがりの絵描き",
+    "しば好き",
+    "夜ふかし"
+  ],
+  "repliedSuffix": " さんが返信しました",
+  "emptyDeckLabel": "カードが ない！",
+  "likeLabel": "いいね",
+  "repostLabel": "リポスト",
+  "viewLabel": "表示"
+}

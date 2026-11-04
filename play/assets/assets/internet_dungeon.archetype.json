@@ -1,0 +1,97 @@
+{
+  "title": "🧭 デッキの型",
+  "version": 1,
+  "note": "いまのデッキの「型」（速攻型・鉄壁型…）の定義。カードを取る画面の左下に、デッキが minCards 枚に届くと型のバッジ（アイコン + 型の名前）が出て、選んでいる候補を取ると型が変わるなら「▶ 取った後の型」を横に予告する（変わらないなら出さない）。バランスのシミュレータ（make sim の archetype の列・seek_<型> の遊び方）も同じ定義を読む。決め方: 型ごとに「デッキの全効果について 重み」（byValue が true なら 重み × 効果値）を足して点にし、1 位の点が全体の share 以上、かつ 1 位と 2 位の差が全体の margin を上回ればその型、そうでなければ balanceId の行（バランス型）。既定（share 0・margin 0）は「1 位が 2 位より少しでも多ければその型、並んだらバランス型」。いじると何が変わるか: minCards=型を出し始める枚数 / byValue=効果値を掛けるか（false = 強いカード 1 枚に引っ張られない）/ share=言い切るのに要る 1 位の取り分（上げるほどバランス型が増える）/ margin=2 位との差の下限（全体に対する割合。上げるほどバランス型が増える）/ rows[].weights=その型がどの効果の種類をどれだけ重く見るか（card.json の effects[].kind と同じ語）/ rows[].icon=バッジの絵（効果の種類の名前。balance はバランス型の天秤）/ rows[].name=画面に出る型の名前。最小例: {\"id\": \"rush\", \"name\": \"速攻型\", \"icon\": \"accel\", \"weights\": {\"attackUp\": 2}}。決め方そのものは src/Archetype.flix。",
+  "minCards": 3,
+  "byValue": false,
+  "share": 0.0,
+  "margin": 0.0,
+  "balanceId": "balance",
+  "rows": [
+    {
+      "id": "rush",
+      "name": "速攻型",
+      "icon": "accel",
+      "weights": {
+        "attackUp": 2,
+        "multiHit": 2,
+        "magicAttack": 1,
+        "accel": 1
+      }
+    },
+    {
+      "id": "crit",
+      "name": "会心型",
+      "icon": "critical",
+      "weights": {
+        "multiHit": 1,
+        "critical": 2
+      }
+    },
+    {
+      "id": "wall",
+      "name": "鉄壁型",
+      "icon": "shield",
+      "weights": {
+        "shieldBash": 2,
+        "defenseUp": 2,
+        "shield": 2
+      }
+    },
+    {
+      "id": "counter",
+      "name": "反撃型",
+      "icon": "riposte",
+      "weights": {
+        "shield": 1,
+        "riposte": 3
+      }
+    },
+    {
+      "id": "sustain",
+      "name": "持久型",
+      "icon": "regen",
+      "weights": {
+        "defenseUp": 1,
+        "heal": 2,
+        "regen": 3,
+        "purify": 2
+      }
+    },
+    {
+      "id": "poison",
+      "name": "じわじわ型",
+      "icon": "poison",
+      "weights": {
+        "weakenDefense": 1,
+        "poison": 3,
+        "ignite": 2
+      }
+    },
+    {
+      "id": "control",
+      "name": "妨害型",
+      "icon": "weakenAttack",
+      "weights": {
+        "weakenAttack": 2,
+        "dispel": 2,
+        "decel": 2
+      }
+    },
+    {
+      "id": "tempo",
+      "name": "時間操作型",
+      "icon": "decel",
+      "weights": {
+        "accel": 2,
+        "decel": 2
+      }
+    },
+    {
+      "id": "balance",
+      "name": "バランス型",
+      "icon": "balance",
+      "weights": {}
+    }
+  ]
+}

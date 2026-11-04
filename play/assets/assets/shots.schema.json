@@ -1,0 +1,15 @@
+{
+  "//": "internet_dungeon.shots.json の形の宣言（Studio の sections 方言）。src/render/ の動画だけが読む撮影の山札。",
+  "version": 1,
+  "sections": {
+    "decks": {
+      "kind": "list", "label": "撮影の山札（1 行 = 1 つの筋書き）", "order": 1,
+      "description": "動画の筋書きに名指しで要るカードの並び。card.json から性質で引ける物（効果・COST）は書かない。山札が無い・id が card.json に無いと、その動画は撮らずに止まる。",
+      "fields": {
+        "name": { "type": "string", "label": "名前（動画の道具が引く）", "order": 1, "required": true },
+        "cards": { "type": { "list": "string" }, "label": "カードの id（card.json。並んだ順が発動順）", "order": 2 },
+        "why": { "type": "string", "label": "なぜこの並びか", "order": 3 }
+      }
+    }
+  }
+}

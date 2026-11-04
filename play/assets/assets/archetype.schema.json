@@ -1,0 +1,236 @@
+{
+  "//": "internet_dungeon.archetype.json の形の宣言（Studio の sections 方言）。デッキの型の並びと、型を言い切るしきい値。決め方そのもの（重みを足して比べる）はコード（src/Archetype.flix）。",
+  "version": 1,
+  "sections": {
+    "minCards": {
+      "kind": "field",
+      "type": "int",
+      "label": "型を出し始めるデッキの枚数",
+      "order": 1,
+      "min": 1,
+      "max": 20,
+      "default": 3,
+      "description": "デッキがこの枚数に届くまで、カードを取る画面に型のバッジを出さない（2 枚で言い切るのは早い）。"
+    },
+    "byValue": {
+      "kind": "field",
+      "type": "bool",
+      "label": "点に効果値を掛けるか",
+      "order": 2,
+      "default": false,
+      "description": "false = 効果 1 つにつき重みだけを足す（強いカード 1 枚に型を引っ張られない）。true = 重み × 効果値。"
+    },
+    "share": {
+      "kind": "field",
+      "type": "float",
+      "label": "1 位の取り分の下限",
+      "order": 3,
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "description": "1 位の型の点が全体の点のこの割合以上のときだけ、その型と言い切る。0 = 問わない。上げるほどバランス型が増える。"
+    },
+    "margin": {
+      "kind": "field",
+      "type": "float",
+      "label": "1 位と 2 位の差（全体に対する割合）",
+      "order": 4,
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "description": "1 位と 2 位の点の差が全体の点のこの割合を上回るときだけ言い切る。0 = 1 位が 2 位より少しでも多ければその型（並んだときだけバランス型）。上げるほどバランス型が増える。"
+    },
+    "balanceId": {
+      "kind": "field",
+      "type": "string",
+      "label": "どれにも当てはまらないときの型の id",
+      "order": 5,
+      "default": "balance",
+      "description": "rows の中のこの id の行（重みは空）が、言い切れないときの型になる。"
+    },
+    "rows": {
+      "kind": "list",
+      "label": "型の並び（1 行 = 1 つの型）",
+      "order": 6,
+      "description": "型ごとの点 = デッキの全効果について 重み（byValue なら 重み × 効果値）の合計。重みの無い行（バランス型）は点を取らない。",
+      "fields": {
+        "id": {
+          "type": "string",
+          "label": "id（バランスのシミュレータの archetype の列と共通の名前）",
+          "order": 1,
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "label": "画面に出る型の名前",
+          "order": 2,
+          "required": true,
+          "description": "カードを取る画面の左下のバッジに出る。"
+        },
+        "icon": {
+          "type": {
+            "enum": [
+              "attackUp",
+              "multiHit",
+              "critical",
+              "magicAttack",
+              "shieldBash",
+              "defenseUp",
+              "shield",
+              "riposte",
+              "heal",
+              "regen",
+              "purify",
+              "weakenAttack",
+              "weakenDefense",
+              "poison",
+              "ignite",
+              "dispel",
+              "accel",
+              "decel",
+              "balance"
+            ]
+          },
+          "label": "バッジの絵（効果の種類）",
+          "order": 3,
+          "description": "効果の種類のアイコン（art/puzzle.pxsrc.json の effectIcon*）。balance はバランス型の天秤。"
+        },
+        "weights": {
+          "type": {
+            "record": {
+              "attackUp": {
+                "type": "float",
+                "label": "attackUp の重み",
+                "order": 1,
+                "min": 0,
+                "max": 9
+              },
+              "multiHit": {
+                "type": "float",
+                "label": "multiHit の重み",
+                "order": 2,
+                "min": 0,
+                "max": 9
+              },
+              "critical": {
+                "type": "float",
+                "label": "critical の重み",
+                "order": 3,
+                "min": 0,
+                "max": 9
+              },
+              "magicAttack": {
+                "type": "float",
+                "label": "magicAttack の重み",
+                "order": 4,
+                "min": 0,
+                "max": 9
+              },
+              "shieldBash": {
+                "type": "float",
+                "label": "shieldBash の重み",
+                "order": 5,
+                "min": 0,
+                "max": 9
+              },
+              "defenseUp": {
+                "type": "float",
+                "label": "defenseUp の重み",
+                "order": 6,
+                "min": 0,
+                "max": 9
+              },
+              "shield": {
+                "type": "float",
+                "label": "shield の重み",
+                "order": 7,
+                "min": 0,
+                "max": 9
+              },
+              "riposte": {
+                "type": "float",
+                "label": "riposte の重み",
+                "order": 8,
+                "min": 0,
+                "max": 9
+              },
+              "heal": {
+                "type": "float",
+                "label": "heal の重み",
+                "order": 9,
+                "min": 0,
+                "max": 9
+              },
+              "regen": {
+                "type": "float",
+                "label": "regen の重み",
+                "order": 10,
+                "min": 0,
+                "max": 9
+              },
+              "purify": {
+                "type": "float",
+                "label": "purify の重み",
+                "order": 11,
+                "min": 0,
+                "max": 9
+              },
+              "weakenAttack": {
+                "type": "float",
+                "label": "weakenAttack の重み",
+                "order": 12,
+                "min": 0,
+                "max": 9
+              },
+              "weakenDefense": {
+                "type": "float",
+                "label": "weakenDefense の重み",
+                "order": 13,
+                "min": 0,
+                "max": 9
+              },
+              "poison": {
+                "type": "float",
+                "label": "poison の重み",
+                "order": 14,
+                "min": 0,
+                "max": 9
+              },
+              "ignite": {
+                "type": "float",
+                "label": "ignite の重み",
+                "order": 15,
+                "min": 0,
+                "max": 9
+              },
+              "dispel": {
+                "type": "float",
+                "label": "dispel の重み",
+                "order": 16,
+                "min": 0,
+                "max": 9
+              },
+              "accel": {
+                "type": "float",
+                "label": "accel の重み",
+                "order": 17,
+                "min": 0,
+                "max": 9
+              },
+              "decel": {
+                "type": "float",
+                "label": "decel の重み",
+                "order": 18,
+                "min": 0,
+                "max": 9
+              }
+            }
+          },
+          "label": "効果の種類ごとの重み",
+          "order": 4,
+          "description": "書いた種類だけが点に効く（書かない種類 = 0）。値が大きい種類ほど、その型の点に効く。"
+        }
+      }
+    }
+  }
+}

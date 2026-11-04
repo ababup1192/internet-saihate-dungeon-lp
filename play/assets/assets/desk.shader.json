@@ -1,0 +1,396 @@
+{
+ "title": "🪵 机の天板（パズル・候補・会話の後ろ）",
+ "version": 1,
+ "note": "パズルの盤（スケッチブック）の後ろの机。オープニングの机（assets/art/opening-desk.png）と同じ蜂蜜色の木を、盤より彩度と明るさを落として塗る: 横板 4 枚強・板ごとの明るさのむら・継ぎ目の陰と光の縁・木目の流れ（fract の縞を fbm で曲げる）・細い繊維・左上の西日の溜まり・周辺減光。窓の格子の西日はコード（View.windowLight）。いじると何が変わるか: 色=stops / 板の枚数=seam と lip の uv v の係数 / 木目の本数=rings の係数 / 木目のうねり=rings の fbm の係数 / 継ぎ目の濃さ=field の -0.26 / 光の溜まり=pool の係数 0.13 / 周辺減光=vignette の係数 -0.18。書式は engine の docs/shader-doc.md。",
+ "name": "deskWood",
+ "cycleRate": 0.0,
+ "shared": [
+  [
+   "pool",
+   {
+    "kind": "math2",
+    "op": "mul",
+    "a": {
+     "kind": "math1",
+     "op": "oneMinus",
+     "of": {
+      "kind": "smoothstep",
+      "lo": 0.0,
+      "hi": 0.95,
+      "of": {
+       "kind": "radialAspect",
+       "cx": 0.12,
+       "cy": 0.05,
+       "aspect": 1.6
+      }
+     }
+    },
+    "b": {
+     "kind": "math2",
+     "op": "add",
+     "a": {
+      "kind": "const",
+      "value": 0.9
+     },
+     "b": {
+      "kind": "math2",
+      "op": "mul",
+      "a": {
+       "kind": "math1",
+       "op": "sin",
+       "of": {
+        "kind": "time",
+        "scale": 0.45,
+        "offset": {
+         "kind": "const",
+         "value": 0.0
+        }
+       }
+      },
+      "b": {
+       "kind": "const",
+       "value": 0.1
+      }
+     }
+    }
+   }
+  ],
+  [
+   "vignette",
+   {
+    "kind": "smoothstep",
+    "lo": 0.4,
+    "hi": 1.05,
+    "of": {
+     "kind": "radialAspect",
+     "cx": 0.45,
+     "cy": 0.42,
+     "aspect": 1.6
+    }
+   }
+  ],
+  [
+   "rings",
+   {
+    "kind": "math1",
+    "op": "fract",
+    "of": {
+     "kind": "math2",
+     "op": "add",
+     "a": {
+      "kind": "math2",
+      "op": "mul",
+      "a": {
+       "kind": "uv",
+       "axis": "v"
+      },
+      "b": {
+       "kind": "const",
+       "value": 30.0
+      }
+     },
+     "b": {
+      "kind": "math2",
+      "op": "mul",
+      "a": {
+       "kind": "fbm",
+       "octaves": 3,
+       "scale": 1.4,
+       "seed": 17
+      },
+      "b": {
+       "kind": "const",
+       "value": 3.6
+      }
+     }
+    }
+   }
+  ],
+  [
+   "seam",
+   {
+    "kind": "math1",
+    "op": "oneMinus",
+    "of": {
+     "kind": "smoothstep",
+     "lo": 0.0,
+     "hi": 0.03,
+     "of": {
+      "kind": "math1",
+      "op": "fract",
+      "of": {
+       "kind": "math2",
+       "op": "mul",
+       "a": {
+        "kind": "uv",
+        "axis": "v"
+       },
+       "b": {
+        "kind": "const",
+        "value": 4.4
+       }
+      }
+     }
+    }
+   }
+  ],
+  [
+   "lip",
+   {
+    "kind": "math2",
+    "op": "mul",
+    "a": {
+     "kind": "smoothstep",
+     "lo": 0.015,
+     "hi": 0.035,
+     "of": {
+      "kind": "math1",
+      "op": "fract",
+      "of": {
+       "kind": "math2",
+       "op": "mul",
+       "a": {
+        "kind": "uv",
+        "axis": "v"
+       },
+       "b": {
+        "kind": "const",
+        "value": 4.4
+       }
+      }
+     }
+    },
+    "b": {
+     "kind": "math1",
+     "op": "oneMinus",
+     "of": {
+      "kind": "smoothstep",
+      "lo": 0.035,
+      "hi": 0.08,
+      "of": {
+       "kind": "math1",
+       "op": "fract",
+       "of": {
+        "kind": "math2",
+        "op": "mul",
+        "a": {
+         "kind": "uv",
+         "axis": "v"
+        },
+        "b": {
+         "kind": "const",
+         "value": 4.4
+        }
+       }
+      }
+     }
+    }
+   }
+  ],
+  [
+   "plank",
+   {
+    "kind": "snap",
+    "cells": {
+     "x": 1,
+     "y": 5
+    },
+    "of": {
+     "kind": "fbm",
+     "octaves": 2,
+     "scale": 9.0,
+     "seed": 5
+    }
+   }
+  ],
+  [
+   "fiber",
+   {
+    "kind": "tile",
+    "tiles": {
+     "x": 1,
+     "y": 80
+    },
+    "of": {
+     "kind": "fbm",
+     "octaves": 2,
+     "scale": 3.0,
+     "seed": 29
+    }
+   }
+  ]
+ ],
+ "out": {
+  "kind": "fill",
+  "shade": {
+   "kind": "gradient",
+   "stops": [
+    [
+     0.0,
+     "#57323d"
+    ],
+    [
+     0.3,
+     "#94594c"
+    ],
+    [
+     0.5,
+     "#bf8158"
+    ],
+    [
+     0.62,
+     "#cf9363"
+    ],
+    [
+     0.8,
+     "#dfaa76"
+    ],
+    [
+     1.0,
+     "#efc893"
+    ]
+   ],
+   "field": {
+    "kind": "math2",
+    "op": "add",
+    "a": {
+     "kind": "math2",
+     "op": "add",
+     "a": {
+      "kind": "math2",
+      "op": "add",
+      "a": {
+       "kind": "math2",
+       "op": "add",
+       "a": {
+        "kind": "math2",
+        "op": "add",
+        "a": {
+         "kind": "math2",
+         "op": "add",
+         "a": {
+          "kind": "const",
+          "value": 0.55
+         },
+         "b": {
+          "kind": "math2",
+          "op": "mul",
+          "a": {
+           "kind": "math2",
+           "op": "sub",
+           "a": {
+            "kind": "use",
+            "name": "plank"
+           },
+           "b": {
+            "kind": "const",
+            "value": 0.5
+           }
+          },
+          "b": {
+           "kind": "const",
+           "value": 0.1
+          }
+         }
+        },
+        "b": {
+         "kind": "math2",
+         "op": "mul",
+         "a": {
+          "kind": "smoothstep",
+          "lo": 0.6,
+          "hi": 1.0,
+          "of": {
+           "kind": "use",
+           "name": "rings"
+          }
+         },
+         "b": {
+          "kind": "const",
+          "value": -0.07
+         }
+        }
+       },
+       "b": {
+        "kind": "math2",
+        "op": "mul",
+        "a": {
+         "kind": "math2",
+         "op": "sub",
+         "a": {
+          "kind": "use",
+          "name": "fiber"
+         },
+         "b": {
+          "kind": "const",
+          "value": 0.5
+         }
+        },
+        "b": {
+         "kind": "const",
+         "value": 0.05
+        }
+       }
+      },
+      "b": {
+       "kind": "math2",
+       "op": "add",
+       "a": {
+        "kind": "math2",
+        "op": "mul",
+        "a": {
+         "kind": "use",
+         "name": "seam"
+        },
+        "b": {
+         "kind": "const",
+         "value": -0.26
+        }
+       },
+       "b": {
+        "kind": "math2",
+        "op": "mul",
+        "a": {
+         "kind": "use",
+         "name": "lip"
+        },
+        "b": {
+         "kind": "const",
+         "value": 0.07
+        }
+       }
+      }
+     },
+     "b": {
+      "kind": "math2",
+      "op": "mul",
+      "a": {
+       "kind": "use",
+       "name": "pool"
+      },
+      "b": {
+       "kind": "const",
+       "value": 0.13
+      }
+     }
+    },
+    "b": {
+     "kind": "math2",
+     "op": "mul",
+     "a": {
+      "kind": "use",
+      "name": "vignette"
+     },
+     "b": {
+      "kind": "const",
+      "value": -0.18
+     }
+    }
+   }
+  },
+  "alpha": {
+   "kind": "const",
+   "value": 1.0
+  }
+ }
+}

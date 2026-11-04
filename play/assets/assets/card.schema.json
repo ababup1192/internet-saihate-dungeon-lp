@@ -1,0 +1,251 @@
+{
+  "//": "internet_dungeon.card.json の形の宣言（Studio の sections 方言、engine v0.33.2）。cards は kind \"list\"（1 行 = カード 1 枚）で、Studio にテーブルとして並ぶ。効果の文は数から組み立てるのでここには無い（言い方は words）。候補に並ぶ規則は src/Cards.flix。",
+  "version": 1,
+  "sections": {
+    "cards": {
+      "kind": "list",
+      "label": "カード（1 行 = 1 枚）",
+      "order": 1,
+      "fields": {
+        "id": {
+          "type": "string",
+          "label": "ID",
+          "order": 1,
+          "required": true,
+          "hint": "ATK_001 のような札の名札。敵デッキ（enemy.json の deck）がこの名前で引く。"
+        },
+        "name": {
+          "type": "string",
+          "label": "名前",
+          "order": 2,
+          "required": true
+        },
+        "art": {
+          "type": "string",
+          "label": "絵柄",
+          "order": 3,
+          "hint": "assets/card/art/<名前>.png の名前。空にすると字だけの札で出る。"
+        },
+        "rarityAdjust": { "type": "float", "label": "レア度の手での補正", "order": 5.5, "default": 0.0, "hint": "レア度の点（card.json の rarity）に足す数。性能点と COST の補正だけでは段がずれるカードの帳尻合わせ。既定 0。" },
+        "baseCost": {
+          "type": "int",
+          "label": "COST",
+          "order": 5,
+          "min": 1,
+          "max": 9,
+          "default": 2,
+          "hint": "発動までのターン数。強化・弱体が続く長さでもある。"
+        },
+        "effects": {
+          "type": {
+            "list": {
+              "record": {
+                "kind": {
+                  "type": {
+                    "enum": [
+                      "attackUp", "defenseUp", "weakenAttack", "weakenDefense",
+                      "magicAttack", "shield", "heal", "regen",
+                      "accel", "decel", "multiHit", "purify",
+                      "dispel", "poison", "critical", "riposte",
+                      "shieldBash", "ignite"
+                    ]
+                  },
+                  "label": "効果の種類",
+                  "order": 1,
+                  "default": "attackUp"
+                },
+                "value": {
+                  "type": "int",
+                  "label": "効果量",
+                  "order": 2,
+                  "min": 1,
+                  "max": 9,
+                  "default": 1
+                },
+                "turns": {
+                  "type": "int",
+                  "label": "続くターン数",
+                  "order": 3,
+                  "min": 1,
+                  "max": 9,
+                  "hint": "poison・critical・riposte だけが持つ。他の効果では書かない。",
+                  "enabledWhen": { "field": "kind", "in": ["poison", "critical", "riposte"] }
+                }
+              }
+            }
+          },
+          "label": "効果の並び",
+          "order": 6,
+          "hint": "1 枚が何個でも持てる。カードの属性はここから決まる（効果ごとの属性は effectKinds。先頭の効果の属性が代表）。"
+        }
+      }
+    },
+    "rarity": {
+      "kind": "record",
+      "label": "レア度（候補に出る門）",
+      "order": 1.5,
+      "description": "点 = 性能点（効果の重み × 量 + 続くターン × turnWeight + 2 つ目からの効果 × extraEffect）+ COST の補正 + 手での補正。steps の境目で段 1〜5 に分ける。段ごとに要るその手のスコアは puzzle.json の rarityGate。",
+      "fields": {
+        "weights": {
+          "kind": "record",
+          "label": "効果の種類ごとの重み（量 1 つあたりの点）",
+          "order": 1,
+          "fields": {
+            "attackUp": { "type": "float", "label": "attackUp", "order": 1, "default": 1.5 },
+            "defenseUp": { "type": "float", "label": "defenseUp", "order": 2, "default": 1.0 },
+            "shield": { "type": "float", "label": "shield", "order": 3, "default": 0.8 },
+            "heal": { "type": "float", "label": "heal", "order": 4, "default": 0.6 },
+            "regen": { "type": "float", "label": "regen", "order": 5, "default": 1.5 },
+            "multiHit": { "type": "float", "label": "multiHit", "order": 6, "default": 3.0 },
+            "critical": { "type": "float", "label": "critical", "order": 7, "default": 2.0 },
+            "weakenAttack": { "type": "float", "label": "weakenAttack", "order": 8, "default": 1.0 },
+            "weakenDefense": { "type": "float", "label": "weakenDefense", "order": 9, "default": 1.5 },
+            "magicAttack": { "type": "float", "label": "magicAttack", "order": 10, "default": 1.0 },
+            "poison": { "type": "float", "label": "poison", "order": 11, "default": 1.5 },
+            "purify": { "type": "float", "label": "purify", "order": 12, "default": 2.0 },
+            "dispel": { "type": "float", "label": "dispel", "order": 13, "default": 2.5 },
+            "riposte": { "type": "float", "label": "riposte", "order": 14, "default": 1.0 },
+            "accel": { "type": "float", "label": "accel", "order": 15, "default": 2.0 },
+            "decel": { "type": "float", "label": "decel", "order": 16, "default": 2.0 },
+            "shieldBash": { "type": "float", "label": "shieldBash", "order": 17, "default": 1.5 },
+            "ignite": { "type": "float", "label": "ignite", "order": 18, "default": 1.5 }
+          }
+        },
+        "turnWeight":  { "type": "float", "label": "続くターン 1 つあたりの点", "order": 2, "default": 0.3 },
+        "extraEffect": { "type": "float", "label": "2 つ目からの効果 1 つあたりの点", "order": 3, "default": 1.5 },
+        "costBonus":   { "type": { "list": "float" }, "label": "COST 1, 2, 3 … の補正（尽きたら最後の数）", "order": 4 },
+        "steps":       { "type": { "list": "float" }, "label": "段 2, 3, 4, 5 の境目", "order": 5 }
+      }
+    },
+    "amountSteps": {
+      "type": { "list": "float" },
+      "label": "効果の量の段の境目",
+      "description": "量を数で出さず、その種類の効果が届く一番大きい量（cards の中の最大 + upgrade の plus5）に対する割合で段に分ける。1 つ越えるごとに段が 1 つ上がる（タイルの右下の目盛りの塗る粒が増える）。",
+      "order": 2
+    },
+    "tileUpMark": {
+      "type": "bool",
+      "label": "効果タイルに ▲ を出す",
+      "description": "右上の ▲（上がる効果の印）を出すか。false で ▲ を外し、下がる効果の ▼ だけ残る。カードの効果タイル・戦いの状態アイコン・頭の上に飛ぶ効果のアイコンに同じ規則で効く。",
+      "order": 2,
+      "default": false
+    },
+    "effectLabel": {
+      "kind": "record",
+      "label": "効果アイコンの 1 文字",
+      "description": "効果が発動した拍に頭の上に出る効果アイコンの真上に添える 1 文字。状態の列のアイコンには出さない。",
+      "order": 2,
+      "fields": {
+        "font": { "type": "string", "label": "書体", "description": "project.json の fonts の name（label = Yuji Boku のサブセット）。空なら字を出さない。", "default": "" },
+        "ink": { "type": { "enum": ["attr", "navy"] }, "label": "字の色", "description": "attr = 属性の墨の字に紙色の太い縁とその外に墨の細い縁 / navy = 基板の深藍の字に属性の光の縁。", "default": "attr" },
+        "size": { "type": "float", "label": "字の大きさ", "description": "アイコンが実寸（32px のタイル）のときの字の大きさ。飛びながら縮むと字も縮む。", "default": 15.0 },
+        "chars": { "type": { "map": "string" }, "label": "効果ごとの 1 文字", "description": "効果の kind → 1 文字。字を足したら bin/make-effect-label-font.sh で書体を作り直す（表に無い字は書体に入っていない）。" }
+      }
+    },
+    "overReach": {
+      "kind": "record",
+      "label": "基準を超えた量の印（虹）",
+      "description": "量がその種類の段の基準（cards の中の最大 + 5 個消しの上乗せ）を超えた効果は、目盛りの粒を虹の色で回す。カードを取る画面の下の欄の目盛りが満タンを超えたときも同じ。",
+      "order": 2,
+      "fields": {
+        "colors":      { "type": { "list": "string" }, "label": "回す色の並び（Pear36 の名前。左の粒から 1 色ずつずらして塗る）", "order": 2 },
+        "stepSeconds": { "type": "float", "label": "色が 1 つ進む秒（小さいほど速く回る）", "order": 3, "min": 0.03, "max": 1.0, "default": 0.1 }
+      }
+    },
+    "upgrade": {
+      "kind": "record",
+      "label": "多消しの上乗せ",
+      "order": 2,
+      "fields": {
+        "plus4": {
+          "type": "int",
+          "label": "4 個消しの上乗せ",
+          "order": 1,
+          "min": 0,
+          "max": 9,
+          "default": 1
+        },
+        "plus5": {
+          "type": "int",
+          "label": "5 個以上消しの上乗せ",
+          "order": 2,
+          "min": 0,
+          "max": 9,
+          "default": 2
+        }
+      }
+    },
+    "words": {
+      "kind": "record",
+      "label": "効果の言い方（画面に出る言葉）",
+      "order": 3,
+      "fields": {
+        "attackUp":      { "type": "string", "label": "attackUp の言い方",      "order": 1 },
+        "defenseUp":     { "type": "string", "label": "defenseUp の言い方",     "order": 2 },
+        "weakenAttack":  { "type": "string", "label": "weakenAttack の言い方",  "order": 3 },
+        "weakenDefense": { "type": "string", "label": "weakenDefense の言い方", "order": 4 },
+        "magicAttack":   { "type": "string", "label": "magicAttack の言い方",   "order": 5 },
+        "shield":        { "type": "string", "label": "shield の言い方",        "order": 6 },
+        "heal":          { "type": "string", "label": "heal の言い方",          "order": 7 },
+        "regen":         { "type": "string", "label": "regen の言い方",         "order": 8 },
+        "accel":         { "type": "string", "label": "accel の言い方",         "order": 9 },
+        "decel":         { "type": "string", "label": "decel の言い方",         "order": 10 },
+        "multiHit":      { "type": "string", "label": "multiHit の言い方",      "order": 11 },
+        "purify":        { "type": "string", "label": "purify の言い方",        "order": 12 },
+        "dispel":        { "type": "string", "label": "dispel の言い方",        "order": 13 },
+        "poison":        { "type": "string", "label": "poison の言い方",        "order": 14 },
+        "critical":      { "type": "string", "label": "critical の言い方",      "order": 15 },
+        "riposte":       { "type": "string", "label": "riposte の言い方",       "order": 16 },
+        "shieldBash":    { "type": "string", "label": "shieldBash（盾撃）の言い方", "order": 17 },
+        "ignite":        { "type": "string", "label": "ignite（着火）の言い方", "order": 18 },
+        "more":          { "type": "string", "label": "「…ほか」の言い方",      "order": 20 },
+        "special":       { "type": "string", "label": "「特殊」のバッジの言葉", "order": 21,
+                           "hint": "3 属性以上のカードは、属性のバッジを並べずにこの言葉のバッジ 1 つになる。" },
+        "attackUpShort": { "type": "string", "label": "attackUp の短い名前（アイコンの下）", "order": 22, "hint": "カードの効果アイコンの下に出る短い名前。アイコン 1 つの幅（2〜3 文字）に収める —— 字は縮めないので、長いと隣とぶつかる。" },
+        "defenseUpShort": { "type": "string", "label": "defenseUp の短い名前（アイコンの下）", "order": 23 },
+        "weakenAttackShort": { "type": "string", "label": "weakenAttack の短い名前（アイコンの下）", "order": 24 },
+        "weakenDefenseShort": { "type": "string", "label": "weakenDefense の短い名前（アイコンの下）", "order": 25 },
+        "magicAttackShort": { "type": "string", "label": "magicAttack の短い名前（アイコンの下）", "order": 26 },
+        "shieldShort": { "type": "string", "label": "shield の短い名前（アイコンの下）", "order": 27 },
+        "healShort": { "type": "string", "label": "heal の短い名前（アイコンの下）", "order": 28 },
+        "regenShort": { "type": "string", "label": "regen の短い名前（アイコンの下）", "order": 29 },
+        "accelShort": { "type": "string", "label": "accel の短い名前（アイコンの下）", "order": 30 },
+        "decelShort": { "type": "string", "label": "decel の短い名前（アイコンの下）", "order": 31 },
+        "multiHitShort": { "type": "string", "label": "multiHit の短い名前（アイコンの下）", "order": 32 },
+        "purifyShort": { "type": "string", "label": "purify の短い名前（アイコンの下）", "order": 33 },
+        "dispelShort": { "type": "string", "label": "dispel の短い名前（アイコンの下）", "order": 34 },
+        "poisonShort": { "type": "string", "label": "poison の短い名前（アイコンの下）", "order": 35 },
+        "criticalShort": { "type": "string", "label": "critical の短い名前（アイコンの下）", "order": 36 },
+        "riposteShort": { "type": "string", "label": "riposte の短い名前（アイコンの下）", "order": 37 },
+        "shieldBashShort": { "type": "string", "label": "shieldBash の短い名前（アイコンの下）", "order": 38 },
+        "igniteShort": { "type": "string", "label": "ignite の短い名前（アイコンの下）", "order": 39 }
+      }
+    },
+    "effectKinds": {
+      "kind": "record",
+      "label": "効果ごとの属性（カードの属性はここから決まる）",
+      "order": 4,
+      "description": "効果 1 種類ごとに、受け持つ属性を 1 つ選ぶ。カードの属性 =効果の並びを先頭から見て初めて出た属性の順。属性の数が候補の枠（単属性・複合・上位複合）を決め、4 個消しの上乗せもその属性が受け持つ効果にだけ載る。",
+      "fields": {
+        "attackUp":      { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "attackUp（攻撃強化）",      "order": 1,  "default": "attack" },
+        "defenseUp":     { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "defenseUp（防御強化）",     "order": 2,  "default": "guard" },
+        "weakenAttack":  { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "weakenAttack（弱体 攻撃）", "order": 3,  "default": "hex" },
+        "weakenDefense": { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "weakenDefense（弱体 防御）","order": 4,  "default": "hex" },
+        "magicAttack":   { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "magicAttack（魔攻）",       "order": 5,  "default": "attack" },
+        "shield":        { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "shield（盾）",              "order": 6,  "default": "guard" },
+        "heal":          { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "heal（回復）",              "order": 7,  "default": "guard" },
+        "regen":         { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "regen（継続回復）",         "order": 8,  "default": "guard" },
+        "accel":         { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "accel（加速）",             "order": 9,  "default": "rush" },
+        "decel":         { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "decel（減速）",             "order": 10, "default": "rush" },
+        "multiHit":      { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "multiHit（連撃）",          "order": 11, "default": "attack" },
+        "purify":        { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "purify（浄化）",            "order": 12, "default": "skill" },
+        "dispel":        { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "dispel（解除）",            "order": 13, "default": "hex" },
+        "poison":        { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "poison（毒）",              "order": 14, "default": "hex" },
+        "critical":      { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "critical（クリティカル）",  "order": 15, "default": "skill" },
+        "riposte":       { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "riposte（反撃）",           "order": 16, "default": "skill" },
+        "shieldBash":    { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "shieldBash（盾撃）",        "order": 17, "default": "attack" },
+        "ignite":        { "type": { "enum": ["attack", "guard", "skill", "hex", "rush"] }, "label": "ignite（着火）",            "order": 18, "default": "attack" }
+      }
+    }
+  }
+}

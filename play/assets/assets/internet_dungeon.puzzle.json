@@ -1,0 +1,194 @@
+{
+  "title": "🧩 パズルの調整",
+  "version": 1,
+  "note": "3 マッチ盤（開発計画書 Ver.0.2 §6〜§15）。駒は 5 系統（攻撃/防御/技巧/妨害/加速）で、そのままカードの属性になる。いじると何が変わるか: cols/rows=盤のマス数（人が決めた 6×8）/ moves=1 節に使える手数（人が決めた 4。依頼主: 最初の盤は 4 から）/ movesMax=ポストの手数の上乗せを足した盤の手数の上限（人が決めた 8。超える分のポストは結果の窓に「上限」と出て鉛筆は増えない。鉛筆立ても 8 本まで収まる）/ minMatch=何個そろうと消えるか / spawnWeights=5 系統の出現率（攻撃・防御・技巧・妨害・加速の順。合計は自動でならす）/ offers=1 回の獲得機会に並べる枚数（仕様の 3 択）/ scorePerPiece・chainBonus=できばえの入り方（その日の点は scoreShard の閾値ごとにいいねのかけらになる。scorePerPiece 5 で 1 日の点はおよそ 500〜1100） / chainStepSeconds=連鎖の段送りの間隔 / swapSeconds=駒の入れ替えの滑り（秒）/ focusLineWidth=盤のカーソル・右の列のフォーカスの四隅の枠の線の太さ（px）。レアリティ★は 1 手で消した属性の数で決まる（src/Cards.flix の rankOf）。文言はここが正で、コードには同じ既定値だけが入っている。 いいねのかけら: shardCost=変換 1 回に払う数（暫定 1）/ startShards=「はじめから」で持って始める数（つづきからはセーブの数のまま）。1 体倒すと何個もらえるかは dungeon.json の shardPerKill。 画面に出す文字は数字だけ（今日あと何枚カードを取れるか=鉛筆の本数・いいね=付箋のハート・敵の顔とカード・デッキの束・操作=キーの絵）。pencil=カードを 1 枚取った拍に一番下の鉛筆が削れて消える演出（cutSeconds=消えきるまでの秒 / shavings=削りかすの数）。デッキの束を押すとパズルの途中でもデッキ一覧が開く（deckCloseLabel=そのときの閉じる案内。出撃の操作は出さない）。 敵の情報（intel）: 右の相手の付箋を押すと窓が開く。最初に見えるのは相手が最初に出すカード 1 枚だけで、体力・攻撃・防御・残りのカードは伏せてある。cost=開示請求 1 回に払ういいねのかけら（書き直しと同じかけらを使う）/ hpSpread・attackSpread・defenseSpread=数を開くときの幅（例: 4 なら「体力 14〜18」。本当の値は幅の中のどこか）/ flipSeconds=伏せた枠がめくれきる秒 / glowSeconds=めくれた枠が西日の色で光って消える秒。伏せた物のどれが開くかはでたらめで、最後の 1 つは開かない。開いた物はその相手を倒すまで残る（セーブにも乗る）。その相手に負けると伏せていた物が全部開く（最後の 1 つも。allLine=そのときの窓の一言）。splat=駒が消える演出（水風船のしぶき）: life=しみが消えきる秒 / dryAt=乾き始める秒 / spread=べちゃっと広がりきる秒 / drops=1 マスから飛ぶしずくの数 / dropSpeed=しずくの初速 / gravity=しずくの重さ / dripLength=しみから垂れるしずくの長さ / wobble=弾ける前のぷるっとした伸び縮み / swell=弾ける直前のふくらみ / shake=連鎖 1 段あたりの盤の揺れ（px）/ burstSeconds=弾けた輪が消える秒 / markSeconds=白抜きの記号が沈み切る秒 / dripAt=しずくが垂れ始める秒（しずくの音も） / dripSpeed=垂れる速さ / dropSpreadSeconds=落ちたしずくが広がる秒 / dropDryAt・dropLife=落ちたしずくのしみが薄れ始める・消える秒 / scoreSoundSeconds=弾けてから点の音までの秒。 出撃前のデッキ一覧: deckFightLabel=Z キーの絵の右に続く案内 / deckCountUnit=枚数の単位 / deckNavHint=操作の案内 / deckDetailHint=右の台の下の「くわしく」の案内（{detail} を押している間だけ台のカードの説明が出る。空なら出さない） / deckView=一覧の小さなカードの高さ（行の高さもここから決まる）・選んだ印が移る秒・一覧が流れる秒・右の大きなカードが下から差し込まれる距離・ふわふわ浮き沈みする幅と速さ。 カードを取る画面の見積もり: pickPreview.turns=候補を選んだとき、いまのデッキと「+ 候補」を中立の的と何ターン戦わせて見比べるか（効果の行の ▲ / ⊘ と下の欄の「はやく効く」。長くするほど遅く効くカードの差も拾う。欄の数そのものはカード 1 回分の一番大きい強さで、ターン数では変わらない）/ picksLeft・picksUnit=右上の「■■■□□ あと 3 枚」の数の前後の字（塗った枠 = まだ取れる回数・点線 = もう使った回数）/ earlierLabel=数は同じで早く効くようになっただけの欄の一言 / noneMark=まだ持っていない種類の数の代わり。 案内の文言の {confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる（src/KeyPrompt.flix。キーの字は player.keys.json の 1 つ目）。",
+  "cols": 6,
+  "rows": 8,
+  "moves": 4,
+  "movesMax": 8,
+  "minMatch": 3,
+  "spawnWeights": [
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2
+  ],
+  "offers": 3,
+  "scorePerPiece": 5,
+  "chainBonus": 0.5,
+  "chainStepSeconds": 0.2,
+  "swapSeconds": 0.12,
+  "focusLineWidth": 2.5,
+  "chainWords": [
+    {
+      "chains": 2,
+      "word": "Good"
+    },
+    {
+      "chains": 3,
+      "word": "Great!"
+    },
+    {
+      "chains": 4,
+      "word": "Cool!"
+    },
+    {
+      "chains": 6,
+      "word": "Amazing!!"
+    }
+  ],
+  "kindLabels": [
+    "攻撃",
+    "防御",
+    "技巧",
+    "妨害",
+    "加速"
+  ],
+  "pickTitle": "カード選択",
+  "pickHint": "{leftright} えらぶ　{confirm} きめる　{detail} くわしく",
+  "confirmLine": "を　デッキに入れる？",
+  "yesLabel": "{confirm} いれる",
+  "noLabel": "{back} やめる",
+  "deckLabel": "デッキ",
+  "upgradedLabel": "アップグレード",
+  "shardCost": 1,
+  "startShards": 3,
+  "convertTitle": "かきなおす",
+  "deckFightLabel": "{confirm} バトル開始",
+  "deckEmptyLine": "今日は　1 枚も　取らなかった。",
+  "deckCountUnit": "枚",
+  "deckNavHint": "{updown} 属性　{leftright} カード",
+  "deckDetailHint": "{detail} くわしく",
+  "deckCloseLabel": "{back} とじる",
+  "pencil": {
+    "cutSeconds": 0.8,
+    "shavings": 10
+  },
+  "intel": {
+    "cost": 2,
+    "hpSpread": 4,
+    "attackSpread": 2,
+    "defenseSpread": 2,
+    "flipSeconds": 0.45,
+    "glowSeconds": 1.2,
+    "subLabel": "",
+    "hpLabel": "HP",
+    "attackLabel": "攻撃",
+    "defenseLabel": "防御",
+    "hiddenMark": "？？？",
+    "rangeJoin": "〜",
+    "rangeSuffix": "くらい",
+    "requestLabel": "開示請求する",
+    "leftPrefix": "開示できるのは あと",
+    "leftUnit": "回",
+    "lastLine": "最後の 1 つは 開示できない",
+    "allLine": "",
+    "closeLabel": "{back} とじる",
+    "detailHint": "{detail} くわしく",
+    "requestHint": "{confirm} 開示する"
+  },
+  "deckPileHint": "{detail} くわしく",
+  "scoreShard": {
+    "note": "その日の点（SCORE）が every の倍数（500・1000・1500…）に届くたびに、いいねのかけらが 1 個増える。届いた拍から delaySeconds 置いてかけらが上から落ち始め、fallSeconds で右の付箋のかけらへ着地すると持ち数が 1 つ増え、着地の音（sfxtune の shardLand。夜の「いいね」のポストと同じ音）が鳴る。1 手で 2 つ以上越えたら gapSeconds おきに続く。いじると何が変わるか: every を小さくするとかけらが増えやすい（0 で落ちない）。点の入り方は scorePerPiece と chainBonus。",
+    "every": 500,
+    "delaySeconds": 0.1,
+    "fallSeconds": 0.42,
+    "gapSeconds": 0.32
+  },
+  "deckView": {
+    "cardHeight": 47.0,
+    "moveSeconds": 0.18,
+    "scrollSeconds": 0.38
+  },
+  "guide": {
+    "note": "左下の床に貼った操作メモの動詞。矢印キー（逆 T 字）の ↑ の右に pick、← ↓ → の段に決定キー + grab。駒をつかんでいる間は pick → swap、grab → release に切り替わる。カーソルが盤のマスにあってつかんでいない間は 3 段目に戻るのキー（X）+ convert（かけらで書き直しを始める。かけらが足りない間は薄く出す）。書き直しの間は狙う段が aimPick / aimConfirm / aimBack、属性を選ぶ段が kindLines の 2 段。キーの絵はキーボードならキーキャップ、コントローラーならボタン（src/KeyPrompt.flix）。",
+    "pick": "えらぶ",
+    "grab": "つかむ",
+    "swap": "いれかえる",
+    "release": "はなす",
+    "convert": "マスをかきなおす",
+    "aimPick": "どこを",
+    "aimConfirm": "かきなおす",
+    "aimBack": "もどる",
+    "kindLines": ["{leftright} なにに", "{confirm} きめる　{back} やめる"]
+  },
+  "splat": {
+    "life": 0.95,
+    "dryAt": 0.42,
+    "spread": 0.12,
+    "drops": 12,
+    "dropSpeed": 95.0,
+    "gravity": 520.0,
+    "dripLength": 14.0,
+    "wobble": 0.12,
+    "swell": 0.24,
+    "shake": 0.8,
+    "burstSeconds": 0.09,
+    "markSeconds": 0.4,
+    "dripAt": 0.15,
+    "dripSpeed": 26.0,
+    "dropSpreadSeconds": 0.06,
+    "dropDryAt": 0.55,
+    "dropLife": 1.05,
+    "scoreSoundSeconds": 0.22
+  },
+  "shine": {
+    "note": "入れ替えれば 3 つ以上そろう駒（マウスで乗った駒・つかんだ駒の入れ替え先・最初の 1 手の案内）に、ラミネートのコーティングのような斜めの光の帯がキラッと通る。いじると何が変わるか: sweepSeconds=帯が駒を横切る秒（短いほど鋭い）/ pauseSeconds=次に通るまでの間 / staggerSeconds=並ぶ駒どうしで 1 マスずつずらす秒（0 で全部いっしょ）/ width=帯の太さ px / strength=帯の芯の白さ（0..1）。",
+    "sweepSeconds": 0.5,
+    "pauseSeconds": 0.9,
+    "staggerSeconds": 0.07,
+    "width": 6.0,
+    "strength": 0.7
+  },
+  "pickPreview": {
+    "turns": 10,
+    "picksLeft": "あと",
+    "picksUnit": "枚",
+    "growthLooks": [
+      { "light": "pearWhite", "color": "pearSky" },
+      { "light": "pearPink", "color": "pearMagenta" },
+      { "light": "pearPeach", "color": "pearTangerine" },
+      { "light": "pearLemon", "color": "pearRed" }
+    ],
+    "stripReachCards": 4,
+    "growthBlinkSeconds": 0.3,
+    "gaugeBlinkSeconds": 0.5,
+    "gaugeBlinkAlpha": 0.55,
+    "note": "下の欄はデッキにある効果の種類を全部と候補で新しく増える種類を並べ、溜まった量を目盛り（段の境目は card.json の amountSteps、基準は「その種類だけのカード stripReachCards 枚（1 枚 = 効果タイルの基準 reachOf）のデッキで届く山場」。枚数を増やすほど満タンになりにくい）で見せる。今の量の粒は普通に塗り、候補を取ると増える粒だけを点滅させる（growthBlinkSeconds=点いている / 消えている半分ずつの秒）。今もう満タンを超えていれば粒を全部 card.json の overReach の虹で回し、取ると満タンを超えるなら増える粒を虹の色で点滅させる。量は増えるが段の境目に届かず粒が変わらない時（もう満タン超えの時も）は、枠ごとゲージ全体を控えめに点滅させる（gaugeBlinkSeconds=普通 / 薄い半分ずつの秒・gaugeBlinkAlpha=薄い側の不透明度。1 で点滅しない）。伸びない時は点滅しない。同じカードを重ねると加算が小さくなるので点滅する粒が減る。カードを取る画面のカードの効果タイルの量も、下の欄と同じ目盛りの粒（段の境目は card.json の amountSteps・基準はカード 1 枚の量の reachOf。取っても変わらないので点滅しない）。粒の色は段ごとに青 → 紫 → 橙 → 赤と熱くなる（レアリティの色の段と寒暖の並びを合わせた。基準超えは overReach の虹）。夜の画面（戦いの画面のカードの効果タイル・状態アイコン・頭の上に飛ぶ効果のアイコン）の量も同じ目盛りの粒。growthLooks は下の段から順に light=粒の上の 1px の照り / color=粒の面（どちらも Pear36 の色の名前。pearSky など）。行が段より少なければ最後の行を使い回す。"
+  },
+  "fall": {
+    "note": "消えた後に上の駒が落ちてくる動き。いじると何が変わるか: seconds=落ちきるまでの秒（短いほどきびきび）/ bounce=着地で跳ねる高さ（マスに対する割合。0 で跳ねない。0.1〜0.2 でぽよんと弾む）/ bounceSeconds=跳ねてから収まるまでの秒。連鎖の間（chainStepSeconds）より短くしておくと、落ちきってから次が弾ける。",
+    "seconds": 0.14,
+    "bounce": 0.12,
+    "bounceSeconds": 0.16
+  },
+  "hint": {
+    "note": "盤をしばらく触らないと、成立する入れ替えを 1 組だけ知らせる（キャンディークラッシュ式）。いじると何が変わるか: idleSeconds=何秒触らないと出るか（0 で出さない。キャンディークラッシュはおよそ 5 秒）/ 出し方はその 1 組が小さく震えてふくらむ/ repeatSeconds=揺れが 1 回りする秒（触るまで繰り返す）/ wiggleSeconds=1 回りのうち震えている秒。",
+    "idleSeconds": 5.0,
+    "repeatSeconds": 1.6,
+    "wiggleSeconds": 0.6
+  },
+  "specials": {
+    "note": "特殊な駒（キャンディークラッシュの縞・包み・カラーボムと同じ決まり）。enabled=false で作らない。4 つ一直線 → 縞（横に 4 つなら縦 1 列・縦に 4 つなら横 1 列を消す）/ L・T・十字 → ボム（周りの 3×3）/ 5 つ一直線 → カラーボム（同じ系統を全部。普通の駒と入れ替えると相手の系統を全部）。特殊な駒どうしを入れ替えると組み合わせ（縞+縞=十字 / 縞+ボム=3 列 3 行 / ボム+ボム=5×5 / カラーボム+縞・ボム=相手の系統が全部その駒になって弾ける / カラーボム+カラーボム=盤ぜんぶ）。巻き込んで消した駒は、カードの収穫では特殊な駒の系統として数える（★はそろえた系統のまま・その系統の品質が上がる）。見た目は駒 B のタイルそのものに割れ目が入る（縞 = 消える向きに 1 本割れる / ボム = ふくらんで縁までひび / カラーボム = 5 色のかけらの寄せ木）。",
+    "enabled": true
+  },
+  "rarity": {
+    "note": "★（1 手で消した属性の数）の上限を連鎖の段数で絞る。特殊な駒で 1 段に何色も消せるようになったぶん、高い★を出にくくする。★は連鎖の段数まで・luckyChance の確率で 1 つ上まで。上限を越えた属性は、その手で消した数の少ない側から候補の条件から外れる（強化はそのまま）。",
+    "luckyChance": 0.5
+  },
+  "rarityGate": {
+    "note": "レア度の門。カードのレア度（card.json の rarity。段 1〜5）ごとに、その手のスコアがいくつ要るか。スコア = 連鎖の段数 × chainPoints + 消した駒の数 × piecePoints（★の rarity と同じ 1 手の結果から作る）。need = 段 1, 2, 3, 4, 5 に要るスコア（足りない段のカードはその手の候補の母集団に入らない。空なら門なし）。いじると何が変わるか: need を上げた段のカード（段 3 = COST 1 の速攻と 2 系統のカードの多く・段 4 = 速報と会心・反撃の強い 2 系統・段 5 = 特殊なカード）は、もっと上手く消さないと出なくなる。門は 4 段で、腕前で段々に増える（make novice-sim の 4 人で、特殊なカードが 下手 2% / 普通 4% / 上手い 10% / 超上手い 15% 前後）。",
+    "chainPoints": 10.0,
+    "piecePoints": 1.0,
+    "need": [0, 0, 25, 40, 55]
+  },
+  "deckPile": {
+    "note": "デッキの付箋（盤の右下）で、同じカードを 1 つの束にまとめて何枚重なっているかを見せる。見せ方は扇で、fanMax 枚より多いと扇を止めて右上に ×N。束にするのでデッキ全部を数える。いじると何が変わるか: fanMax = 扇に開く上限の枚数 / spreadDegrees / stepPixels = 扇で 1 枚ごとに開く角度と横のずれ / spreadMaxDegrees = 扇全体の角度の上限（枚数が多いと 1 枚あたりを詰める）/ countFormat = ×N の文言（{n} は枚数）。",
+    "fanMax": 4,
+    "spreadDegrees": 12.0,
+    "spreadMaxDegrees": 30.0,
+    "stepPixels": 2.0,
+    "countFormat": "×{n}"
+  }
+}

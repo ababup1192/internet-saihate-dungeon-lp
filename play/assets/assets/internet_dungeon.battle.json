@@ -1,0 +1,183 @@
+{
+  "title": "⚔️ 戦闘の調整",
+  "//": "夜のカードバトルの数と文言。1 手番の COST・手カードの枚数・引ける上限をいじると、戦いのテンポが変わる。相手の体力と意図は internet_dungeon.enemy.json、カードは internet_dungeon.card.json。 foeHeight / foeTop / foeCenterX = 相手の絵の大きさと置き場所 / heroHeight / heroTop / heroCenterX = 自分の絵の大きさと置き場所（HP の窓の下・場のカードの上に収める）。 fleeFromTurn=逃げられるようになるターン（敵デッキ仕様 §20）。敵の意図（intent）の文言は、敵がデッキで戦うようになったので廃止。 Ver.0.3: heroAttack / heroDefense=アバターの素の攻撃力・防御力（通常攻撃のダメージは 攻撃力 − 相手の防御力・下限 1）。attackLine=通常攻撃のログの語。 Ver.0.3 フェーズ 4: critMultiplier=クリティカルの倍率（小数可・掛けた後に四捨五入） / critChance=効果値 1 つあたりの発生確率（クリティカル 2 なら 2 倍して 1.0 = 必ず出る）。 weakenDefenseRate=防御弱体 1 つあたり、相手の受けるダメージに足す割合（0.25 なら量 1 で 1.25 倍・量 2 で 1.5 倍。掛けた後に切り上げ。効くのは通常攻撃・連撃・クリティカル・魔攻・盾撃・着火・解除で崩れた盾のダメージで、毒と反撃には効かない。防御力そのものは下げない）。反撃は必ず出て効果値ぶん。 help=カードにカーソルを乗せたときに出る用語の説明（遊んだことが無い人向けの言い方で書く。数は Doc の値から自動で添える）。 テンポ（ビートの間隔・ターンの頭の時間割・ワンショット演出の尺）は internet_dungeon.cue.json 側。 Ver.0.4（調整）: heroHp=20（短く読める戦い）/ rushBonus=加速で 0 まで早められて出たカードの効果値の上乗せ / rushChainMax=1 手番に加速で前倒しして発動させられるカードの枚数（加速の連鎖の上限。届いた後の加速は効かず、頭の上の加速のアイコンはその場で消える）/ dispelFallbackDamage=はがす物が無い解除の魔攻（効果値 1 つあたり）/ purifyFallbackHeal=消す物が無い浄化の回復（効果値 1 つあたり）/ rageLine=相手が炎上（enemy.json の rageFrom / rageStep）して攻撃力が上がった行。 重なり方: 強化・弱体・反撃・継続回復・毒・クリティカル・盾は全部、量を足し算（同じカードの出直しも足す・上限は無い）、残りは長い方（重なった 2 回目からの上乗せは stackAddRate を掛ける）。 反撃は 効果値 + 殴ってきた側の攻撃力の半分 を返す。解除ははがした盾の量をダメージにし、炎上も 0 に戻す。 加速・減速が当たるのは一番 COST の重いカード 1 枚（COST はその戦いでの今の COST、同じ COST なら発動までの残りが少ない方。敵の加速・減速も同じ選び方）。減速が入ったカードは次に発動するまでもう減速されない（次に重いカードへ移る。全部入っていれば空振り）。 コンボ: 2 本の筋は量 0 で切れる（既定は +2 / +3 で効いている）。comboBoostStep = 上乗せの筋（加速で前倒しされて出たカードの効果値が、前倒しの comboBoostFrom 枚目から 1 枚ごとに +comboBoostStep。重ねがけは足し算なので、攻撃強化のアイコンの数がそのまま膨らむ）/ comboHitStep = 連撃が続く筋（連撃が乗った手番で、前倒しで出たカード 1 枚ごとに攻撃の回数 +comboHitStep。1 発は小さいまま回数で押す）。2 本の筋が数えるのは前倒しで出たカードだけ（その手番に出た全部を数えると、同じ COST のカードは揃って満了するので狙わなくても増え、強すぎる）。comboTiers = ダメージの数の段（at = 相手の最大体力に対する割合。プチ・すごい・超の順。color / scale = 数の色と大きさの倍率、rainbow = comboRainbow の色を comboRainbowSeconds で 1 周する）。連撃の数は、小さい数が同じ場所に次々と弾け、合計は放送ジャックの帯の上に大きく出る（「合計」の字は出さず、大きさと段の色で分ける）。comboHitSize = 1 撃ずつの小さい数の大きさ / comboHitKeep = 小さい数を新しい方から何個まで残すか（古いほど薄い）/ comboTotalSize = 合計の数の大きさ（段の scale がさらに掛かる）。連撃の数の間隔と合計を見せる間は cue.json の chainSwingBeatScale / chainTotalHoldSeconds。 同じカードを重ねるほど伸びが小さくなる: sameCardRates = 同じ id のカードの 2 枚目・3 枚目…の効果の量に掛ける割合（四捨五入。最後の段がその先も続く。空なら掛けない。散らしたデッキには掛からない。加速と減速にも掛ける（同じ加速のカード 2 枚が互いに前倒しし合って伸び続けないように）。量 1 の 2 枚目は 1 のまま・3 枚目から 0）。 重ねがけの伸び: stackAddRate = 足し算で重なる効果（強化・弱体・反撃・毒・クリティカル）が、まだ効いている所へ重なったときの上乗せに掛ける割合（四捨五入・下限 1。1.0 でそのまま足す）。小さくするほど重ねても伸びにくく、戦いの目盛りの橙と虹に届きにくい。sameCardRates を 0.6/0.4/0.2・critMultiplier を 1.5 に下げたのも同じ件（make novice-sim で、攻撃と会心だけ狙うプレイヤーが雑なプレイヤーより明らかに楽だった —— 原因は強化込みの攻撃力に掛かる会心の倍率）。",
+  "version": 1,
+  "help": {
+    "attackUp": "自分の攻撃力が上がる。重ねると、上がる量が足し算になる。",
+    "defenseUp": "自分の防御力が上がる。重ねると、上がる量が足し算になる。",
+    "weakenAttack": "相手の攻撃力が下がる。重ねると、下がる量が足し算になる。",
+    "weakenDefense": "相手の受けるダメージが、この割合だけ増える。毒と反撃のダメージには効かない。重ねると、割合が足し算になる。",
+    "magicAttack": "カードが出た瞬間、相手にダメージを与える。",
+    "shield": "効果量の分、ダメージを完全に防ぐ。防いだ分だけ効果量が減る。効果量は累積する。",
+    "heal": "体力が回復する。最大値は超えない。",
+    "regen": "自分のターンが来るたびに、体力が回復する。重ねると、回復の量が足し算になる。",
+    "accel": "自分の一番 COST の重いカードを早める（同じ COST なら発動が近い方）。早く出たカードは、効果が 1 強くなる。",
+    "decel": "相手の一番 COST の重いカードを遅らせる（同じ COST なら発動が近い方）。同じカードは 1 回出るまでに 1 度しか遅らされない。",
+    "multiHit": "このターンの攻撃回数が 1 回増える。",
+    "purify": "自分の毒と弱体を消す。何も無いときは、体力が少し回復する。",
+    "dispel": "相手の盾と強化を消す。消した盾の数だけ、相手にダメージを与える。",
+    "poison": "相手のターンが来るたびに、相手にダメージを与える。盾では防げない。効果量は累積する。",
+    "critical": "自分の通常攻撃が、この確率でクリティカルになる。クリティカルは攻撃力（攻撃強化込み）を倍率ぶん大きくしてから相手の防御を引く。確率は重ねるほど上がる。",
+    "riposte": "攻撃を受けるたびに、相手に殴り返す。重ねると、返す量が足し算になる。",
+    "shieldBash": "自分の盾を全部消し、盾の数 + この数のダメージを相手に与える。",
+    "ignite": "相手の毒の数 × この数のダメージを、相手に与える。",
+    "percent": "%"
+  },
+  "marks": {
+    "attackUp": "攻",
+    "defenseUp": "守",
+    "weakenAttack": "鈍",
+    "weakenDefense": "脆",
+    "poison": "毒",
+    "critical": "会",
+    "riposte": "返",
+    "shield": "盾",
+    "regen": "癒"
+  },
+  "hpLabel": "HP",
+  "damageLabel": "-",
+  "heroHp": 20,
+  "heroAttack": 2,
+  "heroDefense": 0,
+  "heroName": "アバター",
+  "attackLine": " の攻撃",
+  "fleeFromTurn": 5,
+  "fleeReadyLine": "にげる準備をした。",
+  "fleeLine": "うまく にげ切った。",
+  "enemyDeckLabel": "あいてのデッキ",
+  "foeHeight": 93.0,
+  "foeTop": 149.0,
+  "foeCenterX": 403.0,
+  "heroHeight": 99.0,
+  "heroTop": 143.0,
+  "heroCenterX": 73.0,
+  "heroGuardDx": 45.0,
+  "heroGuardDy": 9.0,
+  "heroOrbDy": 7.0,
+  "speedSteps": [
+    {
+      "label": "×0.5",
+      "scale": 0.5
+    },
+    {
+      "label": "×0.75",
+      "scale": 0.75
+    },
+    {
+      "label": "×1",
+      "scale": 1.0
+    },
+    {
+      "label": "×1.5",
+      "scale": 1.5
+    },
+    {
+      "label": "×2",
+      "scale": 2.0
+    },
+    {
+      "label": "×4",
+      "scale": 4.0
+    }
+  ],
+  "speedBase": 0.65625,
+  "defaultSpeed": 2,
+  "turnLabel": "TURN",
+  "fireLine": " 発動！",
+  "accelLine": " が早まった",
+  "decelLine": " が遅れた",
+  "appearLine": "が　立ちふさがった。",
+  "critMultiplier": 1.5,
+  "critChance": 0.5,
+  "critChanceBase": 0.25,
+  "weakenDefenseRate": 0.5,
+  "critLine": "クリティカル！",
+  "riposteLine": "反撃",
+  "riposteLabel": "反撃",
+  "poisonLabel": "毒",
+  "poisonLine": " 毒ダメージ",
+  "regenLine": "戻した",
+  "purifyLine": "よごれが落ちた。",
+  "dispelLine": "たかぶりが消えた。",
+  "deckLabel": "じぶんのデッキ",
+  "hitLine": " ダメージ",
+  "blockedLine": "ブロックが受け止めた。",
+  "cutInLabel": "バトルスタート",
+  "cutInSeconds": 1.4,
+  "winBanner": "WIN",
+  "loseBanner": "LOSE",
+  "endStory": {
+    "//": "決着の窓の文言。いじると窓の見出しと一言が変わる。{turn}=ターンの数 / {card}=カード名 / {n}=量。swingName = 通常攻撃で通った傷の名前 / boostedSwing = 論破のような強化のカードが効いている間の通常攻撃の呼び方 / decisiveLabel = 決定打の枠の見出し（負け = いちばん効いた被弾・勝ち = 倒した 1 撃）/ turnsLabel・turnsValue = 決着のターン数 / bestLabel・bestValue・noBest = 主力カード（いちばん傷を与えたこちらのカード）/ turnTag = 決定打のターン/ critTag・shieldTag・slowTag・rushTag = 決定打の拍に起きた事のラベル / replayFrom = ろくがのボタンの下の一言（その拍の少し前から録画が流れる）。",
+    "swingName": "通常攻撃",
+    "boostedSwing": "{card}の一撃",
+    "decisiveLabel": "決定打",
+    "turnTag": "{turn}ターン目",
+    "critTag": "会心",
+    "shieldTag": "盾破壊",
+    "slowTag": "減速",
+    "rushTag": "加速",
+    "replayFrom": "{turn}ターン目から再生"
+  },
+
+  "nextLabel": "{confirm} つぎへ",
+  "nextHintDelaySeconds": 1.0,
+  "deckPauseNote": "",
+  "winLine": "は、静かに消えた。",
+  "loseLine": "目を開けていられない。……朝だ。",
+  "replayLabel": "ろくがを見る",
+  "replayBadge": "REPLAY",
+  "replayPlayerHint": "{confirm} 再生 {leftright} 頭出し {updown} ターン {info} 速度 {back} 終了",
+  "replayTurnPrefix": "T",
+  "replaySwingName": "通常攻撃",
+  "replayTurningLose": "敗北タイミング",
+  "replayTurningWin": "勝利タイミング",
+  "note": " 戦いの最中のデッキ一覧: 下の隅のデッキボタン（deckLabel=味方 / enemyDeckLabel=敵の見出し）を押すと、出撃前と同じデッキ一覧が開く（文言は puzzle.json の deckNavHint・deckCloseLabel を使い回す）。deckPauseNote=「とじる」の案内の右に添える一言（開いている間は戦いが止まる）。 戦いの始まりと終わり: cutInLabel/cutInSeconds=開始のカットインの語と長さ（この間はターンが進まない。0 で出さない）/ winBanner・loseBanner=決着の拍に画面の真ん中へ大きく出す語 / nextLabel=決着した後、WIN / LOSE の帯のすぐ下に少し遅れて点滅する「つぎへ」の案内（ボタンではない。決着したら画面のどこを押しても先へ進む）/ replayLabel=決着の窓の「ろくがを見る」のボタンの文言（C / コントローラーの Y で開く。押すと戦いを実機と同じ時刻で流し直す録画が開く）。 録画: replayBadge=左上の再生中のラベル / replayPlayerHint=右上の操作の案内 / replayTurnPrefix=バーの「T3」の頭の字 / replaySwingName=決め手が通常攻撃のときの名前 / replayTurningLose・replayTurningWin=バーの分かれ目のラベル（負けは HP がいちばん減った拍 = 敗北タイミング、勝ちは倒した拍 = 勝利タイミング）。 はやさ: speedSteps=戦闘画面のはやさのボタン（遅い順。label=ボタンの字・scale=倍率）/ speedBase=倍率 1.0 の段の実際の速さ（各段の実際の速さ = speedBase × scale。0.65625 = 前の 0.625 の 1.05 倍（依頼主「5% だけ早めて」）で、×1 の拍は素の拍の約 1.52 倍の長さ。オープニングの戦いも同じ値を読む）/ defaultSpeed=最初に選ばれている段（speedSteps の何番目か。0 始まり）。段を増やすとボタンは画面の下の真ん中で横に伸びる。等速より速い段は風切りの音を組み直して書き出すので、倍率を変えたら make render-all と project.json の cardSpinFit の名前をそろえる。 案内の文言の {confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる（src/KeyPrompt.flix。キーの字は player.keys.json の 1 つ目）。",
+  "rushBonus": 1,
+  "rushChainMax": 2,
+  "dispelFallbackDamage": 2,
+  "purifyFallbackHeal": 2,
+  "rageLine": " が炎上した！ 攻撃力が上がる",
+  "comboBoostStep": 2,
+  "comboBoostFrom": 1,
+  "comboHitStep": 3,
+  "comboTiers": [
+    {
+      "at": 0.35,
+      "color": "#ffe14d",
+      "scale": 1.12
+    },
+    {
+      "at": 0.7,
+      "color": "#ff7b3a",
+      "scale": 1.25
+    },
+    {
+      "at": 1.0,
+      "color": "#ffffff",
+      "scale": 1.4,
+      "rainbow": true
+    }
+  ],
+  "comboRainbow": [
+    "#ff5c5c",
+    "#ffb347",
+    "#fff15c",
+    "#6fe07a",
+    "#5cc8ff",
+    "#b57bff"
+  ],
+  "comboRainbowSeconds": 0.9,
+  "sameCardRates": [0.6, 0.4, 0.2],
+  "stackAddRate": 0.5,
+  "statusPile": {
+    "note": "下の効果アイコン（HP の帯のすぐ上）の束の見せ方。束の枚数 = 残りターンで、ターンが進むと奥の 1 枚ずつ抜ける。見せ方は扇。いじると何が変わるか: fanMax = 扇に開く上限の枚数（越えると扇を止めて右上に ×N。今のカードの残りターンは最大 4 なので ×N は出ない）/ spreadDegrees / stepPixels = 扇で 1 枚ごとに開く角度と横のずれ（大きいほど数えやすいが、横の並びが伸びる）/ spreadMaxDegrees = 扇全体の角度の上限 / countFormat = ×N の文言（{n} は枚数）。",
+    "fanMax": 4,
+    "spreadDegrees": 9.0,
+    "spreadMaxDegrees": 27.0,
+    "stepPixels": 3.0,
+    "countFormat": "×{n}"
+  },
+  "comboHitSize": 16.0,
+  "comboHitKeep": 4,
+  "comboTotalSize": 40.0
+}

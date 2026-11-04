@@ -1,0 +1,505 @@
+{
+  "//": "戦闘演出のタイミング — 「いつ・どれだけの長さ」を言う数値だけを持つ。beatSeconds=1 ビートの間隔（秒。全ビートの根。遊ぶ人が選ぶ「はやさ」の倍率は battle.json の speedSteps 側） / turnBeatScale=ターンの頭のビートだけ何倍に伸ばすか / turnHoldSeconds=場が揃ってから次のビートまでのウェイト / chainSwingBeatScale=連撃の 2 撃目からのビートの倍率（小さいほど 1 撃ずつの小さい数が速く重なる）/ chainTotalHoldSeconds=連撃の最後・とどめのビートで大きい合計の数を見せる間 / fireHoldSeconds=続けて発動するカードの最後のビートの後ろに足す間（効果アイコンを読ませてから攻撃へ。アイコンが状態の列に着き切るのが遅ければそこまで延びる）/ effectSettleToAttackSeconds=手番の効果アイコンが状態の列に着き切ってから攻撃までに置く間（吸い込まれている瞬間に殴らない）/ turnCue=ターンの頭の時間割（ターン表示→ウェイト→カウントダウン→ウェイト→場に出るの境目。Studio のタイムラインで境目をドラッグできる） / fxTiming=ワンショット演出の尺（起点はトリガーの瞬間 + *StartRatio の待ち。ビートに対する割合で持ち、対象へのアタックと盾の火花は上限秒つき。hitStopSeconds = 攻撃が当たった拍に両者の動きを止める長さ（ヒットストップ））。収支・強さ・文言は internet_dungeon.battle.json。 hero* の列 = こちらの動作のコマ送り（1 行 = 1 コマ。frame = コマ番号（assets/battle/hero-<動作>-<番号>.png）/ seconds = 見せる秒数（「ふつう」のとき。はやさの倍率で伸び縮みする）/ shift = 足元の前後のずれ（px、相手の方が正。コマが替わるときになめらかにつなぐ））。秒数を長くしたコマが「止めて見せる」コマになる。 zombieMotion / lizardMotion = 敵ごとの待機・攻撃・被弾の動きの周期（秒）と振れ幅（px・割合）。動きの形はコード（FightMotion）で、ここは大きさと速さだけ。スライムの跳ねはコード側の形のまま。 cardReveal = カードの発動で、扇から浮いて待っていた所（readyLiftPixels）から真ん中へ飛びながら斜めに回って表を見せる演出の秒数と大きさ（飛び出した跡を残りの扇が fanCloseSeconds で詰める。dimSeconds = 後ろの戦いを沈める幕が濃くなり切るまで（通知オンの演出も同じ値）。どちらも発動の拍の頭から同じ時計で動く）（発動の拍はこの合計だけ長くなる。はやさの倍率で縮む）。同じ手番に何枚も出るときは全部が一緒に飛んで横一列に並び、左から absorbStaggerSeconds ずつずれて吸い込まれる（並べ方は row*、枚数で足す読ませる間は holdPerCardSeconds）。 backdrop = 戦いの背景（基板の 3 層）の流れる速さ（px/秒）と濃さ。 effectPop = カードの効果が発動した拍に頭の上へ出る効果アイコンの尺（膨らんで出る→浮いて読ませる→弧を描いて状態の列へ飛ぶ→着いた枠が光る。はやさの倍率で縮む）と置き場所。",
+  "version": 2,
+  "title": "🎬 戦闘演出のタイミング",
+  "beatSeconds": 0.58,
+  "turnBeatScale": 2.2,
+  "turnHoldSeconds": 0.5,
+  "chainSwingBeatScale": 0.25,
+  "chainTotalHoldSeconds": 0.7,
+  "fireHoldSeconds": 0.85,
+  "effectSettleToAttackSeconds": 0.35,
+  "turnCue": {
+    "turnCounterEnd": 0.26,
+    "countdownStart": 0.36,
+    "countdownEnd": 0.6,
+    "enterFieldStart": 0.68
+  },
+  "fxTiming": {
+    "orbFlightStartRatio": 0.0,
+    "orbFlightRatio": 0.65,
+    "fireFlashStartRatio": 0.0,
+    "fireFlashRatio": 0.45,
+    "textStartRatio": 0.0,
+    "lungeStartRatio": 0.0,
+    "briefFxUnderSeconds": 0.25,
+    "hitStopSeconds": 0.07
+  },
+  "note": "テンポ調整のループ: Studio でこのファイルを開く → タイムラインの境目をドラッグ → 保存 → 実機（DEBUG=1 make debug）に約 0.2 秒で反映。beatSeconds を縮めると戦い全体が速くなる。turnCue の境目を詰めるとターンの頭の演出が短くなる。",
+  "heroAttackWindup": [
+    {
+      "frame": 1,
+      "seconds": 0.04,
+      "shift": 0
+    },
+    {
+      "frame": 2,
+      "seconds": 0.12,
+      "shift": -2
+    },
+    {
+      "frame": 3,
+      "seconds": 0.16,
+      "shift": -4
+    }
+  ],
+  "heroAttackStrike": [
+    {
+      "frame": 4,
+      "seconds": 0.04,
+      "shift": 14
+    },
+    {
+      "frame": 5,
+      "seconds": 0.05,
+      "shift": 16
+    },
+    {
+      "frame": 6,
+      "seconds": 0.06,
+      "shift": 16
+    },
+    {
+      "frame": 7,
+      "seconds": 0.16,
+      "shift": 16
+    },
+    {
+      "frame": 2,
+      "seconds": 0.08,
+      "shift": 6
+    }
+  ],
+  "heroHurt": [
+    {
+      "frame": 2,
+      "seconds": 0.05,
+      "shift": -3
+    },
+    {
+      "frame": 3,
+      "seconds": 0.1,
+      "shift": -10
+    },
+    {
+      "frame": 4,
+      "seconds": 0.15,
+      "shift": -12
+    },
+    {
+      "frame": 5,
+      "seconds": 0.08,
+      "shift": -8
+    },
+    {
+      "frame": 6,
+      "seconds": 0.07,
+      "shift": -3
+    },
+    {
+      "frame": 7,
+      "seconds": 0.07,
+      "shift": 0
+    }
+  ],
+  "heroGuard": [
+    {
+      "frame": 1,
+      "seconds": 0.03,
+      "shift": 0
+    },
+    {
+      "frame": 2,
+      "seconds": 0.04,
+      "shift": 0
+    },
+    {
+      "frame": 3,
+      "seconds": 0.05,
+      "shift": 0
+    },
+    {
+      "frame": 4,
+      "seconds": 0.05,
+      "shift": 0
+    },
+    {
+      "frame": 5,
+      "seconds": 0.06,
+      "shift": 0
+    },
+    {
+      "frame": 6,
+      "seconds": 0.08,
+      "shift": 0
+    },
+    {
+      "frame": 7,
+      "seconds": 0.2,
+      "shift": 0
+    }
+  ],
+  "heroBuff": [
+    {
+      "frame": 1,
+      "seconds": 0.03,
+      "shift": 0
+    },
+    {
+      "frame": 2,
+      "seconds": 0.04,
+      "shift": 0
+    },
+    {
+      "frame": 3,
+      "seconds": 0.05,
+      "shift": 0
+    },
+    {
+      "frame": 4,
+      "seconds": 0.05,
+      "shift": 0
+    },
+    {
+      "frame": 5,
+      "seconds": 0.06,
+      "shift": 0
+    },
+    {
+      "frame": 6,
+      "seconds": 0.08,
+      "shift": 0
+    },
+    {
+      "frame": 7,
+      "seconds": 0.2,
+      "shift": 0
+    }
+  ],
+  "heroDebuff": [
+    {
+      "frame": 1,
+      "seconds": 0.03,
+      "shift": 0
+    },
+    {
+      "frame": 2,
+      "seconds": 0.04,
+      "shift": 0
+    },
+    {
+      "frame": 3,
+      "seconds": 0.05,
+      "shift": 0
+    },
+    {
+      "frame": 4,
+      "seconds": 0.05,
+      "shift": 0
+    },
+    {
+      "frame": 5,
+      "seconds": 0.06,
+      "shift": 0
+    },
+    {
+      "frame": 6,
+      "seconds": 0.08,
+      "shift": 0
+    },
+    {
+      "frame": 7,
+      "seconds": 0.2,
+      "shift": 0
+    }
+  ],
+  "heroRush": [
+    {
+      "frame": 1,
+      "seconds": 0.03,
+      "shift": 0
+    },
+    {
+      "frame": 2,
+      "seconds": 0.04,
+      "shift": -2
+    },
+    {
+      "frame": 3,
+      "seconds": 0.05,
+      "shift": -4
+    },
+    {
+      "frame": 4,
+      "seconds": 0.05,
+      "shift": 6
+    },
+    {
+      "frame": 5,
+      "seconds": 0.05,
+      "shift": 14
+    },
+    {
+      "frame": 6,
+      "seconds": 0.06,
+      "shift": 12
+    },
+    {
+      "frame": 7,
+      "seconds": 0.2,
+      "shift": 0
+    }
+  ],
+  "zombieMotion": {
+    "stepSeconds": 1.8,
+    "stepSway": 2.5,
+    "stepLean": 0.012,
+    "stepDip": 1.6,
+    "shrugSeconds": 3.2,
+    "shrugStretch": 0.045,
+    "jabReach": 30.0,
+    "staggerReach": 12.0
+  },
+  "lizardMotion": {
+    "breathSeconds": 3.8,
+    "chestStretch": 0.036,
+    "chestLean": 0.02,
+    "tapSeconds": 2.4,
+    "tapShift": 2.2,
+    "tapSquash": 0.022,
+    "jabReach": 26.0,
+    "recoilReach": 6.0
+  },
+  "cardReveal": {
+    "flySeconds": 0.9,
+    "bounceSeconds": 0.2,
+    "holdSeconds": 0.99,
+    "absorbSeconds": 0.29,
+    "spinTurns": 3.5,
+    "tiltDegrees": 34.9,
+    "startScale": 0.12,
+    "bounceScale": 0.07,
+    "dimAlpha": 0.59,
+    "floatPixels": 2.0,
+    "rowGapPixels": 10.0,
+    "rowMarginPixels": 14.0,
+    "rowMinScale": 0.6,
+    "holdPerCardSeconds": 0.126,
+    "absorbStaggerSeconds": 0.11,
+    "bobStaggerSeconds": 0.12,
+    "readyLiftPixels": 12.0,
+    "fanCloseSeconds": 0.35,
+    "dimSeconds": 0.2
+  },
+  "backdrop": {
+    "farSpeed": 20.0,
+    "midSpeed": 45.0,
+    "nearSpeed": 90.0,
+    "pulseSpeed": 120.0,
+    "farAlpha": 1.0,
+    "midAlpha": 1.0,
+    "nearAlpha": 1.0
+  },
+  "finisher": {
+    "note": "トドメの一撃（相手の体力が 0 になった拍）の演出。秒はどれも打撃からの実時間で、「はやさ」の倍率で一緒に縮む。時間の流れは 止める（freeze）→ 遅く流す（slow）→ なめらかに等速へ戻す（ramp）。止めだけにすると「ヒットストップ」、slow だけにすると「スロー」。bgmFadeSeconds = 0 で打撃と同時に戦いの曲を切る（伸ばすと沈みながら消える）。消滅の音（vanish）と勝ちの音（victory）が鳴る時刻もここで決める。",
+    "freezeSeconds": 0.0,
+    "freezeScale": 0.02,
+    "slowSeconds": 1.0,
+    "slowScale": 0.25,
+    "rampSeconds": 0.45,
+    "zoom": 1.15,
+    "shakePixels": 2.0,
+    "flashSeconds": 0.08,
+    "bgmFadeSeconds": 1.0,
+    "bgmPitchDrop": 0.15,
+    "vanishDelaySeconds": 0.0,
+    "victoryDelaySeconds": 1.6
+  },
+  "effectPop": {
+    "delayRatio": 0.45,
+    "staggerSeconds": 0.12,
+    "popSeconds": 0.2,
+    "overshoot": 2.2,
+    "holdSeconds": 0.85,
+    "labelMinSeconds": 0.25,
+    "rowMaxIcons": 4,
+    "rowTightGapPixels": 34.0,
+    "stackBounce": 0.2,
+    "absorbShrink": 0.5,
+    "bobPixels": 1.0,
+    "bobSeconds": 0.62,
+    "flySeconds": 0.38,
+    "arcPixels": 18.0,
+    "landSeconds": 0.27,
+    "landScale": 1.25,
+    "laneGapPixels": 44.0,
+    "heroOffsetX": 17.0,
+    "heroOffsetY": -21.0,
+    "foeOffsetX": -51.0,
+    "foeOffsetY": -13.0
+  },
+  "broadcast": {
+    "note": "戦いの文字の見せ方「放送ジャック」。ブラウン管の電源が入る光の線から帯が開き、字がブロックのカーソルで打ち込まれ、ピンクとシアンの色ずれと横の裂けを背負う。使う所: バトルスタートのカットイン / ターン N の頭 / ダメージの数 / クリティカルの速報の帯 / WIN / LOSE。秒は「ふつう」のときの値で、はやさ ×2 / ×4 で一緒に縮む（カットインの秒だけは縮まない —— カットインの尺 battle.json の cutInSeconds が縮まないため）。音は同じ時刻から鳴る（帯が開く・字が 1 文字増える・閉じる・ターンの頭・決着）。LOSE は色が抜けて沈む: loseFadeSeconds = 字を打ち終えてから沈み切るまで（長いほどゆっくり）/ loseFadeSoundSeconds = 遠のく音の拍 / loseFadeDropPixels = 帯が下がる深さ。",
+    "lineSeconds": 0.08,
+    "openSeconds": 0.11,
+    "overshoot": 1.12,
+    "closeSeconds": 0.14,
+    "settleSeconds": 0.35,
+    "flashAlpha": 0.22,
+    "tearPixels": 16.0,
+    "splitPixels": 5.0,
+    "glitchRate": 24.0,
+    "cursorBlinkSeconds": 0.4,
+    "cutInTypeDelaySeconds": 0.18,
+    "cutInTypeSeconds": 0.32,
+    "cutInUnrest": 0.08,
+    "bannerTypeDelaySeconds": 0.2,
+    "bannerTypeSeconds": 0.22,
+    "winUnrest": 0.06,
+    "loseUnrest": 0.45,
+    "loseDelaySeconds": 0.3,
+    "clearDropSeconds": 0.35,
+    "clearDropPixels": 18.0,
+    "loseSinkSeconds": 0.4,
+    "loseDimAlpha": 0.45,
+    "loseFadeSeconds": 2.4,
+    "loseFadeSoundSeconds": 0.45,
+    "loseFadeDropPixels": 22.0,
+    "winSweepSeconds": 1.6,
+    "turnSettleSeconds": 0.5,
+    "turnSwapSeconds": 0.12,
+    "turnTearPixels": 22.0,
+    "damageRiseSeconds": 0.6,
+    "damageRisePixels": 20.0,
+    "damageSettleSeconds": 0.25,
+    "critOpenSeconds": 0.1
+  },
+  "hitFeel": {
+    "note": "傷を受けた側の HP の帯の手ごたえ。帯は当たる拍（カードが回り終えて斬撃が届いた拍）までは前の値のまま → 当たった拍に新しい値へ落ち、減った分が白く残って（chipDelaySeconds）から流れ落ちる（chipDrainSeconds。数も一緒に数え下がり、chipDrain の音が鳴る）。枠は当たった拍に flashSeconds だけ白く光り、光の強さは傷の大きさ（最大 HP に対する割合 ÷ bigDamageRatio）で変わる。秒ははやさ ×2 / ×4 で縮む（fastestScale より短くはしない）。回復（回復のカード・消す物が無かった浄化の代わりの回復・継続回復）は、効果アイコンが帯に着いた拍（継続回復はその拍の頭）から healFillSeconds かけて帯が伸び（数も一緒に数え上がり、healFill の音が鳴る）、枠が healGlowSeconds だけ回復の色に光る。",
+    "bigDamageRatio": 0.4,
+    "chipDelaySeconds": 0.4,
+    "chipDrainSeconds": 0.35,
+    "flashSeconds": 0.12,
+    "fastestScale": 0.4,
+    "healFillSeconds": 0.5,
+    "healGlowSeconds": 0.45
+  },
+  "endScreen": {
+    "note": "戦いの後の画面（倒した相手の絵の右に、決定打の枠・かけらの行・体力の棒）の入りの時刻表。秒はどれも画面が前に出た拍から: powerOnSeconds = ブラウン管が線から窓へ点く長さ / foeAtSeconds = 相手の絵が浮かぶ / nameAtSeconds・nameTypeSeconds = 相手の名前を打ち始める時刻と打ち終えるまで / stampAtSeconds = 「撃破」の判が押される / countAtSeconds = 2 枠が出て撃破 → かけらの数が回り始める / tickSeconds = 数が 1 つ回る間隔（短いほど速い）/ trendAtSeconds = 潜り切ったときのトレンドの帯 / choiceAtSeconds = ボタンがせり上がる（数が回り切るまでは自動で待つ）。勝った窓のいいねのかけらは X のイベントと同じ流れで、倒した相手の方からハートが飛んでかけらの印に着くたびに「計」が 1 つ増え、増え切ったら行ごと消える: shardDelaySeconds = 枠が出てから 1 個目が飛び始めるまで / shardFallSeconds = 飛んで着くまで / shardGapSeconds = 次が飛ぶ間隔 / shardHoldSeconds = 増え切ってから消え始めるまで / shardFadeSeconds = 消え切るまで。markGapSeconds = 決定打の量を数え終えてからラベルが押されるまで / choiceGapSeconds = ラベルとかけらが終わってからボタンがせり上がるまで / choiceRiseSeconds = ボタンがせり上がり切るまで / sparkleSeconds = ハートが着いた拍のきらめきの長さ / appearLeadSeconds・appearSeconds = 枠がその拍の少し前から出始める先回りと、出切るまで / hintDelaySeconds = 「3ターン目から再生」がボタンより遅れる秒。",
+    "powerOnSeconds": 0.32,
+    "foeAtSeconds": 0.38,
+    "nameAtSeconds": 0.5,
+    "nameTypeSeconds": 0.4,
+    "stampAtSeconds": 0.95,
+    "countAtSeconds": 1.25,
+    "tickSeconds": 0.14,
+    "trendAtSeconds": 1.0,
+    "choiceAtSeconds": 2.2,
+    "shardDelaySeconds": 0.15,
+    "shardFallSeconds": 0.42,
+    "shardGapSeconds": 0.32,
+    "shardHoldSeconds": 0.6,
+    "shardFadeSeconds": 0.3,
+    "markGapSeconds": 0.12,
+    "choiceGapSeconds": 0.4,
+    "choiceRiseSeconds": 0.28,
+    "sparkleSeconds": 0.35,
+    "appearLeadSeconds": 0.15,
+    "appearSeconds": 0.2,
+    "hintDelaySeconds": 0.15
+  },
+  "battleIntro": {
+    "note": "戦いの入りのカットイン（斜めの 2 枚が切り込んで VS）。時刻は戦いの入りが始まる拍（前置き preRoll の後の小節の頭 = 戦いの曲 bgmFight の頭。スマホから入る戦いはスマホの画面の中で始まる）から: 光る（曲の頭から 1 小節目の最後の拍まで。その間に flashCount 回明滅）→ 覆う（1 拍。曲の 2 小節目の頭 = 譜面の行 1 の頭の最初のクラッシュで覆い切る。2 枚が両側から切り込み、その拍に 2 人が叩きつけられて一撃の音 introSlam が鳴り、スマホの画面が画面いっぱいになる）→ 向き合う（VS と名札。曲の頭から holdUntilBar 小節が過ぎた拍まで）→ 抜ける（revealSeconds）→「バトルスタート」の帯（battle.json の cutInSeconds）→ 少なくとも 1 ビート（beatSeconds）空けて、次の小節の頭の turnLeadBeats 拍前にターン 1。曲に乗せる 2 つ（holdUntilBar・turnLeadBeats）は小節と拍で書き、秒は戦いの曲の譜面 assets/music/bgmFight.chip.json の bpm から出る（曲の頭の長さとテンポはここに写さない）。既定ではターン 1 が曲の本編の頭の 1 拍前に来る（make test の TestRules がこのそろいを見る）。いじると何が変わるか: holdUntilBar を 1 足すと向き合いが 1 小節延び、ターン 1 も 1 小節後ろへ（曲の本編の頭の 1 拍前を保つなら、譜面の曲の頭に打撃の行を 1 行足す）/ turnLeadBeats = ターン 1 を小節の頭の何拍前に置くか / 秒の値（revealSeconds）を変えても、ターン 1 は小節に合わせた位置のまま。shakeSeconds = 叩きつけの揺れが収まるまで / flashAlpha = 光る間の全面の明滅の濃さ（光に敏感な人のため、地の暗い色から色の半分くらいまで。明滅は叩きつけの白みと合わせて 1 秒に 3 回を超えない）/ slamFlashAlpha = 叩きつけた拍の白みの濃さ / slamFlashSeconds・revealFlashSeconds = 叩きつけた拍・2 枚が離れ始めた拍の白みが消えるまで / litFlashSeconds = 2 人が白く光って色づくまで / vsSeconds = VS が大きく出て締まるまで / plateDelaySeconds・plateSeconds = 名札が差し込み始めるまでと差し込み切るまで。秒は「はやさ」で縮まない。",
+    "flashCount": 2,
+    "holdUntilBar": 2,
+    "revealSeconds": 0.33,
+    "shakePixels": 4.0,
+    "turnLeadBeats": 1.0,
+    "vsLabel": "VS",
+    "shakeSeconds": 0.2,
+    "slamFlashSeconds": 0.16,
+    "revealFlashSeconds": 0.12,
+    "litFlashSeconds": 0.18,
+    "vsSeconds": 0.14,
+    "plateDelaySeconds": 0.05,
+    "plateSeconds": 0.2,
+    "flashAlpha": 0.4,
+    "slamFlashAlpha": 0.25
+  },
+  "preRoll": {
+    "note": "戦いの入りのカットイン（battleIntro）の前置き「WARNING と溜め」。戦いの曲の拍に乗せ、溜めの後の小節の頭でカットインと曲の頭を始める。イベント戦（opening.json の eventIntro）は 会話の画面が裂ける割り込み（interruptBeats 拍）→ WARNING（warningBars 小節）→ 溜め（buildBars 小節。最後の silenceBeats 拍は無音）を全面で、スマホから入る戦いは cycle.json の phoneIn.warningAt から WARNING → 溜め（スマホの画面の中でノイズと相手の影）→ 無音 を部屋とスマホの上で流す。長さは拍と小節で書き、秒は戦いの曲の譜面 assets/music/bgmFight.chip.json の bpm から出る（テンポはここに写さない —— 譜面の bpm を変えても無音の次の拍が曲の頭とそろう）。いじると何が変わるか: warningBars = WARNING を見せる小節数（小節単位で伸ばす限り曲の頭とずれない。0 にすると WARNING を飛ばす） / blinkSeconds = WARNING の字が点いて消える間隔 / stripeSpeed = 上下の縞の帯が流れる速さ（px/秒）/ phonePush = 溜めの間にスマホが寄る量 / warningTitle・warningLine = 真ん中に明滅する字とその下の一行。音（interruptGlitch・warnKlaxon・warnDrone・buildRoll・crtOff）の長さもこの拍から書き出すので、変えたら make render-all。sinkSeconds = 割り込みの会話が WARNING の前に沈み切るまで / warningFadeSeconds = WARNING の帯の出入り / cutSeconds = 無音の拍の横一本の線が縮んで消えるまで。",
+    "interruptBeats": 2.0,
+    "warningBars": 2,
+    "buildBars": 1,
+    "silenceBeats": 0.5,
+    "blinkSeconds": 0.3,
+    "stripeSpeed": 120.0,
+    "phonePush": 0.18,
+    "warningTitle": "WARNING",
+    "warningLine": "つよい反応が 接続に割り込んできた",
+    "sinkSeconds": 0.3,
+    "warningFadeSeconds": 0.15,
+    "cutSeconds": 0.08
+  },
+  "fightHud": {
+    "note": "戦いの HUD の動きの尺。damagePopSeconds・damageOvershoot = ダメージの数（-N）が膨らんで行き過ぎて戻るまでの秒と行き過ぎ、damageDriftPixels = 寿命の間に上へ流れる高さ。turnShowSeconds = ターンの頭のスラム（大きな数が帯ごと叩き込まれて抜ける）の尺（数が止まって見えるのはこの 6 割）。この尺は「はやさ」で縮まず、ターンの頭の拍と後ろの間より長くはならない。ほかの秒ははやさ ×2 / ×4 で縮む。statusLeaveSeconds = 残りターンが減った状態のアイコンが束から抜け出て消えるまで。countPopScale・countPopSeconds = ターンの頭にスタンバイカードの数（経過/コスト）が数え上がるとき、新しい分子が白く大きく（countPopScale 倍）なって下から出て、着いてから countPopSeconds で元の大きさと色に戻る。",
+    "damagePopSeconds": 0.14,
+    "damageOvershoot": 1.45,
+    "damageDriftPixels": 12.0,
+    "turnShowSeconds": 1.0,
+    "statusLeaveSeconds": 0.45,
+    "countPopSeconds": 0.35,
+    "countPopScale": 1.7
+  },
+  "battleFx": {
+    "note": "空振り・盾・加速と減速の当たりの演出の尺（空振り = 空を切る / 盾 = 割れて破片が飛ぶ + 状態の列の盾の量の数え下がり / 加速・減速 = ゲージが動いて動いた部分が白から溜まりの色に戻る）。missSeconds = 解除・浄化が消す物を見つけられず代わりの効果が出たとき、アイコンが頭の上で首を振ってから空の枠を抜けて落ちるまで / missShakePixels = 首を振る幅。countLeadSeconds = 盾が受け止めてから量の数が 1 つ目を減らすまで / countStepSeconds = 1 つ減る間隔（刻みの音つき）/ countMaxSeconds = 数え下がり全体の上限（吸った量が多いと間隔を詰める）。0 まで数えたら割れて、shardSeconds で破片が飛んで消える / shardSpeed = 破片の初速。paceSeconds = 加速・減速が当たったカードの輪のゲージが、効果アイコンが着いてから前の残りから動き（前の 2/3。動いた部分は白）、溜まりの色に戻り切るまで（ほかの演出はこの終わりを待たない）。秒は「ふつう」のときの値で、はやさ ×2 / ×4 で縮む。impactSeconds = 盾が受け止めた拍に六角の格子の障壁が張られ、光の波が走って上へほどけて消えるまで / crackFadeSeconds = 削れただけの盾のひびが数え終わってから消えるまで / breakFlashSeconds = 割れた拍に枠が白く飛ぶ間 / missBlinkSeconds = 空振りの後に空の枠が明滅する 1 回ぶん / paceFlashSeconds = 加速・減速が当たったカードに白い光がかぶる間 / paceRingSeconds = 当たったカードの点の輪が開いて消えるまで / paceOvertakeAfterSeconds = 加速で満了したカードのアイコンが着いてから、扇の前のカードを追い越し始めるまで / paceOvertakeSeconds = そこから追い越して浮くまで（発動はこの後）。poisonLeadSeconds = 毒が噛む拍の前に、噛まれる側の足元から髑髏の煙が湧いて頭の上で形になるまで（拍の 6 割より長くはしない）/ poisonSeconds = 毒が噛んでから、髑髏が噛みついて煙が散り切るまで / riposteSeconds = 反撃が返ってから、跳ね返った一撃の光・衝撃の輪・「反撃」のラベルが消えるまで。plain のほかは受けた側が盾を構えて押し下がる）。 powerHitSeconds = 攻撃強化の乗った通常攻撃が当たってから、衝撃の輪・光の筋・星が消えるまで（派手さの段は殴った側の状態アイコンの目盛りの粒の数。粒が増えるほど斬撃が太く大きくなり、X の斬撃・火花・衝撃の輪・画面の光・揺れが足され、目盛り超えの虹で斬撃も虹になる。色は粒と同じ puzzle.json の pickPreview.growthLooks と card.json の overReach）/ powerShakePixels = 一番上の段の当たりで画面が揺れる幅（段が下がるほど小さく、下半分の段は揺らさない）。",
+    "missSeconds": 0.6,
+    "missShakePixels": 3.0,
+    "shardSeconds": 0.55,
+    "shardSpeed": 90.0,
+    "countLeadSeconds": 0.08,
+    "countStepSeconds": 0.12,
+    "countMaxSeconds": 0.5,
+    "paceSeconds": 1.2,
+    "impactSeconds": 0.6,
+    "crackFadeSeconds": 0.3,
+    "breakFlashSeconds": 0.08,
+    "missBlinkSeconds": 0.08,
+    "paceFlashSeconds": 0.12,
+    "paceRingSeconds": 0.5,
+    "paceOvertakeAfterSeconds": 0.35,
+    "paceOvertakeSeconds": 0.4,
+    "poisonLeadSeconds": 0.45,
+    "poisonSeconds": 1.0,
+    "riposteSeconds": 0.8,
+    "powerHitSeconds": 0.7,
+    "powerShakePixels": 6.0
+  },
+  "relicCost": {
+    "//": "通知オン（アーティファクト）が戦いの頭に COST を 1 下げる演出の時刻表（秒。バトルスタートの帯が明けた拍から）。光る枠が候補のカード（今の COST が 2 以上）を巡って止まり、止まったカードが抜けて回り COST が減って戻る。いじると: bannerSeconds=アーティファクトのラベルが降りる速さ / rouletteAt・rouletteSeconds=枠が巡り始める時刻と止まるまでの長さ / rouletteHops=止まるまでに枠が移る回数（はじめ速く・だんだん遅く）/ rouletteHoldSeconds=止まったカードを見せる間 / flySeconds=抜けたカードが真ん中へ着く速さ / markSeconds=斜線と新しい数の弾み / holdSeconds=減った数を読ませる間 / returnSeconds=列へ戻る速さ / glowSeconds=戻った後に分母が光る長さ。合計（既定で約 3.8 秒）のぶん TURN 1 が後ろへずれる。Z で丸ごと飛ばせる。",
+    "bannerSeconds": 0.3,
+    "rouletteAt": 0.15,
+    "rouletteSeconds": 1.25,
+    "rouletteHops": 9,
+    "rouletteHoldSeconds": 0.2,
+    "flySeconds": 0.55,
+    "markSeconds": 0.4,
+    "holdSeconds": 0.4,
+    "returnSeconds": 0.35,
+    "glowSeconds": 0.3
+  },
+  "replay": {
+    "//": "戦いの録画（決着の窓の「ろくがを見る」C / Y）の再生。戦いを実機と同じ時刻で流し直し、下のバーにターンの区切りと決め手の印、敗北 / 勝利タイミングのラベルを出す。決着の窓から開くと、そのタイミングの拍の少し前から流れる。操作: Z = 再生 / 止め・←→ = 殴った瞬間とカードの効果が出た瞬間へ飛ぶ・↑↓ = ターン送り・C = はやさの段を次へ・X = とじる。いじると: endHoldSeconds=決着の後に流し続ける長さ / leadSeconds=開いたときにタイミングの拍よりどれだけ前から流すか / skipLandSeconds=←→ で飛んだ先から少し進めて止める秒（ダメージの数が読める所で止まる）/ bigHit=大きな 1 撃と数える傷 / rates=はやさの段（負の数は巻き戻し）。",
+    "endHoldSeconds": 3.0,
+    "leadSeconds": 1.2,
+    "skipLandSeconds": 0.25,
+    "bigHit": 5,
+    "rates": [
+      1.0,
+      2.0,
+      4.0,
+      -2.0,
+      0.5
+    ]
+  }
+}

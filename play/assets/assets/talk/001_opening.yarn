@@ -1,0 +1,73 @@
+// インターネットダンジョン — オープニングの会話（タイトルの「はじめから」→ 部屋 → 最初の戦いに負けるまで。Yarn Spinner の .yarn の部分集合。読める書き方は bin/fge yarn help）。
+// 話し手は girl（少女）/ avatar（SNS アバター）。呼び名と台詞の速さ・窓の寸法は internet_dungeon.script.json。
+// 表情は #face:<名前>（happy / neutral / angry / surprised / sad / excited / serious / determined。表は src/ScriptDoc.flix の Expression）。
+// 後ろの場面を替える行は #backdrop:fight / #backdrop:board（書かなければ会話を開いた場面のまま）。
+// 名乗る前の話し手の行は #name:unknown（名前の欄が灰色の「???」になる。字は script.json の unknownName）。
+// どのノードをいつ開くかはコード（World）が決める。拍の長さ・演出は internet_dungeon.opening.json とコード。
+// ファイルはゲームの時系列（遊ぶ人が出会う順）に並べ、頭の 3 桁の連番がファイルの間の順。ファイルの中もノードを出会う順に置く。
+// 何度も出る会話は、出会う時が決まっている物（開示請求の intel_ask・手数を使い切った puzzle_done）は最初に出会う日に置き、
+// 遊び方で出る時が変わる物（負けた後の会話・教えない走行の開示請求）は日に縛られないので後ろの 005_any_day.yarn にまとめる。
+// 直したら bin/fge yarn build assets/talk（dialogue.json を書く）。
+// オープニングの戦いの吹き出し tip_op_empty の決まりは 002_day1.yarn の冒頭と同じ。
+
+// 部屋で描いて、投稿する前。
+title: op_desk
+---
+girl: 私はイラストレーター志望の、どこにでもいる普通の女の子。 #face:neutral
+girl: ……よし、できた！　近所のしばいぬ。ふわふわ感、がんばった！ #face:happy
+girl: 見てもらえるかな……。えいっ、投稿！ #face:excited
+===
+
+// 投稿していいねが広がった後。
+title: op_post
+---
+girl: わぁ……！　いいね、どんどん広がってく……！ #face:happy
+===
+
+// クソリプが届いた後。
+title: op_antis
+---
+girl: ……え、リプ？ #face:surprised
+girl: ひどい……そんな言い方しなくても…… #face:sad
+===
+
+// アンチが画面から這い出て、アバターが現れる。
+title: op_avatar
+---
+girl: な、なにこれ！？\nクソリプが……画面から出てきた！？ #face:surprised
+avatar: そこまでだ！ #face:determined #name:unknown
+girl: 誰！？ #face:surprised
+avatar: 僕はSNS上での君自身...\nアンチなんか、僕がミュートしてやる！ #face:determined
+avatar: ほら……あいつらが来たよ……！\n身構えて！ #face:serious
+===
+
+// オープニングの戦いで、相手の 1 枚目が当たって HP が減った直後。
+title: tip_op_empty
+---
+avatar: やっぱりカードが無いんじゃ...\n勝ち目は...
+===
+
+// カードなしの戦いに負けた後（全行、戦いの場の上。読み終えると夜の画面が閉じて X のホームが点く）。
+title: op_lose
+---
+girl: …大丈夫！？。\n怪我はしていない！？#face:surprised #backdrop:fight
+avatar: とりあえずここは逃げるぞ！\n今じゃ勝ち目がない！ #face:angry #backdrop:fight
+girl: けどまたアンチが来たらどうしたら… #face:sad #backdrop:fight
+avatar: あいつらに負けないだけの作品を描くんだ。\n君が描いた絵が、僕の力になるんだ。 #face:serious #backdrop:fight
+girl: 私の描いた絵が力に……。 #face:serious #backdrop:fight
+girl: わかった。\n私、もう一度描いてみる！ #face:determined #backdrop:fight
+===
+
+// ── X のポスト（ポストの書き方は 002_day1.yarn の post_* の前と同じ） ──
+// 主人公のポストとクソリプ: オープニングの投稿の拍で出し、夜のホーム・リプツリーでも同じ字を出す。
+// me: = 主人公のポスト（\n で 2 行目）。ほかの行 = クソリプ（話し手は feed.json の accounts の id。どの敵かは accounts の enemy）。
+// #quote = 自分のポストを引用ポスト風に小さく見せる（ゾンビの難癖引用）。並びは行の順ではなく dungeon.json の戦う順。
+// ヘッダ time: はポスト右上の「何時間前」。いいね・リプ・表示の数と DANGER は feed.json。
+title: thread
+time: 1時間前
+---
+me: 近所のいぬ、可愛いの暴力すぎて描くしかなかった\n癒やしの塊すぎる
+jouikara_slime: まあ悪くないんじゃない？\n俺ならこう描くけど
+quote_zombie: これが伸びるのが今のXって感じ #quote
+pro_tensaku: 添削しました。\n耳の位置が解剖学的に違います
+===

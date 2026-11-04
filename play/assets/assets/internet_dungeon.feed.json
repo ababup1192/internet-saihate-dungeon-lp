@@ -1,0 +1,327 @@
+{
+  "title": "🐦 フィード画面（X 風タイムライン）",
+  "//": "夜の探索画面の文言と数値。主人公のポストの数・トップバー題字・ボタン 3 状態・クソリプ 1 行 1 敵の数・ポストする人の表。**ポストの字（本文・返信・起きた事・攻略の要点・クソリプ・「何分前」）はここに持たない** —— 正は assets/talk/*.yarn の post_<id>（届く日のファイル）と thread（001_opening.yarn）で、書き方は 002_day1.yarn の post_* の前。いじると何が変わるか: いいね数・DANGER 星の数が保存即反映で画面に出る。 accounts = ポストする人（id = yarn の話し手。行を書くだけで表示名・ハンドル・アイコン sprite が付く。enemy = クソリプの主なら enemy.json の id で、表示名とアイコンはそちらが持つ。me は主人公。id を足したら make talk-vocab）。**敵の並び順はここでは持たない** — 表示順 = 戦う順で、その正は internet_dungeon.dungeon.json の nodes（行を入れ替えれば画面も順番も一緒に変わる）。replies は enemy id で引くだけ。敵の表示名は internet_dungeon.enemy.json の name。 events はホームのタイムラインへ流れてくるイベントポスト（開くまで効果不明）。arrivesAfter=0 は夜の頭から並び、n は n 体目を倒した帰還で届く。kind は heal（癒し）/ cheer（応援）/ hint（攻略。次の相手の弱点や遊びの決まりを教える。dm が true なら開いた窓で post_<id> の行を DM の吹き出しの会話として見せる）/ deal（取引。何かを払って何かを得る）/ trap（罠）/ shard（いいね。自分のポストが伸びた通知で、いいねのかけらが増える）/ plain（ただのポスト）。効果は hpDelta / movesDelta（パズルの手数。その夜のあいだ持ち越す）/ shardDelta（いいねのかけら。パズルの書き直しと敵の開示請求に使う。1 体倒すと増える数は dungeon.json の shardPerKill）/ maxHpDelta（HP の上限の上乗せ。その夜のあいだ持ち越し、今の HP も同じだけ上がる。最終戦の前に届く応援 matiuke の +5 で、最終戦は battle.json の heroHp 20 + 5 = 25 の上限で挑める）。lowHp は体力が減っているときの差し替え（タグと種類。字は yarn の post_<id>_low。閾値は belowHpRatio）。行を足せばポストが増える。 ホームの文言（タブ・通知パネルの見出し・LIVE・ひらいてみる・つぎの相手・いまここ・パズルの手数の持ち越し）も保存即反映で画面に出る。 案内の文言の {confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる（src/KeyPrompt.flix。キーの字は player.keys.json の 1 つ目）。 fightAskLine / fightAskGo / fightAskCancel = X のポスト（ホームの「対処する」・リプツリーの「対処する」）から戦いへ向かう前に、画面の真ん中に出す確認（決定で戦いへ・取り消しでやめる。fightAskLine が空なら問いの行を出さない）。 開いた後の結果の窓は 返信の行（yarn の me:。自分のアイコン + 返信の本文。行動のポストだけ）→ 起きた事の一文（yarn の話し手の無い行。出来事のポストだけ）→ 効果の枠（HP の棒・HP の上限・手数の鉛筆・いいねのハート・攻略の要点 = yarn の #point の行）の順に並ぶ。効果の数は hpDelta / movesDelta / shardDelta / maxHpDelta から出すので、文言に数を書かない。どれも空なら出さない。",
+  "version": 1,
+  "refresh": {
+    "note": "ホームの「引っ張って更新」。夜の頭と、新着がある帰還でホームに着いたときに流れる: タイムラインが pullPixels だけ下へ引かれ、すき間に読み込みの輪が出る（pullSeconds）→ 輪が回る（spinSeconds）→「シュポッ」と鳴ってタイムラインが戻り輪が消える（settleSeconds）。同時に新着のポストが上から 1 件ずつ差し込まれる（1 件 rowSeconds・次まで rowGapSeconds）。帰還では新着ピルがここで降りてきて、ピルを押すと差し込みだけが流れる。いじると何が変わるか: 秒を伸ばすとゆっくり、pullPixels を大きくすると深く引かれる。",
+    "pullSeconds": 0.42,
+    "pullPixels": 38.0,
+    "spinSeconds": 0.8,
+    "settleSeconds": 0.36,
+    "rowSeconds": 0.34,
+    "rowGapSeconds": 0.13
+  },
+  "hpShift": {
+    "note": "体力が動いたイベント（癒し・罠・取引・ゆの の DM）を開いたとき、画像や会話の下の効果の欄に出す HP の棒と「HP 10 → 18」。効果が見えた拍（DM は読み終えた拍）から delaySeconds 置いて、棒が前の値から barSeconds で動く: 増えた分はシアンで伸び、減った分はピンクで削れて流れ落ちる。数も同じ曲線で前の数から回り着く。いじると何が変わるか: label / arrow で見出しと矢印の字、秒を伸ばすとゆっくり動く。glowSeconds = 伸び切ってから明るさが落ち着くまで。",
+    "label": "HP",
+    "arrow": "→",
+    "delaySeconds": 0.15,
+    "barSeconds": 0.8,
+    "glowSeconds": 0.4
+  },
+  "shardDrop": {
+    "note": "いいねのかけらが増えるイベント（buzz）を開いたとき、効果の枠のかけらの行へ、増えた数だけいいねのハートがポストの方から弧を描いて飛んでくる。効果が見えた拍から delaySeconds 置いて 1 個目が飛び始め、fallSeconds でかけらの印に着いて数が 1 つ増え、キラッと光って「着地の音」が鳴る。次の 1 個は gapSeconds おきに飛ぶ。行の右の totalLabel は着くたびに合計が増える（{n} が数に替わる）。いじると何が変わるか: 秒を伸ばすとゆっくり飛ぶ、totalLabel で合計の字が変わる。sparkleSeconds = 着いた拍のきらめきの長さ。",
+    "totalLabel": "計 {n}",
+    "delaySeconds": 0.15,
+    "fallSeconds": 0.42,
+    "gapSeconds": 0.32,
+    "sparkleSeconds": 0.35
+  },
+  "result": {
+    "note": "イベントを開いた後の結果の窓。返信の行の上に「返信先: @相手」、効果の枠の行の見出し（パズルの手数 / いいねのかけら / 攻略 / 何も動かないときの一言）。手数が増えたポストでは、昼のパズルの手数と同じ鉛筆が画面の奥の遠い所（止まる所から farShift 右・farRise 上で、farDistance 倍遠い）から回りながら転がってきて、手前で bounceHeight だけ跳ねて止まる。減ったポストでは、昼のパズルで手数を使ったときと同じく鉛筆削りで削れて消える（削れる秒は puzzle.json の pencil.cutSeconds）。盤の手数がもう上限（puzzle.json の movesMax）に届いていて増えなかったポストは、±n の代わりに movesCapLabel（「上限 {max}」。{max} = 上限の手数）を出し、鉛筆は灰色のまま動かない（ホームのチップも同じ字）。効果が見えた拍から rollDelaySeconds 置いて動き始め、増えたときは rollSeconds で手前に着き、bounceSeconds で跳ね終わる。いじると何が変わるか: 見出しの字、rollSeconds を伸ばすとゆっくり転がる、farDistance を大きくすると遠い小さな点から来る、bounceHeight を 0 にすると跳ねない。openSeconds・openPixels = 開いた拍に窓が持ち上がる長さと距離 / revealDelaySeconds = 開いてから結果が見え始めるまで / riseSeconds・risePixels = 結果の行が浮き上がる長さと距離 / panelDelaySeconds = 効果の枠が遅れて浮き上がる秒。",
+    "replyToLabel": "返信先:",
+    "movesLabel": "パズルの手数",
+    "movesCapLabel": "上限 {max}",
+    "shardLabel": "いいねのかけら",
+    "maxHpLabel": "HP の上限",
+    "hintLabel": "攻略",
+    "noneLabel": "変化なし",
+    "rollDelaySeconds": 0.15,
+    "rollSeconds": 1.1,
+    "bounceSeconds": 0.35,
+    "bounceHeight": 6.0,
+    "farDistance": 7.0,
+    "farRise": 60.0,
+    "farShift": 120.0,
+    "openSeconds": 0.4,
+    "openPixels": 6.0,
+    "revealDelaySeconds": 0.5,
+    "riseSeconds": 0.25,
+    "risePixels": 4.0,
+    "panelDelaySeconds": 0.08
+  },
+  "cursor": {
+    "note": "ホームの指カーソル（Web のマウスの指の手）。押せる物（ひらいてみる・ポストを見に行く・対処する・新着ピル・反応を見る）の上に指先を置く。選び替えると glideSeconds で次の行き先へ滑り着き（出だしが速くゆっくり止まる）、止まっている間は pokeSeconds ごとに pokePixels だけ指先が沈む。readAvatarBrightness は開いた（読んだ）ポストのアバターをグレーにした後の明るさ。いじると何が変わるか: glideSeconds を伸ばすと手がゆっくり動く、pokePixels を 0 にするとつんつんが止まる、readAvatarBrightness を 1 にすると読んだアバターが明るいグレーになる。",
+    "glideSeconds": 0.22,
+    "pokeSeconds": 0.8,
+    "pokePixels": 2.0,
+    "readAvatarBrightness": 0.52
+  },
+  "arrival": {
+    "note": "夜の頭のホームで右の列（今夜の相手の顔）が 1 体ずつ差し込まれる時刻表と、リプツリーを展開したときにクソリプが 1 件ずつ差し込まれる時刻表（秒）。差し込まれた物は小さく弾んで止まる。いじると何が変わるか: leadSeconds=ホームを開いてから 1 体目が来るまで / gapSeconds=次の顔までの間隔（短いほど畳みかける）/ nextCardDelaySeconds=つぎの相手のカードがせり上がり始めるまで / springSettleSeconds=弾みが止まって見えるまで（この後に操作を受ける）/ replyLeadSeconds・replyGapSeconds=リプツリーの 1 件目が来るまでと次の 1 件までの間隔。",
+    "leadSeconds": 0.3,
+    "gapSeconds": 0.35,
+    "nextCardDelaySeconds": 1.45,
+    "springSettleSeconds": 0.5,
+    "replyLeadSeconds": 0.5,
+    "replyGapSeconds": 0.3
+  },
+  "homeTitle": "ホーム",
+  "pillPrefix": "",
+  "pillSuffix": " 件のポスト",
+  "quietLine": "",
+  "pinLabel": "自分のポスト — 今夜の戦場",
+  "gotoLabel": "ポストを見に行く",
+  "badgePrefix": "未対処のクソリプ ",
+  "badgeSuffix": " 件",
+  "badgeClearLabel": "",
+  "sealedLabel": "ひらいてみる",
+  "tabForYou": "おすすめ",
+  "tabFollowing": "フォロー中",
+  "noticeTitle": "通知",
+  "liveLabel": "LIVE",
+  "nextFoeLabel": "つぎの相手",
+  "nowLabel": "いまここ",
+  "carryMovesLabel": "パズルの手数",
+  "shardShortLine": "いいねのかけらが足りない",
+  "closeHint": "{confirm} とじる",
+  "tapHint": "{confirm} すすむ",
+  "fightAskLine": "",
+  "fightAskGo": "{confirm} 対処開始",
+  "fightAskCancel": "{back} キャンセル",
+  "postMetaTime": "午後9:12",
+  "postMetaViews": 2483,
+  "viewsSuffix": "件の表示",
+  "postReplies": 21,
+  "postReposts": 21,
+  "postLikes": 184,
+  "postViews": 1072,
+  "reactLabel": "反応を見る",
+  "barTitleClosed": "ポスト",
+  "barTitleOpen": "リプライ",
+  "replySuffix": "件",
+  "dangerLabel": "DANGER",
+  "bossLabel": "BOSS",
+  "levelPrefix": "LV",
+  "fightLabel": "対処する",
+  "lockedLabel": "先に上の相手から",
+  "beatenLabel": "",
+  "accounts": [
+    {
+      "id": "me",
+      "name": "わたし",
+      "handle": "@pixel_artist"
+    },
+    {
+      "id": "sosuke_noodle",
+      "name": "そうすけ",
+      "handle": "@sosuke_noodle",
+      "sprite": "feedMutual"
+    },
+    {
+      "id": "korone_fanart",
+      "name": "ころね推し事中",
+      "handle": "@korone_fanart",
+      "sprite": "feedFan"
+    },
+    {
+      "id": "trend_now_jp",
+      "name": "トレンド速報",
+      "handle": "@trend_now_jp",
+      "sprite": "feedNews"
+    },
+    {
+      "id": "kaiga_support_24",
+      "name": "お絵かき添削サポート【公式】",
+      "handle": "@kaiga_support_24",
+      "sprite": "feedBot"
+    },
+    {
+      "id": "kouryaku_matome",
+      "name": "攻略まとめ速報",
+      "handle": "@kouryaku_matome",
+      "sprite": "feedNews"
+    },
+    {
+      "id": "egosearch_alert",
+      "name": "エゴサーチ",
+      "handle": "@egosearch_alert",
+      "sprite": "feedBot"
+    },
+    {
+      "id": "mofumofu_biyori",
+      "name": "もふもふ日和",
+      "handle": "@mofumofu_biyori",
+      "sprite": "feedMoff"
+    },
+    {
+      "id": "yuno_sksk",
+      "name": "ゆの",
+      "handle": "@yuno_sksk",
+      "sprite": "feedYuno"
+    },
+    {
+      "id": "jouikara_slime",
+      "name": "",
+      "handle": "@jouikara_slime",
+      "enemy": "slime"
+    },
+    {
+      "id": "quote_zombie",
+      "name": "",
+      "handle": "@quote_zombie",
+      "enemy": "zombie"
+    },
+    {
+      "id": "pro_tensaku",
+      "name": "",
+      "handle": "@pro_tensaku",
+      "enemy": "lizard"
+    }
+  ],
+  "replies": [
+    {
+      "enemy": "slime",
+      "replyCount": 3,
+      "likeCount": 5,
+      "viewCount": 60,
+      "danger": 1,
+      "level": 1
+    },
+    {
+      "enemy": "zombie",
+      "replyCount": 7,
+      "likeCount": 18,
+      "viewCount": 115,
+      "danger": 2,
+      "level": 2
+    },
+    {
+      "enemy": "lizard",
+      "replyCount": 12,
+      "likeCount": 42,
+      "viewCount": 230,
+      "danger": 4,
+      "level": 3
+    }
+  ],
+  "opening": {
+    "note": "夜の頭（1 日目に初めてホームへ来た時）のタイムラインに並べるポスト。events の arrivesAfter 0 の行のうち ids に挙げた物だけが並ぶ（挙げていない行は出ない）。いじると何が変わるか: ids に \"trend\" や \"sosuke\" を足すと、最初のホームにそのポストも並ぶ。",
+    "ids": [
+      "korone"
+    ]
+  },
+  "events": [
+    {
+      "id": "sosuke",
+      "kind": "plain",
+      "tagLabel": "ただのポスト",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 0,
+      "arrivesAfter": 0
+    },
+    {
+      "id": "korone",
+      "kind": "cheer",
+      "tagLabel": "応援",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 1,
+      "arrivesAfter": 0
+    },
+    {
+      "id": "trend",
+      "kind": "hint",
+      "tagLabel": "攻略",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 0,
+      "arrivesAfter": 0
+    },
+    {
+      "id": "tensaku",
+      "kind": "trap",
+      "tagLabel": "罠",
+      "media": "feedGlitch",
+      "hpDelta": 0,
+      "movesDelta": -1,
+      "arrivesAfter": 1
+    },
+    {
+      "id": "kensho",
+      "kind": "hint",
+      "tagLabel": "攻略",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 0,
+      "arrivesAfter": 1
+    },
+    {
+      "id": "tetsuya",
+      "kind": "deal",
+      "tagLabel": "取引",
+      "media": "",
+      "hpDelta": -3,
+      "movesDelta": 1,
+      "arrivesAfter": 1
+    },
+    {
+      "id": "buzz",
+      "kind": "shard",
+      "tagLabel": "いいね",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 0,
+      "shardDelta": 2,
+      "arrivesAfter": 1
+    },
+    {
+      "id": "egosearch",
+      "kind": "deal",
+      "tagLabel": "取引",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 0,
+      "arrivesAfter": 2,
+      "offersRelic": true,
+      "shardDelta": -1
+    },
+    {
+      "id": "mofu",
+      "kind": "heal",
+      "tagLabel": "癒し",
+      "media": "feedDogCat",
+      "hpDelta": 8,
+      "movesDelta": 0,
+      "arrivesAfter": 2
+    },
+    {
+      "id": "matiuke",
+      "kind": "cheer",
+      "tagLabel": "応援",
+      "media": "",
+      "hpDelta": 0,
+      "movesDelta": 1,
+      "maxHpDelta": 5,
+      "arrivesAfter": 2
+    },
+    {
+      "id": "yuno",
+      "kind": "hint",
+      "tagLabel": "攻略",
+      "media": "",
+      "hpDelta": 3,
+      "movesDelta": 0,
+      "arrivesAfter": 2,
+      "dm": true,
+      "lowHp": {
+        "note": "開いた拍の体力 / 上限が belowHpRatio を下回っていたら、攻略の代わりにこちらの種類と、yarn の post_<id>_low の会話を見せる（ちょうど同じなら攻略のまま）。hpDelta などの効果は本体の値がどちらにも効く。",
+        "belowHpRatio": 0.7,
+        "kind": "cheer",
+        "tagLabel": "応援",
+        "dm": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+ "title": "🐶 オープニングの投稿の絵",
+ "version": 3,
+ "note": "オープニングで投稿する柴犬の絵を 28×29 のドット絵へ落とした物（元は人が描いた assets/art/opening-desk.png の液タブの画面。切り出すのは make art-opening-post）。広がる演出（OpeningView）がこの絵を 1 画素ずつ光の粒にほどき、夜のネットの節に小さく映す。色は Pear36 のいちばん近い色（legend の pear* キー。実色は src/ThemeDoc.flix の pear36() が正）。",
+ "entityId": "internet_dungeon.day.sprites",
+ "paletteFile": "assets/internet_dungeon.palette.json",
+ "legend": {
+  "A": "pearApricot",
+  "B": "pearAsh",
+  "C": "pearAubergine",
+  "E": "pearBlush",
+  "F": "pearCloud",
+  "G": "pearCoral",
+  "I": "pearGraphite",
+  "J": "pearGray",
+  "M": "pearInk",
+  "O": "pearLemon",
+  "P": "pearLime",
+  "T": "pearMulberry",
+  "V": "pearPeach",
+  "Y": "pearRaspberry",
+  "Z": "pearRed",
+  "a": "pearRosewood",
+  "d": "pearSlate",
+  "e": "pearTangerine",
+  "g": "pearTerracotta",
+  "i": "pearWhite"
+ },
+ "sprites": {
+  "postPicture": {
+   "frames": {
+    "idle": [
+     "iiiiiiiiiiiiiiiigYAiiiiEeGEi",
+     "iiiiEAiiiiiiiiigGeYFiiEeVeei",
+     "iiiEYggEiiiiiiYgAEGgiiEVGeEi",
+     "iiEYGAgYAiEgggYGViVgEiiEeeEi",
+     "iiEYViVGYYYGGGGGeVEGBiiiiiii",
+     "iiEYVEieGGeeeeeeeeGgYiiiiiii",
+     "iiEYViVeeeeeeeeAeeeGYiiiiiii",
+     "iiEYeEGeeeVeeeeiVeeeATiiiiii",
+     "iiEYgGeeeAiAeeeAGYgAAggiiiiA",
+     "iiiETeeeeeAeeeVVTMMGeegEiiEg",
+     "iiiBgeeeGMMAVJMEEEEEVVAYiiaA",
+     "iiiggeeeMIBEiFMEEFiEEEOYiiTC",
+     "iiiYeeAAAEEFBJMMIFiiiiiYiFIB",
+     "iiiYeViEEEiiJCZYIiiiiiEYBJiF",
+     "iiiggOiEEiiiEGGeGiiiiigTJiFB",
+     "iiiEYEiiiiiiiVeeeiiiiVYIFJIJ",
+     "iiggYgEiiiiiiiEVEiiiVYCMMdFi",
+     "iggAEgYgEEEiiiiiiiEAGGYFiiii",
+     "EYViEVGYYZeVEEEEEEEEVeAYEiii",
+     "YViiAGgTGeeGeEEEEiiiOeegAiiE",
+     "YViOegYgeeeeeeEiiiiiVeeeYiie",
+     "ggEOegTGAeeeeeeViiiOeeeeYiiV",
+     "EYgEAZYeeeeAeeeeEiiAZAVEgABB",
+     "iEggGgYeeAgAAVVVgEEYGEiEAgiB",
+     "iiEgggTGAegGiiiEYeAYgiiEAYPF",
+     "EEiiiiageAGYEiiiAgggYEiiAYBP",
+     "GeEiEiETAEVgYEiiiTYaTgVGYEii",
+     "GeEiJFigYYYYTgAAgYBFFYYYEiii",
+     "iiFPBJFiEFFFFgYYYEiiiiiiiiiA"
+    ]
+   },
+   "anchor": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "note": "投稿する柴犬の絵（28×29）。机の絵の液タブの画面から切り出した物。",
+   "lint-sprite": "対象外(colors, orphan) — 人が描いた絵を縮めて色を寄せた物なので、手で打つドット絵の決まりは当てない"
+  }
+ }
+}

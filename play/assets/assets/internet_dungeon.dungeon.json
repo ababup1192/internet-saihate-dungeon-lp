@@ -1,0 +1,91 @@
+{
+  "//": "夜にもぐる道すじ。nodes を頭から順に降りていく（Ver.0.1 は 1 本道）。kind は start（入口・戦いは起きない）か battle（enemy と戦う）。最後の節が最深部で、倒すとその夜は終わる。enemy は internet_dungeon.enemy.json の id。行を足せばもぐりが長くなる。 shardPerKill = 1 体倒すごとに増えるいいねのかけら（開示請求と書き直しに使う。ほかの入り方は feed.json の「いいね」のポストと puzzle.json の scoreShard）。 案内の文言の {confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる（src/KeyPrompt.flix。キーの字は player.keys.json の 1 つ目）。 goOnLabel / toMorningLabel / endText.retryLabel は決着の窓の斜めのボタンの字（キーの絵はコードが左に添える）。",
+  "version": 1,
+  "nodes": [
+    {
+      "kind": "battle",
+      "enemy": "slime",
+      "label": "浅層",
+      "kinds": [
+        "attack",
+        "guard"
+      ]
+    },
+    {
+      "kind": "battle",
+      "enemy": "zombie",
+      "label": "中層",
+      "kinds": [
+        "attack",
+        "guard",
+        "skill",
+        "hex"
+      ]
+    },
+    {
+      "kind": "battle",
+      "enemy": "lizard",
+      "label": "最深部",
+      "kinds": [
+        "attack",
+        "guard",
+        "skill",
+        "hex",
+        "rush"
+      ]
+    }
+  ],
+  "title": "🌙 ダンジョン構成",
+  "shardPerKill": 2,
+  "goOnLabel": "すすむ",
+  "toMorningLabel": "朝へ",
+  "endText": {
+    "note": "戦いの後の画面（倒した相手の絵の右に、決定打の枠・かけらの行・体力の棒）の文言。{n} は数に置き換わる。trendLine = 潜り切ったときに差し込む帯 / gainLine = かけらの枠の大きな数（この戦いで増えた分）/ noGainLine = 力尽きて増えなかったときの大きな数 / shardsTotalLine = かけらの枠の下の合計/ hpLabel = 体力の棒の見出し / retryLabel = 力尽きたあとのボタン（押すと同じデッキのまま再戦）。勝ったときのボタンは goOnLabel、潜り切ったときは toMorningLabel。判の字は cycle.json の resultTitle / gameOverTitle。",
+    "trendLine": "トレンド　1位",
+    "gainLine": "+{n}",
+    "noGainLine": "±0",
+    "shardsTotalLine": "かけら　計 {n}",
+    "hpLabel": "HP",
+    "retryLabel": "再戦する"
+  },
+  "ending": {
+    "note": "潜り切った後（トレンド 1 位の画面の次）に出る締めの画面。画面を斜めに割り、左は昼の部屋・右は夜の基板。少女は昼の側、アバターは夜の側に立って交互に弾み、真ん中のカードは境目で昼の書き方と夜の書き方に分かれる。紙吹雪は昼の側では裏返る色紙、境目を越えると夜の四角い画素に変わる。決定でタイトルへ戻る。kicker = カードの上の小さな字 / headline = カードの大きな字 / hint = 下の案内 / introSeconds = 入りの演出の尺（大きくするとゆっくり昼が差し込む）/ confettiCount = 紙吹雪の粒の数（多いほどにぎやか）/ confettiSpeed = 落ちる速さ px/秒 / hopSeconds = 2 人が弾む 1 周の秒（小さいほど忙しく跳ねる）/ hopHeight = 弾む高さ px。",
+    "kicker": "デモプレイ",
+    "headline": "ありがとうございます！",
+    "hint": "{confirm} タイトルへ",
+    "introSeconds": 1.4,
+    "confettiCount": 110,
+    "confettiSpeed": 46.0,
+    "hopSeconds": 1.4,
+    "hopHeight": 7.0
+  },
+  "assist": {
+    "note": "負けた後の再挑戦の救済（下駄）。戦いに負けて「再戦する」を押すと、短い演出（応援のリプといいねがアバターに集まって光り、上乗せとカードが順に付く。X 長押しで飛ばせる）の後、盤へは戻らず負けたときのデッキのまま同じ相手と再戦する（出撃前の一覧から。体力は全快）。救済はその節の相手を倒すまで効く。救済ありでもう一度負けると次の段へ上がる（assistTiers の数で止まる）。一番上の段でも負けたら、その節の盤からやり直す（戦いは乱数を持たないので、同じデッキの再戦は同じ負けになる）。いじると何が変わるか: 段はトップレベルの assistTiers（1 段目 = 負け 1 回目の後 / 2 段目 = 救済ありでもう一度負けた後。上乗せの数はどれも「その段で効く全部」で、前の段への足し算ではない）。段の中: maxHpBonus = 体力の上限への上乗せ / attackBonus = 基礎攻撃力への上乗せ / movesBonus = 盤の手数への上乗せ / cards = その段に上がった拍にデッキの頭へ足すカードの id（card.json。これだけは前の段への足し算 —— 盤からやり直す日は 1 段目からの cards が全部頭に入る。空なら足さない。movesBonus が効くのも盤からやり直す日だけ。上乗せが全部 0 でカードも空の段は無い物として扱う）/ 応援が集まる拍の一言は assets/talk/005_any_day.yarn の assist_cheer（i 行目 = i 段目）/ hpLine・attackLine・deckLine = 順に告げる行（{n} は数。数が 0 の行は出ず、その拍も飛ばす）。skipHint = 右下の長押しの案内 / gatherSeconds〜holdSeconds = 演出の拍の秒（応援が集まる → 光が弾ける → HP・攻撃力・手数の行（1 つ statSeconds）→ カードが並ぶ → 読ませる。合計が演出の長さ）。",
+    "skipHint": "{back} 長押しで とばす",
+    "gatherSeconds": 1.5,
+    "glowSeconds": 0.45,
+    "statSeconds": 0.55,
+    "deckSeconds": 0.8,
+    "holdSeconds": 1.0
+  },
+  "assistTiers": [
+    {
+      "maxHpBonus": 15,
+      "attackBonus": 0,
+      "movesBonus": 0,
+      "cards": ["ATK_001", "DEF_001"],
+      "hpLine": "HP +{n}",
+      "attackLine": "攻撃力 +{n}",
+      "deckLine": "ブースターデッキが追加された！"
+    },
+    {
+      "maxHpBonus": 25,
+      "attackBonus": 5,
+      "movesBonus": 0,
+      "cards": ["ACC_005"],
+      "hpLine": "HP +{n}",
+      "attackLine": "攻撃力 +{n}",
+      "deckLine": "ブースターデッキが追加された！"
+    }
+  ]
+}

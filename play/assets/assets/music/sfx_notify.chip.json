@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "note": "効果音「通知」（今の notify の短く高い 2 音 D6→G6）。1 段 = 40ms の速いテンポで 2 段に 1 音ずつ置いた見本。bpm を下げると 2 音の間が開き、楽器 ping の vol の段を増やすと尾が伸びる。",
+  "bpm": 375,
+  "ticks": 4,
+  "loop": -1,
+  "gain": 1.4,
+  "phrases": {
+    "ping": [
+      "D-6 ping",
+      "G-6 ping"
+    ]
+  },
+  "chains": {
+    "ping": [
+      "ping"
+    ]
+  },
+  "rows": [
+    {
+      "pulse1": "ping"
+    }
+  ]
+}

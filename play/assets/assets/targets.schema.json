@@ -1,0 +1,69 @@
+{
+  "//": "internet_dungeon.targets.json の形の宣言（Studio の sections 方言）。バランス・ラボ（src/render/BalanceLab.flix）だけが読む目標の帯とキーカード。",
+  "version": 1,
+  "sections": {
+    "personas": {
+      "kind": "list", "label": "腕前（1 行 = 1 人の遊び方）", "order": 1,
+      "description": "盤の動かし方とカードの取り方の組。low = でたらめに取る / mid = 一般に強いカード / high = 開示を読む / strategy = 下のキーカードとその相方を狙う。",
+      "fields": {
+        "id": { "type": "string", "label": "id（帯の persona と共通）", "order": 1, "required": true },
+        "label": { "type": "string", "label": "ページに出す名前", "order": 2 },
+        "swap": { "type": { "enum": ["random", "greedy", "skilled"] }, "label": "盤の動かし方", "order": 3 },
+        "pick": { "type": { "enum": ["low", "mid", "high", "strategy"] }, "label": "カードの取り方", "order": 4 }
+      }
+    },
+    "bands": {
+      "kind": "list", "label": "勝率の目標の帯（初挑戦・%）", "order": 2,
+      "description": "腕前 × 敵ごとに、初挑戦の勝率がこの帯に入れば目標どおり。外れた分のポイントの合計が案の「外れ」になる。",
+      "fields": {
+        "persona": { "type": "string", "label": "腕前の id", "order": 1, "required": true },
+        "enemy": { "type": "string", "label": "敵の id（enemy.json）", "order": 2, "required": true },
+        "min": { "type": "float", "label": "下限 %", "order": 3, "min": 0, "max": 100 },
+        "max": { "type": "float", "label": "上限 %", "order": 4, "min": 0, "max": 100 }
+      }
+    },
+    "keyCards": {
+      "kind": "list", "label": "敵ごとの組むカード", "order": 3,
+      "description": "キーカード（enemy.json の keyCards）と組むと強いカード。strategy の腕前はキーカードとこれを狙って取り、ページはデッキに有る / 無いの勝率の差を出す。",
+      "fields": {
+        "enemy": { "type": "string", "label": "敵の id", "order": 1, "required": true },
+        "partners": { "type": { "list": "string" }, "label": "組むカードの id", "order": 2 },
+        "why": { "type": "string", "label": "なぜ効くか（ページに出す）", "order": 3 }
+      }
+    },
+    "fixedDecks": {
+      "kind": "list", "label": "make sim の決め打ちのデッキ", "order": 5,
+      "description": "fixed.csv に、名前 × 節 × 持ち込む体力（20 / 16 / 12 / 8）ごとの結果を 1 行ずつ出す。cards が空ならカード無し。",
+      "fields": {
+        "name": { "type": "string", "label": "名前（fixed.csv の deck の列）", "order": 1, "required": true },
+        "cards": { "type": { "list": "string" }, "label": "カードの id（card.json。並んだ順が発動順）", "order": 2 }
+      }
+    },
+    "studyDecks": {
+      "kind": "list", "label": "研究用デッキ（敵のデッキの試し替え）", "order": 8,
+      "description": "make lab の variant= と make weak-cards の WEAK_PRESET が、名前で引いて敵のデッキに入れる・足す・抜くカードの並び。",
+      "fields": {
+        "name": { "type": "string", "label": "名前（ArchStudy が引く字）", "order": 1, "required": true },
+        "cards": { "type": { "list": "string" }, "label": "カードの id（card.json。ZMB_ で始まる物はラボが足す敵のカード）", "order": 2 }
+      }
+    },
+    "forecastBase": {
+      "kind": "field", "label": "make sim-forecast の手元の 3 枚", "order": 6,
+      "type": { "list": "string" },
+      "description": "予報の見本のデッキ（card.json の id）。各節の敵と、この並びだけ / 盾・毒・解除の効果を持つ先頭のカードを 1 枚足した並びで戦わせる。"
+    },
+    "sweepCards": {
+      "kind": "field", "label": "make combo-sweep の組み合わせの候補", "order": 7,
+      "type": { "list": "string" },
+      "description": "この中から COMBO_PICKS 枚（重複あり）の全部の組み合わせを戦わせる（card.json の id）。COMBO_CARDS を渡すとそちらを使う。"
+    },
+    "strategy": {
+      "kind": "field", "label": "strategy の取り方の重み", "order": 4,
+      "type": { "record": {
+        "keyBonus": { "type": "float", "label": "キーカードに足す点", "order": 1, "default": 6.0, "description": "smart の点（効果と相手を読む目安）に足す。大きいほど他の強いカードよりキーカードを優先する。" },
+        "partnerBonus": { "type": "float", "label": "組むカードに足す点", "order": 2, "default": 2.0, "description": "キーカードをまだ持っていないときは半分。" },
+        "maxKeys": { "type": "int", "label": "キーカードを狙う枚数", "order": 3, "default": 2, "description": "デッキのキーカードがこの枚数に届いたら、それ以上はキーカードの点を足さない。" }
+      } }
+    }
+  }
+}

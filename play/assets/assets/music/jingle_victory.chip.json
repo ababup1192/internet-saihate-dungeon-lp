@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "note": "勝ったときのジングル（今の効果音 victory の C→E→G→C を、ファンファーレ 1 小節に広げた見本）。bpm を上げると速く、pulse1 の音程を書き換えると旋律が、pulse2 の ARP の数を替えると和音の色が変わる。loop -1 = 繰り返さない。",
+  "bpm": 150,
+  "ticks": 6,
+  "loop": -1,
+  "phrases": {
+    "fanfare": [
+      "C-5 lead25",
+      "",
+      "E-5",
+      "",
+      "G-5",
+      "",
+      "C-6",
+      "",
+      "",
+      "",
+      "G-5",
+      "",
+      "C-6 lead v15 VIB 6 25",
+      "",
+      "",
+      ""
+    ],
+    "chords": [
+      "C-4 chord v11 ARP 0 4 7",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "F-4 ARP 0 4 7",
+      "",
+      "G-4 ARP 0 4 7",
+      "",
+      "C-5 chord v12 ARP 0 4 7 12",
+      "",
+      "",
+      ""
+    ],
+    "bassline": [
+      "C-3 bass",
+      "",
+      "G-2",
+      "",
+      "C-3",
+      "",
+      "G-2",
+      "",
+      "F-2",
+      "",
+      "G-2",
+      "",
+      "C-3",
+      "",
+      "",
+      ""
+    ],
+    "drums": [
+      "C-7 crash",
+      "",
+      "",
+      "",
+      "D-6 snare",
+      "",
+      "D-6 snare",
+      "",
+      "D-6 snare",
+      "",
+      "D-6 snare",
+      "D-6 snare",
+      "C-7 crash",
+      "",
+      "",
+      ""
+    ],
+    "cut": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "OFF"
+    ],
+    "bassCut": [
+      "",
+      "",
+      "",
+      "OFF"
+    ]
+  },
+  "chains": {
+    "lead": [
+      "fanfare",
+      "cut"
+    ],
+    "harm": [
+      "chords",
+      "cut"
+    ],
+    "bass": [
+      "bassline",
+      "bassCut"
+    ],
+    "drum": [
+      "drums"
+    ]
+  },
+  "rows": [
+    {
+      "pulse1": "lead",
+      "pulse2": "harm",
+      "triangle": "bass",
+      "noise": "drum"
+    }
+  ]
+}

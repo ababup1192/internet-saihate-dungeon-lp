@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "note": "効果音「決定」（今の decide の上がる 2 音 G5→C6）。音の形は楽器 sfxDecide の table が持つ（5 半音下で 5 tick → 本当の高さで減衰）。音程の C-6 を替えると全体の高さが、ticks を増やすと table が速く進んで短く鋭くなる。",
+  "bpm": 150,
+  "ticks": 12,
+  "loop": -1,
+  "gain": 1.6,
+  "phrases": {
+    "blip": [
+      "C-6 sfxDecide"
+    ]
+  },
+  "chains": {
+    "blip": [
+      "blip"
+    ]
+  },
+  "rows": [
+    {
+      "pulse1": "blip"
+    }
+  ]
+}

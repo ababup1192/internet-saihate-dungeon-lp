@@ -1,0 +1,54 @@
+{
+  "title": "🧿 アーティファクト",
+  "version": 1,
+  "note": "アーティファクト = 夜かぎりのパッシブ（戦いの間ずっと効く）。X のタイムラインに届く取引のポスト（feed.json の events で offersRelic が true の行。既定は「エゴサーチ」）を開くといいねのかけらを払い（feed.json の shardDelta。足りなければ受けられない）、同じ窓の中で rows の 3 つから 1 つ選ぶ。選んだ物は戦いの画面の HP の帯の右に小さなアイコンで出続け、朝（タイトルから始め直す）に手放す。いじると何が変わるか: rows[].name = 名前 / rows[].flavor = カードの 1 行目の軽い一言（効果を言い換えない）/ rows[].text = 効果の説明（端的に・窓の文言ではかっこを使わない） / rows[].value = 効く量（maxHp は最大 HP の上乗せ、swingCrit は通常攻撃の会心の確率の % の上乗せ、openingDiscount は戦いの頭に下げる COST）/ rows[].effect = 効き方の種類 / rows[].sprite = アイコンの絵（assets/internet_dungeon.relic.sprite.json）/ raiseCurrent = 最大 HP が上がるとき今の HP も上げるか / costFloor = COST を下げるときの下限 / pickTitle・pickHint・gotLine・minusLabel = 窓と演出の文言 / get = 入手の演出の秒 / rows[].ramp = 色の系統（relicTeal 青緑・relicMag 赤紫・relicGold 金）。通知オンは COST が 2 以上のカードだけから選ぶ（全部 COST 1 なら何も起きない）。最小例: {\"id\": \"battery\", \"effect\": \"maxHp\", \"name\": \"モバイルバッテリー\", \"text\": \"最大 HP +5\", \"value\": 5, \"sprite\": \"relicBattery\"}。規則そのものは src/Battle.flix（会心・COST）と src/World.flix（最大 HP・戦いの頭の 1 枚の選び方）。",
+  "pickTitle": "アーティファクトをひとつ選ぶ",
+  "pickHint": "{leftright} えらぶ　{confirm} けってい",
+  "gotLine": "{name} を手に入れた！",
+  "minusLabel": "−{n}",
+  "raiseCurrent": true,
+  "costFloor": 1,
+  "get": {
+    "note": "3 択と入手の演出の秒。いじると何が変わるか: pickEnterSeconds・pickStaggerSeconds・pickEnterPixels = 窓が 3 択に替わった拍に 1 枚ずつ下から差し込まれる長さ・ずれ・距離 / moveSeconds = 選んだカードが真ん中へ寄るまで / ringSeconds = 光の輪が開いて消えるまで / textAt・textInSeconds = 「〜を手に入れた！」が出る時刻と浮き上がる長さ / settleSeconds = この後の決定で窓を閉じる。",
+    "moveSeconds": 0.35,
+    "ringSeconds": 0.55,
+    "textAt": 0.4,
+    "settleSeconds": 1.1,
+    "textInSeconds": 0.25,
+    "pickEnterSeconds": 0.28,
+    "pickStaggerSeconds": 0.06,
+    "pickEnterPixels": 10.0
+  },
+  "rows": [
+    {
+      "id": "battery",
+      "effect": "maxHp",
+      "name": "モバイルバッテリー",
+      "flavor": "残り 3% からが本番",
+      "text": "最大 HP +5",
+      "value": 5,
+      "sprite": "relicBattery",
+      "ramp": "relicTeal"
+    },
+    {
+      "id": "typo",
+      "effect": "swingCrit",
+      "name": "誤字ハンター",
+      "flavor": "確立じゃなくて確率ですね",
+      "text": "ふつうの攻撃の会心 +15%",
+      "value": 15,
+      "sprite": "relicTypo",
+      "ramp": "relicMag"
+    },
+    {
+      "id": "notify",
+      "effect": "openingDiscount",
+      "name": "通知オン",
+      "flavor": "誰より早く、いいねする",
+      "text": "戦いの始めに 1 枚の COST −1",
+      "value": 1,
+      "sprite": "relicNotify",
+      "ramp": "relicGold"
+    }
+  ]
+}

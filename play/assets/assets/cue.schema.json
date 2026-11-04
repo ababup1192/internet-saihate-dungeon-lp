@@ -1,0 +1,2104 @@
+{
+  "//": "戦闘演出のタイミング（internet_dungeon.cue.json）のフォーム宣言。turnCue と fxTiming の widget（タイムライン）が掛け算に使う beatSeconds / turnBeatScale も同じファイルに置く — Studio は開いている 1 文書の中でしか名前を解決しないため。",
+  "version": 2,
+  "sections": {
+    "beatSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "1 ビートの長さ（秒）",
+      "unit": "秒",
+      "order": 1,
+      "min": 0.05,
+      "max": 3.0,
+      "default": 0.58,
+      "description": "戦いが自動で進むテンポ。1 ビート = 1 つの処理（カード 1 枚・通常攻撃 1 撃・毒と継続回復・反撃）。大きくすると 1 つずつゆっくり見えるようになり、小さくすると手番が速く終わる。遊ぶ人が選ぶ「はやさ」はこの値へ倍率で掛かる。（はやさのプリセットは internet_dungeon.battle.json の speedSteps 側）"
+    },
+    "turnBeatScale": {
+      "kind": "field",
+      "type": "float",
+      "label": "ターンの頭のビートを伸ばす倍率",
+      "unit": "倍",
+      "order": 2,
+      "min": 1.0,
+      "max": 5.0,
+      "default": 2.2,
+      "description": "ターンが変わるビートだけ、1 ビートの長さをこの倍率で伸ばす。このビートには ターン表示 → ウェイト → カウントダウン → ウェイト → 場に出る が順番に入るので、小さくすると全部が詰まって読めなくなる。タイムラインの帯の右端を掴んで全体を伸ばすと、書き換わるのはこの倍率（1 ビートの長さの方は他のビートにも効くので触らない）。"
+    },
+    "turnHoldSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "場が揃ってから攻撃までのウェイト",
+      "unit": "秒",
+      "order": 3,
+      "min": 0.0,
+      "max": 3.0,
+      "default": 0.5,
+      "description": "場にカードが並び終えてから、最初の発動や通常攻撃が始まるまでの止まっている時間（秒）。0 にするとカードが場に着いたビートでいきなり攻撃が入る。大きくすると「今ターンは何が出るか」を読む間ができるが、間延びする。遊ぶ人が選ぶ「はやさ」の倍率がここにも掛かる。（はやさのプリセットは internet_dungeon.battle.json の speedSteps 側）"
+    },
+    "chainSwingBeatScale": {
+      "kind": "field",
+      "type": "float",
+      "label": "連撃の 2 撃目からのビートの倍率",
+      "unit": "倍",
+      "order": 3.1,
+      "min": 0.1,
+      "max": 1.0,
+      "default": 0.25,
+      "description": "1 手番に通常攻撃が続くとき、2 撃目からのビートをこの倍率で縮める。小さいほど 1 撃ずつの小さいダメージの数がテンポよく重なる（踏み込みや数の出方もこの短いビートに収まる）。1.0 で今までと同じ間隔。"
+    },
+    "chainTotalHoldSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "合計の数を見せる間",
+      "unit": "秒",
+      "order": 3.2,
+      "min": 0.0,
+      "max": 3.0,
+      "default": 0.7,
+      "description": "連撃の最後の 1 撃・とどめのビートの後ろに足す止まっている時間（秒）。大きい合計の数が読める間。遊ぶ人が選ぶ「はやさ」の倍率がここにも掛かる。"
+    },
+    "fireHoldSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "カードの効果を見せる間",
+      "unit": "秒",
+      "order": 3.3,
+      "min": 0.0,
+      "max": 3.0,
+      "default": 0.6,
+      "description": "続けて発動するカードの最後のビートの後ろに足す一番短い間（秒）。手番の効果アイコンが状態の列に着き切るのがこれより遅ければ、着き切ってから effectSettleToAttackSeconds 後まで延びる。遊ぶ人が選ぶ「はやさ」の倍率がここにも掛かる。"
+    },
+    "effectSettleToAttackSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "効果が入り切ってから攻撃まで",
+      "unit": "秒",
+      "order": 3.35,
+      "min": 0.0,
+      "max": 2.0,
+      "default": 0.35,
+      "description": "手番の最後のカードの効果アイコンが状態の列に着き切ってから、次の拍（通常攻撃の振り）までに置く間（秒）。カードが出る → アイコンがキャラに吸い込まれる → 状態の列に入り切る → この間 → 攻撃、の順に見せる（吸い込まれている瞬間に殴らない）。遊ぶ人が選ぶ「はやさ」の倍率がここにも掛かる。"
+    },
+    "turnCue": {
+      "kind": "record",
+      "label": "ターンの頭の時間割",
+      "order": 4,
+      "widget": {
+        "timeline": {
+          "totalSeconds": {
+            "multiply": [
+              "beatSeconds",
+              "turnBeatScale"
+            ],
+            "to": "turnBeatScale"
+          },
+          "phases": [
+            {
+              "label": "ターン表示",
+              "to": "turnCounterEnd",
+              "description": "ターン数の表示が回って新しい数へ変わる"
+            },
+            {
+              "label": "ウェイト",
+              "to": "countdownStart",
+              "wait": true
+            },
+            {
+              "label": "カウントダウン",
+              "to": "countdownEnd",
+              "description": "スタンバイのカードの「残り/コスト」の数字が新しい値へ数え上がる"
+            },
+            {
+              "label": "ウェイト",
+              "to": "enterFieldStart",
+              "wait": true
+            },
+            {
+              "label": "場に出る",
+              "to": "end",
+              "description": "コストが満了したカードが場へ滑り出す"
+            }
+          ]
+        }
+      },
+      "description": "ターンの頭のビート（1 ターンで一番長く伸ばすビート）を 1.0 としたときの、出来事が起きる位置。ターン表示 → ウェイト → カウントダウン → ウェイト → 場に出る の順に並ぶ。ウェイト（何も動かない待ち時間）の長さは隣り合う位置の差そのもので、ウェイト自体の値は持たない。4 つの位置は必ずこの順に並んでいる必要があり、順番が入れ替わっていても読むときに前へ押し出して直す。ビート自体の長さは「1 ビートの間隔」×「ターンの頭のビートの倍率」で決まる。",
+      "fields": {
+        "turnCounterEnd": {
+          "type": "float",
+          "label": "ターン表示が終わる位置",
+          "unit": "割合",
+          "order": 1,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.26,
+          "description": "ターン数の表示が回って新しい数へ変わり終わる所。大きくするとゆっくり回る。"
+        },
+        "countdownStart": {
+          "type": "float",
+          "label": "カウントダウンが始まる位置",
+          "unit": "割合",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.36,
+          "description": "スタンバイのカードの「残り/コスト」の数字が数え上がり始める所。ターン数が回り終わってからここまでが、何も動かないウェイトになる。"
+        },
+        "countdownEnd": {
+          "type": "float",
+          "label": "カウントダウンが終わる位置",
+          "unit": "割合",
+          "order": 3,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.6,
+          "description": "数字が新しい値に据わる所。始まりとの差が数え上げの速さになる。"
+        },
+        "enterFieldStart": {
+          "type": "float",
+          "label": "場に出始める位置",
+          "unit": "割合",
+          "order": 4,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.68,
+          "description": "コストが満了したカードが場へ滑り出す所。ここからビートの終わり（1.0）までが移動の時間なので、1.0 に近づけるほど素早く動く。"
+        }
+      }
+    },
+    "fxTiming": {
+      "kind": "record",
+      "label": "ワンショット演出の尺",
+      "order": 5,
+      "description": "1 回きりで消える動き（玉・発動の光・対象へのアタック・盾の火花）の長さ。長さは 1 ビートに対する割合で持つので、「はやさ」を上げてビートが詰まれば演出もそろって詰まり、次のビートへはみ出さない。動きの形（加速の付き方・振れ幅）はコード側の仕事で、ここには出ない。",
+      "widget": {
+        "clips": {
+          "totalSeconds": {
+            "multiply": [
+              "beatSeconds"
+            ],
+            "to": "beatSeconds"
+          },
+          "scenes": [
+            {
+              "label": "カードが発動するビート",
+              "items": [
+                "fireFlashRatio",
+                "orbFlightRatio"
+              ]
+            }
+          ],
+          "items": [
+            {
+              "label": "玉が対象へ飛ぶ",
+              "length": "orbFlightRatio",
+              "start": "orbFlightStartRatio",
+              "restLabel": "炸裂"
+            },
+            {
+              "label": "カード発動の光",
+              "length": "fireFlashRatio",
+              "start": "fireFlashStartRatio"
+            }
+          ]
+        }
+      },
+      "fields": {
+        "orbFlightStartRatio": {
+          "type": "float",
+          "label": "玉が飛び始めるまでの待ち（ビートに対する割合）",
+          "unit": "割合",
+          "order": 0.9,
+          "min": 0.0,
+          "max": 0.9,
+          "step": 0.01,
+          "default": 0.0,
+          "description": "カードが発動してから玉が飛び出すまでの待ち。0 でビートの頭から飛ぶ。タイムラインではクリップの左端を右へずらすとここが増える。待ちと長さの合計がビートを超えたときは長さの側が縮む。"
+        },
+        "orbFlightRatio": {
+          "type": "float",
+          "label": "玉が飛んでいる時間（ビートに対する割合）",
+          "unit": "割合",
+          "order": 1,
+          "min": 0.1,
+          "max": 1.0,
+          "default": 0.65,
+          "description": "発動したカードから飛ぶ玉が、対象（攻撃・妨害は相手、守り・備えは自分）へ届くまでに使う時間。残りが「着いて輪が開いて消える」時間になるので、大きくすると遠くまで飛ぶ見え方、小さくすると着いてからの余韻が長くなる。"
+        },
+        "fireFlashStartRatio": {
+          "type": "float",
+          "label": "発動の光が出始めるまでの待ち（ビートに対する割合）",
+          "unit": "割合",
+          "order": 1.9,
+          "min": 0.0,
+          "max": 0.9,
+          "step": 0.01,
+          "default": 0.0,
+          "description": "カードが発動してから光の輪が開き始めるまでの待ち。0 でビートの頭から光る。"
+        },
+        "fireFlashRatio": {
+          "type": "float",
+          "label": "発動の光の長さ（ビートに対する割合）",
+          "unit": "割合",
+          "order": 2,
+          "min": 0.05,
+          "max": 1.0,
+          "default": 0.45,
+          "description": "カードが発動した所で輪が開いて消えるまでの長さ。"
+        },
+        "textStartRatio": {
+          "type": "float",
+          "label": "ダメージの数が出始めるまでの待ち（ビートに対する割合）",
+          "unit": "割合",
+          "order": 2.9,
+          "min": 0.0,
+          "max": 0.9,
+          "step": 0.01,
+          "default": 0.0,
+          "description": "その拍の頭から、ダメージの数が出始めるまでの待ち。"
+        },
+        "lungeStartRatio": {
+          "type": "float",
+          "label": "アタックが始まるまでの待ち（ビートに対する割合）",
+          "unit": "割合",
+          "order": 3.9,
+          "min": 0.0,
+          "max": 0.9,
+          "step": 0.01,
+          "default": 0.0,
+          "description": "攻撃が当たるビートに入ってから、キャラが相手側へ出始めるまでの待ち。0 でビートの頭から動く。"
+        },
+        "briefFxUnderSeconds": {
+          "type": "float",
+          "label": "細かい演出を省く境目（秒）",
+          "unit": "秒",
+          "order": 8,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.25,
+          "description": "1 ビートがこの秒より短くなったら、飛ぶ玉などの細かい演出を省いて簡略にする。速すぎると目で追えず、ちらつくだけになるため。"
+        },
+        "hitStopSeconds": {
+          "type": "float",
+          "label": "ヒットストップ（秒）",
+          "unit": "秒",
+          "order": 9,
+          "min": 0.0,
+          "max": 0.25,
+          "default": 0.07,
+          "description": "攻撃が当たった拍に、こちらと相手の両方の動き（コマ送り・揺れ・息）を止める長さ。止まっている間も斬撃の光とダメージの数字は出る。大きくすると一撃が重く見え、0 で止まらない。はやさの倍率も掛かる。戦いの拍の進みは変わらない（見た目の時計だけが止まる）。"
+        }
+      }
+    },
+    "heroAttackWindup": {
+      "kind": "list",
+      "label": "こちらのコマ送り: 攻撃の振りかぶり（当たる拍の直前）",
+      "description": "構え → 沈む → 振りかぶる（止めて見せる）。最後のコマの終わりが当たりの拍（振り下ろし）にそろう。合計が拍の半分を超えると、拍の半分に収まるよう全体を縮める。 1 行 = 1 コマで、上から順に流す。",
+      "order": 10,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "heroAttackStrike": {
+      "kind": "list",
+      "label": "こちらのコマ送り: 攻撃の振り下ろしから戻り（当たった拍から）",
+      "description": "振り下ろし（一瞬）→ 踏み込み → 突き → 振り抜き（止めて見せる）→ 引き戻し。最後のコマの後は構えへ戻る。合計が 1 拍を超えると 1 拍に収まるよう縮める。 1 行 = 1 コマで、上から順に流す。",
+      "order": 11,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "heroHurt": {
+      "kind": "list",
+      "label": "こちらのコマ送り: 被弾ののけぞり（殴られた拍から）",
+      "description": "食らった瞬間（短く）→ 吹き飛び → 倒れる（止めて見せる）→ 手をつく → 片ひざ → 立て直し（速め）→ 構え。 1 行 = 1 コマで、上から順に流す。",
+      "order": 12,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "heroGuard": {
+      "kind": "list",
+      "label": "こちらのコマ送り: 防御のカードの発動",
+      "description": "出だしは速く、盾を構えきった最後のコマは長く。最後のコマはそのターンの間ずっと止まって残る。 1 行 = 1 コマで、上から順に流す。",
+      "order": 13,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "heroBuff": {
+      "kind": "list",
+      "label": "こちらのコマ送り: バフのカードの発動",
+      "description": "出だしは速く、浮かんでうさぎのドクロが出る最後のコマは長く。最後のコマはそのターンの間ずっと残る。 1 行 = 1 コマで、上から順に流す。",
+      "order": 14,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "heroDebuff": {
+      "kind": "list",
+      "label": "こちらのコマ送り: デバフのカードの発動",
+      "description": "出だしは速く、呪いを放つ最後のコマは長く。最後のコマはそのターンの間ずっと残る。 1 行 = 1 コマで、上から順に流す。",
+      "order": 15,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "heroRush": {
+      "kind": "list",
+      "label": "こちらのコマ送り: 加速のカードの発動",
+      "description": "出だしは速く、突進の最後のコマは長く。突き進む間（4 コマ目から）は残像が付く。最後のコマはそのターンの間ずっと残る。 1 行 = 1 コマで、上から順に流す。",
+      "order": 16,
+      "fields": {
+        "frame": {
+          "type": "int",
+          "label": "コマ番号",
+          "order": 1,
+          "min": 1,
+          "max": 7,
+          "default": 1,
+          "description": "assets/battle/hero-<動作>-<番号>.png の番号。"
+        },
+        "seconds": {
+          "type": "float",
+          "label": "見せる秒数",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.06,
+          "description": "このコマを見せる長さ（「ふつう」のとき）。長くすると止めて見せるコマになり、短くすると一瞬で通り過ぎる。"
+        },
+        "shift": {
+          "type": "float",
+          "label": "足元の前後のずれ",
+          "unit": "px",
+          "order": 3,
+          "min": -60.0,
+          "max": 60.0,
+          "default": 0.0,
+          "description": "このコマの間だけ足元を前（相手の方 = 正）へずらす量。前のコマのずれから数フレームでなめらかにつなぐ。 カードの発動の列は、最後のコマを 0 にしておく（ターンの残りはその位置で止まって見える）。"
+        }
+      }
+    },
+    "zombieMotion": {
+      "kind": "record",
+      "label": "敵の動き: 難癖引用ポストゾンビ",
+      "order": 17,
+      "description": "待機はだるそうなステップ（片足ずつ重心を乗せ替えて左右へ揺れ、乗せ替えの拍に沈む。ときどき肩をすくめて縦へ一瞬伸びる）。溜めは首を傾けてにやっと後ろへ反り、攻撃は前へ鋭く 1 歩踏み込んで素早く戻り、被弾はよろけて 2 歩下がってからばねで戻る。ここで変えられるのは周期と振れ幅で、動きの形はコード側（FightMotion）。すべてヒットストップの間は止まる。",
+      "fields": {
+        "stepSeconds": {
+          "type": "float",
+          "label": "重心の乗せ替え 1 往復（秒）",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.4,
+          "max": 6.0,
+          "default": 1.8,
+          "description": "左の足 → 右の足 → 左の足 と重心を乗せ替える 1 往復の長さ。大きくするとよりだるそうに、小さくすると落ち着きなく見える。沈むのは 1 往復に 2 回（乗せ替えの拍）。"
+        },
+        "stepSway": {
+          "type": "float",
+          "label": "左右の揺れ幅",
+          "unit": "px",
+          "order": 2,
+          "min": 0.0,
+          "max": 10.0,
+          "default": 2.5,
+          "description": "重心を乗せ替えるときに足元が左右へずれる幅。0 でその場から動かない。"
+        },
+        "stepLean": {
+          "type": "float",
+          "label": "左右の傾き",
+          "unit": "1 周 = 1.0",
+          "order": 3,
+          "min": 0.0,
+          "max": 0.05,
+          "step": 0.001,
+          "default": 0.012,
+          "description": "乗せ替えで体が傾く量。大きくすると酔ったように見える。"
+        },
+        "stepDip": {
+          "type": "float",
+          "label": "乗せ替えの拍に沈む深さ",
+          "unit": "px",
+          "order": 4,
+          "min": 0.0,
+          "max": 6.0,
+          "default": 1.6,
+          "description": "足を替える瞬間に小さく沈む深さ。0 で沈まず、すべるような揺れになる。"
+        },
+        "shrugSeconds": {
+          "type": "float",
+          "label": "肩をすくめる間隔の目安（秒）",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.5,
+          "max": 12.0,
+          "default": 3.2,
+          "description": "肩をすくめる（縦に一瞬伸びて戻る）間隔。3 回を 1 組にして 1.0 / 1.35 / 0.75 倍にずらすので、同じ間隔で繰り返して見えない。"
+        },
+        "shrugStretch": {
+          "type": "float",
+          "label": "肩をすくめて伸びる割合",
+          "unit": "割合",
+          "order": 6,
+          "min": 0.0,
+          "max": 0.15,
+          "step": 0.005,
+          "default": 0.045,
+          "description": "肩をすくめたときに縦へ伸びる割合（0.05 = 5%）。0 ですくめない。"
+        },
+        "jabReach": {
+          "type": "float",
+          "label": "攻撃の踏み込み",
+          "unit": "px",
+          "order": 7,
+          "min": 0.0,
+          "max": 60.0,
+          "default": 30.0,
+          "description": "引用で突き刺すように前へ踏み込む距離。踏み込みは一瞬で、ほとんど止まらずに戻る。"
+        },
+        "staggerReach": {
+          "type": "float",
+          "label": "被弾でよろけて下がる距離",
+          "unit": "px",
+          "order": 8,
+          "min": 0.0,
+          "max": 30.0,
+          "default": 12.0,
+          "description": "殴られて 2 歩よろけて下がる合計の距離（1 歩目で約半分）。そこからばねで元の位置へ戻る。"
+        }
+      }
+    },
+    "lizardMotion": {
+      "kind": "record",
+      "label": "敵の動き: 勝手に添削リザードマン",
+      "order": 18,
+      "description": "待機は重々しい呼吸（胸を張って縦に伸び、少し後ろへ反って戻る）と、足元の「トン、トン、休み」の 2 拍のステップ（跳ねない）。溜めはふんぞり返って大きく反り、攻撃はペンで添削するように 2 段の突き（小・大）、被弾は小さくのけぞってこらえ、遅れて大きく戻る。ここで変えられるのは周期と振れ幅で、動きの形はコード側（FightMotion）。すべてヒットストップの間は止まる。",
+      "fields": {
+        "breathSeconds": {
+          "type": "float",
+          "label": "1 呼吸（秒）",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.8,
+          "max": 10.0,
+          "default": 3.8,
+          "description": "胸を張って戻る 1 呼吸の長さ。吸う側は短く、張った胸で少し粘ってから長く吐く。大きくするほど重々しい。"
+        },
+        "chestStretch": {
+          "type": "float",
+          "label": "胸を張って伸びる割合",
+          "unit": "割合",
+          "order": 2,
+          "min": 0.0,
+          "max": 0.1,
+          "step": 0.002,
+          "default": 0.036,
+          "description": "胸を張ったときに縦へ伸びる割合（0.03 = 3%）。"
+        },
+        "chestLean": {
+          "type": "float",
+          "label": "胸を張って反る量",
+          "unit": "1 周 = 1.0",
+          "order": 3,
+          "min": 0.0,
+          "max": 0.05,
+          "step": 0.001,
+          "default": 0.02,
+          "description": "胸を張ったときに後ろへ反る傾き。大きくすると偉そうに見える。"
+        },
+        "tapSeconds": {
+          "type": "float",
+          "label": "ステップ 1 組（秒）",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.6,
+          "max": 8.0,
+          "default": 2.4,
+          "description": "「トン、トン、休み」1 組の長さ。2 拍の間はこの 2 割（0.3 秒まで）で、残りが休み。"
+        },
+        "tapShift": {
+          "type": "float",
+          "label": "ステップで足元がずれる幅",
+          "unit": "px",
+          "order": 5,
+          "min": 0.0,
+          "max": 6.0,
+          "default": 2.2,
+          "description": "1 拍目は前へ、2 拍目は後ろへ足元がずれる幅。0 でその場で縮むだけになる。"
+        },
+        "tapSquash": {
+          "type": "float",
+          "label": "ステップで縮む割合",
+          "unit": "割合",
+          "order": 6,
+          "min": 0.0,
+          "max": 0.06,
+          "step": 0.002,
+          "default": 0.022,
+          "description": "トンと足を下ろした瞬間に縦へ縮む割合。浮き上がりはしない。"
+        },
+        "jabReach": {
+          "type": "float",
+          "label": "攻撃の突き（2 段目）",
+          "unit": "px",
+          "order": 7,
+          "min": 0.0,
+          "max": 60.0,
+          "default": 26.0,
+          "description": "2 段目（大）の突きで前へ出る距離。1 段目（小）はこの 45%。"
+        },
+        "recoilReach": {
+          "type": "float",
+          "label": "被弾でのけぞる距離",
+          "unit": "px",
+          "order": 8,
+          "min": 0.0,
+          "max": 20.0,
+          "default": 6.0,
+          "description": "殴られて小さくのけぞる距離。こらえた後、この 7 割ほど前へ行き過ぎて戻る（重さの表現）。"
+        }
+      }
+    },
+    "cardReveal": {
+      "kind": "record",
+      "label": "カードの発動: くるくる回って表を見せる",
+      "order": 19,
+      "description": "満了したカードはターンの頭に扇から浮き上がって待ち（readyLiftPixels）、発動の拍の頭にその場所から画面の真ん中へ飛びながら斜めに傾いて回り、表が正面に来たところで真っ直ぐ立つ。少し弾んで読ませたあと縮んで消え、そこから効果の玉が飛ぶ。同じ手番に何枚も発動するときは、全部が一緒に飛んで回り、真ん中に横一列で同時に表で止まる。読ませたあと左から順に吸い込まれ、効果は発動の順に 1 枚ずつ出る（列の並べ方は row* の欄）。発動の拍はこの合計の秒数だけ長くなり、「はやさ」の倍率で一緒に縮む（×4 なら 4 分の 1）。動きの曲線（回転は速く出てゆっくり止まる・傾きは回転と一緒に徐々に戻る）はコード側（View.cardReveal）。",
+      "fields": {
+        "flySeconds": {
+          "type": "float",
+          "label": "飛んで回る（秒）",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.1,
+          "max": 3.0,
+          "default": 0.9,
+          "description": "スタンバイの扇の先頭から真ん中へ飛びながら回り、表で止まるまで。回転と傾きの戻りはこの間に終わる。"
+        },
+        "bounceSeconds": {
+          "type": "float",
+          "label": "止まった弾み（秒）",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.2,
+          "description": "表で止まった拍の小さな弾み。"
+        },
+        "holdSeconds": {
+          "type": "float",
+          "label": "読ませる間（秒）",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.99,
+          "description": "表を見せたまま浮かせておく長さ。長くするとカードの名前と効果を読みやすい。"
+        },
+        "absorbSeconds": {
+          "type": "float",
+          "label": "縮んで消える（秒）",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.05,
+          "max": 1.0,
+          "default": 0.29,
+          "description": "縮んで消え、効果の玉に変わるまで。"
+        },
+        "spinTurns": {
+          "type": "float",
+          "label": "回る回数",
+          "unit": "回",
+          "order": 5,
+          "min": 0.5,
+          "max": 8.0,
+          "step": 0.5,
+          "default": 3.5,
+          "description": "飛ぶ間に回る回数。x.5 にすると最後に表が正面に来る（整数だと裏で止まる）。"
+        },
+        "tiltDegrees": {
+          "type": "float",
+          "label": "傾き（度）",
+          "unit": "度",
+          "order": 6,
+          "min": 0.0,
+          "max": 60.0,
+          "default": 34.9,
+          "description": "回り始めの傾き。カードの対角線が縦になる 34.9 度で角が真下に来る。止まるまでに 0 度へ戻る。"
+        },
+        "startScale": {
+          "type": "float",
+          "label": "出る瞬間の大きさ",
+          "unit": "割合",
+          "order": 7,
+          "min": 0.05,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.12,
+          "description": "扇から出る瞬間の大きさ（実寸に対する割合）。"
+        },
+        "bounceScale": {
+          "type": "float",
+          "label": "弾みの膨らみ",
+          "unit": "割合",
+          "order": 8,
+          "min": 0.0,
+          "max": 0.3,
+          "step": 0.01,
+          "default": 0.07,
+          "description": "止まった拍に膨らむ割合（0.07 = 7%）。"
+        },
+        "dimAlpha": {
+          "type": "float",
+          "label": "後ろを沈める濃さ",
+          "unit": "割合",
+          "order": 9,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.59,
+          "description": "カードを見せている間、後ろの戦いを沈める濃さ。0 で沈めない。"
+        },
+        "floatPixels": {
+          "type": "float",
+          "label": "浮く幅",
+          "unit": "px",
+          "order": 10,
+          "min": 0.0,
+          "max": 8.0,
+          "default": 2.0,
+          "description": "読ませる間に上下へ浮く幅。"
+        },
+        "rowGapPixels": {
+          "type": "float",
+          "label": "並んだカードの隙間",
+          "unit": "px",
+          "order": 11,
+          "min": 0.0,
+          "max": 40.0,
+          "default": 10.0,
+          "description": "同じ手番に何枚も出るとき、全部が一緒に飛んで画面の真ん中に横一列で止まる。そのカードどうしの隙間（実寸のとき。縮めたら隙間も一緒に縮む）。"
+        },
+        "rowMarginPixels": {
+          "type": "float",
+          "label": "列の両端の余白",
+          "unit": "px",
+          "order": 12,
+          "min": 0.0,
+          "max": 60.0,
+          "default": 14.0,
+          "description": "横一列が画面の端からはみ出さないよう、左右に残す余白。列が収まらない枚数になると、カードを縮めて収める。"
+        },
+        "rowMinScale": {
+          "type": "float",
+          "label": "縮める下限",
+          "unit": "割合",
+          "order": 13,
+          "min": 0.1,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.6,
+          "description": "枚数が多いときにカードを縮める下限（実寸に対する割合）。これでも収まらない枚数は、この大きさのまま隣と少し重ねて並べる。"
+        },
+        "holdPerCardSeconds": {
+          "type": "float",
+          "label": "1 枚ごとに足す読ませる間（秒）",
+          "unit": "秒",
+          "order": 14,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.126,
+          "description": "並んだとき、2 枚目から 1 枚ごとに「読ませる間」へ足す秒数。0 なら何枚でも 1 枚のときと同じ間で吸い込まれる。"
+        },
+        "absorbStaggerSeconds": {
+          "type": "float",
+          "label": "吸い込まれる間隔（秒）",
+          "unit": "秒",
+          "order": 15,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.11,
+          "description": "並んだカードが左から順に縮んで消えていく間隔。全部が消えてから、発動した順に 1 枚ずつ効果が出る。縮んで消える音もこの間隔でずれて鳴る（重ねて大きくならない）。"
+        },
+        "bobStaggerSeconds": {
+          "type": "float",
+          "label": "浮き沈みのずれ（秒）",
+          "unit": "秒",
+          "order": 16,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.12,
+          "description": "並んだカードの浮き沈みを 1 枚ごとに遅らせる幅。0 で全部が同じに揺れ、上げると波のように揺れる。"
+        },
+        "readyLiftPixels": {
+          "type": "float",
+          "label": "待つカードの浮き（px）",
+          "unit": "px",
+          "order": 17,
+          "min": 0.0,
+          "max": 30.0,
+          "default": 12.0,
+          "description": "満了したスタンバイカードが、ターンの頭の「場に出る」で扇から浮き上がる高さ。発動の拍が来るまでこの高さで待ち、発動の拍の頭にここから真ん中へ飛んで回り始める（消えた所と回り始める所が同じ）。"
+        },
+        "fanCloseSeconds": {
+          "type": "float",
+          "label": "扇が詰まる秒",
+          "unit": "秒",
+          "order": 18,
+          "min": 0.0,
+          "max": 2.0,
+          "default": 0.35,
+          "description": "浮いて待っていたカードが真ん中へ飛び出した拍から、その跡を残りのスタンバイカードが詰め終えるまで。カードが回り始めるのと同じ時刻から詰まり始める。0 で飛び出した拍に一度に詰まる。"
+        },
+        "dimSeconds": {
+          "type": "float", "label": "後ろを沈める幕が濃くなるまで", "unit": "秒", "order": 19,
+          "min": 0.01, "max": 1.0, "step": 0.05, "default": 0.2,
+          "description": "カードが飛び出してから（通知オンのカードが列から抜けてから）後ろの戦いを沈める幕が dimAlpha まで濃くなるまで。"
+        }
+      }
+    },
+    "backdrop": {
+      "kind": "record",
+      "label": "戦いの背景: 基板の流れ",
+      "order": 20,
+      "description": "戦いの背景は基板の 3 層（奥 = 背の高い部品の影 / 中 = 細いバス配線 / 手前 = 床の基板）が速さを変えて左へ流れる。キャラの周りは描き込みを無地へ戻してある。速さを上げすぎると目が疲れるので、手前でも毎秒 120 px くらいまでにする。絵そのものは battle.sprite.json の fight*。",
+      "fields": {
+        "farSpeed": {
+          "type": "float",
+          "label": "奥の速さ",
+          "unit": "px/秒",
+          "order": 1,
+          "min": 0.0,
+          "max": 200.0,
+          "default": 20.0,
+          "description": "奥の層が左へ流れる速さ。"
+        },
+        "midSpeed": {
+          "type": "float",
+          "label": "中の速さ",
+          "unit": "px/秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 200.0,
+          "default": 45.0,
+          "description": "中の層が左へ流れる速さ。"
+        },
+        "nearSpeed": {
+          "type": "float",
+          "label": "手前の速さ",
+          "unit": "px/秒",
+          "order": 3,
+          "min": 0.0,
+          "max": 300.0,
+          "default": 90.0,
+          "description": "手前（床）の層が左へ流れる速さ。"
+        },
+        "pulseSpeed": {
+          "type": "float",
+          "label": "配線を走る光の速さ",
+          "unit": "px/秒",
+          "order": 4,
+          "min": 0.0,
+          "max": 400.0,
+          "default": 120.0,
+          "description": "手前の配線の上を走る短い光の速さ。床より速くすると、光が配線を走って見える。"
+        },
+        "farAlpha": {
+          "type": "float",
+          "label": "奥の濃さ",
+          "unit": "割合",
+          "order": 5,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "default": 1.0,
+          "description": "1.0 = 絵のまま。下げると下地の段へ沈む。"
+        },
+        "midAlpha": {
+          "type": "float",
+          "label": "中の濃さ",
+          "unit": "割合",
+          "order": 6,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "default": 1.0,
+          "description": "1.0 = 絵のまま。下げると下地の段へ沈む。"
+        },
+        "nearAlpha": {
+          "type": "float",
+          "label": "手前の濃さ",
+          "unit": "割合",
+          "order": 7,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "default": 1.0,
+          "description": "1.0 = 絵のまま。下げると下地の段へ沈む。"
+        }
+      }
+    },
+    "finisher": {
+      "kind": "record",
+      "label": "トドメの一撃: 止め・スロー・曲の止め方",
+      "order": 21,
+      "description": "相手の体力が 0 になった拍の演出。秒はどれも打撃からの実時間（ゲームの時計が止まっている間も進む）で、「はやさ」の ×2 / ×4 で一緒に縮む。時間の流れは 止める → 遅く流す → 等速へ戻す の順。止めだけならヒットストップ、遅く流すだけならスロー。",
+      "fields": {
+        "freezeSeconds": {
+          "type": "float",
+          "label": "止める長さ",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.0,
+          "max": 1.5,
+          "step": 0.01,
+          "default": 0.0,
+          "description": "打撃の瞬間に画面を止める長さ。0 = 止めない。0.3〜0.5 秒で「重い一撃」に見える。"
+        },
+        "freezeScale": {
+          "type": "float",
+          "label": "止めている間の速さ",
+          "unit": "倍",
+          "order": 2,
+          "min": 0.005,
+          "max": 1.0,
+          "step": 0.005,
+          "default": 0.02,
+          "description": "止めている間もわずかに時間を流す割合（0 にはできない。完全に止めると絵が死んで見える）。"
+        },
+        "slowSeconds": {
+          "type": "float",
+          "label": "スローの長さ",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.0,
+          "max": 3.0,
+          "step": 0.05,
+          "default": 1.0,
+          "description": "止めた後に遅く流す長さ。0 = スロー無し。"
+        },
+        "slowScale": {
+          "type": "float",
+          "label": "スローの速さ",
+          "unit": "倍",
+          "order": 4,
+          "min": 0.05,
+          "max": 1.0,
+          "step": 0.05,
+          "default": 0.25,
+          "description": "スローの間の時間の速さ。0.25 = 4 分の 1。小さいほど消え際をじっくり見せる。"
+        },
+        "rampSeconds": {
+          "type": "float",
+          "label": "等速へ戻る長さ",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.0,
+          "max": 2.0,
+          "step": 0.01,
+          "default": 0.45,
+          "description": "スロー（か止め）から等速へなめらかに戻る長さ。0 = 一瞬で戻る。"
+        },
+        "zoom": {
+          "type": "float",
+          "label": "寄りの倍率",
+          "unit": "倍",
+          "order": 6,
+          "min": 1.0,
+          "max": 1.5,
+          "step": 0.01,
+          "default": 1.15,
+          "description": "打撃で相手の胸元へ寄る最大の倍率。1.0 = 寄らない。等速へ戻るのに合わせて引く。"
+        },
+        "shakePixels": {
+          "type": "float",
+          "label": "揺れ幅",
+          "unit": "px",
+          "order": 7,
+          "min": 0.0,
+          "max": 16.0,
+          "step": 0.5,
+          "default": 2.0,
+          "description": "打撃で画面が揺れる幅（design px）。止めている間に減衰しながら揺れる。"
+        },
+        "flashSeconds": {
+          "type": "float",
+          "label": "光の長さ",
+          "unit": "秒",
+          "order": 8,
+          "min": 0.0,
+          "max": 0.5,
+          "step": 0.01,
+          "default": 0.08,
+          "description": "打撃で画面全体が端末のシアンで光る長さ。0 = 光らない。"
+        },
+        "bgmFadeSeconds": {
+          "type": "float",
+          "label": "曲が消えるまで",
+          "unit": "秒",
+          "order": 9,
+          "min": 0.0,
+          "max": 3.0,
+          "step": 0.05,
+          "default": 1.0,
+          "description": "戦いの曲が消え切るまでの長さ。0 = 打撃と同時に切る。消えた後は戦果の画面まで無音。"
+        },
+        "bgmPitchDrop": {
+          "type": "float",
+          "label": "曲の沈み",
+          "unit": "割合",
+          "order": 10,
+          "min": 0.0,
+          "max": 1.0,
+          "step": 0.05,
+          "default": 0.15,
+          "description": "消えるまでに曲の高さを下げる割合。テープが止まるように沈む。0 = 高さは変えない。"
+        },
+        "vanishDelaySeconds": {
+          "type": "float",
+          "label": "消滅の音まで",
+          "unit": "秒",
+          "order": 11,
+          "min": 0.0,
+          "max": 3.0,
+          "step": 0.01,
+          "default": 0.0,
+          "description": "打撃から消滅の音（vanish）が鳴るまで。止めが解ける瞬間に合わせると「弾ける」に聞こえる。"
+        },
+        "victoryDelaySeconds": {
+          "type": "float",
+          "label": "勝ちの音まで",
+          "unit": "秒",
+          "order": 12,
+          "min": 0.0,
+          "max": 3.0,
+          "step": 0.01,
+          "default": 1.6,
+          "description": "消滅の音から勝ちの音（victory）が鳴るまで。"
+        }
+      }
+    },
+    "effectPop": {
+      "kind": "record",
+      "label": "効果アイコン: 頭の上に出て状態の列へ飛ぶ",
+      "order": 22,
+      "description": "カードの効果が発動した拍に、効いた側の頭の上へ効果のアイコン（駒B のタイル + 値のラベル）を出す。胸元から膨らんで出る → 浮いて読ませる → 弧を描いて縮みながら状態の列（回復は HP の帯・魔攻は相手の胸元・加速/減速はカードの列）へ飛ぶ → 着いた枠が膨らんで光る。秒は「ふつう」のときの値で、はやさ ×2 / ×4 で一緒に縮む。絵そのものは battle.sprite.json の effect*。",
+      "fields": {
+        "delayRatio": {
+          "type": "float", "label": "出始めるまでの待ち", "unit": "拍に対する割合", "order": 1,
+          "min": 0.0, "max": 1.5, "step": 0.05, "default": 0.65,
+          "description": "効果の拍の頭からアイコンが出始めるまで。カードから飛ぶ玉（orbFlightRatio）と同じにすると、玉が胸元に着いた拍にアイコンが膨らむ。"
+        },
+        "staggerSeconds": {
+          "type": "float", "label": "効果ごとのずれ", "unit": "秒", "order": 2,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.12,
+          "description": "1 枚が効果を複数持つとき、2 つ目から 1 つごとに遅らせる秒。0 だと全部が同時に出る。"
+        },
+        "popSeconds": {
+          "type": "float", "label": "膨らんで出る", "unit": "秒", "order": 3,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.2,
+          "description": "胸元から頭の上へ、小さい所から行き過ぎ気味に膨らみながら出る長さ。"
+        },
+        "overshoot": {
+          "type": "float", "label": "膨らみの行き過ぎ", "unit": "強さ", "order": 4,
+          "min": 0.0, "max": 4.0, "step": 0.1, "default": 2.2,
+          "description": "出るときに実寸より大きく膨らんでから戻る強さ。0 = 行き過ぎない（ぬるっと出る）。"
+        },
+        "holdSeconds": {
+          "type": "float", "label": "頭の上で読ませる", "unit": "秒", "order": 5,
+          "min": 0.0, "max": 3.0, "step": 0.0125, "default": 0.85,
+          "description": "頭の上でふわふわ浮いて、きらめきを散らしている長さ。"
+        },
+        "labelMinSeconds": {
+          "type": "float", "label": "字を読ませる最短の間", "unit": "秒", "order": 5.5,
+          "min": 0.0, "max": 1.0, "step": 0.05, "default": 0.25,
+          "description": "1 人の頭の上に並んだ効果アイコンは、手番の最後のカードのアイコンが留まり始めてから読ませる間（holdSeconds）の後に、列ごとそろって状態の列へ飛ぶ。1 文字（card.json の effectLabel）は列の全部にそろって出て、列の誰かが上がっている間だけ隠れる。出る間がこの秒より短くなる所は出さない（字の一瞬の点滅を止める）。"
+        },
+        "rowMaxIcons": {
+          "type": "int", "label": "1 列を広く並べる数", "unit": "個", "order": 5.6,
+          "min": 2, "max": 6, "step": 1, "default": 4,
+          "description": "1 人の頭の上の列は、1 つの手番にその人へ出るアイコンを全部まとめる（同じ効果は吸い込んで ×N）。この数までは laneGapPixels の間で並べ、超えたら間を詰めてこの数ぶんの幅に収める（詰めても rowTightGapPixels より狭くしない）。"
+        },
+        "rowTightGapPixels": {
+          "type": "float", "label": "詰めた時の間", "unit": "px", "order": 5.65,
+          "min": 0.0, "max": 80.0, "step": 1.0, "default": 34.0,
+          "description": "列の段が rowMaxIcons を超えて間を詰める時の、一番狭い間。タイルの一辺（32px）より広くしておくと、詰めてもタイルが重ならない。"
+        },
+        "stackBounce": {
+          "type": "float", "label": "重なった時の弾み", "unit": "倍", "order": 5.7,
+          "min": 0.0, "max": 1.0, "step": 0.05, "default": 0.2,
+          "description": "同じ人の頭の上に同じ効果がもう浮いていたら、後から来たアイコンはその真下から上がって吸い込まれ、前のアイコンが弾む（右下の量の粒は足した量の段へ上がり、右上に重ねた数 ×N が出る。×N の書き方は battle.json の statusPile.countFormat）。この値は弾みの強さ（0.2 = 1.2 倍まで膨らんで戻る。大きくすると隣の段のアイコンに被る）。0 = 弾まない。"
+        },
+        "absorbShrink": {
+          "type": "float", "label": "吸い込まれる大きさ", "unit": "倍", "order": 5.8,
+          "min": 0.0, "max": 1.0, "step": 0.05, "default": 0.5,
+          "description": "吸い込まれるアイコンが前のアイコンに着く時の大きさ。上がる後半で、この大きさへ縮みながら薄れて消える。1.0 = 縮まずに薄れるだけ。"
+        },
+        "bobPixels": {
+          "type": "float", "label": "浮く幅", "unit": "px", "order": 6,
+          "min": 0.0, "max": 6.0, "step": 0.5, "default": 1.0,
+          "description": "読ませる間に上下へ浮く幅。0 にすると止まる。"
+        },
+        "bobSeconds": {
+          "type": "float", "label": "浮き沈みの周期", "unit": "秒", "order": 7,
+          "min": 0.1, "max": 3.0, "step": 0.02, "default": 0.62,
+          "description": "上下に 1 往復する長さ。"
+        },
+        "flySeconds": {
+          "type": "float", "label": "飛んでいく", "unit": "秒", "order": 8,
+          "min": 0.01, "max": 1.5, "step": 0.01, "default": 0.38,
+          "description": "頭の上から着く先まで、弧を描きながら縮んで飛ぶ長さ。残像を 1 つ引く。"
+        },
+        "arcPixels": {
+          "type": "float", "label": "弧の高さ", "unit": "px", "order": 9,
+          "min": 0.0, "max": 60.0, "step": 1.0, "default": 18.0,
+          "description": "飛ぶときに一度上へふくらむ高さ。0 = まっすぐ飛ぶ。"
+        },
+        "landSeconds": {
+          "type": "float", "label": "着いて光る", "unit": "秒", "order": 10,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.27,
+          "description": "着いた枠が膨らんで白く光り、輪が開いて消えるまで。"
+        },
+        "landScale": {
+          "type": "float", "label": "着いた枠の膨らみ", "unit": "倍", "order": 11,
+          "min": 1.0, "max": 2.0, "step": 0.05, "default": 1.25,
+          "description": "状態の列の枠が、着いた拍にこの倍率から実寸へ戻る。"
+        },
+        "laneGapPixels": {
+          "type": "float", "label": "重なったときの横のずれ", "unit": "px", "order": 12,
+          "min": 0.0, "max": 80.0, "step": 1.0, "default": 44.0,
+          "description": "同じ人の上にまだアイコンが出ているうちに次が出たら、画面の内側へこの幅ずつずらして並べる（rowMaxIcons 個まで。一巡させない）。"
+        },
+        "heroOffsetX": {
+          "type": "float", "label": "こちらの上: 横", "unit": "px", "order": 13,
+          "min": -120.0, "max": 120.0, "step": 1.0, "default": 17.0,
+          "description": "こちらの頭の上の置き場所。立ち絵の中心（battle.json の heroCenterX）からの横のずれ。"
+        },
+        "heroOffsetY": {
+          "type": "float", "label": "こちらの上: 縦", "unit": "px", "order": 14,
+          "min": -120.0, "max": 60.0, "step": 1.0, "default": -21.0,
+          "description": "立ち絵の上端（heroTop）からの縦のずれ。負で上。顔に掛からない高さにする。"
+        },
+        "foeOffsetX": {
+          "type": "float", "label": "相手の上: 横", "unit": "px", "order": 15,
+          "min": -160.0, "max": 160.0, "step": 1.0, "default": -51.0,
+          "description": "相手の頭の上の置き場所。絵の中心（foeCenterX）からの横のずれ。"
+        },
+        "foeOffsetY": {
+          "type": "float", "label": "相手の上: 縦", "unit": "px", "order": 16,
+          "min": -120.0, "max": 60.0, "step": 1.0, "default": -13.0,
+          "description": "相手の絵の上端（foeTop）からの縦のずれ。負で上。"
+        }
+      }
+    },
+    "broadcast": {
+      "kind": "record",
+      "label": "文字の見せ方: 放送ジャック",
+      "order": 23,
+      "description": "バトルスタート・ターン N・ダメージの数・クリティカル・WIN / LOSE を、ブラウン管の放送に割り込んだ映像のように見せる。電源の光の線 → 帯が開く → 字が打ち込まれる、色ずれと横の裂けは開いた直後に強く、すぐ静まる。秒は「ふつう」のときの値で、はやさ ×2 / ×4 で一緒に縮む（カットインの秒は縮まない）。WIN の帯はトドメの一撃（finisher）の勝ちの時刻に開く。",
+      "fields": {
+        "lineSeconds": {
+          "type": "float", "label": "電源の光の線", "unit": "秒", "order": 1,
+          "min": 0.01, "max": 0.5, "step": 0.01, "default": 0.08,
+          "description": "帯が出る拍に、画面の真ん中に細い光の線が横へ伸び切るまで（ブラウン管の電源が入る線）。"
+        },
+        "openSeconds": {
+          "type": "float", "label": "帯が開く", "unit": "秒", "order": 2,
+          "min": 0.01, "max": 0.6, "step": 0.01, "default": 0.11,
+          "description": "光の線が伸び切る少し前から、帯が上下へ開いて行き過ぎ、元の高さへ戻るまで。"
+        },
+        "overshoot": {
+          "type": "float", "label": "開くときの行き過ぎ", "unit": "倍", "order": 3,
+          "min": 1.0, "max": 1.6, "step": 0.01, "default": 1.12,
+          "description": "帯が開くときに一度だけ実寸より高く開く割合。1.0 = 行き過ぎない。"
+        },
+        "closeSeconds": {
+          "type": "float", "label": "帯が閉じる", "unit": "秒", "order": 4,
+          "min": 0.01, "max": 0.6, "step": 0.01, "default": 0.14,
+          "description": "バトルスタートの帯が尺の終わりに光の線へ潰れて消えるまで（WIN / LOSE は閉じない）。"
+        },
+        "settleSeconds": {
+          "type": "float", "label": "乱れが静まる", "unit": "秒", "order": 5,
+          "min": 0.01, "max": 2.0, "step": 0.01, "default": 0.35,
+          "description": "開いた直後（と閉じる直前）の強い乱れ（色ずれ・横の裂け・砂嵐）が、残る乱れの量まで静まる長さ。"
+        },
+        "flashAlpha": {
+          "type": "float", "label": "開いた拍の白み", "unit": "濃さ", "order": 6,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.22,
+          "description": "帯が開いた拍に画面全体が端末のシアンで一瞬白む濃さ。0 = 光らない。"
+        },
+        "tearPixels": {
+          "type": "float", "label": "横の裂けの幅", "unit": "px", "order": 7,
+          "min": 0.0, "max": 60.0, "step": 1.0, "default": 16.0,
+          "description": "乱れが強い間、帯が横の帯ごとに左右へずれる最大の幅。0 = 裂けない。"
+        },
+        "splitPixels": {
+          "type": "float", "label": "色ずれの幅", "unit": "px", "order": 8,
+          "min": 0.0, "max": 20.0, "step": 0.5, "default": 5.0,
+          "description": "乱れが強い間、字の後ろのピンクとシアンの影が左右へずれる幅（乱れが無くても 1px は残る）。"
+        },
+        "glitchRate": {
+          "type": "float", "label": "乱れの選び直し", "unit": "回/秒", "order": 9,
+          "min": 1.0, "max": 60.0, "step": 1.0, "default": 24.0,
+          "description": "どの帯が裂けるか・字がどちらへ揺れるかを選び直す回数。大きいほど細かくチラつく。"
+        },
+        "cursorBlinkSeconds": {
+          "type": "float", "label": "カーソルの明滅", "unit": "秒", "order": 10,
+          "min": 0.05, "max": 2.0, "step": 0.05, "default": 0.4,
+          "description": "字を打ち終えた後のブロックのカーソルが 1 回点いて消える周期。"
+        },
+        "cutInTypeDelaySeconds": {
+          "type": "float", "label": "バトルスタート: 打ち始め", "unit": "秒", "order": 11,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.18,
+          "description": "カットインの頭から字を打ち始めるまで。帯が開き切る頃に合わせる。"
+        },
+        "cutInTypeSeconds": {
+          "type": "float", "label": "バトルスタート: 打つ長さ", "unit": "秒", "order": 12,
+          "min": 0.01, "max": 1.2, "step": 0.01, "default": 0.32,
+          "description": "カットインの字を最初の 1 文字から最後まで打ち終える長さ（1 文字ごとにキーの音が鳴る）。"
+        },
+        "cutInUnrest": {
+          "type": "float", "label": "バトルスタート: 残る乱れ", "unit": "0〜1", "order": 13,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.08,
+          "description": "カットインの帯が開いている間ずっと残る乱れの量。0 = 静まり切る。"
+        },
+        "bannerTypeDelaySeconds": {
+          "type": "float", "label": "WIN / LOSE: 打ち始め", "unit": "秒", "order": 14,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.2,
+          "description": "決着の帯が開いてから字を打ち始めるまで。"
+        },
+        "bannerTypeSeconds": {
+          "type": "float", "label": "WIN / LOSE: 打つ長さ", "unit": "秒", "order": 15,
+          "min": 0.01, "max": 1.2, "step": 0.01, "default": 0.22,
+          "description": "決着の字を打ち終える長さ。WIN の和音（winSting）はこの頃に鳴る。"
+        },
+        "winUnrest": {
+          "type": "float", "label": "WIN: 残る乱れ", "unit": "0〜1", "order": 16,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.06,
+          "description": "WIN の帯に残り続ける乱れの量。小さいほど落ち着いた放送になる。"
+        },
+        "loseUnrest": {
+          "type": "float", "label": "LOSE: 残る乱れ", "unit": "0〜1", "order": 17,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.45,
+          "description": "LOSE の帯に残り続ける乱れの量。大きいほど電波が壊れたまま映る。"
+        },
+        "loseDelaySeconds": {
+          "type": "float", "label": "LOSE: 開くまでの間", "unit": "秒", "order": 18,
+          "min": 0.0, "max": 2.0, "step": 0.05, "default": 0.3,
+          "description": "力尽きた一撃が当たってから LOSE の帯が開くまで（一撃を見せてから出す）。WIN はトドメの一撃の finisher（vanish + victory の待ち）で開く。"
+        },
+        "clearDropSeconds": {
+          "type": "float", "label": "決着の前に片付ける", "unit": "秒", "order": 18.2,
+          "min": 0.0, "max": 2.0, "step": 0.05, "default": 0.35,
+          "description": "決着が決まった拍（トドメの一撃・力尽きた一撃）から、頭の上の効果アイコン（字ごと）・ダメージの数字・盾の数え下がりが下へ落ちながら薄れて消え切るまで。帯（WIN / LOSE）と音の拍は変えず、帯までの間がこれより短ければ帯が開く拍までに消し切る。はやさの倍率で伸び縮みする。"
+        },
+        "clearDropPixels": {
+          "type": "float", "label": "片付けで落ちる距離", "unit": "px", "order": 18.3,
+          "min": 0.0, "max": 80.0, "step": 1.0, "default": 18.0,
+          "description": "決着の前に片付ける間に、アイコンや数字が下へ落ちる距離。0 = 落ちずにその場で薄れる。"
+        },
+        "loseSinkSeconds": {
+          "type": "float", "label": "LOSE: 画面が沈む", "unit": "秒", "order": 19,
+          "min": 0.01, "max": 2.0, "step": 0.05, "default": 0.4,
+          "description": "LOSE の帯が開いてから画面全体が暗く沈み、ピンクの砂嵐が乗り切るまで。"
+        },
+        "loseDimAlpha": {
+          "type": "float", "label": "LOSE: 沈む濃さ", "unit": "濃さ", "order": 20,
+          "min": 0.0, "max": 1.0, "step": 0.05, "default": 0.45,
+          "description": "LOSE で画面に掛ける暗さ。0 = 沈まない。"
+        },
+        "loseFadeSeconds": {
+          "type": "float", "label": "LOSE: 色が抜けて沈み切るまで", "unit": "秒", "order": 21,
+          "min": 0.01, "max": 8.0, "step": 0.1, "default": 2.4,
+          "description": "LOSE の字を打ち終えてから、画面が深藍のディザへ落ち、帯が下がり、字がかすれ切るまで。長いほどゆっくり沈む。"
+        },
+        "loseFadeSoundSeconds": {
+          "type": "float", "label": "LOSE: 遠のく音の拍", "unit": "秒", "order": 22,
+          "min": 0.0, "max": 4.0, "step": 0.05, "default": 0.45,
+          "description": "LOSE の帯が開いてから、音が遠のく loseFade が鳴るまで（帯の電源の音と重ならないよう、字を打ち終えた後に）。"
+        },
+        "loseFadeDropPixels": {
+          "type": "float", "label": "LOSE: 帯が下がる深さ", "unit": "px", "order": 23,
+          "min": 0.0, "max": 80.0, "step": 1.0, "default": 22.0,
+          "description": "沈み切るまでに LOSE の帯と「つぎへ」の案内が下がる量。0 = 下がらない。"
+        },
+        "winSweepSeconds": {
+          "type": "float", "label": "WIN: 走査の帯の周期", "unit": "秒", "order": 24,
+          "min": 0.1, "max": 5.0, "step": 0.1, "default": 1.6,
+          "description": "WIN の字を打ち終えた後、明るい走査の帯が帯の上から下へ抜ける 1 回の長さ（繰り返す）。"
+        },
+        "turnSettleSeconds": {
+          "type": "float", "label": "ターン N: 乱れが静まる", "unit": "秒", "order": 25,
+          "min": 0.01, "max": 2.0, "step": 0.05, "default": 0.5,
+          "description": "ターンの頭の拍で、上の帯の砂嵐・色ずれ・横の裂けが静まるまで。"
+        },
+        "turnSwapSeconds": {
+          "type": "float", "label": "ターン N: 数の入れ替わり", "unit": "秒", "order": 26,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.12,
+          "description": "ターンの頭に古い数と新しい数がコマごとに入れ替わり続ける長さ（チャンネルが合う途中）。"
+        },
+        "turnTearPixels": {
+          "type": "float", "label": "ターン N: 裂けの幅", "unit": "px", "order": 27,
+          "min": 0.0, "max": 60.0, "step": 1.0, "default": 22.0,
+          "description": "ターンの頭に上の帯が横へずれる最大の幅。"
+        },
+        "damageRiseSeconds": {
+          "type": "float", "label": "ダメージ: 浮き上がる", "unit": "秒", "order": 28,
+          "min": 0.01, "max": 2.0, "step": 0.05, "default": 0.6,
+          "description": "ダメージの数が出てから浮き上がり切るまで（出だしが速く、終わりがゆっくり）。"
+        },
+        "damageRisePixels": {
+          "type": "float", "label": "ダメージ: 浮く高さ", "unit": "px", "order": 29,
+          "min": 0.0, "max": 80.0, "step": 1.0, "default": 20.0,
+          "description": "ダメージの数が浮き上がる高さ。"
+        },
+        "damageSettleSeconds": {
+          "type": "float", "label": "ダメージ: 色ずれが締まる", "unit": "秒", "order": 30,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.25,
+          "description": "ダメージの数の色ずれと裂けが大きく出てから締まるまで。"
+        },
+        "critOpenSeconds": {
+          "type": "float", "label": "クリティカル: 速報の帯", "unit": "秒", "order": 31,
+          "min": 0.01, "max": 0.6, "step": 0.01, "default": 0.1,
+          "description": "クリティカルの拍に「速報」のピンクの帯（battle.json の critLine）が横へ開き切るまで。"
+        }
+      }
+    },
+    "hitFeel": {
+      "kind": "record",
+      "label": "傷の手ごたえ: HP の帯",
+      "order": 24,
+      "description": "攻撃が当たった拍に、受けた側の HP の帯がどう応えるか。帯は当たるまで前の値のまま（カードが回っている間に減らない）→ 当たった拍に新しい値へ落ち、減った分が白く残ってから流れ落ちる（数も数え下がる）。枠は当たった拍に白く光る。秒は「ふつう」のときの値で、はやさ ×2 / ×4 で縮む。",
+      "fields": {
+        "bigDamageRatio": {
+          "type": "float", "label": "大きい傷の境目", "unit": "割合", "order": 1,
+          "min": 0.05, "max": 1.0, "step": 0.05, "default": 0.4,
+          "description": "最大 HP のこの割合の傷で、帯の枠の光が一番強くなる。それより小さい傷ほど控えめに光る。下げると小さい傷でも強く光る。"
+        },
+        "chipDelaySeconds": {
+          "type": "float", "label": "減った分が残る長さ", "unit": "秒", "order": 2,
+          "min": 0.0, "max": 1.5, "step": 0.05, "default": 0.4,
+          "description": "帯が新しい値へ落ちた後、減った分が白く残って見えている長さ。0 にすると残らずすぐ流れ落ちる。"
+        },
+        "chipDrainSeconds": {
+          "type": "float", "label": "流れ落ちる長さ", "unit": "秒", "order": 3,
+          "min": 0.05, "max": 1.5, "step": 0.05, "default": 0.35,
+          "description": "白く残った分が流れ落ちる長さ。帯の数もこの間に数え下がり、chipDrain の音が鳴る。"
+        },
+        "flashSeconds": {
+          "type": "float", "label": "枠が光る長さ", "unit": "秒", "order": 4,
+          "min": 0.01, "max": 0.6, "step": 0.01, "default": 0.12,
+          "description": "当たった拍に帯の枠が白く光って引くまで。"
+        },
+        "fastestScale": {
+          "type": "float", "label": "縮める下限", "unit": "倍", "order": 5,
+          "min": 0.05, "max": 1.0, "step": 0.05, "default": 0.4,
+          "description": "はやさ ×2 / ×4 で上の秒を縮めるときの下限の倍率。0.4 なら ×4 でも 4 割までしか縮めない（目で追える長さを残す）。"
+        },
+        "healFillSeconds": {
+          "type": "float", "label": "回復で帯が伸びる長さ", "unit": "秒", "order": 6,
+          "min": 0.05, "max": 2.0, "step": 0.05, "default": 0.5,
+          "description": "回復の効果アイコンが HP の帯に着いた拍（継続回復はその拍の頭）から、帯が新しい値まで伸び切るまで。帯の数もこの間に数え上がり、healFill の音が鳴る。"
+        },
+        "healGlowSeconds": {
+          "type": "float", "label": "回復で枠が光る長さ", "unit": "秒", "order": 7,
+          "min": 0.05, "max": 2.0, "step": 0.05, "default": 0.45,
+          "description": "帯が伸び始めた拍から、枠が回復の色に光って引くまで。"
+        }
+      }
+    },
+    "endScreen": {
+      "kind": "record",
+      "label": "戦いの後の画面: 戦利品の入り",
+      "order": 25,
+      "description": "戦果・力尽きた・潜り切ったの画面（倒した相手の絵の右に、決定打の枠・かけらの行・体力の棒）の入りの時刻表。秒はどれも画面が前に出た拍から数える（会話の間は数えない）。戦いの外なので、はやさでは縮まない。文言は dungeon.json の endText。",
+      "fields": {
+        "powerOnSeconds": {
+          "type": "float", "label": "ブラウン管が点く", "unit": "秒", "order": 1,
+          "min": 0.0, "max": 2.0, "step": 0.01, "default": 0.32,
+          "description": "真ん中の光の線が横へ伸び、縦へ開いて窓になるまで。0 で開いた状態から出る。"
+        },
+        "foeAtSeconds": {
+          "type": "float", "label": "相手の絵が浮かぶ", "unit": "秒", "order": 2,
+          "min": 0.0, "max": 3.0, "step": 0.01, "default": 0.38,
+          "description": "倒した相手（負けは勝った相手）の絵が、下から浮かんで出始める時刻。"
+        },
+        "nameAtSeconds": {
+          "type": "float", "label": "名前を打ち始める", "unit": "秒", "order": 3,
+          "min": 0.0, "max": 3.0, "step": 0.01, "default": 0.5,
+          "description": "相手の名前が 1 文字ずつ打たれ始める時刻（キーの音 endType もこの拍）。"
+        },
+        "nameTypeSeconds": {
+          "type": "float", "label": "名前を打ち終える", "unit": "秒", "order": 4,
+          "min": 0.05, "max": 3.0, "step": 0.01, "default": 0.4,
+          "description": "名前を打ち終えるまでの長さ。長いほどゆっくり打つ。"
+        },
+        "stampAtSeconds": {
+          "type": "float", "label": "判が押される", "unit": "秒", "order": 5,
+          "min": 0.0, "max": 4.0, "step": 0.01, "default": 0.95,
+          "description": "相手の絵に「撃破」（負けは「レスバに負けた」）の判が、大きく出て押し付けられる時刻。"
+        },
+        "countAtSeconds": {
+          "type": "float", "label": "数が回り始める", "unit": "秒", "order": 6,
+          "min": 0.0, "max": 5.0, "step": 0.01, "default": 1.25,
+          "description": "2 枠が出て、撃破 → かけらの順に数が回り始める時刻。"
+        },
+        "tickSeconds": {
+          "type": "float", "label": "数が 1 つ回る間隔", "unit": "秒", "order": 7,
+          "min": 0.01, "max": 0.5, "step": 0.01, "default": 0.14,
+          "description": "短いほど速く回る（回るたびに endTick が鳴り、数が弾む）。かけらが回り切った拍に粒が弾ける（endBurst）。"
+        },
+        "trendAtSeconds": {
+          "type": "float", "label": "トレンドの帯", "unit": "秒", "order": 8,
+          "min": 0.0, "max": 4.0, "step": 0.01, "default": 1.0,
+          "description": "潜り切ったとき、窓の右上に「トレンド 1 位」の帯が差し込む時刻。"
+        },
+        "choiceAtSeconds": {
+          "type": "float", "label": "選択肢が出る", "unit": "秒", "order": 9,
+          "min": 0.2, "max": 8.0, "step": 0.01, "default": 2.2,
+          "description": "ボタンがせり上がる時刻。数が回り切るまでは自動で待つ。"
+        },
+        "shardDelaySeconds": {
+          "type": "float", "label": "かけら: 1 個目が飛び始める", "unit": "秒", "order": 10,
+          "min": 0.0, "max": 3.0, "step": 0.01, "default": 0.15,
+          "description": "勝った窓で、枠が出てから、いいねのハートが倒した相手の方からかけらの印へ飛び始めるまで（X のイベントのかけらと同じ流れ）。"
+        },
+        "shardFallSeconds": {
+          "type": "float", "label": "かけら: 飛んで着くまで", "unit": "秒", "order": 11,
+          "min": 0.01, "max": 3.0, "step": 0.01, "default": 0.42,
+          "description": "ハート 1 個が飛び始めてからかけらの印に着くまで。着いた拍に「計」が 1 つ増え、着地の音（shardLand）が鳴る。"
+        },
+        "shardGapSeconds": {
+          "type": "float", "label": "かけら: 次が飛ぶ間隔", "unit": "秒", "order": 12,
+          "min": 0.0, "max": 2.0, "step": 0.01, "default": 0.32,
+          "description": "増えたかけらが 2 個以上のとき、次のハートが飛び始めるまでの間隔。"
+        },
+        "shardHoldSeconds": {
+          "type": "float", "label": "かけら: 数を見せて残す", "unit": "秒", "order": 13,
+          "min": 0.0, "max": 5.0, "step": 0.05, "default": 0.6,
+          "description": "最後のハートが着いて計が増え切ってから、かけらの行が消え始めるまで。"
+        },
+        "shardFadeSeconds": {
+          "type": "float", "label": "かけら: スッと消える", "unit": "秒", "order": 14,
+          "min": 0.01, "max": 3.0, "step": 0.01, "default": 0.3,
+          "description": "かけらの行が薄れながら少し上へ抜けて消え切るまで。画面に残し続けない。"
+        },
+        "markGapSeconds": {
+          "type": "float", "label": "決定打のラベルまでの間", "unit": "秒", "order": 15,
+          "min": 0.0, "max": 2.0, "step": 0.01, "default": 0.12,
+          "description": "決定打の量を数え終えてから、決定打のラベルが押されるまで。"
+        },
+        "choiceGapSeconds": {
+          "type": "float", "label": "ボタンまでの間", "unit": "秒", "order": 18,
+          "min": 0.0, "max": 2.0, "step": 0.05, "default": 0.4,
+          "description": "決定打のラベルが押され、かけらが増え切ってから、ボタンがせり上がり始めるまで（choiceAtSeconds より早くはならない）。"
+        },
+        "choiceRiseSeconds": {
+          "type": "float", "label": "ボタンがせり上がる長さ", "unit": "秒", "order": 19,
+          "min": 0.01, "max": 2.0, "step": 0.01, "default": 0.28,
+          "description": "ボタンがせり上がり切るまで。"
+        },
+        "sparkleSeconds": {
+          "type": "float", "label": "着いた拍のきらめき", "unit": "秒", "order": 20,
+          "min": 0.01, "max": 2.0, "step": 0.01, "default": 0.35,
+          "description": "ハートがかけらの印に着いた拍に、かけらの上でキラッと光る長さ。"
+        },
+        "appearLeadSeconds": {
+          "type": "float", "label": "枠と帯が出始める先回り", "unit": "秒", "order": 21,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.15,
+          "description": "決定打の枠が、数え始めの拍より少し前から出始める秒。"
+        },
+        "appearSeconds": {
+          "type": "float", "label": "枠と帯が出切るまで", "unit": "秒", "order": 22,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.2,
+          "description": "決定打の枠が出切るまで。"
+        },
+        "hintDelaySeconds": {
+          "type": "float", "label": "再生の案内の遅れ", "unit": "秒", "order": 24,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.15,
+          "description": "「3ターン目から再生」が、ボタンより遅れてせり上がる秒。"
+        }
+      }
+    },
+    "battleIntro": {
+      "kind": "record",
+      "label": "戦いの入りのカットイン",
+      "order": 26,
+      "description": "ポケモンのトレーナー戦の入りのようなカットイン（斜めの 2 枚が切り込んで VS）。時刻は戦いの入りが始まる拍（前置き preRoll の後の小節の頭 = 戦いの曲の頭。スマホから入る戦いは回りながら大きくなるスマホの画面の中で始まる）から数える。光る（1 小節目の最後の拍まで）→ 覆う（1 拍）（終わった拍にスマホの画面が画面いっぱいになり、2 人が叩きつけられる）→ 向き合う（holdUntilBar 小節目の頭まで）→ 抜ける の後に「バトルスタート」の帯（battle.json の cutInSeconds）、小節に合わせた間を置いてターン 1（turnLeadBeats）。この間ターンは進まない。曲に乗せる所は小節と拍で書き、秒は戦いの曲の譜面（assets/music/bgmFight.chip.json）の bpm から出る。押すと読み飛ばして戦いを始める。秒は「はやさ」で縮まない。",
+      "fields": {
+        "flashCount": {
+          "type": "int",
+          "label": "明滅の回数",
+          "order": 2,
+          "min": 1,
+          "max": 6,
+          "default": 2,
+          "description": "光る間（戦いの曲の頭から、1 小節目の最後の拍まで。戦いの曲の頭と一撃の音 battleIntro がこの頭で鳴る）に全面が点く回数（シアン → ピンク → シアン…）。光に敏感な人のため、全面の光りは叩きつけの白みと合わせて 1 秒に 3 回を超えない（既定の 2 は 1.5 拍に 1 回）。"
+        },
+        "holdUntilBar": {
+          "type": "int",
+          "label": "向き合いが終わる小節",
+          "unit": "小節",
+          "order": 4,
+          "min": 0,
+          "max": 16,
+          "default": 2,
+          "description": "2 人が向き合って名札と VS が出ているのを、戦いの曲の頭から数えて何小節が過ぎた拍まで続けるか（2 = 譜面 bgmFight.chip.json の行 2 の頭で抜け始める）。秒は譜面の bpm から出る。1 足すと向き合いが 1 小節延び、ターン 1 も 1 小節後ろへずれる —— 曲の本編の頭の 1 拍前にターン 1 を保つなら、譜面の曲の頭（ループ点より前）にも打撃の行を 1 行足す。"
+        },
+        "revealSeconds": {
+          "type": "float",
+          "label": "抜ける長さ",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.05,
+          "max": 1.0,
+          "step": 0.01,
+          "default": 0.33,
+          "description": "2 枚が離れて戦いの場が見えるまで。抜け切った拍に「バトルスタート」の帯が開く。"
+        },
+        "shakePixels": {
+          "type": "float",
+          "label": "揺れ幅",
+          "unit": "px",
+          "order": 6,
+          "min": 0.0,
+          "max": 16.0,
+          "step": 0.5,
+          "default": 4.0,
+          "description": "叩きつけた拍に画面が揺れる幅（0.2 秒で収まる）。0 = 揺らさない。"
+        },
+        "turnLeadBeats": {
+          "type": "float",
+          "label": "ターン 1 の前置き",
+          "unit": "拍",
+          "order": 7,
+          "min": 0.0,
+          "max": 4.0,
+          "step": 0.5,
+          "default": 1.0,
+          "description": "ターン 1 を、次の小節の頭の何拍前に置くか（拍は戦いの曲の譜面の bpm）。「バトルスタート」の帯（と通知オンの演出）が明けてから beatSeconds 以上空けた後の、最初に来る小節の頭から数える。1 = 曲の本編の頭の 1 拍前（既定の向き合いと帯の長さなら、曲の頭が終わる 1 拍前）。0 = 小節の頭ちょうど。はやさでは縮まない。"
+        },
+        "vsLabel": {
+          "type": "string",
+          "label": "VS の字",
+          "order": 8,
+          "default": "VS",
+          "description": "向き合う 2 人の真ん中に打つ字。"
+        },
+        "shakeSeconds": {
+          "type": "float", "label": "叩きつけの揺れが収まるまで", "unit": "秒", "order": 9,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.2,
+          "description": "2 人が叩きつけられた拍の画面の揺れが収まるまで。"
+        },
+        "slamFlashSeconds": {
+          "type": "float", "label": "叩きつけの白み", "unit": "秒", "order": 10,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.16,
+          "description": "叩きつけた拍に画面が白んで消えるまで。"
+        },
+        "revealFlashSeconds": {
+          "type": "float", "label": "離れ始めの白み", "unit": "秒", "order": 11,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.12,
+          "description": "2 枚が離れ始めた拍に画面が白んで消えるまで。"
+        },
+        "litFlashSeconds": {
+          "type": "float", "label": "2 人が色づくまで", "unit": "秒", "order": 12,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.18,
+          "description": "叩きつけた拍に影絵の 2 人が白く光ってから色づき切るまで。"
+        },
+        "vsSeconds": {
+          "type": "float", "label": "VS が締まるまで", "unit": "秒", "order": 13,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.14,
+          "description": "真ん中の VS が大きく出て締まるまで。"
+        },
+        "plateDelaySeconds": {
+          "type": "float", "label": "名札の遅れ", "unit": "秒", "order": 14,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.05,
+          "description": "叩きつけてから名札が横から差し込み始めるまで。"
+        },
+        "plateSeconds": {
+          "type": "float", "label": "名札が差し込むまで", "unit": "秒", "order": 15,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.2,
+          "description": "名札が横から差し込み切るまで。"
+        },
+        "flashAlpha": {
+          "type": "float", "label": "明滅の濃さ", "unit": "", "order": 16,
+          "min": 0.0, "max": 0.9, "step": 0.05, "default": 0.4,
+          "description": "光る間の全面の明滅の濃さ（点いた頭の不透明度。点いている間に消えていく）。地の暗い色から色の半分くらいまでに留め、画面の平均の明るさを大きく跳ねさせない。"
+        },
+        "slamFlashAlpha": {
+          "type": "float", "label": "叩きつけの白みの濃さ", "unit": "", "order": 17,
+          "min": 0.0, "max": 0.9, "step": 0.05, "default": 0.25,
+          "description": "叩きつけた拍の全面の白み（加算）の頭の濃さ。"
+        }
+      }
+    },
+    "preRoll": {
+      "kind": "record",
+      "label": "戦いの入りの前置き: WARNING と溜め",
+      "order": 27,
+      "description": "カットイン（battleIntro）の前の 2 小節ほど。戦いの曲と同じ拍に乗せ、溜めの後の小節の頭でカットインと曲の頭を始める。イベント戦（opening.json の eventIntro）は 割り込み → WARNING → 溜め → 無音 を全面で、スマホから入る戦いは cycle.json の phoneIn.warningAt から WARNING → 溜め → 無音 を部屋とスマホの上で流す。長さは拍と小節で持ち、秒は戦いの曲の譜面（assets/music/bgmFight.chip.json）の bpm から導く（テンポはここに写さない —— 譜面の bpm を変えても無音の次の拍が曲の頭とそろう）。押すとカットインごと読み飛ばす。秒は「はやさ」で縮まない。音の長さもここから書き出す（変えたら make render-all）。",
+      "fields": {
+        "interruptBeats": {
+          "type": "float", "label": "割り込みの長さ", "unit": "拍", "order": 2,
+          "min": 0.0, "max": 8.0, "step": 0.5, "default": 2.0,
+          "description": "イベント戦だけ。会話の画面が横に裂けて夜の下地へ沈むまで（2 = 半小節）。"
+        },
+        "warningBars": {
+          "type": "int", "label": "WARNING の長さ", "unit": "小節", "order": 3,
+          "min": 0, "max": 4, "default": 2,
+          "description": "上下の縞の帯と明滅する WARNING を見せる小節数。0 で WARNING を飛ばす。"
+        },
+        "buildBars": {
+          "type": "int", "label": "溜めの長さ", "unit": "小節", "order": 4,
+          "min": 1, "max": 4, "default": 1,
+          "description": "ノイズと相手の影が濃くなっていく小節数（終わりの無音を含む）。"
+        },
+        "silenceBeats": {
+          "type": "float", "label": "無音の長さ", "unit": "拍", "order": 5,
+          "min": 0.0, "max": 3.0, "step": 0.25, "default": 0.5,
+          "description": "溜めの終わりの無音（0.5 = 8 分 1 つ）。次の小節の頭でカットインが始まる。"
+        },
+        "blinkSeconds": {
+          "type": "float", "label": "明滅の間隔", "unit": "秒", "order": 6,
+          "min": 0.05, "max": 1.0, "step": 0.01, "default": 0.3,
+          "description": "WARNING の字が点いて消える間隔。"
+        },
+        "stripeSpeed": {
+          "type": "float", "label": "縞の速さ", "unit": "px/秒", "order": 7,
+          "min": 0.0, "max": 600.0, "step": 5.0, "default": 120.0,
+          "description": "上下のピンクの縞の帯が流れる速さ（上は右へ・下は左へ）。"
+        },
+        "phonePush": {
+          "type": "float", "label": "スマホが寄る量", "unit": "倍", "order": 8,
+          "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.18,
+          "description": "スマホから入る戦いの溜めの間に、縦持ちのスマホが大きくなる量（0.18 = 18%）。"
+        },
+        "warningTitle": {
+          "type": "string", "label": "WARNING の字", "order": 9, "default": "WARNING",
+          "description": "真ん中に明滅する字（左に警告の三角が付く）。"
+        },
+        "warningLine": {
+          "type": "string", "label": "WARNING の下の一行", "order": 10,
+          "default": "つよい反応が 接続に割り込んできた",
+          "description": "WARNING の下に出る一行。"
+        },
+        "sinkSeconds": {
+          "type": "float", "label": "会話が沈み切るまで", "unit": "秒", "order": 11,
+          "min": 0.01, "max": 2.0, "step": 0.05, "default": 0.3,
+          "description": "イベント戦の割り込みで、裂けた会話の画面が WARNING の前に暗く沈み切るまで。"
+        },
+        "warningFadeSeconds": {
+          "type": "float", "label": "WARNING の出入り", "unit": "秒", "order": 12,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.15,
+          "description": "WARNING の帯が頭で出て、終わりで消える長さ。"
+        },
+        "cutSeconds": {
+          "type": "float", "label": "無音の線が消えるまで", "unit": "秒", "order": 13,
+          "min": 0.01, "max": 1.0, "step": 0.01, "default": 0.08,
+          "description": "溜めの終わりの無音の拍に、横一本の線が縮んで消えるまで。"
+        }
+      }
+    },
+    "fightHud": {
+      "kind": "record",
+      "label": "戦いの HUD: ダメージの数とターンの頭",
+      "order": 28,
+      "description": "ダメージの数（-N）のポップと、ターンの頭のスラムの尺。秒は「ふつう」のときの値で、はやさ ×2 / ×4 で縮む。",
+      "fields": {
+        "damagePopSeconds": {
+          "type": "float", "label": "数が膨らむ長さ", "unit": "秒", "order": 1,
+          "min": 0.02, "max": 0.6, "step": 0.01, "default": 0.14,
+          "description": "ダメージの数が出て膨らみ、行き過ぎて戻るまで。短いほど叩きつけるように出る。"
+        },
+        "damageOvershoot": {
+          "type": "float", "label": "膨らみの行き過ぎ", "unit": "倍", "order": 2,
+          "min": 1.0, "max": 2.5, "step": 0.05, "default": 1.45,
+          "description": "膨らむときの一番大きい倍率。1.0 で行き過ぎなし。"
+        },
+        "damageDriftPixels": {
+          "type": "float", "label": "数が流れる高さ", "unit": "px", "order": 3,
+          "min": 0.0, "max": 60.0, "step": 1.0, "default": 12.0,
+          "description": "ダメージの数が寿命の間に上へ流れる高さ。"
+        },
+        "turnShowSeconds": {
+          "type": "float", "label": "ターンの頭の尺", "unit": "秒", "order": 4,
+          "min": 0.2, "max": 1.5, "step": 0.05, "default": 1.0,
+          "description": "ターンの頭の見せ物が出て引くまで（数が止まって見えるのはこの 6 割）。秒は「はやさ」で縮まず、ターンの頭の拍（と後ろの間）より長くはならない。過ぎたら上の真ん中の小さなタブだけが残る。"
+        },
+        "statusLeaveSeconds": {
+          "type": "float", "label": "抜けた状態のアイコンが消えるまで", "unit": "秒", "order": 5,
+          "min": 0.01, "max": 2.0, "step": 0.05, "default": 0.45,
+          "description": "残りターンが減った状態のアイコンが、束の上へ抜け出て浮きながら消えるまで。"
+        },
+        "countPopScale": {
+          "type": "float", "label": "数え上がる数の大きさ", "unit": "倍", "order": 6,
+          "min": 1.0, "max": 3.0, "step": 0.05, "default": 1.7,
+          "description": "ターンの頭にスタンバイカードの数（経過/コスト）が数え上がるとき、新しい分子が下から出てくる間に白くこの倍率まで大きくなる。"
+        },
+        "countPopSeconds": {
+          "type": "float", "label": "数え上がった数が戻るまで", "unit": "秒", "order": 7,
+          "min": 0.01, "max": 1.0, "step": 0.05, "default": 0.35,
+          "description": "数え上がった分子が着いてから、元の大きさと色へ弾みながら戻るまで。はやさ ×2 / ×4 で縮む。"
+        }
+      }
+    },
+    "battleFx": {
+      "kind": "record",
+      "label": "空振り・盾・加速と減速の当たりの演出",
+      "order": 29,
+      "description": "解除・浄化の空振り（アイコンが空の枠を抜けて落ちる）・盾（量の数え下がり → 0 で割れる）・加速と減速が当たったカード（ゲージが一気に動く）の尺。",
+      "fields": {
+        "missSeconds": {
+          "type": "float", "label": "空振りの見せ物の長さ", "unit": "秒", "order": 1,
+          "min": 0.1, "max": 2.0, "step": 0.05, "default": 0.6,
+          "description": "解除・浄化が消す物を見つけられなかったとき、アイコンが頭の上で首を振ってから空の枠を抜けて落ちるまで。"
+        },
+        "missShakePixels": {
+          "type": "float", "label": "空振りの首振りの幅", "unit": "px", "order": 2,
+          "min": 0.0, "max": 10.0, "step": 0.5, "default": 3.0,
+          "description": "空振りでアイコンが左右に振れる幅。"
+        },
+        "shardSeconds": {
+          "type": "float", "label": "破片が消えるまで", "unit": "秒", "order": 3,
+          "min": 0.1, "max": 2.0, "step": 0.05, "default": 0.55,
+          "description": "盾が割れたとき、4 つに割れた破片が飛んで消えるまで。"
+        },
+        "shardSpeed": {
+          "type": "float", "label": "破片の初速", "unit": "px/秒", "order": 4,
+          "min": 0.0, "max": 300.0, "step": 5.0, "default": 90.0,
+          "description": "破片が飛び出す速さ。"
+        },
+        "countLeadSeconds": {
+          "type": "float", "label": "数え下がりの出だし", "unit": "秒", "order": 5,
+          "min": 0.0, "max": 0.5, "step": 0.01, "default": 0.08,
+          "description": "盾が受け止めてから、状態の列の盾の量の数が 1 つ目を減らすまで。"
+        },
+        "countStepSeconds": {
+          "type": "float", "label": "数え下がりの間隔", "unit": "秒", "order": 6,
+          "min": 0.02, "max": 0.5, "step": 0.01, "default": 0.12,
+          "description": "量の数が 1 つ減る間隔（減るたびに刻みの音）。大きくすると 1 つずつ数えるのがはっきりする。"
+        },
+        "countMaxSeconds": {
+          "type": "float", "label": "数え下がりの上限", "unit": "秒", "order": 7,
+          "min": 0.1, "max": 2.0, "step": 0.05, "default": 0.5,
+          "description": "数え下がり全体の長さの上限。吸った量が多いときは間隔を詰めてこの中に収める。0 まで数えたら割れる。"
+        },
+        "paceSeconds": {
+          "type": "float", "label": "加速・減速のゲージの長さ", "unit": "秒", "order": 8,
+          "min": 0.1, "max": 3.0, "step": 0.05, "default": 1.2,
+          "description": "加速・減速が当たったカードの輪のゲージが、効果アイコンが着いてから前の残りから今の残りへ動き（前の 2/3。動いた部分は白）、溜まりの色に戻り切るまで。ほかの演出はこの終わりを待たない。"
+        },
+        "impactSeconds": {
+          "type": "float", "label": "盾が受け止めた障壁の長さ", "unit": "秒", "order": 9,
+          "min": 0.1, "max": 1.5, "step": 0.05, "default": 0.6,
+          "description": "盾が攻撃を受け止めた拍に、受けた側の前に六角の格子の障壁が張られ、光の波が走って上へほどけて消えるまで。"
+        },
+        "crackFadeSeconds": {
+          "type": "float", "label": "削れた盾のひびが消えるまで", "unit": "秒", "order": 10,
+          "min": 0.05, "max": 1.0, "step": 0.05, "default": 0.3,
+          "description": "盾が割れずに削れただけのとき、数え終わってから盾のアイコンのひびと量のラベルの弾みが消えるまで。"
+        },
+        "breakFlashSeconds": {
+          "type": "float", "label": "割れた拍の白い光", "unit": "秒", "order": 11,
+          "min": 0.0, "max": 0.5, "step": 0.01, "default": 0.08,
+          "description": "盾が 0 まで数えて割れた拍に、枠が白く飛ぶ長さ。"
+        },
+        "missBlinkSeconds": {
+          "type": "float", "label": "空振りの枠の明滅", "unit": "秒", "order": 12,
+          "min": 0.02, "max": 0.5, "step": 0.01, "default": 0.08,
+          "description": "空振りのアイコンが枠を抜けた後、空の枠が明滅する 1 回ぶんの長さ。"
+        },
+        "paceFlashSeconds": {
+          "type": "float", "label": "加速・減速の白い光", "unit": "秒", "order": 13,
+          "min": 0.02, "max": 1.0, "step": 0.01, "default": 0.12,
+          "description": "加速・減速が当たったカードに白い光がかぶって消えるまで。"
+        },
+        "paceRingSeconds": {
+          "type": "float", "label": "加速・減速の点の輪", "unit": "秒", "order": 14,
+          "min": 0.05, "max": 2.0, "step": 0.05, "default": 0.5,
+          "description": "加速・減速が当たったカードのまわりに点の輪が開いて消えるまで。"
+        },
+        "paceOvertakeAfterSeconds": {
+          "type": "float", "label": "追い越し始めるまで", "unit": "秒", "order": 20,
+          "min": 0.0, "max": 2.0, "step": 0.05, "default": 0.35,
+          "description": "加速で満了したカードの効果アイコンが着いてから、扇の前のカードを追い越し始めるまで（ゲージの数が 3/3 に替わる頃）。"
+        },
+        "paceOvertakeSeconds": {
+          "type": "float", "label": "加速で満了したカードの追い越し", "unit": "秒", "order": 21,
+          "min": 0.05, "max": 2.0, "step": 0.05, "default": 0.4,
+          "description": "加速で満了したカードが、扇の前のカードを追い越して浮くまで（このカードの発動はこの後）。"
+        },
+        "poisonLeadSeconds": {
+          "type": "float", "label": "毒の髑髏の煙が湧く", "unit": "秒", "order": 15,
+          "min": 0.0, "max": 1.0, "step": 0.05, "default": 0.45,
+          "description": "毒が噛む拍の前に、噛まれる側の足元から髑髏の煙が湧いて頭の上で形になるまで（拍の 6 割より長くはしない）。"
+        },
+        "poisonSeconds": {
+          "type": "float", "label": "毒の髑髏が噛みつく", "unit": "秒", "order": 16,
+          "min": 0.1, "max": 2.0, "step": 0.05, "default": 1.0,
+          "description": "毒が噛んでから、髑髏が噛みついて煙が散り切るまで。"
+        },
+        "riposteSeconds": {
+          "type": "float", "label": "反撃が跳ね返る", "unit": "秒", "order": 17,
+          "min": 0.1, "max": 2.0, "step": 0.05, "default": 0.8,
+          "description": "反撃が返ってから、跳ね返った一撃の光・衝撃の輪・「反撃」のラベルが消えるまで。"
+        },
+        "powerHitSeconds": {
+          "type": "float", "label": "攻撃強化の当たり", "unit": "秒", "order": 18,
+          "min": 0.1, "max": 2.0, "step": 0.05, "default": 0.7,
+          "description": "攻撃強化の乗った通常攻撃が当たってから、衝撃の輪・光の筋・星が消えるまで（派手さの段は状態アイコンの目盛りの粒の数で決まる）。"
+        },
+        "powerShakePixels": {
+          "type": "float", "label": "攻撃強化の当たりの揺れ", "unit": "px", "order": 19,
+          "min": 0.0, "max": 20.0, "step": 0.5, "default": 6.0,
+          "description": "目盛りが一番上（虹）の当たりで画面が揺れる幅。段が下がるほど小さく、下半分の段は揺らさない。"
+        }
+      }
+    },
+    "relicCost": {
+      "kind": "record",
+      "label": "通知オンの COST −1 の演出（アーティファクト）",
+      "order": 25,
+      "description": "通知オンを持って戦いに入ると、バトルスタートの帯の後に 1 回だけ流れる。候補は今の COST が 2 以上のカードだけで、全部 COST 1 なら流れない。合計のぶん TURN 1 が後ろへずれる。",
+      "fields": {
+        "bannerSeconds": {
+          "type": "float",
+          "label": "アーティファクトのラベルが降り切るまで",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.3,
+          "description": "上からアーティファクトのラベル（アイコンと名前）が降りてくる長さ。",
+          "order": 1
+        },
+        "rouletteAt": {
+          "type": "float",
+          "label": "枠が巡り始める時刻",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.15,
+          "description": "帯が明けてから、光る枠が候補のカードを巡り始めるまで。",
+          "order": 2
+        },
+        "rouletteSeconds": {
+          "type": "float",
+          "label": "巡り始めてから止まるまで",
+          "unit": "秒",
+          "min": 0.05,
+          "max": 3.0,
+          "default": 1.25,
+          "description": "枠がカードからカードへ移り、止まるまでの長さ。はじめ速く、だんだん遅くなる。",
+          "order": 3
+        },
+        "rouletteHops": {
+          "type": "int",
+          "label": "止まるまでに移る回数",
+          "unit": "回",
+          "min": 1,
+          "max": 30,
+          "default": 9,
+          "description": "枠が次のカードへ移る回数。多いほどぐるぐる回って見える（1 回ごとにカチッと鳴る）。",
+          "order": 4
+        },
+        "rouletteHoldSeconds": {
+          "type": "float",
+          "label": "止まったカードを見せる間",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.2,
+          "description": "枠が止まってから、そのカードが抜け始めるまで。",
+          "order": 5
+        },
+        "flySeconds": {
+          "type": "float",
+          "label": "抜けたカードが真ん中へ着くまで",
+          "unit": "秒",
+          "min": 0.05,
+          "max": 3.0,
+          "default": 0.55,
+          "description": "回りながら真ん中へ飛ぶ長さ（回る回数は cardReveal.spinTurns）。",
+          "order": 6
+        },
+        "markSeconds": {
+          "type": "float",
+          "label": "斜線と新しい数の弾み",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.4,
+          "description": "COST の丸に斜線が引き切られ、新しい数が弾み終えるまで。",
+          "order": 7
+        },
+        "holdSeconds": {
+          "type": "float",
+          "label": "減った数を読ませる間",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.4,
+          "description": "弾み終えてからカードが列へ戻り始めるまで。",
+          "order": 8
+        },
+        "returnSeconds": {
+          "type": "float",
+          "label": "カードが列へ戻り切るまで",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.35,
+          "description": "真ん中のカードが縮みながら待ちの列の新しい場所へ戻る長さ。",
+          "order": 9
+        },
+        "glowSeconds": {
+          "type": "float",
+          "label": "戻った後に分母が光る長さ",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.3,
+          "description": "列へ戻ったカードのゲージの分母（COST）が光って消えるまで。",
+          "order": 10
+        }
+      }
+    },
+    "replay": {
+      "kind": "record",
+      "label": "戦いの録画（ろくが）",
+      "order": 26,
+      "description": "決着の窓の「ろくがを見る」（C / Y）で開く録画。戦いを実機と同じ時刻で流し直し、下のバーにターンの区切りと決め手の印、敗北 / 勝利タイミングのラベル。Z = 再生 / 止め・←→ = 殴った瞬間（ダメージの数が出る拍）とカードの効果が出た拍へ飛ぶ・↑↓ = ターン送り・C = はやさの段を次へ・X = とじる。勝った戦いはトドメの一撃の止めとスロー（finisher）も再生する。",
+      "fields": {
+        "endHoldSeconds": {
+          "type": "float",
+          "label": "決着の後も流し続ける長さ",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 10.0,
+          "default": 3.0,
+          "description": "最後の拍から再生の終わりまで。トドメの演出と WIN / LOSE の帯が入る長さ。",
+          "order": 1
+        },
+        "leadSeconds": {
+          "type": "float",
+          "label": "タイミングより前から流す",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 10.0,
+          "default": 1.2,
+          "description": "決着の窓から開いたとき、敗北タイミング（負け）/ 勝利タイミング（勝ち）の 1 撃が当たる時刻より何秒前から流し始めるか。カードが回って表を見せる間も入れたいなら長めに。",
+          "order": 2
+        },
+        "skipLandSeconds": {
+          "type": "float",
+          "label": "←→ で飛んだ先の止め位置",
+          "unit": "秒",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.25,
+          "description": "←→ は殴った瞬間とカードの効果が出た瞬間の頭へ飛ぶ。そこから何秒進めて止めるか（0 だとダメージの数が膨らみ始める前で止まる）。",
+          "order": 3
+        },
+        "bigHit": {
+          "type": "int",
+          "label": "大きな 1 撃と数える傷",
+          "unit": "HP",
+          "min": 1,
+          "max": 99,
+          "default": 5,
+          "description": "1 拍でこれ以上 HP が減ったら「大ダメージ」の決め手として印を付ける（どちらの側でも）。",
+          "order": 4
+        },
+        "rates": {
+          "type": {
+            "list": "float"
+          },
+          "label": "はやさの段",
+          "order": 5,
+          "default": [
+            1.0,
+            2.0,
+            4.0,
+            -2.0,
+            0.5
+          ],
+          "description": "C / Y を押すたびに次の段へ（最後の次は最初）。1 = 等速・負の数は巻き戻し（-2 なら 2 倍で戻る）。0 は読み飛ばす。"
+        }
+      }
+    }
+  }
+}

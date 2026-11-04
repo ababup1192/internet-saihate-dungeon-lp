@@ -1,0 +1,57 @@
+{
+  "title": "🎨 盤のパレット",
+  "//": "チュートリアル固定盤（*.board.json）の色票。Studio のマップエディタがこの entries で塗り分ける。小文字 = 普通のマス、大文字 = 無効マス（暗い同系色）。",
+  "version": 1,
+  "entries": [
+    {
+      "char": "a",
+      "name": "攻撃",
+      "fill": "#f0483e"
+    },
+    {
+      "char": "g",
+      "name": "防御",
+      "fill": "#4aa8e8"
+    },
+    {
+      "char": "s",
+      "name": "技巧",
+      "fill": "#ffd93d"
+    },
+    {
+      "char": "h",
+      "name": "妨害",
+      "fill": "#b36ae2"
+    },
+    {
+      "char": "r",
+      "name": "加速",
+      "fill": "#ffa23a"
+    },
+    {
+      "char": "A",
+      "name": "攻撃（無効）",
+      "fill": "#a8322b"
+    },
+    {
+      "char": "G",
+      "name": "防御（無効）",
+      "fill": "#3476a2"
+    },
+    {
+      "char": "S",
+      "name": "技巧（無効）",
+      "fill": "#b2972a"
+    },
+    {
+      "char": "H",
+      "name": "妨害（無効）",
+      "fill": "#7d4a9e"
+    },
+    {
+      "char": "R",
+      "name": "加速（無効）",
+      "fill": "#b27128"
+    }
+  ]
+}

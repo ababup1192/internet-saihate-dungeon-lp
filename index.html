@@ -79,6 +79,11 @@ a{color:inherit}
 .hero h1 span{display:inline-block}
 .hero .lead{margin:16px 0 0;font-size:clamp(15px,3.6vw,18px);max-width:34em}
 .hero .catch{margin:18px 0 0;font-size:clamp(17px,4.4vw,22px);font-weight:800;color:var(--sun)}
+.play{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.play .go{display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:var(--pink);color:var(--paper);font-weight:800;font-size:clamp(17px,4.4vw,21px);padding:12px 22px;border:3px solid var(--paper);border-radius:14px;box-shadow:6px 6px 0 var(--ink);transition:transform .15s}
+.play .go:hover{transform:translate(-2px,-2px)}
+.play .go::before{content:"";border-left:14px solid currentColor;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.play .note{font-size:13px;color:var(--paper);opacity:.9}
 .badge{margin-top:26px;display:inline-flex;flex-wrap:wrap;align-items:stretch;text-decoration:none;border:3px solid var(--paper);border-radius:14px;overflow:hidden;font-weight:800;box-shadow:6px 6px 0 var(--sun);transition:transform .15s}
 .badge:hover{transform:translate(-2px,-2px)}
 .badge>span{padding:8px 14px;display:flex;align-items:center}
@@ -241,6 +246,7 @@ footer img{width:32px;height:32px;border-radius:50%;margin-bottom:10px}
     <h1><span>インターネット・</span><span>サイハテ・</span><span>ダンジョン</span></h1>
     <p class="lead">パズルとオートカードバトルを交互にくり返す、自作エンジン製のゲーム。</p>
     <p class="catch">「アンチには、作品で返すんだから！」</p>
+    <p class="play"><a class="go" href="play/">ブラウザで今すぐ遊べる</a><span class="note">PC・スマホ対応（スマホは横向き）・インストール不要</span></p>
     <a class="badge" href="#event" aria-label="東京ゲームダンジョン14 に出展。2026年10月31日（土）、ブース 2C-7。出展情報へ">
       <span class="ev">東京ゲームダンジョン14 出展</span><span class="dt">2026.10.31 SAT</span><span class="bt">ブース 2C-7</span>
     </a>

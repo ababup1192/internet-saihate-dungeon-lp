@@ -1,0 +1,36 @@
+{
+  "//": "チュートリアルの固定盤（*.board.json）の編集画面。rows はトップレベルにあるので、Studio ではマップエディタ（塗り）でも開ける。色票は assets/board.terrain.json。",
+  "version": 1,
+  "sections": {
+    "id": {
+      "kind": "field",
+      "type": "text",
+      "label": "この盤の名前（dungeon の節が参照する）",
+      "order": 1
+    },
+    "moves": {
+      "kind": "field",
+      "type": "int",
+      "label": "この盤の手数",
+      "help": "0 以下なら puzzle.json の既定へ倒す。仕込んだ塊の数と同じにする（補充が無いので、塊が足りないと消す物の無い手が生まれる）。",
+      "order": 2,
+      "min": 0,
+      "max": 40,
+      "default": 1
+    },
+    "rows": {
+      "kind": "field",
+      "type": "grid",
+      "label": "盤面（1 文字 = 1 マス）",
+      "help": "a=攻撃 g=防御 s=技巧 h=妨害 r=加速。大文字 = 無効マス（消えてもカウントされない）。行数・1 行の文字数は puzzle.json の rows / cols と一致させる — 合わない盤は使われずランダムへ倒れる。",
+      "order": 3
+    },
+    "guide": {
+      "kind": "field",
+      "type": "json",
+      "label": "正しい手順（from → to のマス）",
+      "help": "[{\"from\":[x,y],\"to\":[x,y]}] の列。見本 GIF とテストが読む。プレイヤーには強制しない。",
+      "order": 4
+    }
+  }
+}

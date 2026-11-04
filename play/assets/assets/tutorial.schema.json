@@ -1,0 +1,259 @@
+{
+  "//": "internet_dungeon.tutorial.json の形の宣言（Studio の sections 方言）。チュートリアルの赤ペンの印と隅の吹き出し・おてほんの盤・最初のカード選びの 2 枚。いつ出すかはコード（src/Tutorial.flix）、絵はコード（src/CoachView.flix）。",
+  "version": 1,
+  "sections": {
+    "strokeSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "線 1 本を描く秒",
+      "order": 1,
+      "min": 0.05,
+      "max": 3,
+      "default": 0.45,
+      "description": "ペン先が線をなぞる長さ。描き始めは速く、終わりはゆっくり。丸 1 つならほぼこの秒。"
+    },
+    "strokeGap": {
+      "kind": "field",
+      "type": "float",
+      "label": "次の線までの間（秒）",
+      "order": 2,
+      "min": 0,
+      "max": 2,
+      "default": 0.12
+    },
+    "labelFade": {
+      "kind": "field",
+      "type": "float",
+      "label": "手書きの字がふわっと出る秒",
+      "order": 3,
+      "min": 0,
+      "max": 2,
+      "default": 0.25,
+      "description": "字は前の線を描き終える少し前から出る。"
+    },
+    "nibExitSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "ペン先が右上へ抜ける秒",
+      "order": 4,
+      "min": 0,
+      "max": 2,
+      "default": 0.25
+    },
+    "lineWidth": {
+      "kind": "field",
+      "type": "float",
+      "label": "赤ペンの線の太さ（design px）",
+      "order": 5,
+      "min": 0.5,
+      "max": 6,
+      "default": 2.0
+    },
+    "nextHint": {
+      "kind": "field",
+      "type": "string",
+      "label": "送りの案内",
+      "order": 6,
+      "default": "{confirm}",
+      "description": "吹き出しの右下に点滅して出る案内。{confirm} は決定のキーの絵（キーボードは Z・コントローラーは A）。印と吹き出しが出ている間はその場面のゲームが止まり、決定で次の行・次の印へ進む。"
+    },
+    "feedHomeDelaySeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "X のホームの最初の説明を、ポストが流れ込み終わってから出すまでの秒",
+      "order": 11,
+      "min": 0,
+      "max": 3,
+      "default": 0.8
+    },
+    "opEmptyDelaySeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "オープニングの戦いで、被弾してから「カードがない」の説明を出すまでの秒",
+      "order": 11.5,
+      "min": 0,
+      "max": 3,
+      "default": 0.5
+    },
+    "startLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "盤の説明を読み終えた拍に画面を横切る帯の字",
+      "order": 11.6,
+      "default": "パズル開始"
+    },
+    "startSeconds": {
+      "kind": "field",
+      "type": "float",
+      "label": "「パズル開始」の帯の長さ（秒）",
+      "order": 11.7,
+      "min": 0.5,
+      "max": 5,
+      "default": 2.2
+    },
+    "startFromDay": {
+      "kind": "field",
+      "type": "int",
+      "label": "「パズル開始」の帯を出す最初の日",
+      "order": 11.75,
+      "min": 1,
+      "max": 30,
+      "default": 2
+    },
+    "startUntilDay": {
+      "kind": "field",
+      "type": "int",
+      "label": "「パズル開始」の帯を出す最後の日（最初の日からこの日まで）",
+      "order": 11.8,
+      "min": 0,
+      "max": 30,
+      "default": 3
+    },
+    "firstOffer": {
+      "kind": "field",
+      "type": {
+        "list": "string"
+      },
+      "label": "最初のカード選びに並べるカードの id",
+      "order": 11,
+      "description": "教える走行の最初のカード選びだけ、ここに書いた 2 枚を並べる（1 節目で使える COST 1 の攻撃と防御）。1 ターン目に必ずカードが出るところを見せるため。"
+    },
+    "demoRows": {
+      "kind": "field",
+      "type": {
+        "list": "string"
+      },
+      "label": "おてほんの盤（1 文字 = 1 マス）",
+      "order": 12,
+      "description": "a=攻撃 g=防御 s=技巧 h=妨害 r=加速。puzzle.json の cols × rows と同じ大きさにする（違えば配った盤のまま遊ぶ）。教える走行の最初の盤の並び（1 手目で色の薄い星が 3 つ、もう 1 回の入れかえで剣と盾が 1 列ずつそろう）。"
+    },
+    "tips": {
+      "kind": "list",
+      "label": "場面ごとの印と吹き出し",
+      "order": 14,
+      "description": "id はコードが出す時を決める場面の名前（op_empty / feed_home / fight_turn / fight_fire / speed / day_two / new_pieces / rush_piece / shard / foe_note / intel / pale_match / card_match / card_pick）。台詞は時系列順の assets/talk/*.yarn（出る日のファイル）の、id に tip_ を付けたノード（silent の場面は印だけでノードを置かない）。盤の駒を指す場面（new_pieces / rush_piece / pale_match / card_match）は丸・四角と矢印の位置を盤から決めるので、label の字だけを使う。",
+      "fields": {
+        "id": {
+          "type": "string",
+          "label": "場面の id",
+          "order": 1,
+          "required": true
+        },
+        "note": {
+          "type": "string",
+          "label": "メモ（いつ出るか）",
+          "order": 2
+        },
+        "silent": {
+          "type": "bool",
+          "label": "台詞の無い場面（印だけ。assets/talk/*.yarn にノードを置かない）",
+          "order": 3,
+          "default": false
+        },
+        "marks": {
+          "type": {
+            "list": {
+              "record": {
+                "shape": {
+                  "type": {
+                    "enum": [
+                      "circle",
+                      "box",
+                      "arrow",
+                      "under",
+                      "label",
+                      "stamp"
+                    ]
+                  },
+                  "label": "形",
+                  "order": 1,
+                  "default": "circle"
+                },
+                "x": {
+                  "type": "float",
+                  "label": "x（design px）",
+                  "order": 2
+                },
+                "y": {
+                  "type": "float",
+                  "label": "y（design px）",
+                  "order": 3
+                },
+                "w": {
+                  "type": "float",
+                  "label": "w（丸は横の半径・四角と下線は幅）",
+                  "order": 4
+                },
+                "h": {
+                  "type": "float",
+                  "label": "h（丸は縦の半径・四角は高さ）",
+                  "order": 5
+                },
+                "toX": {
+                  "type": "float",
+                  "label": "矢印の先 x",
+                  "order": 6
+                },
+                "toY": {
+                  "type": "float",
+                  "label": "矢印の先 y",
+                  "order": 7
+                },
+                "bend": {
+                  "type": "float",
+                  "label": "矢印の曲がり具合（0 でまっすぐ・負で反対へ）",
+                  "order": 8
+                },
+                "text": {
+                  "type": "string",
+                  "label": "字（label と stamp）",
+                  "order": 9
+                }
+              }
+            }
+          },
+          "label": "赤ペンの印（順に描く）",
+          "order": 4
+        },
+        "bubbleSide": {
+          "type": {
+            "enum": [
+              "below",
+              "above",
+              "right",
+              "left"
+            ]
+          },
+          "label": "吹き出しを先に試す側",
+          "order": 5,
+          "default": "below",
+          "description": "印のまとまりのどちら側に吹き出しを置くか。画面に収まらない・印にかかるときは下 → 上 → 右 → 左の順に次を試す。見るべき物（カードの効果・体力の帯）を隠すときに替える。"
+        },
+        "placement": {
+          "type": {
+            "enum": [
+              "bottom",
+              "top"
+            ]
+          },
+          "label": "印の無い吹き出しの置き場",
+          "order": 6,
+          "default": "bottom",
+          "description": "赤ペンの印が無い場面で、吹き出しを画面のどこに出すか。bottom = 画面の下の真ん中 / top = 画面の上、その場面の見るべき所（どこかはコードが場面ごとに決める。op_empty は空のカードの枠と「カードが ない！」）のすぐ下。見るべき所が上にあって目線が上下に飛ぶときに top にする。印のある場面は印の隣に出るので効かない。"
+        },
+        "atNode": {
+          "type": "integer",
+          "label": "出す節",
+          "order": 7,
+          "description": "この節（dungeon.json の nodes の 0 起点の番号）の盤だけで出す。書かなければ節で縛らない。shard が使う。新しい駒の場面（new_pieces / rush_piece）は nodes[].kinds から節を導くので書かない。"
+        },
+        "atDay": {
+          "type": "integer",
+          "label": "出す日",
+          "order": 8,
+          "description": "この日（1 起点）の盤だけで出す。atNode があればそちらを読む。day_two が使う。"
+        }
+      }
+    }
+  }
+}

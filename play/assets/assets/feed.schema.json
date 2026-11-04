@@ -1,0 +1,837 @@
+{
+  "//": "internet_dungeon.feed.json の形の宣言（Studio の sections 見出し）。夜の探索画面（X 風タイムライン）の文言と数値。敵の並び順は dungeon.json の nodes が正で、replies は enemy id で引くだけ。規則（いつ展開するか・どのカードが押せるか）はコード（src/World.flix / src/View.flix）。 ホーム（中央のタイムライン + 右の通知パネル）の文言もここ。",
+  "version": 1,
+  "sections": {
+    "postMetaTime": {
+      "kind": "field",
+      "type": "string",
+      "label": "メタ行の時刻（午後9:12）",
+      "order": 6
+    },
+    "postMetaViews": {
+      "kind": "field",
+      "type": "int",
+      "label": "メタ行の表示数",
+      "order": 7,
+      "min": 0,
+      "max": 9999999,
+      "default": 2483
+    },
+    "viewsSuffix": {
+      "kind": "field",
+      "type": "string",
+      "label": "表示数の単位（件の表示）",
+      "order": 8
+    },
+    "postReplies": {
+      "kind": "field",
+      "type": "int",
+      "label": "ポストのリプ数",
+      "order": 9,
+      "min": 0,
+      "max": 999999,
+      "default": 21
+    },
+    "postReposts": {
+      "kind": "field",
+      "type": "int",
+      "label": "ポストのリポスト数",
+      "order": 10,
+      "min": 0,
+      "max": 999999,
+      "default": 21
+    },
+    "postLikes": {
+      "kind": "field",
+      "type": "int",
+      "label": "ポストのいいね数（ピンク）",
+      "order": 11,
+      "min": 0,
+      "max": 999999,
+      "default": 184
+    },
+    "postViews": {
+      "kind": "field",
+      "type": "int",
+      "label": "統計行の表示数",
+      "order": 12,
+      "min": 0,
+      "max": 9999999,
+      "default": 1072
+    },
+    "reactLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "青ピルボタンの文字（反応を見る）",
+      "order": 13
+    },
+    "barTitleClosed": {
+      "kind": "field",
+      "type": "string",
+      "label": "トップバー題字（展開前）",
+      "order": 15
+    },
+    "barTitleOpen": {
+      "kind": "field",
+      "type": "string",
+      "label": "トップバー題字（展開後。後ろに件数が付く）",
+      "order": 16
+    },
+    "replySuffix": {
+      "kind": "field",
+      "type": "string",
+      "label": "件数の単位（件）",
+      "order": 17
+    },
+    "dangerLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "危険度の見出し（DANGER）",
+      "order": 18
+    },
+    "bossLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "最後の敵のピルの文字（BOSS）",
+      "order": 19
+    },
+    "levelPrefix": {
+      "kind": "field",
+      "type": "string",
+      "label": "敵性ピルの LV の前置き",
+      "order": 20
+    },
+    "fightLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "赤ピルボタンの文字（対処する）",
+      "order": 21
+    },
+    "lockedLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "リプツリーのまだの相手の欄の文字（先に上の相手から）",
+      "order": 22
+    },
+    "beatenLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "倒した後のボタンの文字（対処した）",
+      "order": 23
+    },
+    "accounts": {
+      "kind": "list",
+      "label": "ポストする人（id = yarn の話し手）",
+      "order": 24,
+      "description": "assets/talk/*.yarn の「id: 本文」で書いた行に、表示名・ハンドル・アイコンを付ける。ポストの字の正は yarn（post_<id> と thread）。id を足したら make talk-vocab。",
+      "fields": {
+        "id": {
+          "type": "string",
+          "label": "yarn の話し手の id",
+          "order": 1
+        },
+        "name": {
+          "type": "string",
+          "label": "表示名（敵は空。enemy.json の name）",
+          "order": 2
+        },
+        "handle": {
+          "type": "string",
+          "label": "@handle",
+          "order": 3
+        },
+        "sprite": {
+          "type": "string",
+          "label": "アイコンのスプライト（敵は空）",
+          "order": 4
+        },
+        "enemy": {
+          "type": "string",
+          "label": "クソリプの主なら enemy.json の id",
+          "order": 5
+        }
+      }
+    },
+    "replies": {
+      "kind": "list",
+      "label": "クソリプ（1 行 1 敵。enemy id で引く）",
+      "order": 25,
+      "description": "表示順 = 戦う順は dungeon.json の nodes が正。ここは id 引きの数値だけ（リプの本文・@handle・引用かどうかは yarn の thread と accounts）。",
+      "fields": {
+        "enemy": {
+          "type": "string",
+          "label": "相手の id（internet_dungeon.enemy.json）",
+          "order": 1
+        },
+        "replyCount": {
+          "type": "int",
+          "label": "リプ数",
+          "order": 5,
+          "min": 0,
+          "max": 999999,
+          "default": 0
+        },
+        "likeCount": {
+          "type": "int",
+          "label": "いいね数",
+          "order": 6,
+          "min": 0,
+          "max": 999999,
+          "default": 0
+        },
+        "viewCount": {
+          "type": "int",
+          "label": "表示数",
+          "order": 7,
+          "min": 0,
+          "max": 9999999,
+          "default": 0
+        },
+        "danger": {
+          "type": "int",
+          "label": "DANGER の星の点灯数（0〜4）",
+          "order": 8,
+          "min": 0,
+          "max": 4,
+          "default": 1
+        },
+        "level": {
+          "type": "int",
+          "label": "敵性ピルの LV 数字",
+          "order": 9,
+          "min": 1,
+          "max": 99,
+          "default": 1
+        }
+      }
+    },
+    "homeTitle": {
+      "kind": "field",
+      "type": "string",
+      "label": "ホームの中央の列の題字（ホーム）",
+      "order": 26
+    },
+    "tabForYou": {
+      "kind": "field",
+      "type": "string",
+      "label": "ホームのタブ・選択中（おすすめ。青い下線が付く）",
+      "order": 27
+    },
+    "tabFollowing": {
+      "kind": "field",
+      "type": "string",
+      "label": "ホームのタブ（フォロー中）",
+      "order": 28
+    },
+    "pillPrefix": {
+      "kind": "field",
+      "type": "string",
+      "label": "新着ピルの件数の前（空でよい）",
+      "order": 29
+    },
+    "pillSuffix": {
+      "kind": "field",
+      "type": "string",
+      "label": "新着ピルの件数の後ろ（ 件のポスト）",
+      "order": 30
+    },
+    "quietLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "新着が無い帰還のときにタイムラインへ出す一行",
+      "order": 31
+    },
+    "sealedLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "開く前のポストのアクション行のチップ（ひらいてみる）",
+      "order": 32
+    },
+    "closeHint": {
+      "kind": "field",
+      "type": "string",
+      "label": "ポップアップの閉じる案内",
+      "order": 33,
+      "description": "{confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる。"
+    },
+    "tapHint": {
+      "kind": "field",
+      "type": "string",
+      "label": "DM 会話の送り案内",
+      "order": 34,
+      "description": "{confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる。"
+    },
+    "fightAskLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "戦いへ向かう確認の問い",
+      "description": "X のポストの「対処する」から戦いへ向かう前に画面の真ん中に出す確認の 1 行。空なら問いの行を出さない。",
+      "order": 34.1
+    },
+    "fightAskGo": {
+      "kind": "field",
+      "type": "string",
+      "label": "確認の「対処開始」",
+      "default": "{confirm} 対処開始",
+      "description": "{confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる。",
+      "order": 34.2
+    },
+    "fightAskCancel": {
+      "kind": "field",
+      "type": "string",
+      "label": "確認の「キャンセル」",
+      "description": "{confirm} / {back} / {info} / {deck} / {reset} / {detail} / {updown} / {leftright} / {arrows} はキーの絵（コントローラーで遊んでいる間はボタンの絵）に替わる。",
+      "order": 34.3
+    },
+    "noticeTitle": {
+      "kind": "field",
+      "type": "string",
+      "label": "右パネルの見出し（通知）",
+      "order": 35
+    },
+    "liveLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "見出しの横で明滅する印（LIVE）",
+      "order": 36
+    },
+    "pinLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "右パネルの自分のポストの小窓のラベル",
+      "order": 37
+    },
+    "gotoLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "自分のポストの小窓のリンク（ポストを見に行く）",
+      "order": 38
+    },
+    "badgePrefix": {
+      "kind": "field",
+      "type": "string",
+      "label": "進み具合リストの見出しの件数の前（未対処のクソリプ ）",
+      "order": 39
+    },
+    "badgeSuffix": {
+      "kind": "field",
+      "type": "string",
+      "label": "進み具合リストの見出しの件数の後ろ（ 件）",
+      "order": 40
+    },
+    "badgeClearLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "全部対処した後の進み具合リストの見出し",
+      "order": 41
+    },
+    "nowLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "進み具合リストのいまの相手の印（いまここ）",
+      "order": 42
+    },
+    "nextFoeLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "つぎの相手のカードの見出し（つぎの相手）",
+      "order": 43
+    },
+    "carryMovesLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "効果の持ち越し: パズルの手数（後ろに ±n が付く）",
+      "order": 44
+    },
+    "carryAllyLabel": {
+      "kind": "field",
+      "type": "string",
+      "label": "効果の持ち越し: なかま（後ろにアバターが並ぶ）",
+      "order": 45
+    },
+    "refresh": {
+      "kind": "record",
+      "label": "ホームの引っ張って更新（読み込みの輪 → シュポッ → 新着が並ぶ）",
+      "order": 46,
+      "description": "夜の頭と、新着がある帰還でホームに着いたときに流れる。タイムラインが下へ引かれてすき間に読み込みの輪が出て、輪が回り、「シュポッ」と鳴ってタイムラインが戻りながら新着のポストが上から 1 件ずつ差し込まれる。帰還では新着ピルがシュポッの拍に降りてきて、ピルを押すと差し込みだけが流れる。流れている間（シュポッの前）に決定・向き・取り消し・クリックのどれかを押すと、そこでシュポッへ飛ぶ。動きの曲線はコード側（View.feedRefreshPose）。",
+      "fields": {
+        "pullSeconds": {
+          "type": "float",
+          "label": "引っ張る（秒）",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.05,
+          "max": 2.0,
+          "default": 0.42,
+          "description": "タイムラインが下へ引かれ切るまで。引かれるほど輪の弧が伸びる。"
+        },
+        "pullPixels": {
+          "type": "float",
+          "label": "引っ張る距離（px）",
+          "unit": "px",
+          "order": 2,
+          "min": 16,
+          "max": 80,
+          "default": 38.0,
+          "description": "タイムラインが下へずれる量（design px）。すき間の真ん中に読み込みの輪が出る。"
+        },
+        "spinSeconds": {
+          "type": "float",
+          "label": "輪が回る（秒）",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.1,
+          "max": 3.0,
+          "default": 0.8,
+          "description": "指を離して読み込んでいる間。終わりの拍で「シュポッ」と鳴る。"
+        },
+        "settleSeconds": {
+          "type": "float",
+          "label": "戻る（秒）",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.05,
+          "max": 2.0,
+          "default": 0.36,
+          "description": "シュポッの後、タイムラインが元の高さへ戻り、輪が縮んで消えるまで。"
+        },
+        "rowSeconds": {
+          "type": "float",
+          "label": "1 件が差し込まれる（秒）",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.05,
+          "max": 2.0,
+          "default": 0.34,
+          "description": "新着のポスト 1 件の場所が開いて、上から滑り込み切るまで（下のポストはその分押し下がる）。"
+        },
+        "rowGapSeconds": {
+          "type": "float",
+          "label": "次の 1 件までの間隔（秒）",
+          "unit": "秒",
+          "order": 6,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.13,
+          "description": "上から 1 件ずつ差し込むときの、次のポストが動き始めるまでの間。0 なら全部いっしょに入る。"
+        }
+      }
+    },
+    "arrival": {
+      "kind": "record",
+      "label": "右の列の顔とクソリプが差し込まれる時刻表",
+      "order": 51,
+      "description": "夜の頭のホームで右の列の顔が 1 体ずつ、リプツリーのクソリプが 1 件ずつ差し込まれる時刻表。動きの曲線（差し込まれて弾む）はコード側。",
+      "fields": {
+        "leadSeconds": {
+          "type": "float",
+          "label": "1 体目が来るまで",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.3,
+          "description": "夜の頭のホームを開いてから、右の列の 1 体目の顔が差し込まれ始めるまで。"
+        },
+        "gapSeconds": {
+          "type": "float",
+          "label": "次の顔までの間隔",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 2.0,
+          "default": 0.35,
+          "description": "右の列の顔が次々に差し込まれる間隔。"
+        },
+        "nextCardDelaySeconds": {
+          "type": "float",
+          "label": "つぎの相手のカードまで",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.0,
+          "max": 5.0,
+          "default": 1.45,
+          "description": "顔が並び終えた後、右の列のつぎの相手のカードがせり上がり始めるまで。"
+        },
+        "springSettleSeconds": {
+          "type": "float",
+          "label": "弾みが止まるまで",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.0,
+          "max": 2.0,
+          "default": 0.5,
+          "description": "差し込まれた物の弾みが目で止まって見えるまで（この後に操作を受ける）。"
+        },
+        "replyLeadSeconds": {
+          "type": "float",
+          "label": "1 件目のクソリプまで",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.5,
+          "description": "リプツリーを展開してから、1 件目のクソリプが差し込まれ始めるまで。"
+        },
+        "replyGapSeconds": {
+          "type": "float",
+          "label": "次のクソリプまでの間隔",
+          "unit": "秒",
+          "order": 6,
+          "min": 0.0,
+          "max": 2.0,
+          "default": 0.3,
+          "description": "リプツリーのクソリプが次々に差し込まれる間隔。"
+        }
+      }
+    },
+    "cursor": {
+      "kind": "record",
+      "label": "ホームの指カーソルと、読んだポストのアバター",
+      "order": 47,
+      "description": "押せる物（ひらいてみる・ポストを見に行く・対処する・新着ピル・反応を見る）の上に置く指の手の動きと、開いた（読んだ）ポストのアバターの沈め方。手の絵は feed.sprite.json の feedPointer、動きの曲線はコード側（View.feedPointer）。",
+      "fields": {
+        "glideSeconds": {
+          "type": "float",
+          "label": "次の行き先へ滑る（秒）",
+          "unit": "秒",
+          "order": 1,
+          "min": 0.05,
+          "max": 1.0,
+          "default": 0.22,
+          "description": "選び替えたとき、手が前の行き先から次の行き先へ滑り着くまで。出だしが速くゆっくり止まる。"
+        },
+        "pokeSeconds": {
+          "type": "float",
+          "label": "つんつん 1 回（秒）",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.2,
+          "max": 3.0,
+          "default": 0.8,
+          "description": "止まっている間、指先が沈んで戻る 1 回の長さ。"
+        },
+        "pokePixels": {
+          "type": "float",
+          "label": "つんつんの深さ（px）",
+          "unit": "px",
+          "order": 3,
+          "min": 0,
+          "max": 6,
+          "default": 2.0,
+          "description": "指先が沈む深さ（design px。1px の升目に寄せて動く）。0 でつんつんが止まる。"
+        },
+        "readAvatarBrightness": {
+          "type": "float",
+          "label": "読んだアバターの明るさ",
+          "order": 4,
+          "min": 0.1,
+          "max": 1.0,
+          "default": 0.52,
+          "description": "開いたポストのアバターをグレーにしてから掛ける明るさ。0.52 で本文の灰（#71767b）と同じくらい。1 なら明るいグレーのまま。"
+        }
+      }
+    },
+    "hpShift": {
+      "kind": "record",
+      "label": "体力が動いたイベントの体力の棒と「体力 a → b」",
+      "order": 48,
+      "description": "癒し・罠・取引・ゆの の DM のように体力が動くイベントを開いたとき、画像や会話の下の効果の欄（何が起きたかの下の段）に体力の棒と「a → b」を大きく出す。増えた分はシアンで伸び、減った分はピンクで削れて流れ落ち、数が前の数から回り着く（色と曲線はコード側の View.feedHpGauge）。",
+      "fields": {
+        "label": {
+          "type": "string",
+          "label": "見出し",
+          "order": 1,
+          "default": "HP",
+          "description": "数の前に出す字。"
+        },
+        "arrow": {
+          "type": "string",
+          "label": "矢印",
+          "order": 2,
+          "default": "→",
+          "description": "前の数と後の数の間の字。"
+        },
+        "delaySeconds": {
+          "type": "float",
+          "label": "動き出すまで（秒）",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.0,
+          "max": 1.5,
+          "default": 0.15,
+          "description": "効果が見えた拍から棒が動き出すまで。"
+        },
+        "barSeconds": {
+          "type": "float",
+          "label": "棒が動く（秒）",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.1,
+          "max": 3.0,
+          "default": 0.8,
+          "description": "棒が前の値から後の値まで動き切り、数が回り着くまで。"
+        },
+        "glowSeconds": {
+          "type": "float",
+          "label": "伸びた分の明るさが落ち着くまで",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.01,
+          "max": 2.0,
+          "default": 0.4,
+          "description": "体力が増えたとき、棒が伸び切ってから伸びた分の明るさが棒の色へ落ち着くまで。"
+        }
+      }
+    },
+    "shardDrop": {
+      "kind": "record",
+      "label": "かけらが増えたイベントの、飛んでくるいいねのハート",
+      "order": 49,
+      "description": "いいねのかけらが増えるイベントを開いたとき、効果の枠のかけらの行へ、増えた数だけいいねのハートがポストの方から弧を描いて飛んでくる。着くたびに数が 1 つ増えてキラッと光り、着地の音が鳴る（曲線はコード側の View.feedShardRow、音の時刻は FeedDoc.shardLandSeconds）。",
+      "fields": {
+        "totalLabel": {
+          "type": "string",
+          "label": "合計の字",
+          "order": 1,
+          "default": "計 {n}",
+          "description": "{n} がいまのかけらの数に替わる。ハートが着くたびに増える。"
+        },
+        "delaySeconds": {
+          "type": "float",
+          "label": "飛び始めるまで（秒）",
+          "unit": "秒",
+          "order": 2,
+          "min": 0.0,
+          "max": 1.5,
+          "default": 0.15,
+          "description": "効果が見えた拍から 1 個目が飛び始めるまで。"
+        },
+        "fallSeconds": {
+          "type": "float",
+          "label": "飛ぶ（秒）",
+          "unit": "秒",
+          "order": 3,
+          "min": 0.1,
+          "max": 2.0,
+          "default": 0.42,
+          "description": "1 個が飛び始めてからかけらの印に着くまで。"
+        },
+        "gapSeconds": {
+          "type": "float",
+          "label": "次の 1 個まで（秒）",
+          "unit": "秒",
+          "order": 4,
+          "min": 0.0,
+          "max": 1.5,
+          "default": 0.32,
+          "description": "次のハートが飛び始めるまでの間隔。"
+        },
+        "sparkleSeconds": {
+          "type": "float",
+          "label": "着いた拍のきらめき",
+          "unit": "秒",
+          "order": 5,
+          "min": 0.01,
+          "max": 2.0,
+          "default": 0.35,
+          "description": "ハートがかけらの印に着いた拍に、かけらの上でキラッと光る長さ。"
+        }
+      }
+    },
+    "result": {
+      "kind": "record",
+      "label": "イベントの結果の窓",
+      "order": 50,
+      "description": "イベントを開いた後の結果の窓の見出しと、手数の鉛筆が転がってくる尺と遠さ（減るときの削れる尺は puzzle.json の pencil）。並びは 返信の行（events の reply）→ 起きた事の一文（revealText）→ 効果の枠（HP の棒・手数の鉛筆・いいねのハート・攻略の要点 revealSub）。効果の数は hpDelta / movesDelta / shardDelta / maxHpDelta から出す（曲線はコード側の View.feedPopupResult）。",
+      "fields": {
+        "replyToLabel": {
+          "type": "string",
+          "label": "返信先の見出し",
+          "order": 1,
+          "default": "返信先:",
+          "description": "返信の行の上に出す。後ろに相手の @handle が付く。"
+        },
+        "movesLabel": {
+          "type": "string",
+          "label": "手数の行の見出し",
+          "order": 2,
+          "default": "パズルの手数",
+          "description": "効果の枠の手数の行。後ろに ±n が付く。"
+        },
+        "movesCapLabel": {
+          "type": "string",
+          "label": "手数が上限のときの字",
+          "order": 2.5,
+          "default": "上限 {max}",
+          "description": "盤の手数が上限（puzzle.json の movesMax）に当たって増えなかったとき、±n の代わりに見出しの後ろへ続ける字。{max} = 上限の手数。ホームのチップにも出る。"
+        },
+        "shardLabel": {
+          "type": "string",
+          "label": "かけらの行の見出し",
+          "order": 3,
+          "default": "いいねのかけら",
+          "description": "効果の枠のかけらの行。後ろに ±n が付く。"
+        },
+        "maxHpLabel": {
+          "type": "string",
+          "label": "HP の上限の行の見出し",
+          "order": 3.5,
+          "default": "HP の上限",
+          "description": "効果の枠の体力の上限の行（events の maxHpDelta があるポストだけ）。後ろに +n が付く。"
+        },
+        "hintLabel": {
+          "type": "string",
+          "label": "攻略の要点の見出し",
+          "order": 4,
+          "default": "攻略",
+          "description": "効果の枠の攻略の行の頭に付く小さなラベルの字。"
+        },
+        "noneLabel": {
+          "type": "string",
+          "label": "何も動かないときの一言",
+          "order": 5,
+          "default": "変化なし",
+          "description": "体力・手数・かけらのどれも動かず、攻略の要点も無いポストの効果の枠。"
+        },
+        "rollDelaySeconds": {
+          "type": "float",
+          "label": "鉛筆が動き始めるまで（秒）",
+          "unit": "秒",
+          "order": 6,
+          "min": 0.0,
+          "max": 1.5,
+          "default": 0.15,
+          "description": "効果が見えた拍から、手数の鉛筆が動き始めるまで（増えたときは奥から転がり始め、減ったときは鉛筆削りで削れ始める）。"
+        },
+        "rollSeconds": {
+          "type": "float",
+          "label": "鉛筆が転がってくる（秒）",
+          "unit": "秒",
+          "order": 7,
+          "min": 0.2,
+          "max": 3.0,
+          "default": 1.1,
+          "description": "増えた鉛筆が奥の遠い所から手前の止まる所まで転がってくる秒。伸ばすとゆっくり転がる。"
+        },
+        "bounceSeconds": {
+          "type": "float",
+          "label": "手前で跳ねる（秒）",
+          "unit": "秒",
+          "order": 8,
+          "min": 0.05,
+          "max": 1.5,
+          "default": 0.35,
+          "description": "手前に着いてから、1 度跳ねて着地するまでの秒（着地の後に小さく揺り戻して止まる）。"
+        },
+        "bounceHeight": {
+          "type": "float",
+          "label": "跳ねる高さ",
+          "unit": "px",
+          "order": 9,
+          "min": 0.0,
+          "max": 30.0,
+          "default": 6.0,
+          "description": "手前で跳ねる高さ。0 にすると跳ねずにそのまま止まる。"
+        },
+        "farDistance": {
+          "type": "float",
+          "label": "転がり始めの遠さ（倍）",
+          "order": 10,
+          "min": 1.0,
+          "max": 20.0,
+          "default": 7.0,
+          "description": "転がり始めは止まる所の何倍遠いか。大きいほど小さな点から来て、遠いうちの動きが小さく、近づいてから一気に大きく速くなる。1 で遠近なし。"
+        },
+        "farRise": {
+          "type": "float",
+          "label": "転がり始めの高さ",
+          "unit": "px",
+          "order": 11,
+          "min": -100.0,
+          "max": 200.0,
+          "default": 60.0,
+          "description": "転がり始めの位置が、止まる所からどれだけ上か（画面の奥 = 上）。"
+        },
+        "farShift": {
+          "type": "float",
+          "label": "転がり始めの横のずれ",
+          "unit": "px",
+          "order": 12,
+          "min": -200.0,
+          "max": 200.0,
+          "default": 120.0,
+          "description": "転がり始めの位置が、止まる所からどれだけ右か（効果の枠の右の端は越えない）。"
+        },
+        "openSeconds": {
+          "type": "float",
+          "label": "窓が持ち上がる長さ",
+          "unit": "秒",
+          "order": 13,
+          "min": 0.01,
+          "max": 2.0,
+          "default": 0.4,
+          "description": "ポストを開いた拍に、窓が下から持ち上がり切るまで。"
+        },
+        "openPixels": {
+          "type": "float",
+          "label": "窓が持ち上がる距離",
+          "unit": "px",
+          "order": 14,
+          "min": 0.0,
+          "max": 40.0,
+          "default": 6.0,
+          "description": "開いた拍に窓が持ち上がる距離。"
+        },
+        "revealDelaySeconds": {
+          "type": "float",
+          "label": "結果が見え始めるまで",
+          "unit": "秒",
+          "order": 15,
+          "min": 0.0,
+          "max": 3.0,
+          "default": 0.5,
+          "description": "開いてから結果（返信の行・一文・効果の枠）が見え始めるまで（DM は読み終えた拍から）。"
+        },
+        "riseSeconds": {
+          "type": "float",
+          "label": "結果の行が浮き上がる長さ",
+          "unit": "秒",
+          "order": 16,
+          "min": 0.01,
+          "max": 2.0,
+          "default": 0.25,
+          "description": "結果の行が少し下から浮き上がって濃くなり切るまで。"
+        },
+        "risePixels": {
+          "type": "float",
+          "label": "結果の行が浮き上がる距離",
+          "unit": "px",
+          "order": 17,
+          "min": 0.0,
+          "max": 30.0,
+          "default": 4.0,
+          "description": "結果の行が浮き上がる距離。"
+        },
+        "panelDelaySeconds": {
+          "type": "float",
+          "label": "効果の枠の遅れ",
+          "unit": "秒",
+          "order": 18,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.08,
+          "description": "効果の枠が返信の行と一文より遅れて浮き上がる秒。"
+        }
+      }
+    },
+    "shardShortLine": {
+      "kind": "field",
+      "type": "string",
+      "label": "かけらが足りないときの一文",
+      "order": 50,
+      "default": "いいねのかけらが足りない",
+      "description": "いいねのかけらを払うポスト（エゴサーチ）を、かけらが足りないまま開いたときの起きた事の一文。払わず、3 択にも進まない（効果の枠は「変化なし」）。"
+    }
+  }
+}
