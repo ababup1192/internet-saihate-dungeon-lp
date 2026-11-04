@@ -84,6 +84,11 @@ a{color:inherit}
 .play .go:hover{transform:translate(-2px,-2px)}
 .play .go::before{content:"";border-left:14px solid currentColor;border-top:9px solid transparent;border-bottom:9px solid transparent}
 .play .note{font-size:13px;color:var(--paper);opacity:.9}
+@media (max-width:600px){
+  .badge{display:grid;grid-template-columns:auto 1fr}
+  .badge .ev{grid-column:1/-1}
+  .scroll-hint{display:none}
+}
 .badge{margin-top:26px;display:inline-flex;flex-wrap:wrap;align-items:stretch;text-decoration:none;border:3px solid var(--paper);border-radius:14px;overflow:hidden;font-weight:800;box-shadow:6px 6px 0 var(--sun);transition:transform .15s}
 .badge:hover{transform:translate(-2px,-2px)}
 .badge>span{padding:8px 14px;display:flex;align-items:center}
