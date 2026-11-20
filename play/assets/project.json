@@ -1551,6 +1551,9 @@
     "deferred": [
       "assets/art/opening-*.png",
       "assets/stand/girl-face*.png",
+      "font:round",
+      "font:roundBig",
+      "font:label",
       "assets/sfx/bgmTitle.wav",
       "assets/feed/*.png",
       "assets/art/talk-*.png",
@@ -1583,8 +1586,8 @@
       { "match": "assets/card/art/*.png", "onMissing": "placeholder", "why": "カードの絵は 60 枚あり、全部が届くのは押してから約 1 分後。届くまでは枠と字だけのカードで遊べる" }
     ],
     "startupBudget": {
-      "seconds": 22,
-      "why": "遊びの中身（カードの戦い・パズル・会話）を 1 本の wasm に入れていて、4G では起動のうち約 12 秒を wasm が占める。タイトルの絵とロゴ・字・オープニングで鳴る効果音も起動で取る。押した後は、オープニングの途中から使う丸い字のフォント 2 本（約 1 MB）を先に取るので、オープニングの最初の絵が届くまでロゴの後に約 3 秒待つ。"
+      "seconds": 17,
+      "why": "遊びの中身（カードの戦い・パズル・会話）を 1 本の wasm に入れていて、4G では起動のうち約 10 秒を wasm が占める。タイトルの絵とロゴ・字・オープニングで鳴る効果音も起動で取る。押した後のオープニングの最初の絵はロゴの間に届く。"
     },
     "compress": {
       "audioBitrateKbps": 64,

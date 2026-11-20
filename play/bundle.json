@@ -1404,37 +1404,13 @@
  },
  "deferred": [
   {
-   "path": "font-atlas/round.fontatlas",
-   "bytes": 244011,
-   "names": [
-    "round"
-   ],
-   "arrivalSeconds": 1.295
-  },
-  {
-   "path": "font-atlas/roundBig.fontatlas",
-   "bytes": 716100,
-   "names": [
-    "roundBig"
-   ],
-   "arrivalSeconds": 4.739
-  },
-  {
-   "path": "font-atlas/label.fontatlas",
-   "bytes": 9198,
-   "names": [
-    "label"
-   ],
-   "arrivalSeconds": 4.856
-  },
-  {
    "path": "assets/art/opening-desk.png",
    "bytes": 251160,
    "names": [
     "openingDesk"
    ],
    "group": "opening",
-   "arrivalSeconds": 6.187
+   "arrivalSeconds": 1.331
   },
   {
    "path": "assets/art/opening-post.png",
@@ -1443,7 +1419,7 @@
     "openingPost"
    ],
    "group": "opening",
-   "arrivalSeconds": 6.309
+   "arrivalSeconds": 1.453
   },
   {
    "path": "assets/stand/girl-face0.png",
@@ -1451,7 +1427,7 @@
    "names": [
     "girlFace0"
    ],
-   "arrivalSeconds": 6.537
+   "arrivalSeconds": 1.681
   },
   {
    "path": "assets/stand/girl-face1.png",
@@ -1459,7 +1435,7 @@
    "names": [
     "girlFace1"
    ],
-   "arrivalSeconds": 6.752
+   "arrivalSeconds": 1.896
   },
   {
    "path": "assets/stand/girl-face2.png",
@@ -1467,7 +1443,7 @@
    "names": [
     "girlFace2"
    ],
-   "arrivalSeconds": 6.975
+   "arrivalSeconds": 2.119
   },
   {
    "path": "assets/stand/girl-face3.png",
@@ -1475,7 +1451,7 @@
    "names": [
     "girlFace3"
    ],
-   "arrivalSeconds": 7.207
+   "arrivalSeconds": 2.351
   },
   {
    "path": "assets/stand/girl-face4.png",
@@ -1483,7 +1459,7 @@
    "names": [
     "girlFace4"
    ],
-   "arrivalSeconds": 7.421
+   "arrivalSeconds": 2.565
   },
   {
    "path": "assets/stand/girl-face5.png",
@@ -1491,7 +1467,7 @@
    "names": [
     "girlFace5"
    ],
-   "arrivalSeconds": 7.65
+   "arrivalSeconds": 2.794
   },
   {
    "path": "assets/stand/girl-face6.png",
@@ -1499,13 +1475,37 @@
    "names": [
     "girlFace6"
    ],
-   "arrivalSeconds": 7.824
+   "arrivalSeconds": 2.968
   },
   {
    "path": "assets/stand/girl-face7.png",
    "bytes": 20276,
    "names": [
     "girlFace7"
+   ],
+   "arrivalSeconds": 3.145
+  },
+  {
+   "path": "font-atlas/round.fontatlas",
+   "bytes": 244011,
+   "names": [
+    "round"
+   ],
+   "arrivalSeconds": 4.44
+  },
+  {
+   "path": "font-atlas/roundBig.fontatlas",
+   "bytes": 716100,
+   "names": [
+    "roundBig"
+   ],
+   "arrivalSeconds": 7.884
+  },
+  {
+   "path": "font-atlas/label.fontatlas",
+   "bytes": 9198,
+   "names": [
+    "label"
    ],
    "arrivalSeconds": 8.001
   },
@@ -3494,18 +3494,18 @@
  },
  "wasmBrotli": "classes.wasm.br",
  "boot": {
-  "assets": 1423628,
-  "assetsWire": 813895,
-  "wasm": 2292129,
-  "wasmWire": 2360400
+  "assets": 1423560,
+  "assetsWire": 813864,
+  "wasm": 2015095,
+  "wasmWire": 2083366
  },
  "serviceWorker": true,
  "startupBudget": {
-  "seconds": 22,
-  "why": "遊びの中身（カードの戦い・パズル・会話）を 1 本の wasm に入れていて、4G では起動のうち約 12 秒を wasm が占める。タイトルの絵とロゴ・字・オープニングで鳴る効果音も起動で取る。押した後は、オープニングの途中から使う丸い字のフォント 2 本（約 1 MB）を先に取るので、オープニングの最初の絵が届くまでロゴの後に約 3 秒待つ。"
+  "seconds": 17,
+  "why": "遊びの中身（カードの戦い・パズル・会話）を 1 本の wasm に入れていて、4G では起動のうち約 10 秒を wasm が占める。タイトルの絵とロゴ・字・オープニングで鳴る効果音も起動で取る。押した後のオープニングの最初の絵はロゴの間に届く。"
  },
  "checks": {
   "title4g": "ok",
-  "tapWaitSeconds": 6.3
+  "tapNoRecord": true
  }
 }
