@@ -1546,7 +1546,9 @@
   "// web": "ブラウザ版（bin/fge export-web）の設定。マウスで遊ぶゲームなので仮想パッドは出さない。指の端末は canvas のタップがクリックになる（engine の既定）。",
   "web": {
     "keysDoc": "assets/player.keys.json",
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "deferred": ["assets/sfx/bgm*.wav", "assets/card/art/*.png"],
+    "deferredFonts": ["round", "roundBig", "label"]
   },
   "editor": {
     "plugins": [
