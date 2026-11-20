@@ -1,5 +1,5 @@
 {
- "id": "internet_dungeon-web",
+ "id": "internet_dungeon",
  "title": "インターネットダンジョン",
  "files": [
   "assets/OFL-Yuji.txt",
@@ -1408,1043 +1408,1252 @@
    "bytes": 244011,
    "names": [
     "round"
-   ]
+   ],
+   "arrivalSeconds": 1.295
   },
   {
    "path": "font-atlas/roundBig.fontatlas",
    "bytes": 716100,
    "names": [
     "roundBig"
-   ]
+   ],
+   "arrivalSeconds": 4.739
   },
   {
    "path": "font-atlas/label.fontatlas",
    "bytes": 9198,
    "names": [
     "label"
-   ]
+   ],
+   "arrivalSeconds": 4.856
   },
   {
    "path": "assets/sfx/bgmTitle.wav",
-   "bytes": 928987,
+   "bytes": 928975,
    "names": [
     "bgmTitle"
-   ]
+   ],
+   "arrivalSeconds": 9.576
   },
   {
    "path": "assets/art/opening-desk.png",
    "bytes": 251160,
    "names": [
     "openingDesk"
-   ]
+   ],
+   "arrivalSeconds": 10.907
   },
   {
    "path": "assets/art/opening-post.png",
    "bytes": 9428,
    "names": [
     "openingPost"
-   ]
+   ],
+   "arrivalSeconds": 11.029
   },
   {
    "path": "assets/art/talk-net.png",
    "bytes": 92510,
    "names": [
     "talkArtNet"
-   ]
+   ],
+   "arrivalSeconds": 11.566
   },
   {
    "path": "assets/art/talk-room.png",
    "bytes": 111176,
    "names": [
     "talkArtRoom"
-   ]
+   ],
+   "arrivalSeconds": 12.197
   },
   {
    "path": "assets/stand/avatar-face0.png",
    "bytes": 34468,
    "names": [
     "avatarFace0"
-   ]
+   ],
+   "arrivalSeconds": 12.445
   },
   {
    "path": "assets/stand/avatar-face1.png",
    "bytes": 36274,
    "names": [
     "avatarFace1"
-   ]
+   ],
+   "arrivalSeconds": 12.701
   },
   {
    "path": "assets/stand/avatar-face2.png",
    "bytes": 35586,
    "names": [
     "avatarFace2"
-   ]
+   ],
+   "arrivalSeconds": 12.954
   },
   {
    "path": "assets/stand/avatar-face3.png",
    "bytes": 35732,
    "names": [
     "avatarFace3"
-   ]
+   ],
+   "arrivalSeconds": 13.208
   },
   {
    "path": "assets/stand/avatar-face4.png",
    "bytes": 30748,
    "names": [
     "avatarFace4"
-   ]
+   ],
+   "arrivalSeconds": 13.436
   },
   {
    "path": "assets/stand/avatar-face5-shape.png",
    "bytes": 13740,
    "names": [
     "avatarFace5Shape"
-   ]
+   ],
+   "arrivalSeconds": 13.58
   },
   {
    "path": "assets/stand/avatar-face5.png",
    "bytes": 31942,
    "names": [
     "avatarFace5"
-   ]
+   ],
+   "arrivalSeconds": 13.815
   },
   {
    "path": "assets/stand/avatar-face6.png",
    "bytes": 24480,
    "names": [
     "avatarFace6"
-   ]
+   ],
+   "arrivalSeconds": 14.012
   },
   {
    "path": "assets/stand/avatar-face7.png",
    "bytes": 24616,
    "names": [
     "avatarFace7"
-   ]
+   ],
+   "arrivalSeconds": 14.21
   },
   {
    "path": "assets/stand/girl-face0.png",
    "bytes": 30628,
    "names": [
     "girlFace0"
-   ]
+   ],
+   "arrivalSeconds": 14.438
   },
   {
    "path": "assets/stand/girl-face1.png",
    "bytes": 28000,
    "names": [
     "girlFace1"
-   ]
+   ],
+   "arrivalSeconds": 14.653
   },
   {
    "path": "assets/stand/girl-face2.png",
    "bytes": 29580,
    "names": [
     "girlFace2"
-   ]
+   ],
+   "arrivalSeconds": 14.876
   },
   {
    "path": "assets/stand/girl-face3.png",
    "bytes": 31320,
    "names": [
     "girlFace3"
-   ]
+   ],
+   "arrivalSeconds": 15.108
   },
   {
    "path": "assets/stand/girl-face4.png",
    "bytes": 27908,
    "names": [
     "girlFace4"
-   ]
+   ],
+   "arrivalSeconds": 15.322
   },
   {
    "path": "assets/stand/girl-face5.png",
    "bytes": 30712,
    "names": [
     "girlFace5"
-   ]
+   ],
+   "arrivalSeconds": 15.551
   },
   {
    "path": "assets/stand/girl-face6.png",
    "bytes": 19930,
    "names": [
     "girlFace6"
-   ]
+   ],
+   "arrivalSeconds": 15.726
   },
   {
    "path": "assets/stand/girl-face7.png",
    "bytes": 20276,
    "names": [
     "girlFace7"
-   ]
+   ],
+   "arrivalSeconds": 15.902
   },
   {
    "path": "assets/battle/foe-lizard-attack.png",
    "bytes": 53684,
    "names": [
     "fightFoe2_attack"
-   ]
+   ],
+   "arrivalSeconds": 16.245
   },
   {
    "path": "assets/battle/foe-lizard-idle.png",
    "bytes": 40336,
    "names": [
     "fightFoe2_idle"
-   ]
+   ],
+   "arrivalSeconds": 16.522
   },
   {
    "path": "assets/battle/foe-slime-attack.png",
    "bytes": 31094,
    "names": [
     "fightFoe0_attack"
-   ]
+   ],
+   "arrivalSeconds": 16.753
   },
   {
    "path": "assets/battle/foe-slime-idle.png",
    "bytes": 27338,
    "names": [
     "fightFoe0_idle"
-   ]
+   ],
+   "arrivalSeconds": 16.964
   },
   {
    "path": "assets/battle/foe-zombie-attack.png",
    "bytes": 31298,
    "names": [
     "fightFoe1_attack"
-   ]
+   ],
+   "arrivalSeconds": 17.196
   },
   {
    "path": "assets/battle/foe-zombie-idle.png",
    "bytes": 18776,
    "names": [
     "fightFoe1_idle"
-   ]
+   ],
+   "arrivalSeconds": 17.365
   },
   {
    "path": "assets/battle/hero-attack-1.png",
    "bytes": 17254,
    "names": [
     "heroFrame_attack_1"
-   ]
+   ],
+   "arrivalSeconds": 17.526
   },
   {
    "path": "assets/battle/hero-attack-2.png",
    "bytes": 20494,
    "names": [
     "heroFrame_attack_2"
-   ]
+   ],
+   "arrivalSeconds": 17.703
   },
   {
    "path": "assets/battle/hero-attack-3.png",
    "bytes": 23166,
    "names": [
     "heroFrame_attack_3"
-   ]
+   ],
+   "arrivalSeconds": 17.894
   },
   {
    "path": "assets/battle/hero-attack-4.png",
    "bytes": 24776,
    "names": [
     "heroFrame_attack_4"
-   ]
+   ],
+   "arrivalSeconds": 18.093
   },
   {
    "path": "assets/battle/hero-attack-5.png",
    "bytes": 20946,
    "names": [
     "heroFrame_attack_5"
-   ]
+   ],
+   "arrivalSeconds": 18.273
   },
   {
    "path": "assets/battle/hero-attack-6.png",
    "bytes": 20676,
    "names": [
     "heroFrame_attack_6"
-   ]
+   ],
+   "arrivalSeconds": 18.451
   },
   {
    "path": "assets/battle/hero-attack-7.png",
    "bytes": 24358,
    "names": [
     "heroFrame_attack_7"
-   ]
+   ],
+   "arrivalSeconds": 18.648
   },
   {
    "path": "assets/battle/hero-attack.png",
    "bytes": 34420,
    "names": [
     "heroPose_attack"
-   ]
+   ],
+   "arrivalSeconds": 18.895
   },
   {
    "path": "assets/battle/hero-buff-1.png",
    "bytes": 18122,
    "names": [
     "heroFrame_buff_1"
-   ]
+   ],
+   "arrivalSeconds": 19.061
   },
   {
    "path": "assets/battle/hero-buff-2.png",
    "bytes": 25736,
    "names": [
     "heroFrame_buff_2"
-   ]
+   ],
+   "arrivalSeconds": 19.264
   },
   {
    "path": "assets/battle/hero-buff-3.png",
    "bytes": 30402,
    "names": [
     "heroFrame_buff_3"
-   ]
+   ],
+   "arrivalSeconds": 19.491
   },
   {
    "path": "assets/battle/hero-buff-4.png",
    "bytes": 30306,
    "names": [
     "heroFrame_buff_4"
-   ]
+   ],
+   "arrivalSeconds": 19.718
   },
   {
    "path": "assets/battle/hero-buff-5.png",
    "bytes": 29602,
    "names": [
     "heroFrame_buff_5"
-   ]
+   ],
+   "arrivalSeconds": 19.941
   },
   {
    "path": "assets/battle/hero-buff-6.png",
    "bytes": 31178,
    "names": [
     "heroFrame_buff_6"
-   ]
+   ],
+   "arrivalSeconds": 20.172
   },
   {
    "path": "assets/battle/hero-buff-7.png",
    "bytes": 33916,
    "names": [
     "heroFrame_buff_7"
-   ]
+   ],
+   "arrivalSeconds": 20.416
   },
   {
    "path": "assets/battle/hero-buff.png",
    "bytes": 30772,
    "names": [
     "heroPose_buff"
-   ]
+   ],
+   "arrivalSeconds": 20.645
   },
   {
    "path": "assets/battle/hero-debuff-1.png",
    "bytes": 16718,
    "names": [
     "heroFrame_debuff_1"
-   ]
+   ],
+   "arrivalSeconds": 20.804
   },
   {
    "path": "assets/battle/hero-debuff-2.png",
    "bytes": 19074,
    "names": [
     "heroFrame_debuff_2"
-   ]
+   ],
+   "arrivalSeconds": 20.974
   },
   {
    "path": "assets/battle/hero-debuff-3.png",
    "bytes": 23182,
    "names": [
     "heroFrame_debuff_3"
-   ]
+   ],
+   "arrivalSeconds": 21.165
   },
   {
    "path": "assets/battle/hero-debuff-4.png",
    "bytes": 21822,
    "names": [
     "heroFrame_debuff_4"
-   ]
+   ],
+   "arrivalSeconds": 21.349
   },
   {
    "path": "assets/battle/hero-debuff-5.png",
    "bytes": 22718,
    "names": [
     "heroFrame_debuff_5"
-   ]
+   ],
+   "arrivalSeconds": 21.538
   },
   {
    "path": "assets/battle/hero-debuff-6.png",
    "bytes": 27120,
    "names": [
     "heroFrame_debuff_6"
-   ]
+   ],
+   "arrivalSeconds": 21.748
   },
   {
    "path": "assets/battle/hero-debuff-7.png",
    "bytes": 25072,
    "names": [
     "heroFrame_debuff_7"
-   ]
+   ],
+   "arrivalSeconds": 21.949
   },
   {
    "path": "assets/battle/hero-debuff.png",
    "bytes": 26912,
    "names": [
     "heroPose_debuff"
-   ]
+   ],
+   "arrivalSeconds": 22.158
   },
   {
    "path": "assets/battle/hero-guard-1.png",
    "bytes": 17318,
    "names": [
     "heroFrame_guard_1"
-   ]
+   ],
+   "arrivalSeconds": 22.32
   },
   {
    "path": "assets/battle/hero-guard-2.png",
    "bytes": 20826,
    "names": [
     "heroFrame_guard_2"
-   ]
+   ],
+   "arrivalSeconds": 22.499
   },
   {
    "path": "assets/battle/hero-guard-3.png",
    "bytes": 22192,
    "names": [
     "heroFrame_guard_3"
-   ]
+   ],
+   "arrivalSeconds": 22.685
   },
   {
    "path": "assets/battle/hero-guard-4.png",
    "bytes": 24592,
    "names": [
     "heroFrame_guard_4"
-   ]
+   ],
+   "arrivalSeconds": 22.883
   },
   {
    "path": "assets/battle/hero-guard-5.png",
    "bytes": 23606,
    "names": [
     "heroFrame_guard_5"
-   ]
+   ],
+   "arrivalSeconds": 23.076
   },
   {
    "path": "assets/battle/hero-guard-6.png",
    "bytes": 22580,
    "names": [
     "heroFrame_guard_6"
-   ]
+   ],
+   "arrivalSeconds": 23.264
   },
   {
    "path": "assets/battle/hero-guard-7.png",
    "bytes": 21552,
    "names": [
     "heroFrame_guard_7"
-   ]
+   ],
+   "arrivalSeconds": 23.447
   },
   {
    "path": "assets/battle/hero-guard.png",
    "bytes": 27508,
    "names": [
     "heroPose_guard"
-   ]
+   ],
+   "arrivalSeconds": 23.659
   },
   {
    "path": "assets/battle/hero-hurt-1.png",
    "bytes": 18090,
    "names": [
     "heroFrame_hurt_1"
-   ]
+   ],
+   "arrivalSeconds": 23.825
   },
   {
    "path": "assets/battle/hero-hurt-2.png",
    "bytes": 23376,
    "names": [
     "heroFrame_hurt_2"
-   ]
+   ],
+   "arrivalSeconds": 24.017
   },
   {
    "path": "assets/battle/hero-hurt-3.png",
    "bytes": 18558,
    "names": [
     "heroFrame_hurt_3"
-   ]
+   ],
+   "arrivalSeconds": 24.184
   },
   {
    "path": "assets/battle/hero-hurt-4.png",
    "bytes": 19294,
    "names": [
     "heroFrame_hurt_4"
-   ]
+   ],
+   "arrivalSeconds": 24.356
   },
   {
    "path": "assets/battle/hero-hurt-5.png",
    "bytes": 15608,
    "names": [
     "heroFrame_hurt_5"
-   ]
+   ],
+   "arrivalSeconds": 24.509
   },
   {
    "path": "assets/battle/hero-hurt-6.png",
    "bytes": 15382,
    "names": [
     "heroFrame_hurt_6"
-   ]
+   ],
+   "arrivalSeconds": 24.661
   },
   {
    "path": "assets/battle/hero-hurt-7.png",
    "bytes": 16934,
    "names": [
     "heroFrame_hurt_7"
-   ]
+   ],
+   "arrivalSeconds": 24.82
   },
   {
    "path": "assets/battle/hero-idle.png",
    "bytes": 18554,
    "names": [
     "heroPose_idle"
-   ]
+   ],
+   "arrivalSeconds": 24.988
   },
   {
    "path": "assets/battle/hero-rush-1.png",
    "bytes": 14364,
    "names": [
     "heroFrame_rush_1"
-   ]
+   ],
+   "arrivalSeconds": 25.135
   },
   {
    "path": "assets/battle/hero-rush-2.png",
    "bytes": 17108,
    "names": [
     "heroFrame_rush_2"
-   ]
+   ],
+   "arrivalSeconds": 25.296
   },
   {
    "path": "assets/battle/hero-rush-3.png",
    "bytes": 17712,
    "names": [
     "heroFrame_rush_3"
-   ]
+   ],
+   "arrivalSeconds": 25.459
   },
   {
    "path": "assets/battle/hero-rush-4.png",
    "bytes": 19470,
    "names": [
     "heroFrame_rush_4"
-   ]
+   ],
+   "arrivalSeconds": 25.632
   },
   {
    "path": "assets/battle/hero-rush-5.png",
    "bytes": 18730,
    "names": [
     "heroFrame_rush_5"
-   ]
+   ],
+   "arrivalSeconds": 25.8
   },
   {
    "path": "assets/battle/hero-rush-6.png",
    "bytes": 18508,
    "names": [
     "heroFrame_rush_6"
-   ]
+   ],
+   "arrivalSeconds": 25.968
   },
   {
    "path": "assets/battle/hero-rush-7.png",
    "bytes": 20570,
    "names": [
     "heroFrame_rush_7"
-   ]
+   ],
+   "arrivalSeconds": 26.146
   },
   {
    "path": "assets/battle/hero-rush.png",
    "bytes": 26850,
    "names": [
     "heroPose_rush"
-   ]
+   ],
+   "arrivalSeconds": 26.355
   },
   {
    "path": "assets/sfx/bgmDay.wav",
-   "bytes": 246560,
+   "bytes": 246548,
    "names": [
     "bgmDay"
-   ]
+   ],
+   "arrivalSeconds": 27.663
   },
   {
    "path": "assets/sfx/bgmDiffuse.wav",
-   "bytes": 47825,
+   "bytes": 47813,
    "names": [
     "bgmDiffuse"
-   ]
+   ],
+   "arrivalSeconds": 27.977
   },
   {
    "path": "assets/sfx/bgmEnding.wav",
-   "bytes": 1358059,
+   "bytes": 1358047,
    "names": [
     "bgmEnding"
-   ]
+   ],
+   "arrivalSeconds": 34.842
   },
   {
    "path": "assets/sfx/bgmFight.wav",
-   "bytes": 472493,
+   "bytes": 472481,
    "names": [
     "bgmFight"
-   ]
+   ],
+   "arrivalSeconds": 37.279
   },
   {
    "path": "assets/sfx/bgmGlitch.wav",
-   "bytes": 163773,
+   "bytes": 163761,
    "names": [
     "bgmGlitch"
-   ]
+   ],
+   "arrivalSeconds": 38.173
   },
   {
    "path": "assets/sfx/bgmLose.wav",
-   "bytes": 99923,
+   "bytes": 99911,
    "names": [
     "bgmLose"
-   ]
+   ],
+   "arrivalSeconds": 38.748
   },
   {
    "path": "assets/sfx/bgmNode.wav",
-   "bytes": 244729,
+   "bytes": 244717,
    "names": [
     "bgmNode"
-   ]
+   ],
+   "arrivalSeconds": 40.046
   },
   {
    "path": "assets/sfx/bgmPuzzle.wav",
-   "bytes": 253490,
+   "bytes": 253478,
    "names": [
     "bgmPuzzle"
-   ]
+   ],
+   "arrivalSeconds": 41.389
   },
   {
    "path": "assets/sfx/bgmResult.wav",
-   "bytes": 56397,
+   "bytes": 56385,
    "names": [
     "bgmResult"
-   ]
+   ],
+   "arrivalSeconds": 41.746
   },
   {
    "path": "assets/sfx/bgmWin.wav",
-   "bytes": 175108,
+   "bytes": 175096,
    "names": [
     "bgmWin"
-   ]
+   ],
+   "arrivalSeconds": 42.696
   },
   {
    "path": "assets/card/art/ACC_001.png",
    "bytes": 22160,
    "names": [
     "cardArtACC_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 42.882
   },
   {
    "path": "assets/card/art/ACC_002.png",
    "bytes": 18404,
    "names": [
     "cardArtACC_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 43.049
   },
   {
    "path": "assets/card/art/ACC_003.png",
    "bytes": 19772,
    "names": [
     "cardArtACC_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 43.223
   },
   {
    "path": "assets/card/art/ACC_004.png",
    "bytes": 20438,
    "names": [
     "cardArtACC_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 43.4
   },
   {
    "path": "assets/card/art/ACC_005.png",
    "bytes": 28500,
    "names": [
     "cardArtACC_005"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 43.617
   },
   {
    "path": "assets/card/art/ATK_001.png",
    "bytes": 19352,
    "names": [
     "cardArtATK_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 43.789
   },
   {
    "path": "assets/card/art/ATK_002.png",
    "bytes": 20690,
    "names": [
     "cardArtATK_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 43.968
   },
   {
    "path": "assets/card/art/ATK_003.png",
    "bytes": 19584,
    "names": [
     "cardArtATK_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 44.141
   },
   {
    "path": "assets/card/art/ATK_004.png",
    "bytes": 28136,
    "names": [
     "cardArtATK_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 44.356
   },
   {
    "path": "assets/card/art/ATK_005.png",
    "bytes": 27402,
    "names": [
     "cardArtATK_005"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 44.568
   },
   {
    "path": "assets/card/art/DEF_001.png",
    "bytes": 18086,
    "names": [
     "cardArtDEF_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 44.734
   },
   {
    "path": "assets/card/art/DEF_002.png",
    "bytes": 20212,
    "names": [
     "cardArtDEF_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 44.91
   },
   {
    "path": "assets/card/art/DEF_003.png",
    "bytes": 22644,
    "names": [
     "cardArtDEF_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 45.098
   },
   {
    "path": "assets/card/art/DEF_004.png",
    "bytes": 18320,
    "names": [
     "cardArtDEF_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 45.265
   },
   {
    "path": "assets/card/art/DEF_005.png",
    "bytes": 25188,
    "names": [
     "cardArtDEF_005"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 45.465
   },
   {
    "path": "assets/card/art/INT_001.png",
    "bytes": 8060,
    "names": [
     "cardArtINT_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 45.581
   },
   {
    "path": "assets/card/art/INT_002.png",
    "bytes": 15570,
    "names": [
     "cardArtINT_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 45.734
   },
   {
    "path": "assets/card/art/INT_003.png",
    "bytes": 16176,
    "names": [
     "cardArtINT_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 45.889
   },
   {
    "path": "assets/card/art/INT_004.png",
    "bytes": 13662,
    "names": [
     "cardArtINT_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 46.033
   },
   {
    "path": "assets/card/art/INT_005.png",
    "bytes": 21716,
    "names": [
     "cardArtINT_005"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 46.216
   },
   {
    "path": "assets/card/art/MIX_AA_001.png",
    "bytes": 24700,
    "names": [
     "cardArtMIX_AA_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 46.415
   },
   {
    "path": "assets/card/art/MIX_AA_002.png",
    "bytes": 27022,
    "names": [
     "cardArtMIX_AA_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 46.625
   },
   {
    "path": "assets/card/art/MIX_AD_001.png",
    "bytes": 21786,
    "names": [
     "cardArtMIX_AD_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 46.809
   },
   {
    "path": "assets/card/art/MIX_AD_002.png",
    "bytes": 26332,
    "names": [
     "cardArtMIX_AD_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 47.016
   },
   {
    "path": "assets/card/art/MIX_AI_001.png",
    "bytes": 23600,
    "names": [
     "cardArtMIX_AI_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 47.209
   },
   {
    "path": "assets/card/art/MIX_AI_002.png",
    "bytes": 17748,
    "names": [
     "cardArtMIX_AI_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 47.372
   },
   {
    "path": "assets/card/art/MIX_AT_001.png",
    "bytes": 20996,
    "names": [
     "cardArtMIX_AT_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 47.552
   },
   {
    "path": "assets/card/art/MIX_AT_002.png",
    "bytes": 25220,
    "names": [
     "cardArtMIX_AT_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 47.753
   },
   {
    "path": "assets/card/art/MIX_DA_001.png",
    "bytes": 14550,
    "names": [
     "cardArtMIX_DA_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 47.901
   },
   {
    "path": "assets/card/art/MIX_DA_002.png",
    "bytes": 22158,
    "names": [
     "cardArtMIX_DA_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 48.087
   },
   {
    "path": "assets/card/art/MIX_DI_001.png",
    "bytes": 18622,
    "names": [
     "cardArtMIX_DI_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 48.255
   },
   {
    "path": "assets/card/art/MIX_DI_002.png",
    "bytes": 12884,
    "names": [
     "cardArtMIX_DI_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 48.394
   },
   {
    "path": "assets/card/art/MIX_DT_001.png",
    "bytes": 18300,
    "names": [
     "cardArtMIX_DT_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 48.561
   },
   {
    "path": "assets/card/art/MIX_DT_002.png",
    "bytes": 24800,
    "names": [
     "cardArtMIX_DT_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 48.76
   },
   {
    "path": "assets/card/art/MIX_IA_001.png",
    "bytes": 17396,
    "names": [
     "cardArtMIX_IA_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 48.922
   },
   {
    "path": "assets/card/art/MIX_IA_002.png",
    "bytes": 17616,
    "names": [
     "cardArtMIX_IA_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 49.085
   },
   {
    "path": "assets/card/art/MIX_TA_001.png",
    "bytes": 15902,
    "names": [
     "cardArtMIX_TA_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 49.24
   },
   {
    "path": "assets/card/art/MIX_TA_002.png",
    "bytes": 23904,
    "names": [
     "cardArtMIX_TA_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 49.434
   },
   {
    "path": "assets/card/art/MIX_TI_001.png",
    "bytes": 18776,
    "names": [
     "cardArtMIX_TI_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 49.603
   },
   {
    "path": "assets/card/art/MIX_TI_002.png",
    "bytes": 19092,
    "names": [
     "cardArtMIX_TI_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 49.773
   },
   {
    "path": "assets/card/art/PENTA_001.png",
    "bytes": 19800,
    "names": [
     "cardArtPENTA_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 49.947
   },
   {
    "path": "assets/card/art/QUAD_001.png",
    "bytes": 25020,
    "names": [
     "cardArtQUAD_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 50.147
   },
   {
    "path": "assets/card/art/QUAD_002.png",
    "bytes": 16518,
    "names": [
     "cardArtQUAD_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 50.305
   },
   {
    "path": "assets/card/art/QUAD_003.png",
    "bytes": 16268,
    "names": [
     "cardArtQUAD_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 50.461
   },
   {
    "path": "assets/card/art/QUAD_004.png",
    "bytes": 18982,
    "names": [
     "cardArtQUAD_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 50.631
   },
   {
    "path": "assets/card/art/QUAD_005.png",
    "bytes": 20052,
    "names": [
     "cardArtQUAD_005"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 50.807
   },
   {
    "path": "assets/card/art/TEC_001.png",
    "bytes": 22436,
    "names": [
     "cardArtTEC_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 50.994
   },
   {
    "path": "assets/card/art/TEC_002.png",
    "bytes": 14050,
    "names": [
     "cardArtTEC_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 51.139
   },
   {
    "path": "assets/card/art/TEC_003.png",
    "bytes": 16220,
    "names": [
     "cardArtTEC_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 51.295
   },
   {
    "path": "assets/card/art/TEC_004.png",
    "bytes": 19880,
    "names": [
     "cardArtTEC_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 51.47
   },
   {
    "path": "assets/card/art/TRI_001.png",
    "bytes": 19976,
    "names": [
     "cardArtTRI_001"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 51.644
   },
   {
    "path": "assets/card/art/TRI_002.png",
    "bytes": 19642,
    "names": [
     "cardArtTRI_002"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 51.818
   },
   {
    "path": "assets/card/art/TRI_003.png",
    "bytes": 23058,
    "names": [
     "cardArtTRI_003"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.008
   },
   {
    "path": "assets/card/art/TRI_004.png",
    "bytes": 18138,
    "names": [
     "cardArtTRI_004"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.174
   },
   {
    "path": "assets/card/art/TRI_005.png",
    "bytes": 18526,
    "names": [
     "cardArtTRI_005"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.341
   },
   {
    "path": "assets/card/art/TRI_006.png",
    "bytes": 18358,
    "names": [
     "cardArtTRI_006"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.508
   },
   {
    "path": "assets/card/art/TRI_007.png",
    "bytes": 12430,
    "names": [
     "cardArtTRI_007"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.645
   },
   {
    "path": "assets/card/art/TRI_008.png",
    "bytes": 17544,
    "names": [
     "cardArtTRI_008"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.808
   },
   {
    "path": "assets/card/art/TRI_009.png",
    "bytes": 16472,
    "names": [
     "cardArtTRI_009"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.965
   },
   {
    "path": "assets/card/art/TRI_010.png",
    "bytes": 14342,
    "names": [
     "cardArtTRI_010"
-   ]
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 53.112
   }
  ],
  "splash": {
@@ -2455,14 +2664,19 @@
   "fontSize": 10,
   "ascent": 9,
   "descent": 2,
-  "cellH": 11
+  "cellH": 11,
+  "afterTap": {
+   "mode": "engine",
+   "minSeconds": 1.2,
+   "maxSeconds": 3
+  }
  },
  "wasmBrotli": "classes.wasm.br",
  "boot": {
-  "assets": 1692253,
-  "assetsWire": 1084953,
-  "wasm": 2254976,
-  "wasmWire": 2323247
+  "assets": 1690747,
+  "assetsWire": 1083383,
+  "wasm": 2291438,
+  "wasmWire": 2359709
  },
  "serviceWorker": true
 }
