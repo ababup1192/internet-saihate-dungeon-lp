@@ -1558,7 +1558,7 @@
     ],
     "deferredFonts": ["round", "roundBig", "label"],
     "compress": {
-      "audioBitrateKbps": 32,
+      "audioBitrateKbps": 64,
       "lossyImages": [
         { "glob": "assets/art/title-bg.png", "quality": 90 },
         { "glob": "assets/art/opening-*.png", "quality": 90 },

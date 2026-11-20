@@ -1426,7 +1426,7 @@
   },
   {
    "path": "assets/sfx/bgmTitle.wav",
-   "bytes": 514568,
+   "bytes": 928987,
    "names": [
     "bgmTitle"
    ]
@@ -1958,70 +1958,70 @@
   },
   {
    "path": "assets/sfx/bgmDay.wav",
-   "bytes": 111881,
+   "bytes": 246560,
    "names": [
     "bgmDay"
    ]
   },
   {
    "path": "assets/sfx/bgmDiffuse.wav",
-   "bytes": 24665,
+   "bytes": 47825,
    "names": [
     "bgmDiffuse"
    ]
   },
   {
    "path": "assets/sfx/bgmEnding.wav",
-   "bytes": 754686,
+   "bytes": 1358059,
    "names": [
     "bgmEnding"
    ]
   },
   {
    "path": "assets/sfx/bgmFight.wav",
-   "bytes": 257731,
+   "bytes": 472493,
    "names": [
     "bgmFight"
    ]
   },
   {
    "path": "assets/sfx/bgmGlitch.wav",
-   "bytes": 86292,
+   "bytes": 163773,
    "names": [
     "bgmGlitch"
    ]
   },
   {
    "path": "assets/sfx/bgmLose.wav",
-   "bytes": 48573,
+   "bytes": 99923,
    "names": [
     "bgmLose"
    ]
   },
   {
    "path": "assets/sfx/bgmNode.wav",
-   "bytes": 109055,
+   "bytes": 244729,
    "names": [
     "bgmNode"
    ]
   },
   {
    "path": "assets/sfx/bgmPuzzle.wav",
-   "bytes": 110452,
+   "bytes": 253490,
    "names": [
     "bgmPuzzle"
    ]
   },
   {
    "path": "assets/sfx/bgmResult.wav",
-   "bytes": 23401,
+   "bytes": 56397,
    "names": [
     "bgmResult"
    ]
   },
   {
    "path": "assets/sfx/bgmWin.wav",
-   "bytes": 90264,
+   "bytes": 175108,
    "names": [
     "bgmWin"
    ]
@@ -2459,10 +2459,10 @@
  },
  "wasmBrotli": "classes.wasm.br",
  "boot": {
-  "assets": 1525247,
-  "assetsWire": 917947,
-  "wasm": 2255730,
-  "wasmWire": 2324001
+  "assets": 1692253,
+  "assetsWire": 1084953,
+  "wasm": 2254976,
+  "wasmWire": 2323247
  },
  "serviceWorker": true
 }
