@@ -1557,6 +1557,9 @@
       "assets/card/art/*.png"
     ],
     "deferredFonts": ["round", "roundBig", "label"],
+    "deferredPolicy": [
+      { "match": "assets/card/art/*.png", "onMissing": "placeholder" }
+    ],
     "compress": {
       "audioBitrateKbps": 64,
       "lossyImages": [

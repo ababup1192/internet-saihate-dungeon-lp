@@ -2031,420 +2031,480 @@
    "bytes": 22160,
    "names": [
     "cardArtACC_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ACC_002.png",
    "bytes": 18404,
    "names": [
     "cardArtACC_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ACC_003.png",
    "bytes": 19772,
    "names": [
     "cardArtACC_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ACC_004.png",
    "bytes": 20438,
    "names": [
     "cardArtACC_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ACC_005.png",
    "bytes": 28500,
    "names": [
     "cardArtACC_005"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ATK_001.png",
    "bytes": 19352,
    "names": [
     "cardArtATK_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ATK_002.png",
    "bytes": 20690,
    "names": [
     "cardArtATK_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ATK_003.png",
    "bytes": 19584,
    "names": [
     "cardArtATK_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ATK_004.png",
    "bytes": 28136,
    "names": [
     "cardArtATK_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/ATK_005.png",
    "bytes": 27402,
    "names": [
     "cardArtATK_005"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/DEF_001.png",
    "bytes": 18086,
    "names": [
     "cardArtDEF_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/DEF_002.png",
    "bytes": 20212,
    "names": [
     "cardArtDEF_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/DEF_003.png",
    "bytes": 22644,
    "names": [
     "cardArtDEF_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/DEF_004.png",
    "bytes": 18320,
    "names": [
     "cardArtDEF_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/DEF_005.png",
    "bytes": 25188,
    "names": [
     "cardArtDEF_005"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/INT_001.png",
    "bytes": 8060,
    "names": [
     "cardArtINT_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/INT_002.png",
    "bytes": 15570,
    "names": [
     "cardArtINT_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/INT_003.png",
    "bytes": 16176,
    "names": [
     "cardArtINT_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/INT_004.png",
    "bytes": 13662,
    "names": [
     "cardArtINT_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/INT_005.png",
    "bytes": 21716,
    "names": [
     "cardArtINT_005"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AA_001.png",
    "bytes": 24700,
    "names": [
     "cardArtMIX_AA_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AA_002.png",
    "bytes": 27022,
    "names": [
     "cardArtMIX_AA_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AD_001.png",
    "bytes": 21786,
    "names": [
     "cardArtMIX_AD_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AD_002.png",
    "bytes": 26332,
    "names": [
     "cardArtMIX_AD_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AI_001.png",
    "bytes": 23600,
    "names": [
     "cardArtMIX_AI_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AI_002.png",
    "bytes": 17748,
    "names": [
     "cardArtMIX_AI_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AT_001.png",
    "bytes": 20996,
    "names": [
     "cardArtMIX_AT_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_AT_002.png",
    "bytes": 25220,
    "names": [
     "cardArtMIX_AT_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_DA_001.png",
    "bytes": 14550,
    "names": [
     "cardArtMIX_DA_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_DA_002.png",
    "bytes": 22158,
    "names": [
     "cardArtMIX_DA_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_DI_001.png",
    "bytes": 18622,
    "names": [
     "cardArtMIX_DI_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_DI_002.png",
    "bytes": 12884,
    "names": [
     "cardArtMIX_DI_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_DT_001.png",
    "bytes": 18300,
    "names": [
     "cardArtMIX_DT_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_DT_002.png",
    "bytes": 24800,
    "names": [
     "cardArtMIX_DT_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_IA_001.png",
    "bytes": 17396,
    "names": [
     "cardArtMIX_IA_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_IA_002.png",
    "bytes": 17616,
    "names": [
     "cardArtMIX_IA_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_TA_001.png",
    "bytes": 15902,
    "names": [
     "cardArtMIX_TA_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_TA_002.png",
    "bytes": 23904,
    "names": [
     "cardArtMIX_TA_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_TI_001.png",
    "bytes": 18776,
    "names": [
     "cardArtMIX_TI_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/MIX_TI_002.png",
    "bytes": 19092,
    "names": [
     "cardArtMIX_TI_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/PENTA_001.png",
    "bytes": 19800,
    "names": [
     "cardArtPENTA_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/QUAD_001.png",
    "bytes": 25020,
    "names": [
     "cardArtQUAD_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/QUAD_002.png",
    "bytes": 16518,
    "names": [
     "cardArtQUAD_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/QUAD_003.png",
    "bytes": 16268,
    "names": [
     "cardArtQUAD_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/QUAD_004.png",
    "bytes": 18982,
    "names": [
     "cardArtQUAD_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/QUAD_005.png",
    "bytes": 20052,
    "names": [
     "cardArtQUAD_005"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TEC_001.png",
    "bytes": 22436,
    "names": [
     "cardArtTEC_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TEC_002.png",
    "bytes": 14050,
    "names": [
     "cardArtTEC_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TEC_003.png",
    "bytes": 16220,
    "names": [
     "cardArtTEC_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TEC_004.png",
    "bytes": 19880,
    "names": [
     "cardArtTEC_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_001.png",
    "bytes": 19976,
    "names": [
     "cardArtTRI_001"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_002.png",
    "bytes": 19642,
    "names": [
     "cardArtTRI_002"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_003.png",
    "bytes": 23058,
    "names": [
     "cardArtTRI_003"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_004.png",
    "bytes": 18138,
    "names": [
     "cardArtTRI_004"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_005.png",
    "bytes": 18526,
    "names": [
     "cardArtTRI_005"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_006.png",
    "bytes": 18358,
    "names": [
     "cardArtTRI_006"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_007.png",
    "bytes": 12430,
    "names": [
     "cardArtTRI_007"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_008.png",
    "bytes": 17544,
    "names": [
     "cardArtTRI_008"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_009.png",
    "bytes": 16472,
    "names": [
     "cardArtTRI_009"
-   ]
+   ],
+   "onMissing": "placeholder"
   },
   {
    "path": "assets/card/art/TRI_010.png",
    "bytes": 14342,
    "names": [
     "cardArtTRI_010"
-   ]
+   ],
+   "onMissing": "placeholder"
   }
  ],
  "splash": {
@@ -2459,10 +2519,10 @@
  },
  "wasmBrotli": "classes.wasm.br",
  "boot": {
-  "assets": 1690645,
-  "assetsWire": 1083345,
-  "wasm": 2292552,
-  "wasmWire": 2360823
+  "assets": 1690747,
+  "assetsWire": 1083383,
+  "wasm": 2289922,
+  "wasmWire": 2358193
  },
  "serviceWorker": true
 }
