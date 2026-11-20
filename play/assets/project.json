@@ -1547,8 +1547,27 @@
   "web": {
     "keysDoc": "assets/player.keys.json",
     "orientation": "landscape",
-    "deferred": ["assets/sfx/bgm*.wav", "assets/card/art/*.png"],
-    "deferredFonts": ["round", "roundBig", "label"]
+    "deferred": [
+      "assets/sfx/bgmTitle.wav",
+      "assets/art/opening-*.png",
+      "assets/art/talk-*.png",
+      "assets/stand/*.png",
+      "assets/battle/*.png",
+      "assets/sfx/bgm*.wav",
+      "assets/card/art/*.png"
+    ],
+    "deferredFonts": ["round", "roundBig", "label"],
+    "compress": {
+      "lossyImages": [
+        { "glob": "assets/art/title-bg.png", "quality": 90 },
+        { "glob": "assets/art/opening-*.png", "quality": 90 },
+        { "glob": "assets/art/talk-*.png", "quality": 90 },
+        { "glob": "assets/stand/avatar-face?.png", "quality": 90 },
+        { "glob": "assets/stand/girl-face?.png", "quality": 90 },
+        { "glob": "assets/battle/*.png", "quality": 90 },
+        { "glob": "assets/card/art/*.png", "quality": 90 }
+      ]
+    }
   },
   "editor": {
     "plugins": [
