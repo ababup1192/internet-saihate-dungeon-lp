@@ -1547,19 +1547,45 @@
   "web": {
     "keysDoc": "assets/player.keys.json",
     "orientation": "landscape",
+    "// deferred": "押して始めた後に裏で取る素材（使う順）。はじめからのオープニングで最初に出る机の絵と投稿の添付を頭に置いて押した後のロゴで待ち、続く会話の顔・フィードのアイコン・戦いの絵とカードの枠を先に取る。タイトルのカーソル・決定の音と、オープニングで鳴る効果音は起動時に取る。オープニングで鳴らない効果音（昼のパズルと戦い）は、小さなファイルが多く BGM の届きを遅らせるので BGM の後ろ。",
     "deferred": [
-      "assets/sfx/bgmTitle.wav",
       "assets/art/opening-*.png",
+      "assets/stand/girl-face*.png",
+      "assets/sfx/bgmTitle.wav",
+      "assets/feed/*.png",
       "assets/art/talk-*.png",
       "assets/stand/*.png",
       "assets/battle/*.png",
+      "assets/card/art/ATK_003.png",
+      "assets/card/*.png",
       "assets/sfx/bgm*.wav",
+      "assets/sfx/applause.wav", "assets/sfx/block.wav", "assets/sfx/brush.wav", "assets/sfx/cardSpinFit*.wav",
+      "assets/sfx/chain*.wav", "assets/sfx/cleanse.wav", "assets/sfx/clear*.wav", "assets/sfx/crtOffShot.wav",
+      "assets/sfx/dayflip.wav", "assets/sfx/deckPress.wav", "assets/sfx/defeat.wav", "assets/sfx/drip.wav",
+      "assets/sfx/endBurst.wav", "assets/sfx/endLost.wav", "assets/sfx/endOk.wav", "assets/sfx/endPowerOn.wav",
+      "assets/sfx/endQuote.wav", "assets/sfx/endTrend.wav", "assets/sfx/endType.wav", "assets/sfx/expire.wav",
+      "assets/sfx/fanfare.wav", "assets/sfx/feedBad.wav", "assets/sfx/feedGood.wav", "assets/sfx/feedRefresh.wav",
+      "assets/sfx/fxGuard.wav", "assets/sfx/fxHex.wav", "assets/sfx/fxRush.wav", "assets/sfx/fxSkill.wav",
+      "assets/sfx/healFill.wav", "assets/sfx/notify.wav", "assets/sfx/pencilRoll.wav", "assets/sfx/pencilSharpen.wav",
+      "assets/sfx/phonePing.wav", "assets/sfx/phoneRise.wav", "assets/sfx/phoneSetDown.wav", "assets/sfx/phoneShrink.wav",
+      "assets/sfx/phoneZoom.wav", "assets/sfx/piecePick.wav", "assets/sfx/pieceSwap.wav", "assets/sfx/poisonBite.wav",
+      "assets/sfx/powerHit2.wav", "assets/sfx/powerHit3.wav", "assets/sfx/powerHit4.wav", "assets/sfx/powerHit5.wav",
+      "assets/sfx/relicGet.wav", "assets/sfx/riposte.wav", "assets/sfx/scoreAdd.wav", "assets/sfx/scroll.wav",
+      "assets/sfx/shardLand.wav", "assets/sfx/shieldBreak.wav", "assets/sfx/sleep.wav", "assets/sfx/splat*.wav",
+      "assets/sfx/squeeze.wav", "assets/sfx/step.wav", "assets/sfx/swap.wav", "assets/sfx/turnStart.wav",
+      "assets/sfx/vanish.wav", "assets/sfx/victory.wav", "assets/sfx/wake.wav", "assets/sfx/whiff.wav",
+      "assets/sfx/winSting.wav",
       "assets/card/art/*.png"
     ],
     "deferredFonts": ["round", "roundBig", "label"],
     "deferredPolicy": [
-      { "match": "assets/card/art/*.png", "onMissing": "placeholder" }
+      { "match": "assets/art/opening-*.png", "group": "opening" },
+      { "match": "assets/card/art/*.png", "onMissing": "placeholder", "why": "カードの絵は 60 枚あり、全部が届くのは押してから約 1 分後。届くまでは枠と字だけのカードで遊べる" }
     ],
+    "startupBudget": {
+      "seconds": 22,
+      "why": "遊びの中身（カードの戦い・パズル・会話）を 1 本の wasm に入れていて、4G では起動のうち約 12 秒を wasm が占める。タイトルの絵とロゴ・字・オープニングで鳴る効果音も起動で取る。押した後は、オープニングの途中から使う丸い字のフォント 2 本（約 1 MB）を先に取るので、オープニングの最初の絵が届くまでロゴの後に約 3 秒待つ。"
+    },
     "compress": {
       "audioBitrateKbps": 64,
       "lossyImages": [

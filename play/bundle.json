@@ -1428,20 +1428,13 @@
    "arrivalSeconds": 4.856
   },
   {
-   "path": "assets/sfx/bgmTitle.wav",
-   "bytes": 928975,
-   "names": [
-    "bgmTitle"
-   ],
-   "arrivalSeconds": 9.576
-  },
-  {
    "path": "assets/art/opening-desk.png",
    "bytes": 251160,
    "names": [
     "openingDesk"
    ],
-   "arrivalSeconds": 10.907
+   "group": "opening",
+   "arrivalSeconds": 6.187
   },
   {
    "path": "assets/art/opening-post.png",
@@ -1449,95 +1442,8 @@
    "names": [
     "openingPost"
    ],
-   "arrivalSeconds": 11.029
-  },
-  {
-   "path": "assets/art/talk-net.png",
-   "bytes": 92510,
-   "names": [
-    "talkArtNet"
-   ],
-   "arrivalSeconds": 11.566
-  },
-  {
-   "path": "assets/art/talk-room.png",
-   "bytes": 111176,
-   "names": [
-    "talkArtRoom"
-   ],
-   "arrivalSeconds": 12.197
-  },
-  {
-   "path": "assets/stand/avatar-face0.png",
-   "bytes": 34468,
-   "names": [
-    "avatarFace0"
-   ],
-   "arrivalSeconds": 12.445
-  },
-  {
-   "path": "assets/stand/avatar-face1.png",
-   "bytes": 36274,
-   "names": [
-    "avatarFace1"
-   ],
-   "arrivalSeconds": 12.701
-  },
-  {
-   "path": "assets/stand/avatar-face2.png",
-   "bytes": 35586,
-   "names": [
-    "avatarFace2"
-   ],
-   "arrivalSeconds": 12.954
-  },
-  {
-   "path": "assets/stand/avatar-face3.png",
-   "bytes": 35732,
-   "names": [
-    "avatarFace3"
-   ],
-   "arrivalSeconds": 13.208
-  },
-  {
-   "path": "assets/stand/avatar-face4.png",
-   "bytes": 30748,
-   "names": [
-    "avatarFace4"
-   ],
-   "arrivalSeconds": 13.436
-  },
-  {
-   "path": "assets/stand/avatar-face5-shape.png",
-   "bytes": 13740,
-   "names": [
-    "avatarFace5Shape"
-   ],
-   "arrivalSeconds": 13.58
-  },
-  {
-   "path": "assets/stand/avatar-face5.png",
-   "bytes": 31942,
-   "names": [
-    "avatarFace5"
-   ],
-   "arrivalSeconds": 13.815
-  },
-  {
-   "path": "assets/stand/avatar-face6.png",
-   "bytes": 24480,
-   "names": [
-    "avatarFace6"
-   ],
-   "arrivalSeconds": 14.012
-  },
-  {
-   "path": "assets/stand/avatar-face7.png",
-   "bytes": 24616,
-   "names": [
-    "avatarFace7"
-   ],
-   "arrivalSeconds": 14.21
+   "group": "opening",
+   "arrivalSeconds": 6.309
   },
   {
    "path": "assets/stand/girl-face0.png",
@@ -1545,7 +1451,7 @@
    "names": [
     "girlFace0"
    ],
-   "arrivalSeconds": 14.438
+   "arrivalSeconds": 6.537
   },
   {
    "path": "assets/stand/girl-face1.png",
@@ -1553,7 +1459,7 @@
    "names": [
     "girlFace1"
    ],
-   "arrivalSeconds": 14.653
+   "arrivalSeconds": 6.752
   },
   {
    "path": "assets/stand/girl-face2.png",
@@ -1561,7 +1467,7 @@
    "names": [
     "girlFace2"
    ],
-   "arrivalSeconds": 14.876
+   "arrivalSeconds": 6.975
   },
   {
    "path": "assets/stand/girl-face3.png",
@@ -1569,7 +1475,7 @@
    "names": [
     "girlFace3"
    ],
-   "arrivalSeconds": 15.108
+   "arrivalSeconds": 7.207
   },
   {
    "path": "assets/stand/girl-face4.png",
@@ -1577,7 +1483,7 @@
    "names": [
     "girlFace4"
    ],
-   "arrivalSeconds": 15.322
+   "arrivalSeconds": 7.421
   },
   {
    "path": "assets/stand/girl-face5.png",
@@ -1585,7 +1491,7 @@
    "names": [
     "girlFace5"
    ],
-   "arrivalSeconds": 15.551
+   "arrivalSeconds": 7.65
   },
   {
    "path": "assets/stand/girl-face6.png",
@@ -1593,7 +1499,7 @@
    "names": [
     "girlFace6"
    ],
-   "arrivalSeconds": 15.726
+   "arrivalSeconds": 7.824
   },
   {
    "path": "assets/stand/girl-face7.png",
@@ -1601,7 +1507,175 @@
    "names": [
     "girlFace7"
    ],
-   "arrivalSeconds": 15.902
+   "arrivalSeconds": 8.001
+  },
+  {
+   "path": "assets/sfx/bgmTitle.wav",
+   "bytes": 928975,
+   "names": [
+    "bgmTitle"
+   ],
+   "arrivalSeconds": 12.721
+  },
+  {
+   "path": "assets/feed/avatar-avatar.png",
+   "bytes": 896,
+   "names": [
+    "feedAvatarAvatar"
+   ],
+   "arrivalSeconds": 12.8
+  },
+  {
+   "path": "assets/feed/avatar-fan.png",
+   "bytes": 1026,
+   "names": [
+    "feedAvatarFan"
+   ],
+   "arrivalSeconds": 12.88
+  },
+  {
+   "path": "assets/feed/avatar-girl.png",
+   "bytes": 750,
+   "names": [
+    "feedAvatarGirl"
+   ],
+   "arrivalSeconds": 12.959
+  },
+  {
+   "path": "assets/feed/avatar-lizard.png",
+   "bytes": 1066,
+   "names": [
+    "feedAvatarLizard"
+   ],
+   "arrivalSeconds": 13.039
+  },
+  {
+   "path": "assets/feed/avatar-moff.png",
+   "bytes": 730,
+   "names": [
+    "feedAvatarMoff"
+   ],
+   "arrivalSeconds": 13.118
+  },
+  {
+   "path": "assets/feed/avatar-mutual.png",
+   "bytes": 768,
+   "names": [
+    "feedAvatarMutual"
+   ],
+   "arrivalSeconds": 13.197
+  },
+  {
+   "path": "assets/feed/avatar-slime.png",
+   "bytes": 708,
+   "names": [
+    "feedAvatarSlime"
+   ],
+   "arrivalSeconds": 13.275
+  },
+  {
+   "path": "assets/feed/avatar-yuno.png",
+   "bytes": 888,
+   "names": [
+    "feedAvatarYuno"
+   ],
+   "arrivalSeconds": 13.355
+  },
+  {
+   "path": "assets/feed/avatar-zombie.png",
+   "bytes": 938,
+   "names": [
+    "feedAvatarZombie"
+   ],
+   "arrivalSeconds": 13.435
+  },
+  {
+   "path": "assets/art/talk-net.png",
+   "bytes": 92510,
+   "names": [
+    "talkArtNet"
+   ],
+   "arrivalSeconds": 13.972
+  },
+  {
+   "path": "assets/art/talk-room.png",
+   "bytes": 111176,
+   "names": [
+    "talkArtRoom"
+   ],
+   "arrivalSeconds": 14.603
+  },
+  {
+   "path": "assets/stand/avatar-face0.png",
+   "bytes": 34468,
+   "names": [
+    "avatarFace0"
+   ],
+   "arrivalSeconds": 14.85
+  },
+  {
+   "path": "assets/stand/avatar-face1.png",
+   "bytes": 36274,
+   "names": [
+    "avatarFace1"
+   ],
+   "arrivalSeconds": 15.107
+  },
+  {
+   "path": "assets/stand/avatar-face2.png",
+   "bytes": 35586,
+   "names": [
+    "avatarFace2"
+   ],
+   "arrivalSeconds": 15.36
+  },
+  {
+   "path": "assets/stand/avatar-face3.png",
+   "bytes": 35732,
+   "names": [
+    "avatarFace3"
+   ],
+   "arrivalSeconds": 15.613
+  },
+  {
+   "path": "assets/stand/avatar-face4.png",
+   "bytes": 30748,
+   "names": [
+    "avatarFace4"
+   ],
+   "arrivalSeconds": 15.842
+  },
+  {
+   "path": "assets/stand/avatar-face5-shape.png",
+   "bytes": 13740,
+   "names": [
+    "avatarFace5Shape"
+   ],
+   "arrivalSeconds": 15.986
+  },
+  {
+   "path": "assets/stand/avatar-face5.png",
+   "bytes": 31942,
+   "names": [
+    "avatarFace5"
+   ],
+   "arrivalSeconds": 16.22
+  },
+  {
+   "path": "assets/stand/avatar-face6.png",
+   "bytes": 24480,
+   "names": [
+    "avatarFace6"
+   ],
+   "arrivalSeconds": 16.418
+  },
+  {
+   "path": "assets/stand/avatar-face7.png",
+   "bytes": 24616,
+   "names": [
+    "avatarFace7"
+   ],
+   "arrivalSeconds": 16.616
   },
   {
    "path": "assets/battle/foe-lizard-attack.png",
@@ -1609,7 +1683,7 @@
    "names": [
     "fightFoe2_attack"
    ],
-   "arrivalSeconds": 16.245
+   "arrivalSeconds": 16.959
   },
   {
    "path": "assets/battle/foe-lizard-idle.png",
@@ -1617,7 +1691,7 @@
    "names": [
     "fightFoe2_idle"
    ],
-   "arrivalSeconds": 16.522
+   "arrivalSeconds": 17.236
   },
   {
    "path": "assets/battle/foe-slime-attack.png",
@@ -1625,7 +1699,7 @@
    "names": [
     "fightFoe0_attack"
    ],
-   "arrivalSeconds": 16.753
+   "arrivalSeconds": 17.466
   },
   {
    "path": "assets/battle/foe-slime-idle.png",
@@ -1633,7 +1707,7 @@
    "names": [
     "fightFoe0_idle"
    ],
-   "arrivalSeconds": 16.964
+   "arrivalSeconds": 17.678
   },
   {
    "path": "assets/battle/foe-zombie-attack.png",
@@ -1641,7 +1715,7 @@
    "names": [
     "fightFoe1_attack"
    ],
-   "arrivalSeconds": 17.196
+   "arrivalSeconds": 17.91
   },
   {
    "path": "assets/battle/foe-zombie-idle.png",
@@ -1649,7 +1723,7 @@
    "names": [
     "fightFoe1_idle"
    ],
-   "arrivalSeconds": 17.365
+   "arrivalSeconds": 18.079
   },
   {
    "path": "assets/battle/hero-attack-1.png",
@@ -1657,7 +1731,7 @@
    "names": [
     "heroFrame_attack_1"
    ],
-   "arrivalSeconds": 17.526
+   "arrivalSeconds": 18.24
   },
   {
    "path": "assets/battle/hero-attack-2.png",
@@ -1665,7 +1739,7 @@
    "names": [
     "heroFrame_attack_2"
    ],
-   "arrivalSeconds": 17.703
+   "arrivalSeconds": 18.417
   },
   {
    "path": "assets/battle/hero-attack-3.png",
@@ -1673,7 +1747,7 @@
    "names": [
     "heroFrame_attack_3"
    ],
-   "arrivalSeconds": 17.894
+   "arrivalSeconds": 18.608
   },
   {
    "path": "assets/battle/hero-attack-4.png",
@@ -1681,7 +1755,7 @@
    "names": [
     "heroFrame_attack_4"
    ],
-   "arrivalSeconds": 18.093
+   "arrivalSeconds": 18.807
   },
   {
    "path": "assets/battle/hero-attack-5.png",
@@ -1689,7 +1763,7 @@
    "names": [
     "heroFrame_attack_5"
    ],
-   "arrivalSeconds": 18.273
+   "arrivalSeconds": 18.987
   },
   {
    "path": "assets/battle/hero-attack-6.png",
@@ -1697,7 +1771,7 @@
    "names": [
     "heroFrame_attack_6"
    ],
-   "arrivalSeconds": 18.451
+   "arrivalSeconds": 19.165
   },
   {
    "path": "assets/battle/hero-attack-7.png",
@@ -1705,7 +1779,7 @@
    "names": [
     "heroFrame_attack_7"
    ],
-   "arrivalSeconds": 18.648
+   "arrivalSeconds": 19.362
   },
   {
    "path": "assets/battle/hero-attack.png",
@@ -1713,7 +1787,7 @@
    "names": [
     "heroPose_attack"
    ],
-   "arrivalSeconds": 18.895
+   "arrivalSeconds": 19.609
   },
   {
    "path": "assets/battle/hero-buff-1.png",
@@ -1721,7 +1795,7 @@
    "names": [
     "heroFrame_buff_1"
    ],
-   "arrivalSeconds": 19.061
+   "arrivalSeconds": 19.775
   },
   {
    "path": "assets/battle/hero-buff-2.png",
@@ -1729,7 +1803,7 @@
    "names": [
     "heroFrame_buff_2"
    ],
-   "arrivalSeconds": 19.264
+   "arrivalSeconds": 19.978
   },
   {
    "path": "assets/battle/hero-buff-3.png",
@@ -1737,7 +1811,7 @@
    "names": [
     "heroFrame_buff_3"
    ],
-   "arrivalSeconds": 19.491
+   "arrivalSeconds": 20.205
   },
   {
    "path": "assets/battle/hero-buff-4.png",
@@ -1745,7 +1819,7 @@
    "names": [
     "heroFrame_buff_4"
    ],
-   "arrivalSeconds": 19.718
+   "arrivalSeconds": 20.432
   },
   {
    "path": "assets/battle/hero-buff-5.png",
@@ -1753,7 +1827,7 @@
    "names": [
     "heroFrame_buff_5"
    ],
-   "arrivalSeconds": 19.941
+   "arrivalSeconds": 20.655
   },
   {
    "path": "assets/battle/hero-buff-6.png",
@@ -1761,7 +1835,7 @@
    "names": [
     "heroFrame_buff_6"
    ],
-   "arrivalSeconds": 20.172
+   "arrivalSeconds": 20.886
   },
   {
    "path": "assets/battle/hero-buff-7.png",
@@ -1769,7 +1843,7 @@
    "names": [
     "heroFrame_buff_7"
    ],
-   "arrivalSeconds": 20.416
+   "arrivalSeconds": 21.13
   },
   {
    "path": "assets/battle/hero-buff.png",
@@ -1777,7 +1851,7 @@
    "names": [
     "heroPose_buff"
    ],
-   "arrivalSeconds": 20.645
+   "arrivalSeconds": 21.359
   },
   {
    "path": "assets/battle/hero-debuff-1.png",
@@ -1785,7 +1859,7 @@
    "names": [
     "heroFrame_debuff_1"
    ],
-   "arrivalSeconds": 20.804
+   "arrivalSeconds": 21.518
   },
   {
    "path": "assets/battle/hero-debuff-2.png",
@@ -1793,7 +1867,7 @@
    "names": [
     "heroFrame_debuff_2"
    ],
-   "arrivalSeconds": 20.974
+   "arrivalSeconds": 21.688
   },
   {
    "path": "assets/battle/hero-debuff-3.png",
@@ -1801,7 +1875,7 @@
    "names": [
     "heroFrame_debuff_3"
    ],
-   "arrivalSeconds": 21.165
+   "arrivalSeconds": 21.879
   },
   {
    "path": "assets/battle/hero-debuff-4.png",
@@ -1809,7 +1883,7 @@
    "names": [
     "heroFrame_debuff_4"
    ],
-   "arrivalSeconds": 21.349
+   "arrivalSeconds": 22.063
   },
   {
    "path": "assets/battle/hero-debuff-5.png",
@@ -1817,7 +1891,7 @@
    "names": [
     "heroFrame_debuff_5"
    ],
-   "arrivalSeconds": 21.538
+   "arrivalSeconds": 22.252
   },
   {
    "path": "assets/battle/hero-debuff-6.png",
@@ -1825,7 +1899,7 @@
    "names": [
     "heroFrame_debuff_6"
    ],
-   "arrivalSeconds": 21.748
+   "arrivalSeconds": 22.462
   },
   {
    "path": "assets/battle/hero-debuff-7.png",
@@ -1833,7 +1907,7 @@
    "names": [
     "heroFrame_debuff_7"
    ],
-   "arrivalSeconds": 21.949
+   "arrivalSeconds": 22.663
   },
   {
    "path": "assets/battle/hero-debuff.png",
@@ -1841,7 +1915,7 @@
    "names": [
     "heroPose_debuff"
    ],
-   "arrivalSeconds": 22.158
+   "arrivalSeconds": 22.872
   },
   {
    "path": "assets/battle/hero-guard-1.png",
@@ -1849,7 +1923,7 @@
    "names": [
     "heroFrame_guard_1"
    ],
-   "arrivalSeconds": 22.32
+   "arrivalSeconds": 23.034
   },
   {
    "path": "assets/battle/hero-guard-2.png",
@@ -1857,7 +1931,7 @@
    "names": [
     "heroFrame_guard_2"
    ],
-   "arrivalSeconds": 22.499
+   "arrivalSeconds": 23.213
   },
   {
    "path": "assets/battle/hero-guard-3.png",
@@ -1865,7 +1939,7 @@
    "names": [
     "heroFrame_guard_3"
    ],
-   "arrivalSeconds": 22.685
+   "arrivalSeconds": 23.399
   },
   {
    "path": "assets/battle/hero-guard-4.png",
@@ -1873,7 +1947,7 @@
    "names": [
     "heroFrame_guard_4"
    ],
-   "arrivalSeconds": 22.883
+   "arrivalSeconds": 23.597
   },
   {
    "path": "assets/battle/hero-guard-5.png",
@@ -1881,7 +1955,7 @@
    "names": [
     "heroFrame_guard_5"
    ],
-   "arrivalSeconds": 23.076
+   "arrivalSeconds": 23.79
   },
   {
    "path": "assets/battle/hero-guard-6.png",
@@ -1889,7 +1963,7 @@
    "names": [
     "heroFrame_guard_6"
    ],
-   "arrivalSeconds": 23.264
+   "arrivalSeconds": 23.978
   },
   {
    "path": "assets/battle/hero-guard-7.png",
@@ -1897,7 +1971,7 @@
    "names": [
     "heroFrame_guard_7"
    ],
-   "arrivalSeconds": 23.447
+   "arrivalSeconds": 24.161
   },
   {
    "path": "assets/battle/hero-guard.png",
@@ -1905,7 +1979,7 @@
    "names": [
     "heroPose_guard"
    ],
-   "arrivalSeconds": 23.659
+   "arrivalSeconds": 24.373
   },
   {
    "path": "assets/battle/hero-hurt-1.png",
@@ -1913,7 +1987,7 @@
    "names": [
     "heroFrame_hurt_1"
    ],
-   "arrivalSeconds": 23.825
+   "arrivalSeconds": 24.539
   },
   {
    "path": "assets/battle/hero-hurt-2.png",
@@ -1921,7 +1995,7 @@
    "names": [
     "heroFrame_hurt_2"
    ],
-   "arrivalSeconds": 24.017
+   "arrivalSeconds": 24.73
   },
   {
    "path": "assets/battle/hero-hurt-3.png",
@@ -1929,7 +2003,7 @@
    "names": [
     "heroFrame_hurt_3"
    ],
-   "arrivalSeconds": 24.184
+   "arrivalSeconds": 24.898
   },
   {
    "path": "assets/battle/hero-hurt-4.png",
@@ -1937,7 +2011,7 @@
    "names": [
     "heroFrame_hurt_4"
    ],
-   "arrivalSeconds": 24.356
+   "arrivalSeconds": 25.07
   },
   {
    "path": "assets/battle/hero-hurt-5.png",
@@ -1945,7 +2019,7 @@
    "names": [
     "heroFrame_hurt_5"
    ],
-   "arrivalSeconds": 24.509
+   "arrivalSeconds": 25.223
   },
   {
    "path": "assets/battle/hero-hurt-6.png",
@@ -1953,7 +2027,7 @@
    "names": [
     "heroFrame_hurt_6"
    ],
-   "arrivalSeconds": 24.661
+   "arrivalSeconds": 25.375
   },
   {
    "path": "assets/battle/hero-hurt-7.png",
@@ -1961,7 +2035,7 @@
    "names": [
     "heroFrame_hurt_7"
    ],
-   "arrivalSeconds": 24.82
+   "arrivalSeconds": 25.534
   },
   {
    "path": "assets/battle/hero-idle.png",
@@ -1969,7 +2043,7 @@
    "names": [
     "heroPose_idle"
    ],
-   "arrivalSeconds": 24.988
+   "arrivalSeconds": 25.702
   },
   {
    "path": "assets/battle/hero-rush-1.png",
@@ -1977,7 +2051,7 @@
    "names": [
     "heroFrame_rush_1"
    ],
-   "arrivalSeconds": 25.135
+   "arrivalSeconds": 25.849
   },
   {
    "path": "assets/battle/hero-rush-2.png",
@@ -1985,7 +2059,7 @@
    "names": [
     "heroFrame_rush_2"
    ],
-   "arrivalSeconds": 25.296
+   "arrivalSeconds": 26.009
   },
   {
    "path": "assets/battle/hero-rush-3.png",
@@ -1993,7 +2067,7 @@
    "names": [
     "heroFrame_rush_3"
    ],
-   "arrivalSeconds": 25.459
+   "arrivalSeconds": 26.173
   },
   {
    "path": "assets/battle/hero-rush-4.png",
@@ -2001,7 +2075,7 @@
    "names": [
     "heroFrame_rush_4"
    ],
-   "arrivalSeconds": 25.632
+   "arrivalSeconds": 26.345
   },
   {
    "path": "assets/battle/hero-rush-5.png",
@@ -2009,7 +2083,7 @@
    "names": [
     "heroFrame_rush_5"
    ],
-   "arrivalSeconds": 25.8
+   "arrivalSeconds": 26.514
   },
   {
    "path": "assets/battle/hero-rush-6.png",
@@ -2017,7 +2091,7 @@
    "names": [
     "heroFrame_rush_6"
    ],
-   "arrivalSeconds": 25.968
+   "arrivalSeconds": 26.682
   },
   {
    "path": "assets/battle/hero-rush-7.png",
@@ -2025,7 +2099,7 @@
    "names": [
     "heroFrame_rush_7"
    ],
-   "arrivalSeconds": 26.146
+   "arrivalSeconds": 26.859
   },
   {
    "path": "assets/battle/hero-rush.png",
@@ -2033,150 +2107,7 @@
    "names": [
     "heroPose_rush"
    ],
-   "arrivalSeconds": 26.355
-  },
-  {
-   "path": "assets/sfx/bgmDay.wav",
-   "bytes": 246548,
-   "names": [
-    "bgmDay"
-   ],
-   "arrivalSeconds": 27.663
-  },
-  {
-   "path": "assets/sfx/bgmDiffuse.wav",
-   "bytes": 47813,
-   "names": [
-    "bgmDiffuse"
-   ],
-   "arrivalSeconds": 27.977
-  },
-  {
-   "path": "assets/sfx/bgmEnding.wav",
-   "bytes": 1358047,
-   "names": [
-    "bgmEnding"
-   ],
-   "arrivalSeconds": 34.842
-  },
-  {
-   "path": "assets/sfx/bgmFight.wav",
-   "bytes": 472481,
-   "names": [
-    "bgmFight"
-   ],
-   "arrivalSeconds": 37.279
-  },
-  {
-   "path": "assets/sfx/bgmGlitch.wav",
-   "bytes": 163761,
-   "names": [
-    "bgmGlitch"
-   ],
-   "arrivalSeconds": 38.173
-  },
-  {
-   "path": "assets/sfx/bgmLose.wav",
-   "bytes": 99911,
-   "names": [
-    "bgmLose"
-   ],
-   "arrivalSeconds": 38.748
-  },
-  {
-   "path": "assets/sfx/bgmNode.wav",
-   "bytes": 244717,
-   "names": [
-    "bgmNode"
-   ],
-   "arrivalSeconds": 40.046
-  },
-  {
-   "path": "assets/sfx/bgmPuzzle.wav",
-   "bytes": 253478,
-   "names": [
-    "bgmPuzzle"
-   ],
-   "arrivalSeconds": 41.389
-  },
-  {
-   "path": "assets/sfx/bgmResult.wav",
-   "bytes": 56385,
-   "names": [
-    "bgmResult"
-   ],
-   "arrivalSeconds": 41.746
-  },
-  {
-   "path": "assets/sfx/bgmWin.wav",
-   "bytes": 175096,
-   "names": [
-    "bgmWin"
-   ],
-   "arrivalSeconds": 42.696
-  },
-  {
-   "path": "assets/card/art/ACC_001.png",
-   "bytes": 22160,
-   "names": [
-    "cardArtACC_001"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 42.882
-  },
-  {
-   "path": "assets/card/art/ACC_002.png",
-   "bytes": 18404,
-   "names": [
-    "cardArtACC_002"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 43.049
-  },
-  {
-   "path": "assets/card/art/ACC_003.png",
-   "bytes": 19772,
-   "names": [
-    "cardArtACC_003"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 43.223
-  },
-  {
-   "path": "assets/card/art/ACC_004.png",
-   "bytes": 20438,
-   "names": [
-    "cardArtACC_004"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 43.4
-  },
-  {
-   "path": "assets/card/art/ACC_005.png",
-   "bytes": 28500,
-   "names": [
-    "cardArtACC_005"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 43.617
-  },
-  {
-   "path": "assets/card/art/ATK_001.png",
-   "bytes": 19352,
-   "names": [
-    "cardArtATK_001"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 43.789
-  },
-  {
-   "path": "assets/card/art/ATK_002.png",
-   "bytes": 20690,
-   "names": [
-    "cardArtATK_002"
-   ],
-   "onMissing": "placeholder",
-   "arrivalSeconds": 43.968
+   "arrivalSeconds": 27.069
   },
   {
    "path": "assets/card/art/ATK_003.png",
@@ -2185,7 +2116,894 @@
     "cardArtATK_003"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 44.141
+   "arrivalSeconds": 27.242
+  },
+  {
+   "path": "assets/card/effect-mark.png",
+   "bytes": 1192,
+   "names": [
+    "cardEffectMark"
+   ],
+   "arrivalSeconds": 27.323
+  },
+  {
+   "path": "assets/card/frame.png",
+   "bytes": 12244,
+   "names": [
+    "cardFrame"
+   ],
+   "arrivalSeconds": 27.459
+  },
+  {
+   "path": "assets/card/icon-attack.png",
+   "bytes": 5794,
+   "names": [
+    "cardIconAttack"
+   ],
+   "arrivalSeconds": 27.563
+  },
+  {
+   "path": "assets/card/icon-guard.png",
+   "bytes": 6810,
+   "names": [
+    "cardIconGuard"
+   ],
+   "arrivalSeconds": 27.672
+  },
+  {
+   "path": "assets/card/icon-hex.png",
+   "bytes": 7300,
+   "names": [
+    "cardIconHex"
+   ],
+   "arrivalSeconds": 27.783
+  },
+  {
+   "path": "assets/card/icon-rush.png",
+   "bytes": 6374,
+   "names": [
+    "cardIconRush"
+   ],
+   "arrivalSeconds": 27.89
+  },
+  {
+   "path": "assets/card/icon-skill.png",
+   "bytes": 6238,
+   "names": [
+    "cardIconSkill"
+   ],
+   "arrivalSeconds": 27.996
+  },
+  {
+   "path": "assets/card/icon-special.png",
+   "bytes": 4844,
+   "names": [
+    "cardIconSpecial"
+   ],
+   "arrivalSeconds": 28.096
+  },
+  {
+   "path": "assets/sfx/bgmDay.wav",
+   "bytes": 246548,
+   "names": [
+    "bgmDay"
+   ],
+   "arrivalSeconds": 29.403
+  },
+  {
+   "path": "assets/sfx/bgmDiffuse.wav",
+   "bytes": 47813,
+   "names": [
+    "bgmDiffuse"
+   ],
+   "arrivalSeconds": 29.717
+  },
+  {
+   "path": "assets/sfx/bgmEnding.wav",
+   "bytes": 1358047,
+   "names": [
+    "bgmEnding"
+   ],
+   "arrivalSeconds": 36.583
+  },
+  {
+   "path": "assets/sfx/bgmFight.wav",
+   "bytes": 472481,
+   "names": [
+    "bgmFight"
+   ],
+   "arrivalSeconds": 39.02
+  },
+  {
+   "path": "assets/sfx/bgmGlitch.wav",
+   "bytes": 163761,
+   "names": [
+    "bgmGlitch"
+   ],
+   "arrivalSeconds": 39.914
+  },
+  {
+   "path": "assets/sfx/bgmLose.wav",
+   "bytes": 99911,
+   "names": [
+    "bgmLose"
+   ],
+   "arrivalSeconds": 40.488
+  },
+  {
+   "path": "assets/sfx/bgmNode.wav",
+   "bytes": 244717,
+   "names": [
+    "bgmNode"
+   ],
+   "arrivalSeconds": 41.787
+  },
+  {
+   "path": "assets/sfx/bgmPuzzle.wav",
+   "bytes": 253478,
+   "names": [
+    "bgmPuzzle"
+   ],
+   "arrivalSeconds": 43.129
+  },
+  {
+   "path": "assets/sfx/bgmResult.wav",
+   "bytes": 56385,
+   "names": [
+    "bgmResult"
+   ],
+   "arrivalSeconds": 43.486
+  },
+  {
+   "path": "assets/sfx/bgmWin.wav",
+   "bytes": 175096,
+   "names": [
+    "bgmWin"
+   ],
+   "arrivalSeconds": 44.437
+  },
+  {
+   "path": "assets/sfx/applause.wav",
+   "bytes": 31050,
+   "names": [
+    "applause"
+   ],
+   "arrivalSeconds": 44.667
+  },
+  {
+   "path": "assets/sfx/block.wav",
+   "bytes": 3954,
+   "names": [
+    "block"
+   ],
+   "arrivalSeconds": 44.762
+  },
+  {
+   "path": "assets/sfx/brush.wav",
+   "bytes": 2253,
+   "names": [
+    "brush"
+   ],
+   "arrivalSeconds": 44.848
+  },
+  {
+   "path": "assets/sfx/cardSpinFit131.wav",
+   "bytes": 3201,
+   "names": [
+    "cardSpinFit131"
+   ],
+   "arrivalSeconds": 44.939
+  },
+  {
+   "path": "assets/sfx/cardSpinFit262.wav",
+   "bytes": 1888,
+   "names": [
+    "cardSpinFit262"
+   ],
+   "arrivalSeconds": 45.023
+  },
+  {
+   "path": "assets/sfx/chain.wav",
+   "bytes": 1407,
+   "names": [
+    "chain"
+   ],
+   "arrivalSeconds": 45.106
+  },
+  {
+   "path": "assets/sfx/chainStep1.wav",
+   "bytes": 1502,
+   "names": [
+    "chainStep1"
+   ],
+   "arrivalSeconds": 45.188
+  },
+  {
+   "path": "assets/sfx/chainStep2.wav",
+   "bytes": 1433,
+   "names": [
+    "chainStep2"
+   ],
+   "arrivalSeconds": 45.27
+  },
+  {
+   "path": "assets/sfx/chainStep3.wav",
+   "bytes": 1339,
+   "names": [
+    "chainStep3"
+   ],
+   "arrivalSeconds": 45.352
+  },
+  {
+   "path": "assets/sfx/chainStep4.wav",
+   "bytes": 1283,
+   "names": [
+    "chainStep4"
+   ],
+   "arrivalSeconds": 45.433
+  },
+  {
+   "path": "assets/sfx/chainStep5.wav",
+   "bytes": 1165,
+   "names": [
+    "chainStep5"
+   ],
+   "arrivalSeconds": 45.514
+  },
+  {
+   "path": "assets/sfx/chainStep6.wav",
+   "bytes": 1117,
+   "names": [
+    "chainStep6"
+   ],
+   "arrivalSeconds": 45.595
+  },
+  {
+   "path": "assets/sfx/chainStep7.wav",
+   "bytes": 1075,
+   "names": [
+    "chainStep7"
+   ],
+   "arrivalSeconds": 45.675
+  },
+  {
+   "path": "assets/sfx/chainStep8.wav",
+   "bytes": 1021,
+   "names": [
+    "chainStep8"
+   ],
+   "arrivalSeconds": 45.755
+  },
+  {
+   "path": "assets/sfx/cleanse.wav",
+   "bytes": 3095,
+   "names": [
+    "cleanse"
+   ],
+   "arrivalSeconds": 45.846
+  },
+  {
+   "path": "assets/sfx/clear.wav",
+   "bytes": 1111,
+   "names": [
+    "clear"
+   ],
+   "arrivalSeconds": 45.926
+  },
+  {
+   "path": "assets/sfx/clear1.wav",
+   "bytes": 1111,
+   "names": [
+    "clear1"
+   ],
+   "arrivalSeconds": 46.007
+  },
+  {
+   "path": "assets/sfx/clear2.wav",
+   "bytes": 1087,
+   "names": [
+    "clear2"
+   ],
+   "arrivalSeconds": 46.087
+  },
+  {
+   "path": "assets/sfx/clear3.wav",
+   "bytes": 1074,
+   "names": [
+    "clear3"
+   ],
+   "arrivalSeconds": 46.168
+  },
+  {
+   "path": "assets/sfx/clear4.wav",
+   "bytes": 1075,
+   "names": [
+    "clear4"
+   ],
+   "arrivalSeconds": 46.248
+  },
+  {
+   "path": "assets/sfx/clear5.wav",
+   "bytes": 1098,
+   "names": [
+    "clear5"
+   ],
+   "arrivalSeconds": 46.328
+  },
+  {
+   "path": "assets/sfx/clear6.wav",
+   "bytes": 1075,
+   "names": [
+    "clear6"
+   ],
+   "arrivalSeconds": 46.409
+  },
+  {
+   "path": "assets/sfx/clear7.wav",
+   "bytes": 1020,
+   "names": [
+    "clear7"
+   ],
+   "arrivalSeconds": 46.489
+  },
+  {
+   "path": "assets/sfx/clear8.wav",
+   "bytes": 1100,
+   "names": [
+    "clear8"
+   ],
+   "arrivalSeconds": 46.569
+  },
+  {
+   "path": "assets/sfx/crtOffShot.wav",
+   "bytes": 979,
+   "names": [
+    "crtOffShot"
+   ],
+   "arrivalSeconds": 46.649
+  },
+  {
+   "path": "assets/sfx/dayflip.wav",
+   "bytes": 637,
+   "names": [
+    "dayflip"
+   ],
+   "arrivalSeconds": 46.728
+  },
+  {
+   "path": "assets/sfx/deckPress.wav",
+   "bytes": 735,
+   "names": [
+    "deckPress"
+   ],
+   "arrivalSeconds": 46.806
+  },
+  {
+   "path": "assets/sfx/defeat.wav",
+   "bytes": 3653,
+   "names": [
+    "defeat"
+   ],
+   "arrivalSeconds": 46.899
+  },
+  {
+   "path": "assets/sfx/drip.wav",
+   "bytes": 796,
+   "names": [
+    "drip"
+   ],
+   "arrivalSeconds": 46.978
+  },
+  {
+   "path": "assets/sfx/endBurst.wav",
+   "bytes": 1851,
+   "names": [
+    "endBurst"
+   ],
+   "arrivalSeconds": 47.063
+  },
+  {
+   "path": "assets/sfx/endLost.wav",
+   "bytes": 2414,
+   "names": [
+    "endLost"
+   ],
+   "arrivalSeconds": 47.15
+  },
+  {
+   "path": "assets/sfx/endOk.wav",
+   "bytes": 1360,
+   "names": [
+    "endOk"
+   ],
+   "arrivalSeconds": 47.232
+  },
+  {
+   "path": "assets/sfx/endPowerOn.wav",
+   "bytes": 1672,
+   "names": [
+    "endPowerOn"
+   ],
+   "arrivalSeconds": 47.315
+  },
+  {
+   "path": "assets/sfx/endQuote.wav",
+   "bytes": 1101,
+   "names": [
+    "endQuote"
+   ],
+   "arrivalSeconds": 47.395
+  },
+  {
+   "path": "assets/sfx/endTrend.wav",
+   "bytes": 3359,
+   "names": [
+    "endTrend"
+   ],
+   "arrivalSeconds": 47.487
+  },
+  {
+   "path": "assets/sfx/endType.wav",
+   "bytes": 1951,
+   "names": [
+    "endType"
+   ],
+   "arrivalSeconds": 47.572
+  },
+  {
+   "path": "assets/sfx/expire.wav",
+   "bytes": 1281,
+   "names": [
+    "expire"
+   ],
+   "arrivalSeconds": 47.653
+  },
+  {
+   "path": "assets/sfx/fanfare.wav",
+   "bytes": 6575,
+   "names": [
+    "fanfare"
+   ],
+   "arrivalSeconds": 47.761
+  },
+  {
+   "path": "assets/sfx/feedBad.wav",
+   "bytes": 2675,
+   "names": [
+    "feedBad"
+   ],
+   "arrivalSeconds": 47.85
+  },
+  {
+   "path": "assets/sfx/feedGood.wav",
+   "bytes": 4180,
+   "names": [
+    "feedGood"
+   ],
+   "arrivalSeconds": 47.946
+  },
+  {
+   "path": "assets/sfx/feedRefresh.wav",
+   "bytes": 1356,
+   "names": [
+    "feedRefresh"
+   ],
+   "arrivalSeconds": 48.027
+  },
+  {
+   "path": "assets/sfx/fxGuard.wav",
+   "bytes": 2352,
+   "names": [
+    "fxGuard"
+   ],
+   "arrivalSeconds": 48.114
+  },
+  {
+   "path": "assets/sfx/fxHex.wav",
+   "bytes": 2454,
+   "names": [
+    "fxHex"
+   ],
+   "arrivalSeconds": 48.201
+  },
+  {
+   "path": "assets/sfx/fxRush.wav",
+   "bytes": 2097,
+   "names": [
+    "fxRush"
+   ],
+   "arrivalSeconds": 48.287
+  },
+  {
+   "path": "assets/sfx/fxSkill.wav",
+   "bytes": 2205,
+   "names": [
+    "fxSkill"
+   ],
+   "arrivalSeconds": 48.373
+  },
+  {
+   "path": "assets/sfx/healFill.wav",
+   "bytes": 4738,
+   "names": [
+    "healFill"
+   ],
+   "arrivalSeconds": 48.472
+  },
+  {
+   "path": "assets/sfx/notify.wav",
+   "bytes": 989,
+   "names": [
+    "notify"
+   ],
+   "arrivalSeconds": 48.551
+  },
+  {
+   "path": "assets/sfx/pencilRoll.wav",
+   "bytes": 6310,
+   "names": [
+    "pencilRoll"
+   ],
+   "arrivalSeconds": 48.658
+  },
+  {
+   "path": "assets/sfx/pencilSharpen.wav",
+   "bytes": 3377,
+   "names": [
+    "pencilSharpen"
+   ],
+   "arrivalSeconds": 48.75
+  },
+  {
+   "path": "assets/sfx/phonePing.wav",
+   "bytes": 5188,
+   "names": [
+    "phonePing"
+   ],
+   "arrivalSeconds": 48.851
+  },
+  {
+   "path": "assets/sfx/phoneRise.wav",
+   "bytes": 2458,
+   "names": [
+    "phoneRise"
+   ],
+   "arrivalSeconds": 48.938
+  },
+  {
+   "path": "assets/sfx/phoneSetDown.wav",
+   "bytes": 3049,
+   "names": [
+    "phoneSetDown"
+   ],
+   "arrivalSeconds": 49.028
+  },
+  {
+   "path": "assets/sfx/phoneShrink.wav",
+   "bytes": 2345,
+   "names": [
+    "phoneShrink"
+   ],
+   "arrivalSeconds": 49.115
+  },
+  {
+   "path": "assets/sfx/phoneZoom.wav",
+   "bytes": 5161,
+   "names": [
+    "phoneZoom"
+   ],
+   "arrivalSeconds": 49.216
+  },
+  {
+   "path": "assets/sfx/piecePick.wav",
+   "bytes": 806,
+   "names": [
+    "piecePick"
+   ],
+   "arrivalSeconds": 49.295
+  },
+  {
+   "path": "assets/sfx/pieceSwap.wav",
+   "bytes": 1046,
+   "names": [
+    "pieceSwap"
+   ],
+   "arrivalSeconds": 49.375
+  },
+  {
+   "path": "assets/sfx/poisonBite.wav",
+   "bytes": 3319,
+   "names": [
+    "poisonBite"
+   ],
+   "arrivalSeconds": 49.467
+  },
+  {
+   "path": "assets/sfx/powerHit2.wav",
+   "bytes": 1579,
+   "names": [
+    "powerHit2"
+   ],
+   "arrivalSeconds": 49.55
+  },
+  {
+   "path": "assets/sfx/powerHit3.wav",
+   "bytes": 2809,
+   "names": [
+    "powerHit3"
+   ],
+   "arrivalSeconds": 49.639
+  },
+  {
+   "path": "assets/sfx/powerHit4.wav",
+   "bytes": 3306,
+   "names": [
+    "powerHit4"
+   ],
+   "arrivalSeconds": 49.73
+  },
+  {
+   "path": "assets/sfx/powerHit5.wav",
+   "bytes": 3523,
+   "names": [
+    "powerHit5"
+   ],
+   "arrivalSeconds": 49.823
+  },
+  {
+   "path": "assets/sfx/relicGet.wav",
+   "bytes": 3861,
+   "names": [
+    "relicGet"
+   ],
+   "arrivalSeconds": 49.917
+  },
+  {
+   "path": "assets/sfx/riposte.wav",
+   "bytes": 3936,
+   "names": [
+    "riposte"
+   ],
+   "arrivalSeconds": 50.012
+  },
+  {
+   "path": "assets/sfx/scoreAdd.wav",
+   "bytes": 1133,
+   "names": [
+    "scoreAdd"
+   ],
+   "arrivalSeconds": 50.093
+  },
+  {
+   "path": "assets/sfx/scroll.wav",
+   "bytes": 699,
+   "names": [
+    "scroll"
+   ],
+   "arrivalSeconds": 50.171
+  },
+  {
+   "path": "assets/sfx/shardLand.wav",
+   "bytes": 2499,
+   "names": [
+    "shardLand"
+   ],
+   "arrivalSeconds": 50.258
+  },
+  {
+   "path": "assets/sfx/shieldBreak.wav",
+   "bytes": 888,
+   "names": [
+    "shieldBreak"
+   ],
+   "arrivalSeconds": 50.338
+  },
+  {
+   "path": "assets/sfx/sleep.wav",
+   "bytes": 3940,
+   "names": [
+    "sleep"
+   ],
+   "arrivalSeconds": 50.433
+  },
+  {
+   "path": "assets/sfx/splat1.wav",
+   "bytes": 1521,
+   "names": [
+    "splat1"
+   ],
+   "arrivalSeconds": 50.515
+  },
+  {
+   "path": "assets/sfx/splat2.wav",
+   "bytes": 1395,
+   "names": [
+    "splat2"
+   ],
+   "arrivalSeconds": 50.597
+  },
+  {
+   "path": "assets/sfx/splat3.wav",
+   "bytes": 1333,
+   "names": [
+    "splat3"
+   ],
+   "arrivalSeconds": 50.679
+  },
+  {
+   "path": "assets/sfx/splat4.wav",
+   "bytes": 1293,
+   "names": [
+    "splat4"
+   ],
+   "arrivalSeconds": 50.76
+  },
+  {
+   "path": "assets/sfx/splat5.wav",
+   "bytes": 1182,
+   "names": [
+    "splat5"
+   ],
+   "arrivalSeconds": 50.841
+  },
+  {
+   "path": "assets/sfx/splat6.wav",
+   "bytes": 1173,
+   "names": [
+    "splat6"
+   ],
+   "arrivalSeconds": 50.922
+  },
+  {
+   "path": "assets/sfx/splat7.wav",
+   "bytes": 1098,
+   "names": [
+    "splat7"
+   ],
+   "arrivalSeconds": 51.003
+  },
+  {
+   "path": "assets/sfx/splat8.wav",
+   "bytes": 1034,
+   "names": [
+    "splat8"
+   ],
+   "arrivalSeconds": 51.083
+  },
+  {
+   "path": "assets/sfx/squeeze.wav",
+   "bytes": 1496,
+   "names": [
+    "squeeze"
+   ],
+   "arrivalSeconds": 51.165
+  },
+  {
+   "path": "assets/sfx/step.wav",
+   "bytes": 629,
+   "names": [
+    "step"
+   ],
+   "arrivalSeconds": 51.243
+  },
+  {
+   "path": "assets/sfx/swap.wav",
+   "bytes": 725,
+   "names": [
+    "swap"
+   ],
+   "arrivalSeconds": 51.322
+  },
+  {
+   "path": "assets/sfx/turnStart.wav",
+   "bytes": 1231,
+   "names": [
+    "turnStart"
+   ],
+   "arrivalSeconds": 51.403
+  },
+  {
+   "path": "assets/sfx/vanish.wav",
+   "bytes": 6474,
+   "names": [
+    "vanish"
+   ],
+   "arrivalSeconds": 51.511
+  },
+  {
+   "path": "assets/sfx/victory.wav",
+   "bytes": 2614,
+   "names": [
+    "victory"
+   ],
+   "arrivalSeconds": 51.599
+  },
+  {
+   "path": "assets/sfx/wake.wav",
+   "bytes": 2756,
+   "names": [
+    "wake"
+   ],
+   "arrivalSeconds": 51.687
+  },
+  {
+   "path": "assets/sfx/whiff.wav",
+   "bytes": 1025,
+   "names": [
+    "whiff"
+   ],
+   "arrivalSeconds": 51.768
+  },
+  {
+   "path": "assets/sfx/winSting.wav",
+   "bytes": 5570,
+   "names": [
+    "winSting"
+   ],
+   "arrivalSeconds": 51.87
+  },
+  {
+   "path": "assets/card/art/ACC_001.png",
+   "bytes": 22160,
+   "names": [
+    "cardArtACC_001"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.056
+  },
+  {
+   "path": "assets/card/art/ACC_002.png",
+   "bytes": 18404,
+   "names": [
+    "cardArtACC_002"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.223
+  },
+  {
+   "path": "assets/card/art/ACC_003.png",
+   "bytes": 19772,
+   "names": [
+    "cardArtACC_003"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.397
+  },
+  {
+   "path": "assets/card/art/ACC_004.png",
+   "bytes": 20438,
+   "names": [
+    "cardArtACC_004"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.574
+  },
+  {
+   "path": "assets/card/art/ACC_005.png",
+   "bytes": 28500,
+   "names": [
+    "cardArtACC_005"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.792
+  },
+  {
+   "path": "assets/card/art/ATK_001.png",
+   "bytes": 19352,
+   "names": [
+    "cardArtATK_001"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 52.964
+  },
+  {
+   "path": "assets/card/art/ATK_002.png",
+   "bytes": 20690,
+   "names": [
+    "cardArtATK_002"
+   ],
+   "onMissing": "placeholder",
+   "arrivalSeconds": 53.142
   },
   {
    "path": "assets/card/art/ATK_004.png",
@@ -2194,7 +3012,7 @@
     "cardArtATK_004"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 44.356
+   "arrivalSeconds": 53.358
   },
   {
    "path": "assets/card/art/ATK_005.png",
@@ -2203,7 +3021,7 @@
     "cardArtATK_005"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 44.568
+   "arrivalSeconds": 53.57
   },
   {
    "path": "assets/card/art/DEF_001.png",
@@ -2212,7 +3030,7 @@
     "cardArtDEF_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 44.734
+   "arrivalSeconds": 53.735
   },
   {
    "path": "assets/card/art/DEF_002.png",
@@ -2221,7 +3039,7 @@
     "cardArtDEF_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 44.91
+   "arrivalSeconds": 53.911
   },
   {
    "path": "assets/card/art/DEF_003.png",
@@ -2230,7 +3048,7 @@
     "cardArtDEF_003"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 45.098
+   "arrivalSeconds": 54.099
   },
   {
    "path": "assets/card/art/DEF_004.png",
@@ -2239,7 +3057,7 @@
     "cardArtDEF_004"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 45.265
+   "arrivalSeconds": 54.266
   },
   {
    "path": "assets/card/art/DEF_005.png",
@@ -2248,7 +3066,7 @@
     "cardArtDEF_005"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 45.465
+   "arrivalSeconds": 54.467
   },
   {
    "path": "assets/card/art/INT_001.png",
@@ -2257,7 +3075,7 @@
     "cardArtINT_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 45.581
+   "arrivalSeconds": 54.582
   },
   {
    "path": "assets/card/art/INT_002.png",
@@ -2266,7 +3084,7 @@
     "cardArtINT_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 45.734
+   "arrivalSeconds": 54.735
   },
   {
    "path": "assets/card/art/INT_003.png",
@@ -2275,7 +3093,7 @@
     "cardArtINT_003"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 45.889
+   "arrivalSeconds": 54.891
   },
   {
    "path": "assets/card/art/INT_004.png",
@@ -2284,7 +3102,7 @@
     "cardArtINT_004"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 46.033
+   "arrivalSeconds": 55.034
   },
   {
    "path": "assets/card/art/INT_005.png",
@@ -2293,7 +3111,7 @@
     "cardArtINT_005"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 46.216
+   "arrivalSeconds": 55.218
   },
   {
    "path": "assets/card/art/MIX_AA_001.png",
@@ -2302,7 +3120,7 @@
     "cardArtMIX_AA_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 46.415
+   "arrivalSeconds": 55.416
   },
   {
    "path": "assets/card/art/MIX_AA_002.png",
@@ -2311,7 +3129,7 @@
     "cardArtMIX_AA_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 46.625
+   "arrivalSeconds": 55.626
   },
   {
    "path": "assets/card/art/MIX_AD_001.png",
@@ -2320,7 +3138,7 @@
     "cardArtMIX_AD_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 46.809
+   "arrivalSeconds": 55.81
   },
   {
    "path": "assets/card/art/MIX_AD_002.png",
@@ -2329,7 +3147,7 @@
     "cardArtMIX_AD_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 47.016
+   "arrivalSeconds": 56.017
   },
   {
    "path": "assets/card/art/MIX_AI_001.png",
@@ -2338,7 +3156,7 @@
     "cardArtMIX_AI_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 47.209
+   "arrivalSeconds": 56.21
   },
   {
    "path": "assets/card/art/MIX_AI_002.png",
@@ -2347,7 +3165,7 @@
     "cardArtMIX_AI_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 47.372
+   "arrivalSeconds": 56.374
   },
   {
    "path": "assets/card/art/MIX_AT_001.png",
@@ -2356,7 +3174,7 @@
     "cardArtMIX_AT_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 47.552
+   "arrivalSeconds": 56.554
   },
   {
    "path": "assets/card/art/MIX_AT_002.png",
@@ -2365,7 +3183,7 @@
     "cardArtMIX_AT_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 47.753
+   "arrivalSeconds": 56.755
   },
   {
    "path": "assets/card/art/MIX_DA_001.png",
@@ -2374,7 +3192,7 @@
     "cardArtMIX_DA_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 47.901
+   "arrivalSeconds": 56.903
   },
   {
    "path": "assets/card/art/MIX_DA_002.png",
@@ -2383,7 +3201,7 @@
     "cardArtMIX_DA_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 48.087
+   "arrivalSeconds": 57.088
   },
   {
    "path": "assets/card/art/MIX_DI_001.png",
@@ -2392,7 +3210,7 @@
     "cardArtMIX_DI_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 48.255
+   "arrivalSeconds": 57.256
   },
   {
    "path": "assets/card/art/MIX_DI_002.png",
@@ -2401,7 +3219,7 @@
     "cardArtMIX_DI_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 48.394
+   "arrivalSeconds": 57.396
   },
   {
    "path": "assets/card/art/MIX_DT_001.png",
@@ -2410,7 +3228,7 @@
     "cardArtMIX_DT_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 48.561
+   "arrivalSeconds": 57.562
   },
   {
    "path": "assets/card/art/MIX_DT_002.png",
@@ -2419,7 +3237,7 @@
     "cardArtMIX_DT_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 48.76
+   "arrivalSeconds": 57.761
   },
   {
    "path": "assets/card/art/MIX_IA_001.png",
@@ -2428,7 +3246,7 @@
     "cardArtMIX_IA_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 48.922
+   "arrivalSeconds": 57.923
   },
   {
    "path": "assets/card/art/MIX_IA_002.png",
@@ -2437,7 +3255,7 @@
     "cardArtMIX_IA_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 49.085
+   "arrivalSeconds": 58.086
   },
   {
    "path": "assets/card/art/MIX_TA_001.png",
@@ -2446,7 +3264,7 @@
     "cardArtMIX_TA_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 49.24
+   "arrivalSeconds": 58.241
   },
   {
    "path": "assets/card/art/MIX_TA_002.png",
@@ -2455,7 +3273,7 @@
     "cardArtMIX_TA_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 49.434
+   "arrivalSeconds": 58.435
   },
   {
    "path": "assets/card/art/MIX_TI_001.png",
@@ -2464,7 +3282,7 @@
     "cardArtMIX_TI_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 49.603
+   "arrivalSeconds": 58.604
   },
   {
    "path": "assets/card/art/MIX_TI_002.png",
@@ -2473,7 +3291,7 @@
     "cardArtMIX_TI_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 49.773
+   "arrivalSeconds": 58.775
   },
   {
    "path": "assets/card/art/PENTA_001.png",
@@ -2482,7 +3300,7 @@
     "cardArtPENTA_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 49.947
+   "arrivalSeconds": 58.949
   },
   {
    "path": "assets/card/art/QUAD_001.png",
@@ -2491,7 +3309,7 @@
     "cardArtQUAD_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 50.147
+   "arrivalSeconds": 59.149
   },
   {
    "path": "assets/card/art/QUAD_002.png",
@@ -2500,7 +3318,7 @@
     "cardArtQUAD_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 50.305
+   "arrivalSeconds": 59.307
   },
   {
    "path": "assets/card/art/QUAD_003.png",
@@ -2509,7 +3327,7 @@
     "cardArtQUAD_003"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 50.461
+   "arrivalSeconds": 59.463
   },
   {
    "path": "assets/card/art/QUAD_004.png",
@@ -2518,7 +3336,7 @@
     "cardArtQUAD_004"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 50.631
+   "arrivalSeconds": 59.633
   },
   {
    "path": "assets/card/art/QUAD_005.png",
@@ -2527,7 +3345,7 @@
     "cardArtQUAD_005"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 50.807
+   "arrivalSeconds": 59.808
   },
   {
    "path": "assets/card/art/TEC_001.png",
@@ -2536,7 +3354,7 @@
     "cardArtTEC_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 50.994
+   "arrivalSeconds": 59.995
   },
   {
    "path": "assets/card/art/TEC_002.png",
@@ -2545,7 +3363,7 @@
     "cardArtTEC_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 51.139
+   "arrivalSeconds": 60.14
   },
   {
    "path": "assets/card/art/TEC_003.png",
@@ -2554,7 +3372,7 @@
     "cardArtTEC_003"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 51.295
+   "arrivalSeconds": 60.297
   },
   {
    "path": "assets/card/art/TEC_004.png",
@@ -2563,7 +3381,7 @@
     "cardArtTEC_004"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 51.47
+   "arrivalSeconds": 60.471
   },
   {
    "path": "assets/card/art/TRI_001.png",
@@ -2572,7 +3390,7 @@
     "cardArtTRI_001"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 51.644
+   "arrivalSeconds": 60.646
   },
   {
    "path": "assets/card/art/TRI_002.png",
@@ -2581,7 +3399,7 @@
     "cardArtTRI_002"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 51.818
+   "arrivalSeconds": 60.819
   },
   {
    "path": "assets/card/art/TRI_003.png",
@@ -2590,7 +3408,7 @@
     "cardArtTRI_003"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.008
+   "arrivalSeconds": 61.009
   },
   {
    "path": "assets/card/art/TRI_004.png",
@@ -2599,7 +3417,7 @@
     "cardArtTRI_004"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.174
+   "arrivalSeconds": 61.175
   },
   {
    "path": "assets/card/art/TRI_005.png",
@@ -2608,7 +3426,7 @@
     "cardArtTRI_005"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.341
+   "arrivalSeconds": 61.343
   },
   {
    "path": "assets/card/art/TRI_006.png",
@@ -2617,7 +3435,7 @@
     "cardArtTRI_006"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.508
+   "arrivalSeconds": 61.509
   },
   {
    "path": "assets/card/art/TRI_007.png",
@@ -2626,7 +3444,7 @@
     "cardArtTRI_007"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.645
+   "arrivalSeconds": 61.647
   },
   {
    "path": "assets/card/art/TRI_008.png",
@@ -2635,7 +3453,7 @@
     "cardArtTRI_008"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.808
+   "arrivalSeconds": 61.809
   },
   {
    "path": "assets/card/art/TRI_009.png",
@@ -2644,7 +3462,7 @@
     "cardArtTRI_009"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 52.965
+   "arrivalSeconds": 61.967
   },
   {
    "path": "assets/card/art/TRI_010.png",
@@ -2653,7 +3471,7 @@
     "cardArtTRI_010"
    ],
    "onMissing": "placeholder",
-   "arrivalSeconds": 53.112
+   "arrivalSeconds": 62.113
   }
  ],
  "splash": {
@@ -2668,15 +3486,26 @@
   "afterTap": {
    "mode": "engine",
    "minSeconds": 1.2,
-   "maxSeconds": 3
+   "maxSeconds": 3,
+   "waitFor": [
+    "opening"
+   ]
   }
  },
  "wasmBrotli": "classes.wasm.br",
  "boot": {
-  "assets": 1690747,
-  "assetsWire": 1083383,
-  "wasm": 2291438,
-  "wasmWire": 2359709
+  "assets": 1423628,
+  "assetsWire": 813895,
+  "wasm": 2292129,
+  "wasmWire": 2360400
  },
- "serviceWorker": true
+ "serviceWorker": true,
+ "startupBudget": {
+  "seconds": 22,
+  "why": "遊びの中身（カードの戦い・パズル・会話）を 1 本の wasm に入れていて、4G では起動のうち約 12 秒を wasm が占める。タイトルの絵とロゴ・字・オープニングで鳴る効果音も起動で取る。押した後は、オープニングの途中から使う丸い字のフォント 2 本（約 1 MB）を先に取るので、オープニングの最初の絵が届くまでロゴの後に約 3 秒待つ。"
+ },
+ "checks": {
+  "title4g": "ok",
+  "tapWaitSeconds": 6.3
+ }
 }
