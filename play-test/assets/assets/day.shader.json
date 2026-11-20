@@ -1,0 +1,76 @@
+{
+  "title": "☀️ 昼のシェーダー",
+  "version": 1,
+  "note": "昼（自室）の壁。画素ごとの計算で塗る面で、単色の四角の代わり。上から下への明るさの移り変わり（uv v）に、紙のようなムラ（fbmTile）と、ゆっくり流れる西日の斜めの帯（smoothstep）を足している。いじると何が変わるか: 色=gradient.stops の 3 色 / 西日の動く速さ=time.scale / 帯のふちの硬さ=smoothstep の lo と hi の差 / ムラの粗さ=fbmTile.scale / ムラの強さ=fbmTile を掛けている const。fbmTile.period は整数のままにする（流しても継ぎ目が出ない）。make debug 中に保存すると即反映。書式は engine の docs/shader-doc.md。",
+  "name": "dayWall",
+  "cycleRate": 0.0,
+  "out": {
+    "kind": "fill",
+    "shade": {
+      "kind": "gradient",
+      "stops": [
+        [0.0, "#d9d6cb"],
+        [0.55, "#ffffeb"],
+        [1.0, "#fff3d2"]
+      ],
+      "field": {
+        "kind": "math2",
+        "op": "add",
+        "a": {
+          "kind": "math2",
+          "op": "add",
+          "a": {
+            "kind": "math2",
+            "op": "mul",
+            "a": { "kind": "uv", "axis": "v" },
+            "b": { "kind": "const", "value": 0.55 }
+          },
+          "b": {
+            "kind": "math2",
+            "op": "mul",
+            "a": {
+              "kind": "smoothstep",
+              "lo": 0.1,
+              "hi": 0.5,
+              "of": {
+                "kind": "math2",
+                "op": "sub",
+                "a": {
+                  "kind": "math2",
+                  "op": "add",
+                  "a": {
+                    "kind": "math2",
+                    "op": "mul",
+                    "a": { "kind": "uv", "axis": "u" },
+                    "b": { "kind": "const", "value": 0.7 }
+                  },
+                  "b": {
+                    "kind": "math2",
+                    "op": "mul",
+                    "a": { "kind": "uv", "axis": "v" },
+                    "b": { "kind": "const", "value": 0.3 }
+                  }
+                },
+                "b": { "kind": "time", "scale": 0.012, "offset": { "kind": "const", "value": 0.0 } }
+              }
+            },
+            "b": { "kind": "const", "value": 0.3 }
+          }
+        },
+        "b": {
+          "kind": "math2",
+          "op": "mul",
+          "a": {
+            "kind": "fbmTile",
+            "octaves": 3,
+            "scale": 5.0,
+            "period": { "x": 4.0, "y": 4.0 },
+            "seed": 11
+          },
+          "b": { "kind": "const", "value": 0.14 }
+        }
+      }
+    },
+    "alpha": { "kind": "const", "value": 1.0 }
+  }
+}

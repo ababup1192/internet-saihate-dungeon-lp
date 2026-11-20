@@ -1,0 +1,1760 @@
+{
+  "version": 1,
+  "title": "インターネットダンジョン",
+  "designWidth": 480,
+  "designHeight": 300,
+  "windowWidth": 960,
+  "windowHeight": 600,
+  "windowScale": 2,
+  "clearColor": {
+    "r": 0.937255,
+    "g": 0.901961,
+    "b": 0.839216
+  },
+  "maxDeltaTime": 0.05,
+  "textures": [
+    {
+      "//": "会話の後ろに敷く 1 枚絵。人が描いた 1 枚を左右に切り分けた物で、左半分＝自室（昼の会話）/ 右半分＝ダンジョン（OP）。どの会話でどちらを敷くかは src/World.flix、画素の大きさと切り出す位置は台本 Doc の arts。",
+      "name": "talkArtRoom",
+      "path": "assets/art/talk-room.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "talkArtNet",
+      "path": "assets/art/talk-net.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "titleArt",
+      "path": "assets/art/title-bg.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "titleLogo",
+      "path": "assets/art/title-logo.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace0",
+      "path": "assets/stand/girl-face0.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace1",
+      "path": "assets/stand/girl-face1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace2",
+      "path": "assets/stand/girl-face2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace3",
+      "path": "assets/stand/girl-face3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace4",
+      "path": "assets/stand/girl-face4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace5",
+      "path": "assets/stand/girl-face5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace6",
+      "path": "assets/stand/girl-face6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "girlFace7",
+      "path": "assets/stand/girl-face7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace0",
+      "path": "assets/stand/avatar-face0.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace1",
+      "path": "assets/stand/avatar-face1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace2",
+      "path": "assets/stand/avatar-face2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace3",
+      "path": "assets/stand/avatar-face3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace4",
+      "path": "assets/stand/avatar-face4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace5",
+      "path": "assets/stand/avatar-face5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace6",
+      "path": "assets/stand/avatar-face6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "avatarFace7",
+      "path": "assets/stand/avatar-face7.png",
+      "hasAlpha": true
+    },
+    {
+      "//": "avatarFace5 の形だけを白く抜いた版（make art-stand-shape）。締めの画面のアバターのピンクのふち光の素。",
+      "name": "avatarFace5Shape",
+      "path": "assets/stand/avatar-face5-shape.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroPose_attack",
+      "path": "assets/battle/hero-attack.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroPose_guard",
+      "path": "assets/battle/hero-guard.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroPose_buff",
+      "path": "assets/battle/hero-buff.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroPose_debuff",
+      "path": "assets/battle/hero-debuff.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroPose_rush",
+      "path": "assets/battle/hero-rush.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroPose_idle",
+      "path": "assets/battle/hero-idle.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_1",
+      "path": "assets/battle/hero-attack-1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_2",
+      "path": "assets/battle/hero-attack-2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_3",
+      "path": "assets/battle/hero-attack-3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_4",
+      "path": "assets/battle/hero-attack-4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_5",
+      "path": "assets/battle/hero-attack-5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_6",
+      "path": "assets/battle/hero-attack-6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_attack_7",
+      "path": "assets/battle/hero-attack-7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_1",
+      "path": "assets/battle/hero-guard-1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_2",
+      "path": "assets/battle/hero-guard-2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_3",
+      "path": "assets/battle/hero-guard-3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_4",
+      "path": "assets/battle/hero-guard-4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_5",
+      "path": "assets/battle/hero-guard-5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_6",
+      "path": "assets/battle/hero-guard-6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_guard_7",
+      "path": "assets/battle/hero-guard-7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_1",
+      "path": "assets/battle/hero-buff-1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_2",
+      "path": "assets/battle/hero-buff-2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_3",
+      "path": "assets/battle/hero-buff-3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_4",
+      "path": "assets/battle/hero-buff-4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_5",
+      "path": "assets/battle/hero-buff-5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_6",
+      "path": "assets/battle/hero-buff-6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_buff_7",
+      "path": "assets/battle/hero-buff-7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_1",
+      "path": "assets/battle/hero-debuff-1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_2",
+      "path": "assets/battle/hero-debuff-2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_3",
+      "path": "assets/battle/hero-debuff-3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_4",
+      "path": "assets/battle/hero-debuff-4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_5",
+      "path": "assets/battle/hero-debuff-5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_6",
+      "path": "assets/battle/hero-debuff-6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_debuff_7",
+      "path": "assets/battle/hero-debuff-7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_1",
+      "path": "assets/battle/hero-rush-1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_2",
+      "path": "assets/battle/hero-rush-2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_3",
+      "path": "assets/battle/hero-rush-3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_4",
+      "path": "assets/battle/hero-rush-4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_5",
+      "path": "assets/battle/hero-rush-5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_6",
+      "path": "assets/battle/hero-rush-6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_rush_7",
+      "path": "assets/battle/hero-rush-7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_1",
+      "path": "assets/battle/hero-hurt-1.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_2",
+      "path": "assets/battle/hero-hurt-2.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_3",
+      "path": "assets/battle/hero-hurt-3.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_4",
+      "path": "assets/battle/hero-hurt-4.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_5",
+      "path": "assets/battle/hero-hurt-5.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_6",
+      "path": "assets/battle/hero-hurt-6.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "heroFrame_hurt_7",
+      "path": "assets/battle/hero-hurt-7.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "fightFoe0_idle",
+      "path": "assets/battle/foe-slime-idle.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "fightFoe0_attack",
+      "path": "assets/battle/foe-slime-attack.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "fightFoe1_idle",
+      "path": "assets/battle/foe-zombie-idle.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "fightFoe1_attack",
+      "path": "assets/battle/foe-zombie-attack.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "fightFoe2_idle",
+      "path": "assets/battle/foe-lizard-idle.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "fightFoe2_attack",
+      "path": "assets/battle/foe-lizard-attack.png",
+      "hasAlpha": true
+    },
+    {
+      "//": "フィード画面の丸アバター 64x64（1 ドット = 画面の 1 画素。View は design 32px で貼る）。PNG が正、どの sprite 名に当てるかは src/View.flix の feedAvatarTexture。",
+      "name": "feedAvatarGirl",
+      "path": "assets/feed/avatar-girl.png",
+      "hasAlpha": true
+    },
+    {
+      "//": "アバター（夜の世界で戦う子）の丸アイコン。X のフィードには出ない —— チュートリアルの吹き出しの顔に使う。",
+      "name": "feedAvatarAvatar",
+      "path": "assets/feed/avatar-avatar.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarSlime",
+      "path": "assets/feed/avatar-slime.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarZombie",
+      "path": "assets/feed/avatar-zombie.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarLizard",
+      "path": "assets/feed/avatar-lizard.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarFan",
+      "path": "assets/feed/avatar-fan.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarYuno",
+      "path": "assets/feed/avatar-yuno.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarMutual",
+      "path": "assets/feed/avatar-mutual.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "feedAvatarMoff",
+      "path": "assets/feed/avatar-moff.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardFrame",
+      "path": "assets/card/frame.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardIconAttack",
+      "path": "assets/card/icon-attack.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardIconGuard",
+      "path": "assets/card/icon-guard.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardIconSkill",
+      "path": "assets/card/icon-skill.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardIconHex",
+      "path": "assets/card/icon-hex.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardIconRush",
+      "path": "assets/card/icon-rush.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardIconSpecial",
+      "path": "assets/card/icon-special.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtACC_001",
+      "path": "assets/card/art/ACC_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtACC_002",
+      "path": "assets/card/art/ACC_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtACC_003",
+      "path": "assets/card/art/ACC_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtACC_004",
+      "path": "assets/card/art/ACC_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtACC_005",
+      "path": "assets/card/art/ACC_005.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtATK_001",
+      "path": "assets/card/art/ATK_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtATK_002",
+      "path": "assets/card/art/ATK_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtATK_003",
+      "path": "assets/card/art/ATK_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtATK_004",
+      "path": "assets/card/art/ATK_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtATK_005",
+      "path": "assets/card/art/ATK_005.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtDEF_001",
+      "path": "assets/card/art/DEF_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtDEF_002",
+      "path": "assets/card/art/DEF_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtDEF_003",
+      "path": "assets/card/art/DEF_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtDEF_004",
+      "path": "assets/card/art/DEF_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtDEF_005",
+      "path": "assets/card/art/DEF_005.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtINT_001",
+      "path": "assets/card/art/INT_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtINT_002",
+      "path": "assets/card/art/INT_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtINT_003",
+      "path": "assets/card/art/INT_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtINT_004",
+      "path": "assets/card/art/INT_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtINT_005",
+      "path": "assets/card/art/INT_005.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTEC_001",
+      "path": "assets/card/art/TEC_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTEC_002",
+      "path": "assets/card/art/TEC_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTEC_003",
+      "path": "assets/card/art/TEC_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTEC_004",
+      "path": "assets/card/art/TEC_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardEffectMark",
+      "path": "assets/card/effect-mark.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AA_001",
+      "path": "assets/card/art/MIX_AA_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AA_002",
+      "path": "assets/card/art/MIX_AA_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AD_001",
+      "path": "assets/card/art/MIX_AD_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AD_002",
+      "path": "assets/card/art/MIX_AD_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AI_001",
+      "path": "assets/card/art/MIX_AI_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AI_002",
+      "path": "assets/card/art/MIX_AI_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AT_001",
+      "path": "assets/card/art/MIX_AT_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_AT_002",
+      "path": "assets/card/art/MIX_AT_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_DA_001",
+      "path": "assets/card/art/MIX_DA_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_DA_002",
+      "path": "assets/card/art/MIX_DA_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_DI_001",
+      "path": "assets/card/art/MIX_DI_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_DI_002",
+      "path": "assets/card/art/MIX_DI_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_DT_001",
+      "path": "assets/card/art/MIX_DT_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_DT_002",
+      "path": "assets/card/art/MIX_DT_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_IA_001",
+      "path": "assets/card/art/MIX_IA_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_IA_002",
+      "path": "assets/card/art/MIX_IA_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_TA_001",
+      "path": "assets/card/art/MIX_TA_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_TA_002",
+      "path": "assets/card/art/MIX_TA_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_TI_001",
+      "path": "assets/card/art/MIX_TI_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtMIX_TI_002",
+      "path": "assets/card/art/MIX_TI_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtQUAD_001",
+      "path": "assets/card/art/QUAD_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtQUAD_002",
+      "path": "assets/card/art/QUAD_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtQUAD_003",
+      "path": "assets/card/art/QUAD_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtQUAD_004",
+      "path": "assets/card/art/QUAD_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtQUAD_005",
+      "path": "assets/card/art/QUAD_005.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_001",
+      "path": "assets/card/art/TRI_001.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_002",
+      "path": "assets/card/art/TRI_002.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_003",
+      "path": "assets/card/art/TRI_003.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_004",
+      "path": "assets/card/art/TRI_004.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_005",
+      "path": "assets/card/art/TRI_005.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_006",
+      "path": "assets/card/art/TRI_006.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_007",
+      "path": "assets/card/art/TRI_007.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_008",
+      "path": "assets/card/art/TRI_008.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_009",
+      "path": "assets/card/art/TRI_009.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtTRI_010",
+      "path": "assets/card/art/TRI_010.png",
+      "hasAlpha": true
+    },
+    {
+      "name": "cardArtPENTA_001",
+      "path": "assets/card/art/PENTA_001.png",
+      "hasAlpha": true
+    },
+    {
+      "//": "オープニングの最初の 1 枚絵（人が描いた 1586×992 のドット絵。少女の後ろから机と液タブを見る）。画面いっぱい（480×300）に伸縮して貼る。液タブの画面の 4 隅とペン先は opening.json の tablet / penTip（この絵の画素）。",
+      "name": "openingDesk",
+      "path": "assets/art/opening-desk.png",
+      "hasAlpha": true
+    },
+    {
+      "//": "上の絵の液タブに描かれている柴犬の絵の切り抜き（make art-opening-post）。投稿の窓の添付と、夜のネットの節に映る写しに貼る。",
+      "name": "openingPost",
+      "path": "assets/art/opening-post.png",
+      "hasAlpha": true
+    }
+  ],
+  "// glyphs": "起動時に焼く字。auto=出た字から順に焼く / used=ソースとアセットにある字を先に焼く / all=フォントの全字",
+  "glyphs": "auto",
+  "// fonts": "全場面が丸ゴシック（M PLUS Rounded 1c Bold, SIL OFL）で統一。同じ TTF を 3 つの大きさで焼く — default（本文 10px）/ round（パズルの見出し 12px）/ roundBig（コンボ札 32px）。例外は label = 効果アイコンの上の 1 文字だけの筆文字（Yuji Boku, SIL OFL。ライセンス文は assets/OFL-Yuji.txt。card.json の effectLabel の字だけのサブセットで、作り直しは bin/make-effect-label-font.sh）。",
+  "fonts": [
+    {
+      "name": "default",
+      "path": "assets/MPLUSRounded1c-Bold.ttf",
+      "fontSize": 10.0
+    },
+    {
+      "name": "round",
+      "path": "assets/MPLUSRounded1c-Bold.ttf",
+      "fontSize": 12.0
+    },
+    {
+      "name": "roundBig",
+      "path": "assets/MPLUSRounded1c-Bold.ttf",
+      "fontSize": 32.0
+    },
+    {
+      "name": "label",
+      "path": "assets/YujiBoku-EffectLabel.ttf",
+      "fontSize": 15.0
+    }
+  ],
+  "// sounds": "assets/sfx/*.wav は make render-all が src/render/SfxRender.flix から生成する。手で置いた録音ではない。splat1〜N・chainStep2〜N・chime1〜N の本数は src/Sounds.flix の chainSoundSteps / chimeSteps と同じ数をここにも登録する（段数を変えたら両方を直す）。",
+  "sounds": [
+    {
+      "name": "cursor",
+      "path": "assets/sfx/cursor.wav",
+      "looping": false
+    },
+    {
+      "name": "decide",
+      "path": "assets/sfx/decide.wav",
+      "looping": false
+    },
+    {
+      "name": "deny",
+      "path": "assets/sfx/deny.wav",
+      "looping": false
+    },
+    {
+      "name": "sleep",
+      "path": "assets/sfx/sleep.wav",
+      "looping": false
+    },
+    {
+      "name": "dayflip",
+      "path": "assets/sfx/dayflip.wav",
+      "looping": false
+    },
+    {
+      "name": "wake",
+      "path": "assets/sfx/wake.wav",
+      "looping": false
+    },
+    {
+      "name": "bgmDay",
+      "path": "assets/sfx/bgmDay.wav",
+      "looping": true
+    },
+    {
+      "name": "bgmTitle",
+      "path": "assets/sfx/bgmTitle.wav",
+      "looping": true
+    },
+    {
+      "name": "bgmEnding",
+      "path": "assets/sfx/bgmEnding.wav",
+      "looping": true
+    },
+    {
+      "name": "bgmNode",
+      "path": "assets/sfx/bgmNode.wav",
+      "looping": true
+    },
+    {
+      "name": "bgmGlitch",
+      "path": "assets/sfx/bgmGlitch.wav",
+      "looping": true
+    },
+    {
+      "name": "roomTone",
+      "path": "assets/sfx/roomTone.wav",
+      "looping": true
+    },
+    {
+      "name": "swap",
+      "path": "assets/sfx/swap.wav",
+      "looping": false
+    },
+    {
+      "name": "clear",
+      "path": "assets/sfx/clear.wav",
+      "looping": false
+    },
+    {
+      "name": "clear1",
+      "path": "assets/sfx/clear1.wav",
+      "looping": false
+    },
+    {
+      "name": "clear2",
+      "path": "assets/sfx/clear2.wav",
+      "looping": false
+    },
+    {
+      "name": "clear3",
+      "path": "assets/sfx/clear3.wav",
+      "looping": false
+    },
+    {
+      "name": "clear4",
+      "path": "assets/sfx/clear4.wav",
+      "looping": false
+    },
+    {
+      "name": "clear5",
+      "path": "assets/sfx/clear5.wav",
+      "looping": false
+    },
+    {
+      "name": "clear6",
+      "path": "assets/sfx/clear6.wav",
+      "looping": false
+    },
+    {
+      "name": "clear7",
+      "path": "assets/sfx/clear7.wav",
+      "looping": false
+    },
+    {
+      "name": "clear8",
+      "path": "assets/sfx/clear8.wav",
+      "looping": false
+    },
+    {
+      "name": "chain",
+      "path": "assets/sfx/chain.wav",
+      "looping": false
+    },
+    {
+      "name": "bgmPuzzle",
+      "path": "assets/sfx/bgmPuzzle.wav",
+      "looping": true
+    },
+    {
+      "name": "notify",
+      "path": "assets/sfx/notify.wav",
+      "looping": false
+    },
+    {
+      "name": "scroll",
+      "path": "assets/sfx/scroll.wav",
+      "looping": false
+    },
+    {
+      "name": "bgmResult",
+      "path": "assets/sfx/bgmResult.wav",
+      "looping": true
+    },
+    {
+      "name": "bgmWin",
+      "path": "assets/sfx/bgmWin.wav",
+      "looping": true
+    },
+    {
+      "name": "bgmLose",
+      "path": "assets/sfx/bgmLose.wav",
+      "looping": true
+    },
+    {
+      "name": "applause",
+      "path": "assets/sfx/applause.wav",
+      "looping": true
+    },
+    {
+      "name": "page",
+      "path": "assets/sfx/page.wav",
+      "looping": false
+    },
+    {
+      "name": "typing",
+      "path": "assets/sfx/typing.wav",
+      "looping": true
+    },
+    {
+      "name": "step",
+      "path": "assets/sfx/step.wav",
+      "looping": false
+    },
+    {
+      "name": "bump",
+      "path": "assets/sfx/bump.wav",
+      "looping": false
+    },
+    {
+      "name": "encounter",
+      "path": "assets/sfx/encounter.wav",
+      "looping": false
+    },
+    {
+      "name": "trigger",
+      "path": "assets/sfx/trigger.wav",
+      "looping": false
+    },
+    {
+      "name": "cardset",
+      "path": "assets/sfx/cardset.wav",
+      "looping": false
+    },
+    {
+      "name": "slash",
+      "path": "assets/sfx/slash.wav",
+      "looping": false
+    },
+    {
+      "name": "poisonBite",
+      "path": "assets/sfx/poisonBite.wav",
+      "looping": false
+    },
+    {
+      "name": "riposte",
+      "path": "assets/sfx/riposte.wav",
+      "looping": false
+    },
+    {
+      "name": "powerHit1",
+      "path": "assets/sfx/powerHit1.wav",
+      "looping": false
+    },
+    {
+      "name": "powerHit2",
+      "path": "assets/sfx/powerHit2.wav",
+      "looping": false
+    },
+    {
+      "name": "powerHit3",
+      "path": "assets/sfx/powerHit3.wav",
+      "looping": false
+    },
+    {
+      "name": "powerHit4",
+      "path": "assets/sfx/powerHit4.wav",
+      "looping": false
+    },
+    {
+      "name": "powerHit5",
+      "path": "assets/sfx/powerHit5.wav",
+      "looping": false
+    },
+    {
+      "name": "block",
+      "path": "assets/sfx/block.wav",
+      "looping": false
+    },
+    {
+      "name": "shieldBreak",
+      "path": "assets/sfx/shieldBreak.wav",
+      "looping": false
+    },
+    {
+      "name": "whiff",
+      "path": "assets/sfx/whiff.wav",
+      "looping": false
+    },
+    {
+      "name": "crit",
+      "path": "assets/sfx/crit.wav",
+      "looping": false
+    },
+    {
+      "name": "hurt",
+      "path": "assets/sfx/hurt.wav",
+      "looping": false
+    },
+    {
+      "name": "victory",
+      "path": "assets/sfx/victory.wav",
+      "looping": false
+    },
+    {
+      "name": "vanish",
+      "path": "assets/sfx/vanish.wav",
+      "looping": false
+    },
+    {
+      "name": "defeat",
+      "path": "assets/sfx/defeat.wav",
+      "looping": false
+    },
+    {
+      "name": "bgmFight",
+      "path": "assets/sfx/bgmFight.wav",
+      "looping": true
+    },
+    {
+      "name": "battleIntro",
+      "path": "assets/sfx/battleIntro.wav",
+      "looping": false
+    },
+    {
+      "name": "introSlam",
+      "path": "assets/sfx/introSlam.wav",
+      "looping": false
+    },
+    {
+      "name": "piecePick",
+      "path": "assets/sfx/piecePick.wav",
+      "looping": false
+    },
+    {
+      "name": "pieceSwap",
+      "path": "assets/sfx/pieceSwap.wav",
+      "looping": false
+    },
+    {
+      "name": "squeeze",
+      "path": "assets/sfx/squeeze.wav",
+      "looping": false
+    },
+    {
+      "name": "splat1",
+      "path": "assets/sfx/splat1.wav",
+      "looping": false
+    },
+    {
+      "name": "splat2",
+      "path": "assets/sfx/splat2.wav",
+      "looping": false
+    },
+    {
+      "name": "splat3",
+      "path": "assets/sfx/splat3.wav",
+      "looping": false
+    },
+    {
+      "name": "splat4",
+      "path": "assets/sfx/splat4.wav",
+      "looping": false
+    },
+    {
+      "name": "splat5",
+      "path": "assets/sfx/splat5.wav",
+      "looping": false
+    },
+    {
+      "name": "splat6",
+      "path": "assets/sfx/splat6.wav",
+      "looping": false
+    },
+    {
+      "name": "splat7",
+      "path": "assets/sfx/splat7.wav",
+      "looping": false
+    },
+    {
+      "name": "splat8",
+      "path": "assets/sfx/splat8.wav",
+      "looping": false
+    },
+    {
+      "name": "drip",
+      "path": "assets/sfx/drip.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep1",
+      "path": "assets/sfx/chainStep1.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep2",
+      "path": "assets/sfx/chainStep2.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep3",
+      "path": "assets/sfx/chainStep3.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep4",
+      "path": "assets/sfx/chainStep4.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep5",
+      "path": "assets/sfx/chainStep5.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep6",
+      "path": "assets/sfx/chainStep6.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep7",
+      "path": "assets/sfx/chainStep7.wav",
+      "looping": false
+    },
+    {
+      "name": "chainStep8",
+      "path": "assets/sfx/chainStep8.wav",
+      "looping": false
+    },
+    {
+      "name": "brush",
+      "path": "assets/sfx/brush.wav",
+      "looping": false
+    },
+    {
+      "name": "scoreAdd",
+      "path": "assets/sfx/scoreAdd.wav",
+      "looping": false
+    },
+    {
+      "name": "pencilSharpen",
+      "path": "assets/sfx/pencilSharpen.wav",
+      "looping": false
+    },
+    {
+      "name": "deckPress",
+      "path": "assets/sfx/deckPress.wav",
+      "looping": false
+    },
+    {
+      "name": "cardDraw",
+      "path": "assets/sfx/cardDraw.wav",
+      "looping": false
+    },
+    {
+      "name": "cardSpin",
+      "path": "assets/sfx/cardSpin.wav",
+      "looping": false
+    },
+    {
+      "name": "cardLand",
+      "path": "assets/sfx/cardLand.wav",
+      "looping": false
+    },
+    {
+      "name": "cardShine",
+      "path": "assets/sfx/cardShine.wav",
+      "looping": false
+    },
+    {
+      "name": "cardAbsorb",
+      "path": "assets/sfx/cardAbsorb.wav",
+      "looping": false
+    },
+    {
+      "name": "fxAttack",
+      "path": "assets/sfx/fxAttack.wav",
+      "looping": false
+    },
+    {
+      "name": "fxGuard",
+      "path": "assets/sfx/fxGuard.wav",
+      "looping": false
+    },
+    {
+      "name": "fxSkill",
+      "path": "assets/sfx/fxSkill.wav",
+      "looping": false
+    },
+    {
+      "name": "fxHex",
+      "path": "assets/sfx/fxHex.wav",
+      "looping": false
+    },
+    {
+      "name": "fxRush",
+      "path": "assets/sfx/fxRush.wav",
+      "looping": false
+    },
+    {
+      "name": "feedRefresh",
+      "path": "assets/sfx/feedRefresh.wav",
+      "looping": false
+    },
+    {
+      "name": "feedGood",
+      "path": "assets/sfx/feedGood.wav",
+      "looping": false
+    },
+    {
+      "name": "feedBad",
+      "path": "assets/sfx/feedBad.wav",
+      "looping": false
+    },
+    {
+      "name": "shardLand",
+      "path": "assets/sfx/shardLand.wav",
+      "looping": false
+    },
+    {
+      "name": "pencilRoll",
+      "path": "assets/sfx/pencilRoll.wav",
+      "looping": false
+    },
+    {
+      "name": "cutInClose",
+      "path": "assets/sfx/cutInClose.wav",
+      "looping": false
+    },
+    {
+      "name": "typeKey",
+      "path": "assets/sfx/typeKey.wav",
+      "looping": false
+    },
+    {
+      "name": "turnStart",
+      "path": "assets/sfx/turnStart.wav",
+      "looping": false
+    },
+    {
+      "name": "winSting",
+      "path": "assets/sfx/winSting.wav",
+      "looping": false
+    },
+    {
+      "name": "loseSting",
+      "path": "assets/sfx/loseSting.wav",
+      "looping": false
+    },
+    {
+      "name": "loseFade",
+      "path": "assets/sfx/loseFade.wav",
+      "looping": false
+    },
+    {
+      "name": "expire",
+      "path": "assets/sfx/expire.wav",
+      "looping": false
+    },
+    {
+      "name": "phoneShrink",
+      "path": "assets/sfx/phoneShrink.wav",
+      "looping": false
+    },
+    {
+      "name": "phoneSetDown",
+      "path": "assets/sfx/phoneSetDown.wav",
+      "looping": false
+    },
+    {
+      "name": "phoneRise",
+      "path": "assets/sfx/phoneRise.wav",
+      "looping": false
+    },
+    {
+      "name": "phonePing",
+      "path": "assets/sfx/phonePing.wav",
+      "looping": false
+    },
+    {
+      "name": "phoneZoom",
+      "path": "assets/sfx/phoneZoom.wav",
+      "looping": false
+    },
+    {
+      "name": "interruptGlitch",
+      "path": "assets/sfx/interruptGlitch.wav",
+      "looping": false
+    },
+    {
+      "name": "warnKlaxon",
+      "path": "assets/sfx/warnKlaxon.wav",
+      "looping": false
+    },
+    {
+      "name": "warnDrone",
+      "path": "assets/sfx/warnDrone.wav",
+      "looping": false
+    },
+    {
+      "name": "buildRoll",
+      "path": "assets/sfx/buildRoll.wav",
+      "looping": false
+    },
+    {
+      "name": "crtOff",
+      "path": "assets/sfx/crtOff.wav",
+      "looping": false
+    },
+    {
+      "name": "crtOffShot",
+      "path": "assets/sfx/crtOffShot.wav",
+      "looping": false
+    },
+    {
+      "name": "healFill",
+      "path": "assets/sfx/healFill.wav",
+      "looping": false
+    },
+    {
+      "name": "cleanse",
+      "path": "assets/sfx/cleanse.wav",
+      "looping": false
+    },
+    {
+      "name": "chipDrain",
+      "path": "assets/sfx/chipDrain.wav",
+      "looping": false
+    },
+    {
+      "name": "cardSpinFit131",
+      "path": "assets/sfx/cardSpinFit131.wav",
+      "looping": false
+    },
+    {
+      "name": "cardSpinFit262",
+      "path": "assets/sfx/cardSpinFit262.wav",
+      "looping": false
+    },
+    {
+      "name": "endPowerOn",
+      "path": "assets/sfx/endPowerOn.wav",
+      "looping": false
+    },
+    {
+      "name": "endType",
+      "path": "assets/sfx/endType.wav",
+      "looping": false
+    },
+    {
+      "name": "endTick",
+      "path": "assets/sfx/endTick.wav",
+      "looping": false
+    },
+    {
+      "name": "endQuote",
+      "path": "assets/sfx/endQuote.wav",
+      "looping": false
+    },
+    {
+      "name": "endBurst",
+      "path": "assets/sfx/endBurst.wav",
+      "looping": false
+    },
+    {
+      "name": "endOk",
+      "path": "assets/sfx/endOk.wav",
+      "looping": false
+    },
+    {
+      "name": "endLost",
+      "path": "assets/sfx/endLost.wav",
+      "looping": false
+    },
+    {
+      "name": "endTrend",
+      "path": "assets/sfx/endTrend.wav",
+      "looping": false
+    },
+    {
+      "name": "relicGet",
+      "path": "assets/sfx/relicGet.wav",
+      "looping": false
+    },
+    {
+      "name": "fanfare",
+      "path": "assets/sfx/fanfare.wav",
+      "looping": false
+    },
+    {
+      "name": "postClick",
+      "path": "assets/sfx/postClick.wav",
+      "looping": false
+    },
+    {
+      "name": "uploadWhoosh",
+      "path": "assets/sfx/uploadWhoosh.wav",
+      "looping": false
+    },
+    {
+      "name": "dataBurst",
+      "path": "assets/sfx/dataBurst.wav",
+      "looping": false
+    },
+    {
+      "name": "streamRush",
+      "path": "assets/sfx/streamRush.wav",
+      "looping": false
+    },
+    {
+      "name": "swell",
+      "path": "assets/sfx/swell.wav",
+      "looping": false
+    },
+    {
+      "name": "countUp",
+      "path": "assets/sfx/countUp.wav",
+      "looping": false
+    },
+    {
+      "name": "corruptCreep",
+      "path": "assets/sfx/corruptCreep.wav",
+      "looping": false
+    },
+    {
+      "name": "corruptHit",
+      "path": "assets/sfx/corruptHit.wav",
+      "looping": false
+    },
+    {
+      "name": "bgmDiffuse",
+      "path": "assets/sfx/bgmDiffuse.wav",
+      "looping": true
+    },
+    {
+      "name": "chime1",
+      "path": "assets/sfx/chime1.wav",
+      "looping": false
+    },
+    {
+      "name": "chime2",
+      "path": "assets/sfx/chime2.wav",
+      "looping": false
+    },
+    {
+      "name": "chime3",
+      "path": "assets/sfx/chime3.wav",
+      "looping": false
+    },
+    {
+      "name": "chime4",
+      "path": "assets/sfx/chime4.wav",
+      "looping": false
+    },
+    {
+      "name": "chime5",
+      "path": "assets/sfx/chime5.wav",
+      "looping": false
+    },
+    {
+      "name": "chime6",
+      "path": "assets/sfx/chime6.wav",
+      "looping": false
+    },
+    {
+      "name": "chime7",
+      "path": "assets/sfx/chime7.wav",
+      "looping": false
+    },
+    {
+      "name": "chime8",
+      "path": "assets/sfx/chime8.wav",
+      "looping": false
+    }
+  ],
+  "// web": "ブラウザ版（bin/fge export-web）の設定。マウスで遊ぶゲームなので仮想パッドは出さない。指の端末は canvas のタップがクリックになる（engine の既定）。",
+  "web": {
+    "keysDoc": "assets/player.keys.json",
+    "orientation": "landscape",
+    "deferred": [
+      "assets/sfx/bgmTitle.wav",
+      "assets/art/opening-*.png",
+      "assets/art/talk-*.png",
+      "assets/stand/*.png",
+      "assets/battle/*.png",
+      "assets/sfx/bgm*.wav",
+      "assets/card/art/*.png"
+    ],
+    "deferredFonts": ["round", "roundBig", "label"],
+    "compress": {
+      "audioBitrateKbps": 64,
+      "lossyImages": [
+        { "glob": "assets/art/title-bg.png", "quality": 90 },
+        { "glob": "assets/art/opening-*.png", "quality": 90 },
+        { "glob": "assets/art/talk-*.png", "quality": 90 },
+        { "glob": "assets/stand/avatar-face?.png", "quality": 90 },
+        { "glob": "assets/stand/girl-face?.png", "quality": 90 },
+        { "glob": "assets/battle/*.png", "quality": 90 },
+        { "glob": "assets/card/art/*.png", "quality": 90 }
+      ]
+    }
+  },
+  "editor": {
+    "plugins": [
+      {
+        "id": "battle-sim-elm",
+        "title": "戦闘シミュレータ",
+        "performUrl": "http://127.0.0.1:8790/sim",
+        "performCmd": "make sim-server"
+      }
+    ],
+    "resources": [
+      {
+        "id": "cycle",
+        "pattern": "assets/internet_dungeon.cycle.json",
+        "title": "文言とテンポ（コマンド名・一言・幕の長さ）",
+        "schema": "assets/cycle.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "puzzle",
+        "pattern": "assets/internet_dungeon.puzzle.json",
+        "title": "お絵描きパズル（盤・手数・点・お邪魔マス）",
+        "schema": "assets/puzzle.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "board",
+        "pattern": "assets/*.board.json",
+        "title": "チュートリアルの固定盤（1 ファイル = 1 盤。マップエディタで塗れる）",
+        "schema": "assets/board.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "board-palette",
+        "pattern": "assets/board.terrain.json",
+        "title": "固定盤の色票（マスの文字 → 色）",
+        "schema": "assets/terrain.schema.json",
+        "role": "material"
+      },
+      {
+        "id": "script",
+        "pattern": "assets/internet_dungeon.script.json",
+        "title": "会話の台本（何日目に誰が何を言うか）",
+        "schema": "assets/script.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "tutorial",
+        "pattern": "assets/internet_dungeon.tutorial.json",
+        "title": "チュートリアル（赤ペンの印・隅の吹き出し・おてほんの盤）",
+        "schema": "assets/tutorial.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "opening",
+        "pattern": "assets/internet_dungeon.opening.json",
+        "title": "オープニング（机の引き → 投稿 → 広がる → アンチ → 負け戦の拍の長さと文言）",
+        "schema": "assets/opening.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "card",
+        "pattern": "assets/internet_dungeon.card.json",
+        "title": "カード 56 枚（コスト・属性・効果）",
+        "schema": "assets/card.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "dungeon",
+        "pattern": "assets/internet_dungeon.dungeon.json",
+        "title": "ダンジョン（夜にもぐる節の並び・どの敵が出るか）",
+        "schema": "assets/dungeon.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "feed",
+        "pattern": "assets/internet_dungeon.feed.json",
+        "title": "フィード画面（X 風タイムライン。ポストの文言・クソリプの数値）",
+        "schema": "assets/feed.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "relic",
+        "pattern": "assets/internet_dungeon.relic.json",
+        "title": "アーティファクト（エゴサーチの 3 択。夜かぎりのパッシブの名前・説明・数）",
+        "schema": "assets/relic.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "archetype",
+        "pattern": "assets/internet_dungeon.archetype.json",
+        "title": "デッキの型（速攻型・鉄壁型…の重みと、型を言い切るしきい値）",
+        "schema": "assets/archetype.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "enemy",
+        "pattern": "assets/internet_dungeon.enemy.json",
+        "title": "敵（体力・攻撃・防御・固定デッキ）",
+        "schema": "assets/enemy.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "battle",
+        "pattern": "assets/internet_dungeon.battle.json",
+        "title": "戦い（アンチの強さ・文房具・逃げやすさ）",
+        "schema": "assets/battle.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "cue",
+        "pattern": "assets/internet_dungeon.cue.json",
+        "title": "戦闘演出のタイミング（ビートの間隔・時間割・ワンショットの尺）",
+        "schema": "assets/cue.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "theme",
+        "pattern": "assets/internet_dungeon.theme.json",
+        "title": "色（昼の 3 色・夜の 3 色）",
+        "schema": "assets/theme.schema.json",
+        "role": "material"
+      },
+      {
+        "id": "shader",
+        "pattern": "assets/*.shader.json",
+        "title": "面の塗り（昼の壁・夜の闇）",
+        "schema": "assets/shader.schema.json",
+        "role": "material"
+      },
+      {
+        "id": "sprite",
+        "pattern": "assets/*.sprite.json",
+        "title": "ドット絵",
+        "schema": "assets/sprite.schema.json",
+        "role": "material"
+      },
+      {
+        "id": "sfxtune",
+        "pattern": "assets/internet_dungeon.sfxtune.json",
+        "title": "音のつまみ（効果音と BGM）",
+        "schema": "assets/sfxtune.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "keys",
+        "pattern": "assets/player.keys.json",
+        "title": "キー割り当て（どのキーで選ぶか・決めるか）",
+        "schema": "assets/keys.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "project",
+        "pattern": "project.json",
+        "schema": "project.schema.json",
+        "title": "ゲームの題・画面",
+        "role": "tuning"
+      },
+      {
+        "id": "chip",
+        "pattern": "assets/music/*.chip.json",
+        "title": "チップチューンの譜面（フレーズ・チェーン・ソング）",
+        "schema": "assets/chip.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "instrument",
+        "pattern": "assets/music/internet_dungeon.instrument.json",
+        "title": "チップチューンの楽器（table）と波形メモリ",
+        "schema": "assets/instrument.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "targets",
+        "pattern": "assets/internet_dungeon.targets.json",
+        "title": "バランスの目標（ラボが読む帯・キーカードと組む相方・make sim の決め打ちのデッキ。ゲームは読まない）",
+        "schema": "assets/targets.schema.json",
+        "role": "tuning"
+      },
+      {
+        "id": "shots",
+        "pattern": "assets/internet_dungeon.shots.json",
+        "title": "撮影の山札（動画の筋書きに名指しで要るカード。ゲームは読まない）",
+        "schema": "assets/shots.schema.json",
+        "role": "tuning"
+      }
+    ]
+  }
+}

@@ -1,0 +1,435 @@
+{
+  "title": "🔊 サウンド調整",
+  "version": 1,
+  "note": "音のつまみ。どんな波を重ねるかは src/render/SfxRender.flix、どの出来事で鳴るかは src/Sfx.flix。効果音の 3 つのつまみ（volume 音量 / pitch 高さ / speed 速さ＝大きいほど短く鋭い）は WAV を書き出すときに効くので、変えたら make render-all（gallery-sounds は書き出さずに並べるだけ）して起動し直す。BGM の音量だけは鳴らしながら掛かるので保存で即反映される。いじると何が変わるか: cursor=カーソルを動かした音 / decide=決めた音 / deny=いま選べないコマンドを選んだ音 / sleep=眠りに落ちる音 / wake=朝が来る音 / dayflip=朝に日付カードの数字が着地するカチッ / swap=ピースをつかんだ音 / clear=そろって消えた音 / chain=連鎖の音 / result=描き終えた音 / notify=SNS の数が増えた音 / scroll=履歴を送った音 / page=会話を 1 行送った音 / step=夜の町の足音 / bump=ぶつかった音 / encounter=戦いの始まりにバトルスタートの帯が開く音（ブラウン管の電源が入る） / cardset=満了したスタンバイのカードが扇から抜けた音 / slash=当たった音 / hurt=受けた音 / victory=勝った音 / vanish=トドメの一撃で相手が消える音（深いドン → 砂嵐が噴き上がって抜ける → 下がる粒がこぼれる。スローの中で鳴る） / defeat=負けた音 / bgmTitleVolume=タイトル画面の曲の音量 / bgmEndingVolume=締めの画面（エンディング）の曲の音量 / bgmDayVolume=自室の曲の音量 / bgmNightVolume=インターネットの曲の音量 / bgmPuzzleVolume=描いている間の曲の音量 / bgmResultVolume=リザルト画面のファンファーレと拍手、勝った後（撃破の会話と戦果の画面）のウィニング・ラン、負けた後（力尽きた拍の会話と力尽きた窓）の負けの曲 bgmLose の音量 / typingVolume=文字が出ている間のタイプ音の音量 / roomToneVolume=自室の空気（掛け時計の秒針と空気の擦れ）の音量。 / 以下はパズル（昼・8bit）と戦闘（夜・ブラウン管）の効果音。どれも volume 1.0 でピーク 0.5、pitch はテープの速回し（高くすると短くなる）、speed は効かない: piecePick=駒を選んだ（ピッ・ピ） / pieceSwap=駒を入れ替えた / squeeze=消える直前に駒がぎゅーっと潰れる溜め / splat=駒が弾けてべちゃっ（splat1〜8 = 連鎖の段） / drip=しずくが垂れた / chainStep=連鎖の盛り上がり（chainStep1〜8 = 連鎖の段） / brush=3 連鎖で筆の帯が盤を横切る / scoreAdd=+点がスコアへ入った / pencilSharpen=カードを取った拍に一番下の鉛筆が鉛筆削りで削れて消える「ゴリゴリ・シャッ」（長さは puzzle.json の pencil.cutSeconds に合わせて作ってある） / deckPress=山カードボタンを押した / cardDraw=カードが山カードから飛び出した / cardSpin=カードがくるくる回る風切り / cardLand=カードが正面で止まってはずんだ / cardShine=見せ場のキラッ / cardAbsorb=カードが主人公へ吸い込まれた / fxAttack=攻撃のカードの効果が出た / fxGuard=防御のカードの効果が出た / fxSkill=技巧のカードの効果が出た / fxHex=妨害のカードの効果が出た（相手が弱る） / fxRush=加速のカードの効果が出た / feedRefresh=夜のホームの引っ張って更新で輪が回り終えた「シュポッ」（X の更新音の軽い抜け） / feedGood=夜のホームのイベントポストの良い効果が見えた拍の「キラリン」（体力・あすの手数・いいねのかけらが増えた） / feedBad=悪い効果が見えた拍の「ブブッ」（体力やあすの手数が減った） / shardLand=いいねのかけらが増えるポストで、落ちてくるかけらが 1 個着地した「チリン」（時刻は feed.json の shardDrop） / pencilRoll=夜のフィードのイベントでパズルの手数が動いたとき、鉛筆が奥から転がってきて止まる「コロコロ…コトッ」（長さは feed.json の result.rollSeconds に合わせて作ってある） / crit=クリティカルの速報の帯が裂けて差し込む音 / poisonBite=毒が噛んだ拍に髑髏が噛みつく「ガチッ」と泡がごぼごぼ昇る音 / riposte=反撃が跳ね返った拍の「キィン → シュッ → ドン」 / powerHit=攻撃強化の乗った通常攻撃の当たりで斬撃の音に重ねる音（powerHit1〜5 の全部に効く。殴った側の状態アイコンの目盛りの段ごとに 1 つずつ重なる: 低いドスッ → 割れるバキッと砂 → 抜ける風と深いドン → 金属の響き → 目盛り超えの虹で駆け上がるきらめき） / cutInClose=バトルスタートの帯が閉じる音 / typeKey=帯の字を 1 文字打つ音 / turnStart=ターンの頭の音 / winSting=WIN の帯が開く音 / loseSting=LOSE の帯が開く音 / expire=強化が切れた「鎮火」の音 / phoneShrink=夜のフィードがスマホの画面へ縮む「フゥン」 / phoneSetDown=画面を消して机に置く「カチ…コト」 / phoneRise=昼の机からスマホが上がってくる「スッ」 / phonePing=スマホの通知「ピロン」 / phoneZoom=画面へ寄っていく上昇音と寄り切った拍の和音。 / chipDrain=HP の帯の減った分が流れ落ちる音（長さは cue.json の hitFeel.chipDrainSeconds） / healFill=回復で HP の帯が伸びる間の数え上がるキラキラ（長さは cue.json の hitFeel.healFillSeconds） / cleanse=浄化・解除のアイコンが状態の列に着いて、毒・弱体・盾・強化が消える拍の「シャラン」 / cardSpinFit131・cardSpinFit262=はやさ ×2 / ×4 の風切り（名前の数は battle.json の speedBase × scale の 100 倍 = 実際の速さ。cardSpin のつまみで、回る絵の長さに合わせて組み直して書き出す。別のつまみは持たない。段の倍率を変えたら project.json の sounds の名前もそろえる） / endPowerOn・endType・endTick・endQuote・endBurst・endOk・endLost・endTrend=戦いの後の画面（戦利品の 2 枠の窓）の入りの音。時刻は cue.json の endScreen / fanfare=潜り切った後の締めの画面でカードが弾んで出る拍の短いファンファーレ（タタタ・ターン） / battleIntro=戦いの入りのカットインが始まる拍の鋭い一撃（シュイン + キン） / introSlam=カットインの 2 人が叩きつけられた拍の重い一撃。 / interruptGlitch・warnKlaxon・warnDrone・buildRoll・crtOff=戦いの入りの前置き（cue.json の preRoll）の音。順に イベント戦の会話が裂ける「ザッ」の刻み / WARNING の 1 拍ごとの「ブーッ」と 1・3 拍目のキック / WARNING から溜めの終わりまでの A の唸り / 溜めの鼓動・詰まる小太鼓・ベース・上昇音 / 無音の頭のブラウン管が切れる音。長さは preRoll の bpm と小節数から書き出す（変えたら make render-all）。volume は試作の大きさに掛ける倍率（試作は全体に 0.7 を掛けていたので 0.7 で試作と同じ）。pitch・speed は効かない（拍に合わせた長さを変えないため）。",
+  "cursor": {
+    "volume": 0.28,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "decide": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "deny": {
+    "volume": 0.42,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "sleep": {
+    "volume": 0.55,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "wake": {
+    "volume": 0.55,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "dayflip": {
+    "volume": 0.4,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "swap": {
+    "volume": 0.26,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "clear": {
+    "volume": 0.46,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "chain": {
+    "volume": 0.52,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "notify": {
+    "volume": 0.36,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "scroll": {
+    "volume": 0.2,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "page": {
+    "volume": 0.3,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "step": {
+    "volume": 0.18,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "bump": {
+    "volume": 0.26,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "encounter": {
+    "volume": 0.62,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "trigger": {
+    "volume": 0.32,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cardset": {
+    "volume": 0.4,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "slash": {
+    "volume": 0.46,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "poisonBite": {
+    "volume": 0.9,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "riposte": {
+    "volume": 0.8,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "powerHit": {
+    "volume": 0.8,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "block": {
+    "volume": 0.85,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "shieldBreak": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "whiff": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "crit": {
+    "volume": 0.7,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "hurt": {
+    "volume": 0.42,
+    "pitch": 0.8,
+    "speed": 1.0
+  },
+  "victory": {
+    "volume": 0.66,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "vanish": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "defeat": {
+    "volume": 0.56,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "piecePick": {
+    "volume": 0.25,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "pieceSwap": {
+    "volume": 0.24,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "squeeze": {
+    "volume": 0.33,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "splat": {
+    "volume": 0.47,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "drip": {
+    "volume": 0.17,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "chainStep": {
+    "volume": 0.26,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "brush": {
+    "volume": 0.31,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "scoreAdd": {
+    "volume": 0.18,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "pencilSharpen": {
+    "volume": 0.3,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "deckPress": {
+    "volume": 0.61,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cardDraw": {
+    "volume": 0.35,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cardSpin": {
+    "volume": 0.44,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cardLand": {
+    "volume": 0.47,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cardShine": {
+    "volume": 0.34,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cardAbsorb": {
+    "volume": 0.42,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "fxAttack": {
+    "volume": 0.26,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "fxGuard": {
+    "volume": 0.33,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "fxSkill": {
+    "volume": 0.47,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "fxHex": {
+    "volume": 0.28,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "fxRush": {
+    "volume": 0.63,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "feedRefresh": {
+    "volume": 0.54,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "feedGood": {
+    "volume": 0.6,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "feedBad": {
+    "volume": 0.6,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "shardLand": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "pencilRoll": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cutInClose": {
+    "volume": 0.5,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "typeKey": {
+    "volume": 0.3,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "turnStart": {
+    "volume": 0.4,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "winSting": {
+    "volume": 0.66,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "loseSting": {
+    "volume": 0.62,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "expire": {
+    "volume": 0.36,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "battleIntro": {
+    "volume": 0.6,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "introSlam": {
+    "volume": 0.62,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "bgmDayVolume": 0.24,
+  "bgmNightVolume": 0.28,
+  "roomToneVolume": 0.26,
+  "bgmPuzzleVolume": 0.26,
+  "bgmResultVolume": 0.34,
+  "applauseVolume": 0.4,
+  "typingVolume": 0.22,
+  "bgmFightVolume": 0.3,
+  "bgmTitleVolume": 0.3,
+  "bgmEndingVolume": 0.3,
+  "phoneShrink": {
+    "volume": 0.6,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "phoneSetDown": {
+    "volume": 0.68,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "phoneRise": {
+    "volume": 0.64,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "phonePing": {
+    "volume": 0.52,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "phoneZoom": {
+    "volume": 0.68,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "interruptGlitch": {
+    "volume": 0.7,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "warnKlaxon": {
+    "volume": 0.7,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "warnDrone": {
+    "volume": 0.7,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "buildRoll": {
+    "volume": 0.7,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "crtOff": {
+    "volume": 0.7,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "chipDrain": {
+    "volume": 0.3,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "healFill": {
+    "volume": 0.4,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "cleanse": {
+    "volume": 0.45,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endPowerOn": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endType": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endTick": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endQuote": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endBurst": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endOk": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endLost": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "endTrend": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  },
+  "fanfare": {
+    "volume": 1.0,
+    "pitch": 1.0,
+    "speed": 1.0
+  }
+}

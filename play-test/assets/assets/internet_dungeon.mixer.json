@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "note": "音の通り道（エンジンの AudioMixer）。音の名前の頭でバスへ振り分け、バスごとに音量と高い音の残り具合（lowpassGainHF 0〜1、1 = 素通し・小さいほど籠もる）を決める。いじると何が変わるか: buses の volume = そのバス全体の音量（曲・効果音・UI の釣り合い）/ routes = どの名前の音がどのバスへ流れるか（prefixes は名前の頭。どれにも当たらない音は defaultBus。拍手 applause と部屋の空気 roomTone は music、文字のタイプ音 typing は ui へ回してある —— 鳴り続ける音を sfx に置くと、鳴っている間ずっと曲が下がる）/ ducks = 効果音が鳴っている間だけ曲を depth 倍へ下げる（attackSeconds で下がり、鳴り終わって holdSeconds 待ってから releaseSeconds で戻る）/ cooldowns = 同じ音が seconds 以内に続いたら鳴らさない（細かい連打が頭だけ繰り返す音にならないように）/ snapshots = 場面ごとの上書き（talk = 会話の間、後ろの場面の曲を少し下げて籠もらせる）/ transitionSeconds = スナップショットへ移り切るまでの秒。保存すると鳴らしながら効く。",
+  "defaultBus": "sfx",
+  "transitionSeconds": 0.35,
+  "buses": [
+    {
+      "name": "music",
+      "volume": 1.0,
+      "lowpassGainHF": 1.0
+    },
+    {
+      "name": "sfx",
+      "volume": 1.0,
+      "lowpassGainHF": 1.0
+    },
+    {
+      "name": "ui",
+      "volume": 1.0,
+      "lowpassGainHF": 1.0
+    }
+  ],
+  "routes": [
+    {
+      "bus": "music",
+      "prefixes": [
+        "bgm",
+        "roomTone",
+        "applause"
+      ]
+    },
+    {
+      "bus": "ui",
+      "prefixes": [
+        "cursor",
+        "decide",
+        "deny",
+        "page",
+        "scroll",
+        "typeKey",
+        "typing"
+      ]
+    }
+  ],
+  "ducks": [
+    {
+      "bus": "music",
+      "by": [
+        "sfx"
+      ],
+      "depth": 0.6,
+      "attackSeconds": 0.03,
+      "holdSeconds": 0.08,
+      "releaseSeconds": 0.45
+    }
+  ],
+  "cooldowns": [
+    {
+      "prefix": "cursor",
+      "seconds": 0.045
+    }
+  ],
+  "snapshots": [
+    {
+      "name": "talk",
+      "buses": [
+        {
+          "name": "music",
+          "volume": 0.8,
+          "lowpassGainHF": 0.12
+        }
+      ]
+    }
+  ]
+}

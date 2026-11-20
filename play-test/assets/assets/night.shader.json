@@ -1,0 +1,54 @@
+{
+  "title": "🌃 夜のシェーダー",
+  "version": 1,
+  "note": "夜（インターネット）の闇。上から下への明るさの移り変わり（uv v）に、基板の回路のようなムラ（fbmTile）をゆっくり流し、最後に quantize で 5 段に丸めている —— なめらかに混ぜず段にするのがこの画風（ゲームボーイカラーの低解像度）。ムラは snap で座標ごと粗い升目に落としてあるので、拡大したときに画素の塊に見える。いじると何が変わるか: 色=gradient.stops の 3 色 / 段の数=quantize.steps（増やすとなめらかに、減らすと版画のように）/ 升目の粗さ=snap.cells / 流れの速さ=scaled.scroll / ムラの強さ=fbmTile を掛けている const / 上下の効き=uv v を掛けている const。fbmTile.period は整数のままにする（流しても継ぎ目が出ない）。書式は engine の docs/shader-doc.md。",
+  "name": "nightVoid",
+  "cycleRate": 0.0,
+  "out": {
+    "kind": "fill",
+    "shade": {
+      "kind": "gradient",
+      "stops": [
+        [0.0, "#070d18"],
+        [0.5, "#101b2e"],
+        [1.0, "#1d3a55"]
+      ],
+      "field": {
+        "kind": "quantize",
+        "steps": 5,
+        "of": {
+          "kind": "math2",
+          "op": "add",
+          "a": {
+            "kind": "math2",
+            "op": "mul",
+            "a": { "kind": "uv", "axis": "v" },
+            "b": { "kind": "const", "value": 0.7 }
+          },
+          "b": {
+            "kind": "math2",
+            "op": "mul",
+            "a": {
+              "kind": "snap",
+              "cells": { "x": 80.0, "y": 50.0 },
+              "of": {
+                "kind": "scaled",
+                "factor": 1.0,
+                "scroll": { "x": 0.01, "y": -0.02 },
+                "of": {
+                  "kind": "fbmTile",
+                  "octaves": 3,
+                  "scale": 4.0,
+                  "period": { "x": 4.0, "y": 4.0 },
+                  "seed": 7
+                }
+              }
+            },
+            "b": { "kind": "const", "value": 0.35 }
+          }
+        }
+      }
+    },
+    "alpha": { "kind": "const", "value": 1.0 }
+  }
+}

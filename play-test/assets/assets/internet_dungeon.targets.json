@@ -1,0 +1,153 @@
+{
+  "title": "バランスの目標（ラボが読む帯）",
+  "version": 1,
+  "note": "make lab が読む、腕前 × 敵ごとの初挑戦の勝率の目標の帯と、敵ごとのキーカード。ゲームは読まない。帯を動かすとページの「帯の中 / 外」と外れの合計が変わる。キーカードは enemy.json の keyCards が正（ここの keyCards は組む相方と説明だけ）。相方を入れ替えると「戦略」の腕前の取り方と、キーカードの効きの表が変わる。fixedDecks は make sim の決め打ちのデッキ（fixed.csv の 1 行 = 名前 × 節 × 持ち込む体力）。forecastBase は make sim-forecast の手元の 3 枚（「攻+3・守+2・攻+2」に一番近い実在のカード。足す候補は card.json の盾・毒・解除の先頭のカード）。sweepCards は make combo-sweep の組み合わせの候補（攻めのカードと、噛み合わせに効くカード。COMBO_CARDS で差し替えられる）。",
+  "personas": [
+    {
+      "id": "casual",
+      "label": "なんとなく遊ぶ人（パズルもカード選びも適当）",
+      "swap": "random",
+      "pick": "low"
+    },
+    {
+      "id": "skilled",
+      "label": "パズルとカード選びは上手い・戦略は無い",
+      "swap": "skilled",
+      "pick": "mid"
+    },
+    {
+      "id": "strategist",
+      "label": "キーカードでコンボと戦略を組む人",
+      "swap": "skilled",
+      "pick": "strategy"
+    }
+  ],
+  "bands": [
+    {
+      "persona": "casual",
+      "enemy": "slime",
+      "min": 99,
+      "max": 100
+    },
+    {
+      "persona": "skilled",
+      "enemy": "slime",
+      "min": 99,
+      "max": 100
+    },
+    {
+      "persona": "strategist",
+      "enemy": "slime",
+      "min": 99,
+      "max": 100
+    },
+    {
+      "persona": "casual",
+      "enemy": "zombie",
+      "min": 40,
+      "max": 60
+    },
+    {
+      "persona": "casual",
+      "enemy": "lizard",
+      "min": 0,
+      "max": 20
+    },
+    {
+      "persona": "skilled",
+      "enemy": "zombie",
+      "min": 70,
+      "max": 80
+    },
+    {
+      "persona": "skilled",
+      "enemy": "lizard",
+      "min": 50,
+      "max": 70
+    },
+    {
+      "persona": "strategist",
+      "enemy": "zombie",
+      "min": 85,
+      "max": 95
+    },
+    {
+      "persona": "strategist",
+      "enemy": "lizard",
+      "min": 85,
+      "max": 95
+    }
+  ],
+  "keyCards": [
+    {
+      "enemy": "zombie",
+      "partners": [
+        "TRI_007",
+        "DEF_003",
+        "TEC_003",
+        "MIX_DA_001"
+      ],
+      "why": "毒を重ねて炎上急襲の着火で弾けさせてくる相手。継続回復（安心できる場所）で毒を上回るか、浄化（ファクトチェック・鉄壁分析）で毒を消して着火を空振りさせてから殴る。"
+    },
+    {
+      "enemy": "lizard",
+      "partners": [
+        "TRI_005",
+        "ACC_004",
+        "QUAD_002",
+        "TRI_008",
+        "ATK_002"
+      ],
+      "why": "盾を重ね・強化をはがし（完全ミュート）・防御で長引かせてから炎上で押してくる耐久型。脆弱（炎上封鎖・アルゴリズム工作）で受けるダメージを増やし、連撃と加速（連投ブースト）で炎上が強くなる前に短期決戦で倒す。"
+    }
+  ],
+  "strategy": {
+    "keyBonus": 6.0,
+    "partnerBonus": 2.0,
+    "maxKeys": 2
+  },
+  "forecastBase": ["ATK_002", "DEF_001", "ATK_001"],
+  "sweepCards": ["ATK_002", "ATK_003", "ATK_004", "TEC_002", "INT_002", "ACC_001", "ACC_002", "MIX_AT_001", "MIX_AT_002", "MIX_AI_001", "MIX_AA_001", "MIX_AA_002", "MIX_TI_001", "MIX_TA_001", "TRI_004", "TRI_005", "TRI_010", "QUAD_001", "QUAD_002", "PENTA_001"],
+  "fixedDecks": [
+    {"name": "bare", "cards": []},
+    {"name": "floor(auto)", "cards": ["ATK_001", "ATK_002"]},
+    {"name": "ATK001", "cards": ["ATK_001"]},
+    {"name": "ATK001+DEF001", "cards": ["ATK_001", "DEF_001"]},
+    {"name": "ATK002+TEC001", "cards": ["ATK_002", "TEC_001"]},
+    {"name": "TEC001+ATK002", "cards": ["TEC_001", "ATK_002"]},
+    {"name": "atk_only5", "cards": ["ATK_002", "ATK_001", "ATK_003", "ATK_004", "MIX_AT_002"]},
+    {"name": "def_only5", "cards": ["DEF_001", "DEF_002", "DEF_003", "DEF_004", "TEC_004"]},
+    {"name": "AG_mix5", "cards": ["ATK_002", "DEF_001", "DEF_002", "DEF_003", "ATK_004"]},
+    {"name": "diverse5", "cards": ["ATK_002", "DEF_001", "INT_001", "INT_002", "DEF_002"]},
+    {"name": "diverse+dispel", "cards": ["ATK_002", "DEF_001", "INT_001", "INT_003", "DEF_002"]},
+    {"name": "diverse+decel", "cards": ["ATK_002", "DEF_001", "INT_001", "ACC_003", "DEF_002"]},
+    {"name": "answers5", "cards": ["ATK_002", "DEF_001", "INT_003", "ACC_003", "INT_001"]},
+    {"name": "dispel+atk", "cards": ["INT_003", "ATK_002"]},
+    {"name": "decel+atk", "cards": ["ACC_003", "ATK_002"]},
+    {"name": "dispel+decel+atk", "cards": ["INT_003", "ACC_003", "ATK_002"]},
+    {"name": "purify+atk+def", "cards": ["TEC_003", "ATK_002", "DEF_001"]},
+    {"name": "poison_ignite", "cards": ["INT_004", "INT_004", "TRI_006", "MIX_AI_002", "ATK_002"]},
+    {"name": "shield_bash", "cards": ["DEF_002", "DEF_002", "TRI_003", "TRI_001", "ATK_002"]},
+    {"name": "rush", "cards": ["ACC_001", "ACC_002", "ATK_002", "MIX_AA_001", "DEF_001"]},
+    {"name": "crit_multi", "cards": ["ATK_003", "TEC_002", "ATK_004", "MIX_AT_002", "ATK_002"]},
+    {"name": "poison_only", "cards": ["INT_004", "INT_004", "INT_004"]},
+    {"name": "shield_only", "cards": ["DEF_002", "DEF_002", "DEF_002", "DEF_002", "DEF_002"]},
+    {"name": "slow_rares", "cards": ["PENTA_001", "QUAD_001", "QUAD_002", "QUAD_005", "QUAD_003"]},
+    {"name": "penta", "cards": ["PENTA_001"]},
+    {"name": "tri_payoffs", "cards": ["TRI_003", "TRI_006", "TRI_009", "TRI_007", "TRI_002"]},
+    {"name": "dual_good", "cards": ["MIX_AD_001", "MIX_DI_002", "MIX_IA_001", "MIX_DT_001", "MIX_AI_001"]}
+  ],
+  "studyDecks": [
+    {"name": "zombiePoisonCards", "cards": ["ZMB_P1", "ZMB_P2", "INT_001"]},
+    {"name": "zombie3Poison", "cards": ["INT_004", "MIX_IA_002", "INT_004"]},
+    {"name": "zombieH", "cards": ["INT_004", "MIX_IA_002", "INT_004", "INT_001"]},
+    {"name": "zombieG", "cards": ["ZMB_P1", "MIX_IA_002", "INT_001"]},
+    {"name": "zombieK", "cards": ["INT_004", "ZMB_P2", "INT_001"]},
+    {"name": "zombieCold2First", "cards": ["INT_001", "INT_001", "INT_004", "MIX_IA_002"]},
+    {"name": "zombieAddCold", "cards": ["INT_001"]},
+    {"name": "zombieAddPoison", "cards": ["INT_004"]},
+    {"name": "zombieDrop", "cards": ["ATK_001"]},
+    {"name": "lizardAccel2", "cards": ["DEF_002", "DEF_002", "ACC_002", "ATK_002"]},
+    {"name": "lizardBash", "cards": ["DEF_002", "TRI_003", "ACC_001", "ATK_002"]}
+  ]
+}

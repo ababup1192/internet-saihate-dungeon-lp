@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "name": "battle_slash",
+  "note": "当たった胸元から飛び散る火花（View.hitSparks が foeHitAt / heroHitAt からの経過で描く。斬撃の弧は View.slashArc がコードで描く）。count=粒の数 / speed=飛ぶ勢い / accel.y=落ちる重さ / life=残る長さ。size は 1 ドット = 画面 2px の格子に合わせた 2。色は \"@名前\" でテーマから引く（対応表 src/Controls.flix の fxPalette）。",
+  "duration": 0.6,
+  "emitters": [
+    {
+      "name": "sparks",
+      "count": 14,
+      "mode": "burst",
+      "shape": "box",
+      "size": 2.0,
+      "color": [
+        "@circuit",
+        "@circuitLight",
+        "@notice"
+      ],
+      "life": {
+        "base": 0.4,
+        "vary": 0.3
+      },
+      "speed": {
+        "base": 150.0,
+        "vary": 0.4,
+        "over": {
+          "kind": "easeOut",
+          "power": 2.0
+        }
+      },
+      "dir": {
+        "base": 0.0,
+        "spread": 360.0,
+        "mode": "even"
+      },
+      "accel": {
+        "x": 0.0,
+        "y": 260.0
+      },
+      "sizeOver": {
+        "kind": "constant"
+      },
+      "alphaOver": {
+        "kind": "easeOut",
+        "power": 0.8
+      },
+      "blend": "normal",
+      "zIndex": 16
+    }
+  ]
+}

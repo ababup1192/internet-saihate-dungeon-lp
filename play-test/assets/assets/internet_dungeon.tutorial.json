@@ -1,0 +1,244 @@
+{
+  "title": "🖍 チュートリアルの印と吹き出し",
+  "version": 1,
+  "note": "チュートリアルの赤ペンの印と、X のアイコン付きの吹き出し。吹き出しの台詞（話し手と文）は時系列順の assets/talk/*.yarn（001_opening.yarn・002_day1.yarn・003_day2.yarn・004_day3.yarn）の、場面の id に tip_ を付けたノード（台詞の無い場面は silent: true でノードを置かない）。直したら bin/fge yarn build assets/talk。出ている間はその場面のゲームを止め（戦いは一時停止）、決定（Z / A）を押すと次の行・次の印へ進む。吹き出しは印のすぐ隣（印にかからない所）に出る。bubbleSide = 先に試す側（below / above / right / left。既定 below。収まらなければ下 → 上 → 右 → 左の順に次を試す）。印の無い場面は placement で置き場を選ぶ（bottom = 画面の下の真ん中・既定 / top = 画面の上の、見るべき所のすぐ下）。いつ出すかはコード（src/Tutorial.flix）で、ここは「誰が何を言い、どこに何を描くか」。座標は画面（480×300）の design px。印の形: circle = 丸（x, y が中心・w, h が半径）/ box = 四角（x, y が左上・w, h が幅と高さ）/ arrow = 曲がった矢印（x, y から toX, toY へ。bend = 曲がり具合）/ under = 下線（x, y から w だけ右）/ label = 手書きの字（x, y が字の左上）/ stamp = スタンプ（x, y が中心）。夜の画面（戦い・X のホーム）は夜のピンク、昼の画面（盤・カード選び）は昼の赤で描く。どの印も走行の最初の 1 回だけ。おてほんの盤（demoRows）は教える走行の最初の盤の並び（pale_match が指す色の薄い絵だけの入れ替えがあり、その後の盤に card_match が指す濃い絵だけの入れ替えがある並び）。",
+  "strokeSeconds": 0.45,
+  "strokeGap": 0.12,
+  "labelFade": 0.25,
+  "nibExitSeconds": 0.25,
+  "lineWidth": 2.0,
+  "nextHint": "{confirm}",
+  "feedHomeDelaySeconds": 0.8,
+  "opEmptyDelaySeconds": 0.5,
+  "startLabel": "パズル開始",
+  "startSeconds": 2.2,
+  "startFromDay": 2,
+  "startUntilDay": 3,
+  "firstOffer": [
+    "ATK_005",
+    "DEF_005"
+  ],
+  "demoRows": [
+    "sshsga",
+    "gargar",
+    "arghrg",
+    "hgargh",
+    "rhraha",
+    "aagrgr",
+    "ggahah",
+    "hrhgrg"
+  ],
+  "tips": [
+    {
+      "id": "op_empty",
+      "note": "オープニングの戦いで、相手の 1 枚目が当たって HP が減った直後（戦いは止めない）。赤ペンの印は付けない —— 空の枠とその右の「カードが ない！」（opening.json の emptyDeckLabel）が見るべき所を言っている。吹き出しはそのすぐ下（placement = top）—— 下に出すと目線が上下に飛ぶ。",
+      "marks": [],
+      "placement": "top"
+    },
+    {
+      "id": "feed_home",
+      "note": "はじめて X のホームに着き、ポストを読み込む演出が落ち着いてから feedHomeDelaySeconds 置いたとき。丸は 1 件目の「ひらいてみる」。字（label）は付けない。「対処する」は印を付けない。",
+      "marks": [
+        {
+          "shape": "circle",
+          "x": 122.5,
+          "y": 76.5,
+          "w": 39,
+          "h": 11
+        }
+      ]
+    },
+    {
+      "id": "fight_turn",
+      "note": "最初の戦いの 1 ターン目の頭。",
+      "marks": [
+        {
+          "shape": "circle",
+          "x": 24,
+          "y": 36,
+          "w": 19,
+          "h": 19
+        }
+      ]
+    },
+    {
+      "id": "fight_fire",
+      "note": "最初の戦いで、最初に選んだカードの効果が頭の上に出た瞬間（カードの名前は言わない）。",
+      "marks": [
+        {
+          "shape": "circle",
+          "x": 89,
+          "y": 110,
+          "w": 25,
+          "h": 33
+        },
+        {
+          "shape": "label",
+          "x": 112,
+          "y": 229,
+          "text": "発動した効果"
+        }
+      ],
+      "bubbleSide": "right"
+    },
+    {
+      "id": "speed",
+      "note": "最初の戦いの 2 ターン目。画面の下の戦いの速さのつまみ（x0.5〜x4）を四角で囲う。台詞は assets/talk/002_day1.yarn の tip_speed。",
+      "marks": [
+        {
+          "shape": "box",
+          "x": 151,
+          "y": 269,
+          "w": 178,
+          "h": 25
+        },
+        {
+          "shape": "label",
+          "x": 252,
+          "y": 252,
+          "text": "戦いの速さ"
+        }
+      ]
+    },
+    {
+      "id": "day_two",
+      "atDay": 2,
+      "note": "2 日目の盤に着いたとき（デッキはまた 0 枚・かけらは残る）。",
+      "marks": [
+        {
+          "shape": "circle",
+          "x": 446.5,
+          "y": 186.5,
+          "w": 22,
+          "h": 12
+        },
+        {
+          "shape": "label",
+          "x": 400,
+          "y": 233,
+          "text": "デッキ 0 枚"
+        },
+        {
+          "shape": "circle",
+          "x": 374,
+          "y": 68.5,
+          "w": 15,
+          "h": 12
+        },
+        {
+          "shape": "label",
+          "x": 392,
+          "y": 62,
+          "text": "かけら"
+        }
+      ]
+    },
+    {
+      "id": "new_pieces",
+      "note": "前の節に無かった駒が濃くなった盤（いまは 2 節目の技巧と妨害。どの節かは dungeon.json の nodes[].kinds が決める）。丸は盤の上の段の星とドクロを 1 つずつ囲む（字の順 = 技巧・妨害）。",
+      "marks": [
+        {
+          "shape": "label",
+          "x": 0,
+          "y": 0,
+          "text": "技巧"
+        },
+        {
+          "shape": "label",
+          "x": 0,
+          "y": 0,
+          "text": "妨害"
+        }
+      ]
+    },
+    {
+      "id": "rush_piece",
+      "note": "加速の駒が濃くなった盤（いまは 3 節目。どの節かは dungeon.json の nodes[].kinds が決める）。台詞は assets/talk/004_day3.yarn の tip_rush_piece。",
+      "marks": [
+        {
+          "shape": "label",
+          "x": 0,
+          "y": 0,
+          "text": "加速"
+        }
+      ]
+    },
+    {
+      "id": "shard",
+      "atNode": 1,
+      "note": "2 節目で最初の 1 枚を取って盤に戻ったとき（かけらを使う前）。",
+      "marks": [
+        {
+          "shape": "circle",
+          "x": 374,
+          "y": 69,
+          "w": 16,
+          "h": 12
+        },
+        {
+          "shape": "arrow",
+          "x": 361,
+          "y": 80,
+          "toX": 246,
+          "toY": 170,
+          "bend": -0.25
+        },
+        {
+          "shape": "label",
+          "x": 260,
+          "y": 121,
+          "text": "かけら 1 つで 1 回"
+        }
+      ]
+    },
+    {
+      "id": "foe_note",
+      "note": "教える走行の最初の盤に着いたとき。カーソルを右の相手の付箋（敵の情報）に置いて出し、決定のほかは効かない。閉じる決定でそのまま付箋の窓が開く。赤ペンの印は付けない —— 付箋のカーソルの枠が見るべき所を言っている。吹き出しは付箋の左（bubbleSide）。",
+      "marks": [],
+      "bubbleSide": "left"
+    },
+    {
+      "id": "intel",
+      "note": "foe_note の後に相手の付箋の窓が開き、開く動きが済んだとき。開示請求を吹き出し 1 行で教える（少女の「開示だな！」は押した時の intel_ask の 1 回だけ）。この後の最初の開示請求はかけらを払わず、伏せた体力・攻撃・防御を全部開く（その時の会話は 002_day1.yarn の intel_ask の「開示だな！」だけ）。赤ペンの印は付けない。吹き出しは窓のカードの列の右の空いた所（bubbleSide = right。列の枠はコードの CoachView.focusOf）—— 窓の見出し・「×とじる」・数の枠・「開示請求する」を隠さない。",
+      "marks": [],
+      "bubbleSide": "right"
+    },
+    {
+      "id": "pale_match",
+      "note": "教える走行の最初の盤で、intel の後に敵の情報の窓を閉じたとき。色の薄い絵（この節の dungeon.json の nodes[].kinds に無い系統）だけがそろう入れ替えを 1 組、盤から選んで赤ペンで指す（そろう所を四角・動かす駒から行き先へ矢印。字はその上）。カーソルはその駒に置く。吹き出しを閉じた後も印は残り、その入れ替えを打つまで盤はほかの入れ替えを受けない。消しても手数は減らず、カードにもならない。",
+      "marks": [
+        {
+          "shape": "label",
+          "x": 0,
+          "y": 0,
+          "text": "カードにならない"
+        }
+      ]
+    },
+    {
+      "id": "card_match",
+      "note": "pale_match の入れ替えで消えて落ち着いた盤。濃い絵（この節の kinds の系統）だけがそろう入れ替えを 1 組、pale_match と同じ形で指す。打つと 1 手を使い、最初のカード選び（firstOffer の 2 枚）が開く。",
+      "marks": [
+        {
+          "shape": "label",
+          "x": 0,
+          "y": 0,
+          "text": "カードになる"
+        }
+      ]
+    },
+    {
+      "id": "card_pick",
+      "note": "最初のカード選び（firstOffer の 2 枚）が開き、並び終えたとき。カーソルは選んでいるカード（左）のまま、決定のほかは効かない。下線は窓の下のキーの案内（えらぶ・きめる・くわしく）。吹き出しは下線の左（bubbleSide = left。窓の左下の空いた所）—— カードと案内を隠さない。台詞は assets/talk/002_day1.yarn の tip_card_pick（吹き出しの幅が 177 を超えると左に収まらず、カードの上へ逃げる。1 行 13 字ほどまで）。",
+      "marks": [
+        {
+          "shape": "under",
+          "x": 191,
+          "y": 286,
+          "w": 176
+        }
+      ],
+      "bubbleSide": "left"
+    }
+  ]
+}

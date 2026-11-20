@@ -1,0 +1,43 @@
+{
+  "title": "💬 会話の台本",
+  "version": 1,
+  "note": "会話の見せ方（台詞はシナリオ assets/talk/*.yarn。話し手・#face:<表情>・#backdrop:fight|board はそちら、どのノードをいつ開くかはコード src/Talk.flix と World 側）。girlName / avatarName = 話し手の呼び名。unknownName = 名乗る前の話し手の名前（台本の行に #name:unknown を書くと、呼び名の代わりにこれを灰色で出す。どの話し手にも効く）。cps = 1 秒に出る文字数 / standHeight = 立ち絵の背の高さ（画面は 300）/ standSway = 喋っている側の揺れ幅（0 で揺れない）/ standTop = 頭の高さ（負で画面の上へ出る）/ standInset = 画面の端から立ち絵の中心までの距離。arts = 画面の後ろに敷く 1 枚絵の表（texture は project.json のテクスチャ名 / width・height はその画像の画素の大きさ）。いま敷いているのはタイトルの title だけ（オープニングの会話の後ろは、その拍の絵 = 部屋・X の画面・夜の画面をコードが描く）。room / net は差し替え用に残してある。 hint=会話の窓の右上の操作の案内（{confirm} はキーの絵に替わる。キーボードなら Z のキーキャップ、コントローラーなら A の丸ボタン。{detail} = Shift / LB で、押している間だけ窓と立ち絵を隠して後ろの絵を見せる）。 lineGuardSeconds=行が出終わってから決定を受け付けるまでの秒（連打で読む前に飛ばないため）。 sceneGapSeconds=オープニングの拍の演出が終わってから会話の窓が入り始めるまでの秒（どの拍にも共通。伸ばすと着いた画面を眺める間が増える）/ sceneSlideSeconds=オープニングの会話の窓が入る・退く秒（最後の行を送ると窓が退いてから次の拍へ）。 長押しで飛ばす: 会話・オープニングは X（コントローラーは B）を押し続けると右下にラベルが上がり、キーの絵を囲む円が holdSkipSeconds 秒で満ちたら飛ぶ（短く押しても飛ばない）。holdSkipLabel=そのボタンの文言 / holdSkipDrain=離したときに円が戻る速さ（満ちる速さの何倍か）。",
+  "cps": 11.0,
+  "girlName": "わたし",
+  "avatarName": "アバター",
+  "unknownName": "???",
+  "hint": "{detail} かくす　{confirm} すすむ",
+  "lineGuardSeconds": 0.3,
+  "sceneGapSeconds": 1.0,
+  "sceneSlideSeconds": 0.25,
+  "holdSkipLabel": "長押しでスキップ",
+  "holdSkipSeconds": 2.0,
+  "holdSkipDrain": 3.0,
+  "standHeight": 202.0,
+  "standSway": 6.0,
+  "standTop": 8.0,
+  "standInset": 92.0,
+  "arts": [
+    {
+      "id": "room",
+      "texture": "talkArtRoom",
+      "width": 768,
+      "height": 480,
+      "note": "自室（人が描いた 1 枚絵の左半分）。いまはどの画面にも敷いていない —— 会話の後ろは遊んでいる画面（盤・札・戦い）を見せる約束なので、差し替え用に置いてあるだけ。"
+    },
+    {
+      "id": "net",
+      "texture": "talkArtNet",
+      "width": 768,
+      "height": 480,
+      "note": "ダンジョン（同じ絵の右半分）。OP の会話の後ろ。"
+    },
+    {
+      "id": "title",
+      "texture": "titleArt",
+      "width": 768,
+      "height": 480,
+      "note": "タイトル画面の後ろ（左に昼の部屋の少女・右に夜のダンジョンのアバターが並ぶ表紙。沈めずにそのまま敷く）。"
+    }
+  ]
+}

@@ -1,0 +1,1123 @@
+{
+  "title": "🃏 カードの一覧",
+  "version": 1,
+  "note": "カード 60 枚（Ver.0.4 の調整。単属性 24（COST 1 の軽い 4 枚 = 即レス・既読スルー・匂わせ・速報。レア度は rarity）+ 2 属性 20 + 3 属性 10 + 4 属性 6（インターネット完全掌握は効果をカードの 4 枠に収めるため減速を外した））。カードは殴らない —— アバターの攻撃力・防御力・状態と、カードの COST を操作する。いじると何が変わるか: baseCost=発動までのターン数（強化・弱体が続く長さでもある。戦いは 4〜7 ターンなので 2〜4 に収める）/ effects=効果の並び（1 枚が何個でも持てる）。カードの属性は書かない —— 効果の組み合わせで決まる（effectKinds=効果 1 種類ごとに受け持つ属性。カードの属性は effects を先頭から見て初めて出た属性の順で、先頭が色と集計の代表。属性の数で候補の枠が決まり、3 属性以上はバッジが「特殊」1 つにまとまる。4 個消しの上乗せも、その属性が受け持つ効果にだけ載る）。効果の kind は attackUp（攻撃強化）defenseUp（防御強化）weakenAttack（敵の攻撃-）weakenDefense（敵の受けるダメージが割合で増える。防御力は下げない。割合は battle.json の weakenDefenseRate）magicAttack（魔攻）shield（盾）heal（回復）regen（継続回復）accel（自分の一番 COST の重い待ちカードの COST-。同じ COST なら発動が近い方。早まって出たカードは効果 +rushBonus）decel（敵の一番 COST の重いカードの COST+。同じ COST なら発動が近い方。同じカードは 1 回出るまでに 1 度しか遅らされない）multiHit（連撃）purify（自分のデバフを外す・無ければ回復）dispel（敵の盾と強化を外す。外した盾はダメージになる・無ければ魔攻）poison（毒）critical（クリティカル）riposte（反撃）shieldBash（盾撃: 自分の盾を全部ぶつける）ignite（着火: 敵の毒の強さ × 値のダメージ）の 18 種で、poison・critical・riposte だけが turns（続くターン数）を持つ。格の考え方: ★1 = 下ごしらえ 1 つ / ★2 = 下ごしらえ 2 つ（2 つ目は軽め）/ ★3 以上 = 見返りの仕掛け（盾撃・着火・加速の前倒し）を持つ。★1 → ★5 の強さは約 1.0 → 1.6 倍に収める。upgrade=4 個以上消した属性の上乗せ（plus4=4 個消し / plus5=5 個以上）。レアリティ★は書かない —— 属性の数から決まる（★4 で頭打ち）。words の special=3 属性以上のカードのバッジの言葉。効果の文は数から組み立てる（words = 言い方だけ）。どのカードが候補に並ぶかの規則は src/Cards.flix。 amountSteps=カードの効果のタイルの量の段の境目。量は数で出さず、その種類の効果が届く一番大きい量（cards の中の最大 + upgrade の plus5）に対する割合で 4 段に分け、タイルの右下の目盛り 4 粒で見せる（カードを取る画面の下の欄と同じ部品。戦いの画面のカード・状態アイコン・頭の上に飛ぶ効果のアイコンも同じ粒。色は段ごとに青 → 紫 → 橙 → 赤。puzzle.json の pickPreview.growthLooks）。境目を下げると高い段の効果が増える。 tileUpMark=カードの効果タイルの右上の ▲（上がる効果の印）を出すか（false で ▲ を外し、下がる効果の ▼ だけ残る。戦いの状態アイコンと頭の上に飛ぶ効果のアイコンも同じ規則）。 effectLabel=効果が発動した拍に頭の上に出る効果アイコンの真上に添える 1 文字。font=書体（project.json の fonts の name。空なら出さない）/ ink=色（attr = 属性の墨の字に紙色の太い縁とその外に墨の細い縁 / navy = 基板の深藍の字に属性の光の縁）/ size=アイコンが実寸（32px のタイル）のときの字の大きさ / chars=効果の kind → 1 文字（字を足したら bin/make-effect-label-font.sh で書体を作り直す。表に無い字は出ない）。状態の列のアイコンには出さない。 overReach=量が段の基準（cards の中の最大 + plus5）を超えた効果の印 = 目盛りの粒を虹で回す（colors=回す色の並び（Pear36 の名前。左の粒から 1 色ずつずらす。カードを取る画面の下の欄の目盛りが満タンを超えたときも同じ）/ stepSeconds=色が 1 つ進む秒（小さいほど速い））。 words の <kind>Short=カードの効果アイコンの下に出す短い名前（アイコン 1 つの幅に収まる 2〜3 文字。カードの字は縮めないので、長いとはみ出す）。カードの効果は 4 つまで（カードの枠に入るアイコンの数）。",
+  "amountSteps": [0.25, 0.5, 0.75],
+  "tileUpMark": false,
+  "effectLabel": {
+    "font": "label",
+    "ink": "attr",
+    "size": 15.0,
+    "chars": {
+      "attackUp": "力",
+      "multiHit": "連",
+      "critical": "会",
+      "magicAttack": "魔",
+      "shieldBash": "撃",
+      "defenseUp": "堅",
+      "shield": "盾",
+      "riposte": "反",
+      "heal": "回",
+      "regen": "再",
+      "purify": "浄",
+      "weakenAttack": "弱",
+      "weakenDefense": "脆",
+      "poison": "毒",
+      "ignite": "燃",
+      "dispel": "解",
+      "accel": "速",
+      "decel": "遅"
+    }
+  },
+  "overReach": {
+    "colors": ["pearRed", "pearTangerine", "pearLemon", "pearLime", "pearMint", "pearSky", "pearOrchid"],
+    "stepSeconds": 0.1
+  },
+  "upgrade": {
+    "plus4": 1,
+    "plus5": 2
+  },
+  "words": {
+    "attackUp": "攻撃強化",
+    "defenseUp": "防御強化",
+    "weakenAttack": "攻撃弱体",
+    "weakenDefense": "脆弱",
+    "magicAttack": "魔攻",
+    "shield": "盾",
+    "heal": "回復",
+    "regen": "継続回復",
+    "accel": "加速",
+    "decel": "減速",
+    "multiHit": "連撃",
+    "purify": "浄化",
+    "dispel": "解除",
+    "poison": "毒",
+    "critical": "クリティカル",
+    "riposte": "反撃",
+    "shieldBash": "盾撃",
+    "ignite": "着火",
+    "more": "…ほか",
+    "special": "特殊",
+    "attackUpShort": "攻撃",
+    "defenseUpShort": "防御",
+    "weakenAttackShort": "攻撃↓",
+    "weakenDefenseShort": "脆弱",
+    "magicAttackShort": "魔攻",
+    "shieldShort": "盾",
+    "healShort": "回復",
+    "regenShort": "再生",
+    "accelShort": "加速",
+    "decelShort": "減速",
+    "multiHitShort": "連撃",
+    "purifyShort": "浄化",
+    "dispelShort": "解除",
+    "poisonShort": "毒",
+    "criticalShort": "会心",
+    "riposteShort": "反撃",
+    "shieldBashShort": "盾撃",
+    "igniteShort": "着火"
+  },
+  "effectKinds": {
+    "attackUp": "attack",
+    "multiHit": "attack",
+    "magicAttack": "attack",
+    "shieldBash": "attack",
+    "ignite": "attack",
+    "defenseUp": "guard",
+    "shield": "guard",
+    "heal": "guard",
+    "regen": "guard",
+    "critical": "skill",
+    "purify": "skill",
+    "riposte": "skill",
+    "weakenAttack": "hex",
+    "weakenDefense": "hex",
+    "dispel": "hex",
+    "poison": "hex",
+    "accel": "rush",
+    "decel": "rush"
+  },
+  "rarity": {
+    "note": "カードのレア度（カードの上には出さない）。候補に出るかの門で、puzzle.json の rarityGate がレア度の段ごとに要る「その手のスコア」を決める（★ = 消した系統の数はどの系統のカードかを決めるだけで、そのまま残る）。点 = 性能点 + COST の補正 + 手での補正（cards[].rarityAdjust。任意の欄・既定 0）。性能点 = 効果ごとの weights（種類の重み）× 量 + turnWeight × 続くターン の合計 + 2 つ目からの効果 1 つにつき extraEffect。costBonus = COST 1, 2, 3 … の補正（尽きたら最後の数。COST 1 は大きく足す —— 性能は低いが COST 1 の速攻のカードは段 3 になり、ほどほどの連鎖で出る）。steps = 段 2, 3, 4, 5 の境目（点がいくつ越えたか + 1 = 段）。特殊なカード（3 系統以上）は性能点で段 5 = 最上位の門。いじると何が変わるか: 重みや補正を上げたカードほど上の段へ上がり、上手く消さないと候補に出なくなる。計算は src/CardRarity.flix。一覧は make novice-sim の表（reports/sims の novice）。",
+    "weights": {
+      "attackUp": 1.5,
+      "defenseUp": 1.0,
+      "shield": 0.8,
+      "heal": 0.6,
+      "regen": 1.5,
+      "multiHit": 3.0,
+      "critical": 2.0,
+      "weakenAttack": 1.0,
+      "weakenDefense": 1.5,
+      "magicAttack": 1.0,
+      "poison": 1.5,
+      "purify": 2.0,
+      "dispel": 2.5,
+      "riposte": 1.0,
+      "accel": 2.0,
+      "decel": 2.0,
+      "shieldBash": 1.5,
+      "ignite": 1.5
+    },
+    "turnWeight": 0.3,
+    "extraEffect": 1.5,
+    "costBonus": [4.0, 1.0, 0.0],
+    "steps": [3.5, 5.0, 7.0, 8.0]
+  },
+  "cards": [
+    {
+      "id": "ATK_001",
+      "name": "引用攻撃",
+      "art": "ATK_001",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "ATK_002",
+      "name": "論破",
+      "art": "ATK_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "ATK_003",
+      "name": "急所ポスト",
+      "art": "ATK_003",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "critical",
+          "value": 2,
+          "turns": 2
+        }
+      ]
+    },
+    {
+      "id": "ATK_004",
+      "name": "連投ラッシュ",
+      "art": "ATK_004",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "multiHit",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ATK_005",
+      "name": "即レス",
+      "art": "ATK_005",
+      "baseCost": 1,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "DEF_001",
+      "name": "ミュート",
+      "art": "DEF_001",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "defenseUp",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "DEF_002",
+      "name": "鉄壁ブロック",
+      "art": "DEF_002",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "DEF_003",
+      "name": "フォロワーの援護",
+      "art": "DEF_003",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "heal",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "DEF_004",
+      "name": "安心できる場所",
+      "art": "DEF_004",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "regen",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "DEF_005",
+      "name": "既読スルー",
+      "art": "DEF_005",
+      "baseCost": 1,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "TEC_001",
+      "name": "おすすめ掲載",
+      "art": "TEC_001",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "defenseUp",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "TEC_002",
+      "name": "バズ分析",
+      "art": "TEC_002",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 2
+        }
+      ]
+    },
+    {
+      "id": "TEC_003",
+      "name": "ログ解析",
+      "art": "TEC_003",
+      "baseCost": 2,
+      "rarityAdjust": -2.2,
+      "effects": [
+        {
+          "kind": "purify",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "TEC_004",
+      "name": "カウンター構築",
+      "art": "TEC_004",
+      "baseCost": 3,
+      "rarityAdjust": -0.3,
+      "effects": [
+        {
+          "kind": "riposte",
+          "value": 4,
+          "turns": 4
+        }
+      ]
+    },
+    {
+      "id": "INT_001",
+      "name": "冷たい返信",
+      "art": "INT_001",
+      "baseCost": 2,
+      "rarityAdjust": -0.2,
+      "effects": [
+        {
+          "kind": "weakenAttack",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "INT_002",
+      "name": "炎上封鎖",
+      "art": "INT_002",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "weakenDefense",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "INT_003",
+      "name": "通報",
+      "art": "INT_003",
+      "baseCost": 3,
+      "rarityAdjust": -2.6,
+      "effects": [
+        {
+          "kind": "dispel",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "INT_004",
+      "name": "粘着リプ",
+      "art": "INT_004",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "poison",
+          "value": 1,
+          "turns": 3
+        }
+      ]
+    },
+    {
+      "id": "INT_005",
+      "name": "匂わせ",
+      "art": "INT_005",
+      "baseCost": 1,
+      "effects": [
+        {
+          "kind": "poison",
+          "value": 1,
+          "turns": 2
+        }
+      ]
+    },
+    {
+      "id": "ACC_001",
+      "name": "高速スクロール",
+      "art": "ACC_001",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ACC_002",
+      "name": "アルゴリズム掌握",
+      "art": "ACC_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "accel",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "ACC_003",
+      "name": "シャドウバン",
+      "art": "ACC_003",
+      "baseCost": 2,
+      "effects": [
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ACC_004",
+      "name": "タイムライン加速",
+      "art": "ACC_004",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "accel",
+          "value": 1
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "ACC_005",
+      "name": "速報",
+      "art": "ACC_005",
+      "baseCost": 1,
+      "rarityAdjust": 1.0,
+      "effects": [
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_AD_001",
+      "name": "攻防一体レスバ",
+      "art": "MIX_AD_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "defenseUp",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "MIX_AD_002",
+      "name": "鉄壁カウンター",
+      "art": "MIX_AD_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "riposte",
+          "value": 2,
+          "turns": 3
+        }
+      ]
+    },
+    {
+      "id": "MIX_AT_001",
+      "name": "煽り返し",
+      "art": "MIX_AT_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        }
+      ]
+    },
+    {
+      "id": "MIX_AT_002",
+      "name": "引用コンボ",
+      "art": "MIX_AT_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "multiHit",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_AI_001",
+      "name": "レスバ開戦",
+      "art": "MIX_AI_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "weakenDefense",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_AI_002",
+      "name": "炎上攻撃",
+      "art": "MIX_AI_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "magicAttack",
+          "value": 2
+        },
+        {
+          "kind": "poison",
+          "value": 1,
+          "turns": 3
+        }
+      ]
+    },
+    {
+      "id": "MIX_AA_001",
+      "name": "高速引用",
+      "art": "MIX_AA_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_AA_002",
+      "name": "連投ブースト",
+      "art": "MIX_AA_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "multiHit",
+          "value": 1
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_DT_001",
+      "name": "鉄壁分析",
+      "art": "MIX_DT_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "defenseUp",
+          "value": 3
+        },
+        {
+          "kind": "purify",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_DT_002",
+      "name": "フォロワーカウンター",
+      "art": "MIX_DT_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "defenseUp",
+          "value": 2
+        },
+        {
+          "kind": "riposte",
+          "value": 3,
+          "turns": 3
+        }
+      ]
+    },
+    {
+      "id": "MIX_DI_001",
+      "name": "ブロック＆通報",
+      "art": "MIX_DI_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "defenseUp",
+          "value": 2
+        },
+        {
+          "kind": "weakenAttack",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "MIX_DI_002",
+      "name": "完全ミュート",
+      "art": "MIX_DI_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "dispel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_DA_001",
+      "name": "緊急リロード",
+      "art": "MIX_DA_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "heal",
+          "value": 3
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_DA_002",
+      "name": "高速防衛線",
+      "art": "MIX_DA_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_TI_001",
+      "name": "論点整理",
+      "art": "MIX_TI_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "weakenDefense",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_TI_002",
+      "name": "ファクトチェック",
+      "art": "MIX_TI_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "purify",
+          "value": 1
+        },
+        {
+          "kind": "dispel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_TA_001",
+      "name": "アルゴリズム解析",
+      "art": "MIX_TA_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_TA_002",
+      "name": "高速最適化",
+      "art": "MIX_TA_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "defenseUp",
+          "value": 2
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_IA_001",
+      "name": "シャドウバン誘導",
+      "art": "MIX_IA_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "weakenAttack",
+          "value": 2
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "MIX_IA_002",
+      "name": "炎上遅延",
+      "art": "MIX_IA_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "poison",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_001",
+      "name": "完全迎撃態勢",
+      "art": "TRI_001",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "shieldBash",
+          "value": 1
+        },
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "riposte",
+          "value": 2,
+          "turns": 3
+        }
+      ]
+    },
+    {
+      "id": "TRI_002",
+      "name": "炎上鎮圧",
+      "art": "TRI_002",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "defenseUp",
+          "value": 2
+        },
+        {
+          "kind": "weakenAttack",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_003",
+      "name": "バズーカ投稿",
+      "art": "TRI_003",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "shieldBash",
+          "value": 2
+        },
+        {
+          "kind": "shield",
+          "value": 2
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_004",
+      "name": "論破コンボ",
+      "art": "TRI_004",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "weakenDefense",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_005",
+      "name": "超速レスバ",
+      "art": "TRI_005",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 1
+        },
+        {
+          "kind": "multiHit",
+          "value": 1
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_006",
+      "name": "炎上急襲",
+      "art": "TRI_006",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "poison",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "ignite",
+          "value": 2
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_007",
+      "name": "完全モデレーション",
+      "art": "TRI_007",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 1
+        },
+        {
+          "kind": "purify",
+          "value": 1
+        },
+        {
+          "kind": "dispel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_008",
+      "name": "緊急防衛プロトコル",
+      "art": "TRI_008",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "defenseUp",
+          "value": 2
+        },
+        {
+          "kind": "heal",
+          "value": 3
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_009",
+      "name": "炎上封鎖網",
+      "art": "TRI_009",
+      "baseCost": 3,
+      "rarityAdjust": 0.5,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 2
+        },
+        {
+          "kind": "weakenAttack",
+          "value": 1
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "TRI_010",
+      "name": "アルゴリズム工作",
+      "art": "TRI_010",
+      "baseCost": 3,
+      "effects": [
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "weakenDefense",
+          "value": 1
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "QUAD_001",
+      "name": "タイムライン制圧",
+      "art": "QUAD_001",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "weakenDefense",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "QUAD_002",
+      "name": "超拡散ポスト",
+      "art": "QUAD_002",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "defenseUp",
+          "value": 2
+        },
+        {
+          "kind": "multiHit",
+          "value": 1
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "QUAD_003",
+      "name": "炎上包囲網",
+      "art": "QUAD_003",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "shieldBash",
+          "value": 2
+        },
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "weakenAttack",
+          "value": 1
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "QUAD_004",
+      "name": "トレンドジャック",
+      "art": "QUAD_004",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "poison",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "ignite",
+          "value": 1
+        },
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "accel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "QUAD_005",
+      "name": "完全防衛アルゴリズム",
+      "art": "QUAD_005",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "shield",
+          "value": 3
+        },
+        {
+          "kind": "regen",
+          "value": 1
+        },
+        {
+          "kind": "dispel",
+          "value": 1
+        },
+        {
+          "kind": "decel",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "PENTA_001",
+      "name": "インターネット完全掌握",
+      "art": "PENTA_001",
+      "baseCost": 4,
+      "effects": [
+        {
+          "kind": "attackUp",
+          "value": 2
+        },
+        {
+          "kind": "defenseUp",
+          "value": 3
+        },
+        {
+          "kind": "critical",
+          "value": 1,
+          "turns": 3
+        },
+        {
+          "kind": "dispel",
+          "value": 1
+        }
+      ]
+    }
+  ]
+}

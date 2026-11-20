@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "name": "puzzle_pop",
+  "note": "駒が水風船のように弾けた拍の、水しぶきの霧と細かい飛沫（しぶきとしみそのものは View.splats が駒の色で描く。ここは色を持たない白い霧だけ）。昼の画風（紙の上）なので加算は使わない。いじると何が変わるか: mist = 弾けた瞬間にふわっと広がる白い霧（size と life で強さ）/ spray = 白く細かい飛沫（count で量、speed で勢い、accel.y で重さ）。色は \"@名前\" でテーマから引く（対応表 src/Controls.flix の fxPalette）。duration を超えた粒は消える。 zIndex は盤の葉の中の z（駒 10・しぶき 13・字 16。PuzzleView の表）。",
+  "duration": 0.45,
+  "emitters": [
+    {
+      "name": "mist",
+      "count": 3,
+      "mode": "burst",
+      "shape": "circle",
+      "size": 14.0,
+      "color": ["@paperLight"],
+      "life": { "base": 0.22, "vary": 0.25 },
+      "speed": { "base": 26.0, "vary": 0.5, "over": { "kind": "easeOut", "power": 2.0 } },
+      "dir": { "base": 0.0, "spread": 360.0, "mode": "even" },
+      "sizeOver": { "kind": "linear", "from": 0.6, "to": 1.6 },
+      "alphaOver": { "kind": "fadeOut" },
+      "blend": "normal",
+      "zIndex": 12
+    },
+    {
+      "name": "spray",
+      "count": 6,
+      "mode": "burst",
+      "shape": "circle",
+      "size": 1.6,
+      "color": ["@paperLight"],
+      "life": { "base": 0.3, "vary": 0.3 },
+      "speed": { "base": 150.0, "vary": 0.35, "over": { "kind": "easeOut", "power": 2.4 } },
+      "dir": { "base": 0.0, "spread": 360.0 },
+      "accel": { "x": 0.0, "y": 300.0 },
+      "sizeOver": { "kind": "linear", "from": 1.0, "to": 0.4 },
+      "alphaOver": { "kind": "fadeOut" },
+      "blend": "normal",
+      "zIndex": 21
+    }
+  ]
+}

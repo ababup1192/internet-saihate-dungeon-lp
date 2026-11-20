@@ -1,0 +1,2468 @@
+{
+ "id": "internet_dungeon",
+ "title": "インターネットダンジョン",
+ "files": [
+  "assets/OFL-Yuji.txt",
+  "assets/battle-slash.fx.json",
+  "assets/board.terrain.json",
+  "assets/card/layout.json",
+  "assets/day.shader.json",
+  "assets/desk.shader.json",
+  "assets/internet_dungeon.archetype.json",
+  "assets/internet_dungeon.battle.json",
+  "assets/internet_dungeon.battle.sprite.json",
+  "assets/internet_dungeon.card.json",
+  "assets/internet_dungeon.cue.json",
+  "assets/internet_dungeon.cycle.json",
+  "assets/internet_dungeon.day.sprite.json",
+  "assets/internet_dungeon.dungeon.json",
+  "assets/internet_dungeon.enemy.json",
+  "assets/internet_dungeon.feed.json",
+  "assets/internet_dungeon.feed.sprite.json",
+  "assets/internet_dungeon.mixer.json",
+  "assets/internet_dungeon.opening.json",
+  "assets/internet_dungeon.palette.json",
+  "assets/internet_dungeon.puzzle.json",
+  "assets/internet_dungeon.puzzle.sprite.json",
+  "assets/internet_dungeon.relic.json",
+  "assets/internet_dungeon.relic.sprite.json",
+  "assets/internet_dungeon.script.json",
+  "assets/internet_dungeon.sfxtune.json",
+  "assets/internet_dungeon.shots.json",
+  "assets/internet_dungeon.targets.json",
+  "assets/internet_dungeon.theme.json",
+  "assets/internet_dungeon.tutorial.json",
+  "assets/music/bgmFight.chip.json",
+  "assets/music/internet_dungeon.instrument.json",
+  "assets/music/jingle_victory.chip.json",
+  "assets/music/sfx_decide.chip.json",
+  "assets/music/sfx_notify.chip.json",
+  "assets/night.shader.json",
+  "assets/player.keys.json",
+  "assets/puzzle-pop.fx.json",
+  "assets/sfx/README.md",
+  "assets/talk/001_opening.yarn",
+  "assets/talk/002_day1.yarn",
+  "assets/talk/003_day2.yarn",
+  "assets/talk/004_day3.yarn",
+  "assets/talk/005_any_day.yarn",
+  "assets/talk/dialogue.json",
+  "assets/talk/vocab.json",
+  "assets/tutorial1.board.json",
+  "assets/tutorial2.board.json",
+  "assets/tutorial3.board.json",
+  "assets/tutorial4.board.json",
+  "font-atlas/default.fontatlas",
+  "font-atlas/label.fontatlas",
+  "font-atlas/round.fontatlas",
+  "font-atlas/roundBig.fontatlas",
+  "project.json"
+ ],
+ "images": [
+  "assets/art/talk-room.png",
+  "assets/art/talk-net.png",
+  "assets/art/title-bg.png",
+  "assets/art/title-logo.png",
+  "assets/stand/girl-face0.png",
+  "assets/stand/girl-face1.png",
+  "assets/stand/girl-face2.png",
+  "assets/stand/girl-face3.png",
+  "assets/stand/girl-face4.png",
+  "assets/stand/girl-face5.png",
+  "assets/stand/girl-face6.png",
+  "assets/stand/girl-face7.png",
+  "assets/stand/avatar-face0.png",
+  "assets/stand/avatar-face1.png",
+  "assets/stand/avatar-face2.png",
+  "assets/stand/avatar-face3.png",
+  "assets/stand/avatar-face4.png",
+  "assets/stand/avatar-face5.png",
+  "assets/stand/avatar-face6.png",
+  "assets/stand/avatar-face7.png",
+  "assets/stand/avatar-face5-shape.png",
+  "assets/battle/hero-attack.png",
+  "assets/battle/hero-guard.png",
+  "assets/battle/hero-buff.png",
+  "assets/battle/hero-debuff.png",
+  "assets/battle/hero-rush.png",
+  "assets/battle/hero-idle.png",
+  "assets/battle/hero-attack-1.png",
+  "assets/battle/hero-attack-2.png",
+  "assets/battle/hero-attack-3.png",
+  "assets/battle/hero-attack-4.png",
+  "assets/battle/hero-attack-5.png",
+  "assets/battle/hero-attack-6.png",
+  "assets/battle/hero-attack-7.png",
+  "assets/battle/hero-guard-1.png",
+  "assets/battle/hero-guard-2.png",
+  "assets/battle/hero-guard-3.png",
+  "assets/battle/hero-guard-4.png",
+  "assets/battle/hero-guard-5.png",
+  "assets/battle/hero-guard-6.png",
+  "assets/battle/hero-guard-7.png",
+  "assets/battle/hero-buff-1.png",
+  "assets/battle/hero-buff-2.png",
+  "assets/battle/hero-buff-3.png",
+  "assets/battle/hero-buff-4.png",
+  "assets/battle/hero-buff-5.png",
+  "assets/battle/hero-buff-6.png",
+  "assets/battle/hero-buff-7.png",
+  "assets/battle/hero-debuff-1.png",
+  "assets/battle/hero-debuff-2.png",
+  "assets/battle/hero-debuff-3.png",
+  "assets/battle/hero-debuff-4.png",
+  "assets/battle/hero-debuff-5.png",
+  "assets/battle/hero-debuff-6.png",
+  "assets/battle/hero-debuff-7.png",
+  "assets/battle/hero-rush-1.png",
+  "assets/battle/hero-rush-2.png",
+  "assets/battle/hero-rush-3.png",
+  "assets/battle/hero-rush-4.png",
+  "assets/battle/hero-rush-5.png",
+  "assets/battle/hero-rush-6.png",
+  "assets/battle/hero-rush-7.png",
+  "assets/battle/hero-hurt-1.png",
+  "assets/battle/hero-hurt-2.png",
+  "assets/battle/hero-hurt-3.png",
+  "assets/battle/hero-hurt-4.png",
+  "assets/battle/hero-hurt-5.png",
+  "assets/battle/hero-hurt-6.png",
+  "assets/battle/hero-hurt-7.png",
+  "assets/battle/foe-slime-idle.png",
+  "assets/battle/foe-slime-attack.png",
+  "assets/battle/foe-zombie-idle.png",
+  "assets/battle/foe-zombie-attack.png",
+  "assets/battle/foe-lizard-idle.png",
+  "assets/battle/foe-lizard-attack.png",
+  "assets/feed/avatar-girl.png",
+  "assets/feed/avatar-avatar.png",
+  "assets/feed/avatar-slime.png",
+  "assets/feed/avatar-zombie.png",
+  "assets/feed/avatar-lizard.png",
+  "assets/feed/avatar-fan.png",
+  "assets/feed/avatar-yuno.png",
+  "assets/feed/avatar-mutual.png",
+  "assets/feed/avatar-moff.png",
+  "assets/card/frame.png",
+  "assets/card/icon-attack.png",
+  "assets/card/icon-guard.png",
+  "assets/card/icon-skill.png",
+  "assets/card/icon-hex.png",
+  "assets/card/icon-rush.png",
+  "assets/card/icon-special.png",
+  "assets/card/art/ACC_001.png",
+  "assets/card/art/ACC_002.png",
+  "assets/card/art/ACC_003.png",
+  "assets/card/art/ACC_004.png",
+  "assets/card/art/ACC_005.png",
+  "assets/card/art/ATK_001.png",
+  "assets/card/art/ATK_002.png",
+  "assets/card/art/ATK_003.png",
+  "assets/card/art/ATK_004.png",
+  "assets/card/art/ATK_005.png",
+  "assets/card/art/DEF_001.png",
+  "assets/card/art/DEF_002.png",
+  "assets/card/art/DEF_003.png",
+  "assets/card/art/DEF_004.png",
+  "assets/card/art/DEF_005.png",
+  "assets/card/art/INT_001.png",
+  "assets/card/art/INT_002.png",
+  "assets/card/art/INT_003.png",
+  "assets/card/art/INT_004.png",
+  "assets/card/art/INT_005.png",
+  "assets/card/art/TEC_001.png",
+  "assets/card/art/TEC_002.png",
+  "assets/card/art/TEC_003.png",
+  "assets/card/art/TEC_004.png",
+  "assets/card/effect-mark.png",
+  "assets/card/art/MIX_AA_001.png",
+  "assets/card/art/MIX_AA_002.png",
+  "assets/card/art/MIX_AD_001.png",
+  "assets/card/art/MIX_AD_002.png",
+  "assets/card/art/MIX_AI_001.png",
+  "assets/card/art/MIX_AI_002.png",
+  "assets/card/art/MIX_AT_001.png",
+  "assets/card/art/MIX_AT_002.png",
+  "assets/card/art/MIX_DA_001.png",
+  "assets/card/art/MIX_DA_002.png",
+  "assets/card/art/MIX_DI_001.png",
+  "assets/card/art/MIX_DI_002.png",
+  "assets/card/art/MIX_DT_001.png",
+  "assets/card/art/MIX_DT_002.png",
+  "assets/card/art/MIX_IA_001.png",
+  "assets/card/art/MIX_IA_002.png",
+  "assets/card/art/MIX_TA_001.png",
+  "assets/card/art/MIX_TA_002.png",
+  "assets/card/art/MIX_TI_001.png",
+  "assets/card/art/MIX_TI_002.png",
+  "assets/card/art/QUAD_001.png",
+  "assets/card/art/QUAD_002.png",
+  "assets/card/art/QUAD_003.png",
+  "assets/card/art/QUAD_004.png",
+  "assets/card/art/QUAD_005.png",
+  "assets/card/art/TRI_001.png",
+  "assets/card/art/TRI_002.png",
+  "assets/card/art/TRI_003.png",
+  "assets/card/art/TRI_004.png",
+  "assets/card/art/TRI_005.png",
+  "assets/card/art/TRI_006.png",
+  "assets/card/art/TRI_007.png",
+  "assets/card/art/TRI_008.png",
+  "assets/card/art/TRI_009.png",
+  "assets/card/art/TRI_010.png",
+  "assets/card/art/PENTA_001.png",
+  "assets/art/opening-desk.png",
+  "assets/art/opening-post.png"
+ ],
+ "sounds": [
+  {
+   "name": "cursor",
+   "path": "assets/sfx/cursor.wav",
+   "looping": false,
+   "seconds": 0.03197278911564626
+  },
+  {
+   "name": "decide",
+   "path": "assets/sfx/decide.wav",
+   "looping": false,
+   "seconds": 0.10997732426303855
+  },
+  {
+   "name": "deny",
+   "path": "assets/sfx/deny.wav",
+   "looping": false,
+   "seconds": 0.16
+  },
+  {
+   "name": "sleep",
+   "path": "assets/sfx/sleep.wav",
+   "looping": false,
+   "seconds": 0.6699319727891156
+  },
+  {
+   "name": "dayflip",
+   "path": "assets/sfx/dayflip.wav",
+   "looping": false,
+   "seconds": 0.02199546485260771
+  },
+  {
+   "name": "wake",
+   "path": "assets/sfx/wake.wav",
+   "looping": false,
+   "seconds": 0.4599546485260771
+  },
+  {
+   "name": "bgmDay",
+   "path": "assets/sfx/bgmDay.wav",
+   "looping": true,
+   "seconds": 39.99895691609977
+  },
+  {
+   "name": "bgmTitle",
+   "path": "assets/sfx/bgmTitle.wav",
+   "looping": true,
+   "seconds": 93.33333333333333,
+   "loopStart": 4.444444444444445,
+   "loopEnd": 93.33333333333333
+  },
+  {
+   "name": "bgmEnding",
+   "path": "assets/sfx/bgmEnding.wav",
+   "looping": true,
+   "seconds": 122.66666666666667,
+   "loopStart": 5.333333333333333,
+   "loopEnd": 122.66666666666667
+  },
+  {
+   "name": "bgmNode",
+   "path": "assets/sfx/bgmNode.wav",
+   "looping": true,
+   "seconds": 40
+  },
+  {
+   "name": "bgmGlitch",
+   "path": "assets/sfx/bgmGlitch.wav",
+   "looping": true,
+   "seconds": 30
+  },
+  {
+   "name": "roomTone",
+   "path": "assets/sfx/roomTone.wav",
+   "looping": true,
+   "seconds": 1.9999092970521541
+  },
+  {
+   "name": "swap",
+   "path": "assets/sfx/swap.wav",
+   "looping": false,
+   "seconds": 0.04
+  },
+  {
+   "name": "clear",
+   "path": "assets/sfx/clear.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear1",
+   "path": "assets/sfx/clear1.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear2",
+   "path": "assets/sfx/clear2.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear3",
+   "path": "assets/sfx/clear3.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear4",
+   "path": "assets/sfx/clear4.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear5",
+   "path": "assets/sfx/clear5.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear6",
+   "path": "assets/sfx/clear6.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear7",
+   "path": "assets/sfx/clear7.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "clear8",
+   "path": "assets/sfx/clear8.wav",
+   "looping": false,
+   "seconds": 0.12498866213151927
+  },
+  {
+   "name": "chain",
+   "path": "assets/sfx/chain.wav",
+   "looping": false,
+   "seconds": 0.1999546485260771
+  },
+  {
+   "name": "bgmPuzzle",
+   "path": "assets/sfx/bgmPuzzle.wav",
+   "looping": true,
+   "seconds": 39.999909297052156
+  },
+  {
+   "name": "notify",
+   "path": "assets/sfx/notify.wav",
+   "looping": false,
+   "seconds": 0.09795918367346938
+  },
+  {
+   "name": "scroll",
+   "path": "assets/sfx/scroll.wav",
+   "looping": false,
+   "seconds": 0.04498866213151927
+  },
+  {
+   "name": "bgmResult",
+   "path": "assets/sfx/bgmResult.wav",
+   "looping": true,
+   "seconds": 7.999727891156462
+  },
+  {
+   "name": "bgmWin",
+   "path": "assets/sfx/bgmWin.wav",
+   "looping": true,
+   "seconds": 30
+  },
+  {
+   "name": "bgmLose",
+   "path": "assets/sfx/bgmLose.wav",
+   "looping": true,
+   "seconds": 20
+  },
+  {
+   "name": "applause",
+   "path": "assets/sfx/applause.wav",
+   "looping": true,
+   "seconds": 7.145124716553288
+  },
+  {
+   "name": "page",
+   "path": "assets/sfx/page.wav",
+   "looping": false,
+   "seconds": 0.03396825396825397
+  },
+  {
+   "name": "typing",
+   "path": "assets/sfx/typing.wav",
+   "looping": true,
+   "seconds": 1.999092970521542
+  },
+  {
+   "name": "step",
+   "path": "assets/sfx/step.wav",
+   "looping": false,
+   "seconds": 0.02598639455782313
+  },
+  {
+   "name": "bump",
+   "path": "assets/sfx/bump.wav",
+   "looping": false,
+   "seconds": 0.06997732426303854
+  },
+  {
+   "name": "encounter",
+   "path": "assets/sfx/encounter.wav",
+   "looping": false,
+   "seconds": 0.48
+  },
+  {
+   "name": "trigger",
+   "path": "assets/sfx/trigger.wav",
+   "looping": false,
+   "seconds": 0.0799546485260771
+  },
+  {
+   "name": "cardset",
+   "path": "assets/sfx/cardset.wav",
+   "looping": false,
+   "seconds": 0.10997732426303855
+  },
+  {
+   "name": "slash",
+   "path": "assets/sfx/slash.wav",
+   "looping": false,
+   "seconds": 0.20997732426303856
+  },
+  {
+   "name": "poisonBite",
+   "path": "assets/sfx/poisonBite.wav",
+   "looping": false,
+   "seconds": 0.6676190476190477
+  },
+  {
+   "name": "riposte",
+   "path": "assets/sfx/riposte.wav",
+   "looping": false,
+   "seconds": 0.5259863945578231
+  },
+  {
+   "name": "powerHit1",
+   "path": "assets/sfx/powerHit1.wav",
+   "looping": false,
+   "seconds": 0.26
+  },
+  {
+   "name": "powerHit2",
+   "path": "assets/sfx/powerHit2.wav",
+   "looping": false,
+   "seconds": 0.2639909297052154
+  },
+  {
+   "name": "powerHit3",
+   "path": "assets/sfx/powerHit3.wav",
+   "looping": false,
+   "seconds": 0.5349659863945578
+  },
+  {
+   "name": "powerHit4",
+   "path": "assets/sfx/powerHit4.wav",
+   "looping": false,
+   "seconds": 0.6379591836734694
+  },
+  {
+   "name": "powerHit5",
+   "path": "assets/sfx/powerHit5.wav",
+   "looping": false,
+   "seconds": 0.6379591836734694
+  },
+  {
+   "name": "block",
+   "path": "assets/sfx/block.wav",
+   "looping": false,
+   "seconds": 0.7179591836734693
+  },
+  {
+   "name": "shieldBreak",
+   "path": "assets/sfx/shieldBreak.wav",
+   "looping": false,
+   "seconds": 0.08997732426303855
+  },
+  {
+   "name": "whiff",
+   "path": "assets/sfx/whiff.wav",
+   "looping": false,
+   "seconds": 0.12993197278911564
+  },
+  {
+   "name": "crit",
+   "path": "assets/sfx/crit.wav",
+   "looping": false,
+   "seconds": 0.4799546485260771
+  },
+  {
+   "name": "hurt",
+   "path": "assets/sfx/hurt.wav",
+   "looping": false,
+   "seconds": 0.20997732426303856
+  },
+  {
+   "name": "victory",
+   "path": "assets/sfx/victory.wav",
+   "looping": false,
+   "seconds": 0.4499319727891156
+  },
+  {
+   "name": "vanish",
+   "path": "assets/sfx/vanish.wav",
+   "looping": false,
+   "seconds": 1.4303401360544217
+  },
+  {
+   "name": "defeat",
+   "path": "assets/sfx/defeat.wav",
+   "looping": false,
+   "seconds": 0.6899319727891157
+  },
+  {
+   "name": "bgmFight",
+   "path": "assets/sfx/bgmFight.wav",
+   "looping": true,
+   "seconds": 49.371428571428574,
+   "loopStart": 5.485714285714286,
+   "loopEnd": 49.371428571428574
+  },
+  {
+   "name": "battleIntro",
+   "path": "assets/sfx/battleIntro.wav",
+   "looping": false,
+   "seconds": 0.5499773242630386
+  },
+  {
+   "name": "introSlam",
+   "path": "assets/sfx/introSlam.wav",
+   "looping": false,
+   "seconds": 0.52
+  },
+  {
+   "name": "piecePick",
+   "path": "assets/sfx/piecePick.wav",
+   "looping": false,
+   "seconds": 0.06798185941043083
+  },
+  {
+   "name": "pieceSwap",
+   "path": "assets/sfx/pieceSwap.wav",
+   "looping": false,
+   "seconds": 0.12997732426303854
+  },
+  {
+   "name": "squeeze",
+   "path": "assets/sfx/squeeze.wav",
+   "looping": false,
+   "seconds": 0.23496598639455782
+  },
+  {
+   "name": "splat1",
+   "path": "assets/sfx/splat1.wav",
+   "looping": false,
+   "seconds": 0.26
+  },
+  {
+   "name": "splat2",
+   "path": "assets/sfx/splat2.wav",
+   "looping": false,
+   "seconds": 0.2311111111111111
+  },
+  {
+   "name": "splat3",
+   "path": "assets/sfx/splat3.wav",
+   "looping": false,
+   "seconds": 0.20798185941043085
+  },
+  {
+   "name": "splat4",
+   "path": "assets/sfx/splat4.wav",
+   "looping": false,
+   "seconds": 0.1949659863945578
+  },
+  {
+   "name": "splat5",
+   "path": "assets/sfx/splat5.wav",
+   "looping": false,
+   "seconds": 0.17333333333333334
+  },
+  {
+   "name": "splat6",
+   "path": "assets/sfx/splat6.wav",
+   "looping": false,
+   "seconds": 0.15596371882086169
+  },
+  {
+   "name": "splat7",
+   "path": "assets/sfx/splat7.wav",
+   "looping": false,
+   "seconds": 0.13863945578231293
+  },
+  {
+   "name": "splat8",
+   "path": "assets/sfx/splat8.wav",
+   "looping": false,
+   "seconds": 0.12997732426303854
+  },
+  {
+   "name": "drip",
+   "path": "assets/sfx/drip.wav",
+   "looping": false,
+   "seconds": 0.06997732426303854
+  },
+  {
+   "name": "chainStep1",
+   "path": "assets/sfx/chainStep1.wav",
+   "looping": false,
+   "seconds": 0.22
+  },
+  {
+   "name": "chainStep2",
+   "path": "assets/sfx/chainStep2.wav",
+   "looping": false,
+   "seconds": 0.19555555555555557
+  },
+  {
+   "name": "chainStep3",
+   "path": "assets/sfx/chainStep3.wav",
+   "looping": false,
+   "seconds": 0.17596371882086168
+  },
+  {
+   "name": "chainStep4",
+   "path": "assets/sfx/chainStep4.wav",
+   "looping": false,
+   "seconds": 0.16498866213151928
+  },
+  {
+   "name": "chainStep5",
+   "path": "assets/sfx/chainStep5.wav",
+   "looping": false,
+   "seconds": 0.14666666666666667
+  },
+  {
+   "name": "chainStep6",
+   "path": "assets/sfx/chainStep6.wav",
+   "looping": false,
+   "seconds": 0.13197278911564625
+  },
+  {
+   "name": "chainStep7",
+   "path": "assets/sfx/chainStep7.wav",
+   "looping": false,
+   "seconds": 0.11732426303854876
+  },
+  {
+   "name": "chainStep8",
+   "path": "assets/sfx/chainStep8.wav",
+   "looping": false,
+   "seconds": 0.10997732426303855
+  },
+  {
+   "name": "brush",
+   "path": "assets/sfx/brush.wav",
+   "looping": false,
+   "seconds": 0.41922902494331066
+  },
+  {
+   "name": "scoreAdd",
+   "path": "assets/sfx/scoreAdd.wav",
+   "looping": false,
+   "seconds": 0.14793650793650795
+  },
+  {
+   "name": "pencilSharpen",
+   "path": "assets/sfx/pencilSharpen.wav",
+   "looping": false,
+   "seconds": 0.6899773242630386
+  },
+  {
+   "name": "deckPress",
+   "path": "assets/sfx/deckPress.wav",
+   "looping": false,
+   "seconds": 0.06
+  },
+  {
+   "name": "cardDraw",
+   "path": "assets/sfx/cardDraw.wav",
+   "looping": false,
+   "seconds": 0.14997732426303856
+  },
+  {
+   "name": "cardSpin",
+   "path": "assets/sfx/cardSpin.wav",
+   "looping": false,
+   "seconds": 0.46997732426303857
+  },
+  {
+   "name": "cardLand",
+   "path": "assets/sfx/cardLand.wav",
+   "looping": false,
+   "seconds": 0.16494331065759638
+  },
+  {
+   "name": "cardShine",
+   "path": "assets/sfx/cardShine.wav",
+   "looping": false,
+   "seconds": 0.44997732426303855
+  },
+  {
+   "name": "cardAbsorb",
+   "path": "assets/sfx/cardAbsorb.wav",
+   "looping": false,
+   "seconds": 0.22
+  },
+  {
+   "name": "fxAttack",
+   "path": "assets/sfx/fxAttack.wav",
+   "looping": false,
+   "seconds": 0.42
+  },
+  {
+   "name": "fxGuard",
+   "path": "assets/sfx/fxGuard.wav",
+   "looping": false,
+   "seconds": 0.48
+  },
+  {
+   "name": "fxSkill",
+   "path": "assets/sfx/fxSkill.wav",
+   "looping": false,
+   "seconds": 0.4
+  },
+  {
+   "name": "fxHex",
+   "path": "assets/sfx/fxHex.wav",
+   "looping": false,
+   "seconds": 0.52
+  },
+  {
+   "name": "fxRush",
+   "path": "assets/sfx/fxRush.wav",
+   "looping": false,
+   "seconds": 0.4
+  },
+  {
+   "name": "feedRefresh",
+   "path": "assets/sfx/feedRefresh.wav",
+   "looping": false,
+   "seconds": 0.19596371882086167
+  },
+  {
+   "name": "feedGood",
+   "path": "assets/sfx/feedGood.wav",
+   "looping": false,
+   "seconds": 0.7649886621315193
+  },
+  {
+   "name": "feedBad",
+   "path": "assets/sfx/feedBad.wav",
+   "looping": false,
+   "seconds": 0.6099773242630385
+  },
+  {
+   "name": "shardLand",
+   "path": "assets/sfx/shardLand.wav",
+   "looping": false,
+   "seconds": 0.4049886621315193
+  },
+  {
+   "name": "pencilRoll",
+   "path": "assets/sfx/pencilRoll.wav",
+   "looping": false,
+   "seconds": 1.5849886621315192
+  },
+  {
+   "name": "cutInClose",
+   "path": "assets/sfx/cutInClose.wav",
+   "looping": false,
+   "seconds": 0.14997732426303856
+  },
+  {
+   "name": "typeKey",
+   "path": "assets/sfx/typeKey.wav",
+   "looping": false,
+   "seconds": 0.03396825396825397
+  },
+  {
+   "name": "turnStart",
+   "path": "assets/sfx/turnStart.wav",
+   "looping": false,
+   "seconds": 0.16
+  },
+  {
+   "name": "winSting",
+   "path": "assets/sfx/winSting.wav",
+   "looping": false,
+   "seconds": 1.1899773242630385
+  },
+  {
+   "name": "loseSting",
+   "path": "assets/sfx/loseSting.wav",
+   "looping": false,
+   "seconds": 1.1499773242630384
+  },
+  {
+   "name": "loseFade",
+   "path": "assets/sfx/loseFade.wav",
+   "looping": false,
+   "seconds": 2.4
+  },
+  {
+   "name": "expire",
+   "path": "assets/sfx/expire.wav",
+   "looping": false,
+   "seconds": 0.16
+  },
+  {
+   "name": "phoneShrink",
+   "path": "assets/sfx/phoneShrink.wav",
+   "looping": false,
+   "seconds": 0.4398185941043084
+  },
+  {
+   "name": "phoneSetDown",
+   "path": "assets/sfx/phoneSetDown.wav",
+   "looping": false,
+   "seconds": 0.6699773242630386
+  },
+  {
+   "name": "phoneRise",
+   "path": "assets/sfx/phoneRise.wav",
+   "looping": false,
+   "seconds": 0.4594104308390023
+  },
+  {
+   "name": "phonePing",
+   "path": "assets/sfx/phonePing.wav",
+   "looping": false,
+   "seconds": 0.8949659863945578
+  },
+  {
+   "name": "phoneZoom",
+   "path": "assets/sfx/phoneZoom.wav",
+   "looping": false,
+   "seconds": 0.96
+  },
+  {
+   "name": "interruptGlitch",
+   "path": "assets/sfx/interruptGlitch.wav",
+   "looping": false,
+   "seconds": 0.7049433106575964
+  },
+  {
+   "name": "warnKlaxon",
+   "path": "assets/sfx/warnKlaxon.wav",
+   "looping": false,
+   "seconds": 2.6811337868480725
+  },
+  {
+   "name": "warnDrone",
+   "path": "assets/sfx/warnDrone.wav",
+   "looping": false,
+   "seconds": 3.942857142857143
+  },
+  {
+   "name": "buildRoll",
+   "path": "assets/sfx/buildRoll.wav",
+   "looping": false,
+   "seconds": 1.2685714285714285
+  },
+  {
+   "name": "crtOff",
+   "path": "assets/sfx/crtOff.wav",
+   "looping": false,
+   "seconds": 0.14
+  },
+  {
+   "name": "crtOffShot",
+   "path": "assets/sfx/crtOffShot.wav",
+   "looping": false,
+   "seconds": 0.14
+  },
+  {
+   "name": "healFill",
+   "path": "assets/sfx/healFill.wav",
+   "looping": false,
+   "seconds": 0.9149659863945578
+  },
+  {
+   "name": "cleanse",
+   "path": "assets/sfx/cleanse.wav",
+   "looping": false,
+   "seconds": 0.5849886621315192
+  },
+  {
+   "name": "chipDrain",
+   "path": "assets/sfx/chipDrain.wav",
+   "looping": false,
+   "seconds": 0.34997732426303857
+  },
+  {
+   "name": "cardSpinFit131",
+   "path": "assets/sfx/cardSpinFit131.wav",
+   "looping": false,
+   "seconds": 0.6513832199546485
+  },
+  {
+   "name": "cardSpinFit262",
+   "path": "assets/sfx/cardSpinFit262.wav",
+   "looping": false,
+   "seconds": 0.3256689342403628
+  },
+  {
+   "name": "endPowerOn",
+   "path": "assets/sfx/endPowerOn.wav",
+   "looping": false,
+   "seconds": 0.28
+  },
+  {
+   "name": "endType",
+   "path": "assets/sfx/endType.wav",
+   "looping": false,
+   "seconds": 0.4456689342403628
+  },
+  {
+   "name": "endTick",
+   "path": "assets/sfx/endTick.wav",
+   "looping": false,
+   "seconds": 0.02997732426303855
+  },
+  {
+   "name": "endQuote",
+   "path": "assets/sfx/endQuote.wav",
+   "looping": false,
+   "seconds": 0.14494331065759636
+  },
+  {
+   "name": "endBurst",
+   "path": "assets/sfx/endBurst.wav",
+   "looping": false,
+   "seconds": 0.3
+  },
+  {
+   "name": "endOk",
+   "path": "assets/sfx/endOk.wav",
+   "looping": false,
+   "seconds": 0.2
+  },
+  {
+   "name": "endLost",
+   "path": "assets/sfx/endLost.wav",
+   "looping": false,
+   "seconds": 0.5499319727891157
+  },
+  {
+   "name": "endTrend",
+   "path": "assets/sfx/endTrend.wav",
+   "looping": false,
+   "seconds": 0.62
+  },
+  {
+   "name": "relicGet",
+   "path": "assets/sfx/relicGet.wav",
+   "looping": false,
+   "seconds": 0.68
+  },
+  {
+   "name": "fanfare",
+   "path": "assets/sfx/fanfare.wav",
+   "looping": false,
+   "seconds": 1.1099319727891157
+  },
+  {
+   "name": "postClick",
+   "path": "assets/sfx/postClick.wav",
+   "looping": false,
+   "seconds": 0.14997732426303856
+  },
+  {
+   "name": "uploadWhoosh",
+   "path": "assets/sfx/uploadWhoosh.wav",
+   "looping": false,
+   "seconds": 1.2499773242630385
+  },
+  {
+   "name": "dataBurst",
+   "path": "assets/sfx/dataBurst.wav",
+   "looping": false,
+   "seconds": 0.7099773242630385
+  },
+  {
+   "name": "streamRush",
+   "path": "assets/sfx/streamRush.wav",
+   "looping": false,
+   "seconds": 1.2970521541950113
+  },
+  {
+   "name": "swell",
+   "path": "assets/sfx/swell.wav",
+   "looping": false,
+   "seconds": 1.796281179138322
+  },
+  {
+   "name": "countUp",
+   "path": "assets/sfx/countUp.wav",
+   "looping": false,
+   "seconds": 2.24
+  },
+  {
+   "name": "corruptCreep",
+   "path": "assets/sfx/corruptCreep.wav",
+   "looping": false,
+   "seconds": 1.4
+  },
+  {
+   "name": "corruptHit",
+   "path": "assets/sfx/corruptHit.wav",
+   "looping": false,
+   "seconds": 0.5
+  },
+  {
+   "name": "bgmDiffuse",
+   "path": "assets/sfx/bgmDiffuse.wav",
+   "looping": true,
+   "seconds": 8
+  },
+  {
+   "name": "chime1",
+   "path": "assets/sfx/chime1.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime2",
+   "path": "assets/sfx/chime2.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime3",
+   "path": "assets/sfx/chime3.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime4",
+   "path": "assets/sfx/chime4.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime5",
+   "path": "assets/sfx/chime5.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime6",
+   "path": "assets/sfx/chime6.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime7",
+   "path": "assets/sfx/chime7.wav",
+   "looping": false,
+   "seconds": 0.9
+  },
+  {
+   "name": "chime8",
+   "path": "assets/sfx/chime8.wav",
+   "looping": false,
+   "seconds": 0.9
+  }
+ ],
+ "design": {
+  "w": 480,
+  "h": 300
+ },
+ "orientation": "landscape",
+ "transcoded": {
+  "assets/art/opening-desk.png": "assets/art/opening-desk.webp",
+  "assets/art/opening-post.png": "assets/art/opening-post.webp",
+  "assets/art/talk-net.png": "assets/art/talk-net.webp",
+  "assets/art/talk-room.png": "assets/art/talk-room.webp",
+  "assets/art/title-bg.png": "assets/art/title-bg.webp",
+  "assets/art/title-logo.png": "assets/art/title-logo.webp",
+  "assets/battle/foe-lizard-attack.png": "assets/battle/foe-lizard-attack.webp",
+  "assets/battle/foe-lizard-idle.png": "assets/battle/foe-lizard-idle.webp",
+  "assets/battle/foe-slime-attack.png": "assets/battle/foe-slime-attack.webp",
+  "assets/battle/foe-slime-idle.png": "assets/battle/foe-slime-idle.webp",
+  "assets/battle/foe-zombie-attack.png": "assets/battle/foe-zombie-attack.webp",
+  "assets/battle/foe-zombie-idle.png": "assets/battle/foe-zombie-idle.webp",
+  "assets/battle/hero-attack-1.png": "assets/battle/hero-attack-1.webp",
+  "assets/battle/hero-attack-2.png": "assets/battle/hero-attack-2.webp",
+  "assets/battle/hero-attack-3.png": "assets/battle/hero-attack-3.webp",
+  "assets/battle/hero-attack-4.png": "assets/battle/hero-attack-4.webp",
+  "assets/battle/hero-attack-5.png": "assets/battle/hero-attack-5.webp",
+  "assets/battle/hero-attack-6.png": "assets/battle/hero-attack-6.webp",
+  "assets/battle/hero-attack-7.png": "assets/battle/hero-attack-7.webp",
+  "assets/battle/hero-attack.png": "assets/battle/hero-attack.webp",
+  "assets/battle/hero-buff-1.png": "assets/battle/hero-buff-1.webp",
+  "assets/battle/hero-buff-2.png": "assets/battle/hero-buff-2.webp",
+  "assets/battle/hero-buff-3.png": "assets/battle/hero-buff-3.webp",
+  "assets/battle/hero-buff-4.png": "assets/battle/hero-buff-4.webp",
+  "assets/battle/hero-buff-5.png": "assets/battle/hero-buff-5.webp",
+  "assets/battle/hero-buff-6.png": "assets/battle/hero-buff-6.webp",
+  "assets/battle/hero-buff-7.png": "assets/battle/hero-buff-7.webp",
+  "assets/battle/hero-buff.png": "assets/battle/hero-buff.webp",
+  "assets/battle/hero-debuff-1.png": "assets/battle/hero-debuff-1.webp",
+  "assets/battle/hero-debuff-2.png": "assets/battle/hero-debuff-2.webp",
+  "assets/battle/hero-debuff-3.png": "assets/battle/hero-debuff-3.webp",
+  "assets/battle/hero-debuff-4.png": "assets/battle/hero-debuff-4.webp",
+  "assets/battle/hero-debuff-5.png": "assets/battle/hero-debuff-5.webp",
+  "assets/battle/hero-debuff-6.png": "assets/battle/hero-debuff-6.webp",
+  "assets/battle/hero-debuff-7.png": "assets/battle/hero-debuff-7.webp",
+  "assets/battle/hero-debuff.png": "assets/battle/hero-debuff.webp",
+  "assets/battle/hero-guard-1.png": "assets/battle/hero-guard-1.webp",
+  "assets/battle/hero-guard-2.png": "assets/battle/hero-guard-2.webp",
+  "assets/battle/hero-guard-3.png": "assets/battle/hero-guard-3.webp",
+  "assets/battle/hero-guard-4.png": "assets/battle/hero-guard-4.webp",
+  "assets/battle/hero-guard-5.png": "assets/battle/hero-guard-5.webp",
+  "assets/battle/hero-guard-6.png": "assets/battle/hero-guard-6.webp",
+  "assets/battle/hero-guard-7.png": "assets/battle/hero-guard-7.webp",
+  "assets/battle/hero-guard.png": "assets/battle/hero-guard.webp",
+  "assets/battle/hero-hurt-1.png": "assets/battle/hero-hurt-1.webp",
+  "assets/battle/hero-hurt-2.png": "assets/battle/hero-hurt-2.webp",
+  "assets/battle/hero-hurt-3.png": "assets/battle/hero-hurt-3.webp",
+  "assets/battle/hero-hurt-4.png": "assets/battle/hero-hurt-4.webp",
+  "assets/battle/hero-hurt-5.png": "assets/battle/hero-hurt-5.webp",
+  "assets/battle/hero-hurt-6.png": "assets/battle/hero-hurt-6.webp",
+  "assets/battle/hero-hurt-7.png": "assets/battle/hero-hurt-7.webp",
+  "assets/battle/hero-idle.png": "assets/battle/hero-idle.webp",
+  "assets/battle/hero-rush-1.png": "assets/battle/hero-rush-1.webp",
+  "assets/battle/hero-rush-2.png": "assets/battle/hero-rush-2.webp",
+  "assets/battle/hero-rush-3.png": "assets/battle/hero-rush-3.webp",
+  "assets/battle/hero-rush-4.png": "assets/battle/hero-rush-4.webp",
+  "assets/battle/hero-rush-5.png": "assets/battle/hero-rush-5.webp",
+  "assets/battle/hero-rush-6.png": "assets/battle/hero-rush-6.webp",
+  "assets/battle/hero-rush-7.png": "assets/battle/hero-rush-7.webp",
+  "assets/battle/hero-rush.png": "assets/battle/hero-rush.webp",
+  "assets/card/art/ACC_001.png": "assets/card/art/ACC_001.webp",
+  "assets/card/art/ACC_002.png": "assets/card/art/ACC_002.webp",
+  "assets/card/art/ACC_003.png": "assets/card/art/ACC_003.webp",
+  "assets/card/art/ACC_004.png": "assets/card/art/ACC_004.webp",
+  "assets/card/art/ACC_005.png": "assets/card/art/ACC_005.webp",
+  "assets/card/art/ATK_001.png": "assets/card/art/ATK_001.webp",
+  "assets/card/art/ATK_002.png": "assets/card/art/ATK_002.webp",
+  "assets/card/art/ATK_003.png": "assets/card/art/ATK_003.webp",
+  "assets/card/art/ATK_004.png": "assets/card/art/ATK_004.webp",
+  "assets/card/art/ATK_005.png": "assets/card/art/ATK_005.webp",
+  "assets/card/art/DEF_001.png": "assets/card/art/DEF_001.webp",
+  "assets/card/art/DEF_002.png": "assets/card/art/DEF_002.webp",
+  "assets/card/art/DEF_003.png": "assets/card/art/DEF_003.webp",
+  "assets/card/art/DEF_004.png": "assets/card/art/DEF_004.webp",
+  "assets/card/art/DEF_005.png": "assets/card/art/DEF_005.webp",
+  "assets/card/art/INT_001.png": "assets/card/art/INT_001.webp",
+  "assets/card/art/INT_002.png": "assets/card/art/INT_002.webp",
+  "assets/card/art/INT_003.png": "assets/card/art/INT_003.webp",
+  "assets/card/art/INT_004.png": "assets/card/art/INT_004.webp",
+  "assets/card/art/INT_005.png": "assets/card/art/INT_005.webp",
+  "assets/card/art/MIX_AA_001.png": "assets/card/art/MIX_AA_001.webp",
+  "assets/card/art/MIX_AA_002.png": "assets/card/art/MIX_AA_002.webp",
+  "assets/card/art/MIX_AD_001.png": "assets/card/art/MIX_AD_001.webp",
+  "assets/card/art/MIX_AD_002.png": "assets/card/art/MIX_AD_002.webp",
+  "assets/card/art/MIX_AI_001.png": "assets/card/art/MIX_AI_001.webp",
+  "assets/card/art/MIX_AI_002.png": "assets/card/art/MIX_AI_002.webp",
+  "assets/card/art/MIX_AT_001.png": "assets/card/art/MIX_AT_001.webp",
+  "assets/card/art/MIX_AT_002.png": "assets/card/art/MIX_AT_002.webp",
+  "assets/card/art/MIX_DA_001.png": "assets/card/art/MIX_DA_001.webp",
+  "assets/card/art/MIX_DA_002.png": "assets/card/art/MIX_DA_002.webp",
+  "assets/card/art/MIX_DI_001.png": "assets/card/art/MIX_DI_001.webp",
+  "assets/card/art/MIX_DI_002.png": "assets/card/art/MIX_DI_002.webp",
+  "assets/card/art/MIX_DT_001.png": "assets/card/art/MIX_DT_001.webp",
+  "assets/card/art/MIX_DT_002.png": "assets/card/art/MIX_DT_002.webp",
+  "assets/card/art/MIX_IA_001.png": "assets/card/art/MIX_IA_001.webp",
+  "assets/card/art/MIX_IA_002.png": "assets/card/art/MIX_IA_002.webp",
+  "assets/card/art/MIX_TA_001.png": "assets/card/art/MIX_TA_001.webp",
+  "assets/card/art/MIX_TA_002.png": "assets/card/art/MIX_TA_002.webp",
+  "assets/card/art/MIX_TI_001.png": "assets/card/art/MIX_TI_001.webp",
+  "assets/card/art/MIX_TI_002.png": "assets/card/art/MIX_TI_002.webp",
+  "assets/card/art/PENTA_001.png": "assets/card/art/PENTA_001.webp",
+  "assets/card/art/QUAD_001.png": "assets/card/art/QUAD_001.webp",
+  "assets/card/art/QUAD_002.png": "assets/card/art/QUAD_002.webp",
+  "assets/card/art/QUAD_003.png": "assets/card/art/QUAD_003.webp",
+  "assets/card/art/QUAD_004.png": "assets/card/art/QUAD_004.webp",
+  "assets/card/art/QUAD_005.png": "assets/card/art/QUAD_005.webp",
+  "assets/card/art/TEC_001.png": "assets/card/art/TEC_001.webp",
+  "assets/card/art/TEC_002.png": "assets/card/art/TEC_002.webp",
+  "assets/card/art/TEC_003.png": "assets/card/art/TEC_003.webp",
+  "assets/card/art/TEC_004.png": "assets/card/art/TEC_004.webp",
+  "assets/card/art/TRI_001.png": "assets/card/art/TRI_001.webp",
+  "assets/card/art/TRI_002.png": "assets/card/art/TRI_002.webp",
+  "assets/card/art/TRI_003.png": "assets/card/art/TRI_003.webp",
+  "assets/card/art/TRI_004.png": "assets/card/art/TRI_004.webp",
+  "assets/card/art/TRI_005.png": "assets/card/art/TRI_005.webp",
+  "assets/card/art/TRI_006.png": "assets/card/art/TRI_006.webp",
+  "assets/card/art/TRI_007.png": "assets/card/art/TRI_007.webp",
+  "assets/card/art/TRI_008.png": "assets/card/art/TRI_008.webp",
+  "assets/card/art/TRI_009.png": "assets/card/art/TRI_009.webp",
+  "assets/card/art/TRI_010.png": "assets/card/art/TRI_010.webp",
+  "assets/card/effect-mark.png": "assets/card/effect-mark.webp",
+  "assets/card/frame.png": "assets/card/frame.webp",
+  "assets/card/icon-attack.png": "assets/card/icon-attack.webp",
+  "assets/card/icon-guard.png": "assets/card/icon-guard.webp",
+  "assets/card/icon-hex.png": "assets/card/icon-hex.webp",
+  "assets/card/icon-rush.png": "assets/card/icon-rush.webp",
+  "assets/card/icon-skill.png": "assets/card/icon-skill.webp",
+  "assets/card/icon-special.png": "assets/card/icon-special.webp",
+  "assets/feed/avatar-avatar.png": "assets/feed/avatar-avatar.webp",
+  "assets/feed/avatar-fan.png": "assets/feed/avatar-fan.webp",
+  "assets/feed/avatar-girl.png": "assets/feed/avatar-girl.webp",
+  "assets/feed/avatar-lizard.png": "assets/feed/avatar-lizard.webp",
+  "assets/feed/avatar-moff.png": "assets/feed/avatar-moff.webp",
+  "assets/feed/avatar-mutual.png": "assets/feed/avatar-mutual.webp",
+  "assets/feed/avatar-slime.png": "assets/feed/avatar-slime.webp",
+  "assets/feed/avatar-yuno.png": "assets/feed/avatar-yuno.webp",
+  "assets/feed/avatar-zombie.png": "assets/feed/avatar-zombie.webp",
+  "assets/sfx/applause.wav": "assets/sfx/applause.webm",
+  "assets/sfx/battleIntro.wav": "assets/sfx/battleIntro.webm",
+  "assets/sfx/bgmDay.wav": "assets/sfx/bgmDay.webm",
+  "assets/sfx/bgmDiffuse.wav": "assets/sfx/bgmDiffuse.webm",
+  "assets/sfx/bgmEnding.wav": "assets/sfx/bgmEnding.webm",
+  "assets/sfx/bgmFight.wav": "assets/sfx/bgmFight.webm",
+  "assets/sfx/bgmGlitch.wav": "assets/sfx/bgmGlitch.webm",
+  "assets/sfx/bgmLose.wav": "assets/sfx/bgmLose.webm",
+  "assets/sfx/bgmNode.wav": "assets/sfx/bgmNode.webm",
+  "assets/sfx/bgmPuzzle.wav": "assets/sfx/bgmPuzzle.webm",
+  "assets/sfx/bgmResult.wav": "assets/sfx/bgmResult.webm",
+  "assets/sfx/bgmTitle.wav": "assets/sfx/bgmTitle.webm",
+  "assets/sfx/bgmWin.wav": "assets/sfx/bgmWin.webm",
+  "assets/sfx/block.wav": "assets/sfx/block.webm",
+  "assets/sfx/brush.wav": "assets/sfx/brush.webm",
+  "assets/sfx/buildRoll.wav": "assets/sfx/buildRoll.webm",
+  "assets/sfx/bump.wav": "assets/sfx/bump.webm",
+  "assets/sfx/cardAbsorb.wav": "assets/sfx/cardAbsorb.webm",
+  "assets/sfx/cardDraw.wav": "assets/sfx/cardDraw.webm",
+  "assets/sfx/cardLand.wav": "assets/sfx/cardLand.webm",
+  "assets/sfx/cardShine.wav": "assets/sfx/cardShine.webm",
+  "assets/sfx/cardSpin.wav": "assets/sfx/cardSpin.webm",
+  "assets/sfx/cardSpinFit131.wav": "assets/sfx/cardSpinFit131.webm",
+  "assets/sfx/cardSpinFit262.wav": "assets/sfx/cardSpinFit262.webm",
+  "assets/sfx/cardset.wav": "assets/sfx/cardset.webm",
+  "assets/sfx/chain.wav": "assets/sfx/chain.webm",
+  "assets/sfx/chainStep1.wav": "assets/sfx/chainStep1.webm",
+  "assets/sfx/chainStep2.wav": "assets/sfx/chainStep2.webm",
+  "assets/sfx/chainStep3.wav": "assets/sfx/chainStep3.webm",
+  "assets/sfx/chainStep4.wav": "assets/sfx/chainStep4.webm",
+  "assets/sfx/chainStep5.wav": "assets/sfx/chainStep5.webm",
+  "assets/sfx/chainStep6.wav": "assets/sfx/chainStep6.webm",
+  "assets/sfx/chainStep7.wav": "assets/sfx/chainStep7.webm",
+  "assets/sfx/chainStep8.wav": "assets/sfx/chainStep8.webm",
+  "assets/sfx/chime1.wav": "assets/sfx/chime1.webm",
+  "assets/sfx/chime2.wav": "assets/sfx/chime2.webm",
+  "assets/sfx/chime3.wav": "assets/sfx/chime3.webm",
+  "assets/sfx/chime4.wav": "assets/sfx/chime4.webm",
+  "assets/sfx/chime5.wav": "assets/sfx/chime5.webm",
+  "assets/sfx/chime6.wav": "assets/sfx/chime6.webm",
+  "assets/sfx/chime7.wav": "assets/sfx/chime7.webm",
+  "assets/sfx/chime8.wav": "assets/sfx/chime8.webm",
+  "assets/sfx/chipDrain.wav": "assets/sfx/chipDrain.webm",
+  "assets/sfx/cleanse.wav": "assets/sfx/cleanse.webm",
+  "assets/sfx/clear.wav": "assets/sfx/clear.webm",
+  "assets/sfx/clear1.wav": "assets/sfx/clear1.webm",
+  "assets/sfx/clear2.wav": "assets/sfx/clear2.webm",
+  "assets/sfx/clear3.wav": "assets/sfx/clear3.webm",
+  "assets/sfx/clear4.wav": "assets/sfx/clear4.webm",
+  "assets/sfx/clear5.wav": "assets/sfx/clear5.webm",
+  "assets/sfx/clear6.wav": "assets/sfx/clear6.webm",
+  "assets/sfx/clear7.wav": "assets/sfx/clear7.webm",
+  "assets/sfx/clear8.wav": "assets/sfx/clear8.webm",
+  "assets/sfx/corruptCreep.wav": "assets/sfx/corruptCreep.webm",
+  "assets/sfx/corruptHit.wav": "assets/sfx/corruptHit.webm",
+  "assets/sfx/countUp.wav": "assets/sfx/countUp.webm",
+  "assets/sfx/crit.wav": "assets/sfx/crit.webm",
+  "assets/sfx/crtOff.wav": "assets/sfx/crtOff.webm",
+  "assets/sfx/crtOffShot.wav": "assets/sfx/crtOffShot.webm",
+  "assets/sfx/cursor.wav": "assets/sfx/cursor.webm",
+  "assets/sfx/cutInClose.wav": "assets/sfx/cutInClose.webm",
+  "assets/sfx/dataBurst.wav": "assets/sfx/dataBurst.webm",
+  "assets/sfx/dayflip.wav": "assets/sfx/dayflip.webm",
+  "assets/sfx/decide.wav": "assets/sfx/decide.webm",
+  "assets/sfx/deckPress.wav": "assets/sfx/deckPress.webm",
+  "assets/sfx/defeat.wav": "assets/sfx/defeat.webm",
+  "assets/sfx/deny.wav": "assets/sfx/deny.webm",
+  "assets/sfx/drip.wav": "assets/sfx/drip.webm",
+  "assets/sfx/encounter.wav": "assets/sfx/encounter.webm",
+  "assets/sfx/endBurst.wav": "assets/sfx/endBurst.webm",
+  "assets/sfx/endLost.wav": "assets/sfx/endLost.webm",
+  "assets/sfx/endOk.wav": "assets/sfx/endOk.webm",
+  "assets/sfx/endPowerOn.wav": "assets/sfx/endPowerOn.webm",
+  "assets/sfx/endQuote.wav": "assets/sfx/endQuote.webm",
+  "assets/sfx/endTick.wav": "assets/sfx/endTick.webm",
+  "assets/sfx/endTrend.wav": "assets/sfx/endTrend.webm",
+  "assets/sfx/endType.wav": "assets/sfx/endType.webm",
+  "assets/sfx/expire.wav": "assets/sfx/expire.webm",
+  "assets/sfx/fanfare.wav": "assets/sfx/fanfare.webm",
+  "assets/sfx/feedBad.wav": "assets/sfx/feedBad.webm",
+  "assets/sfx/feedGood.wav": "assets/sfx/feedGood.webm",
+  "assets/sfx/feedRefresh.wav": "assets/sfx/feedRefresh.webm",
+  "assets/sfx/fxAttack.wav": "assets/sfx/fxAttack.webm",
+  "assets/sfx/fxGuard.wav": "assets/sfx/fxGuard.webm",
+  "assets/sfx/fxHex.wav": "assets/sfx/fxHex.webm",
+  "assets/sfx/fxRush.wav": "assets/sfx/fxRush.webm",
+  "assets/sfx/fxSkill.wav": "assets/sfx/fxSkill.webm",
+  "assets/sfx/healFill.wav": "assets/sfx/healFill.webm",
+  "assets/sfx/hurt.wav": "assets/sfx/hurt.webm",
+  "assets/sfx/interruptGlitch.wav": "assets/sfx/interruptGlitch.webm",
+  "assets/sfx/introSlam.wav": "assets/sfx/introSlam.webm",
+  "assets/sfx/loseFade.wav": "assets/sfx/loseFade.webm",
+  "assets/sfx/loseSting.wav": "assets/sfx/loseSting.webm",
+  "assets/sfx/notify.wav": "assets/sfx/notify.webm",
+  "assets/sfx/page.wav": "assets/sfx/page.webm",
+  "assets/sfx/pencilRoll.wav": "assets/sfx/pencilRoll.webm",
+  "assets/sfx/pencilSharpen.wav": "assets/sfx/pencilSharpen.webm",
+  "assets/sfx/phonePing.wav": "assets/sfx/phonePing.webm",
+  "assets/sfx/phoneRise.wav": "assets/sfx/phoneRise.webm",
+  "assets/sfx/phoneSetDown.wav": "assets/sfx/phoneSetDown.webm",
+  "assets/sfx/phoneShrink.wav": "assets/sfx/phoneShrink.webm",
+  "assets/sfx/phoneZoom.wav": "assets/sfx/phoneZoom.webm",
+  "assets/sfx/piecePick.wav": "assets/sfx/piecePick.webm",
+  "assets/sfx/pieceSwap.wav": "assets/sfx/pieceSwap.webm",
+  "assets/sfx/poisonBite.wav": "assets/sfx/poisonBite.webm",
+  "assets/sfx/postClick.wav": "assets/sfx/postClick.webm",
+  "assets/sfx/powerHit1.wav": "assets/sfx/powerHit1.webm",
+  "assets/sfx/powerHit2.wav": "assets/sfx/powerHit2.webm",
+  "assets/sfx/powerHit3.wav": "assets/sfx/powerHit3.webm",
+  "assets/sfx/powerHit4.wav": "assets/sfx/powerHit4.webm",
+  "assets/sfx/powerHit5.wav": "assets/sfx/powerHit5.webm",
+  "assets/sfx/relicGet.wav": "assets/sfx/relicGet.webm",
+  "assets/sfx/riposte.wav": "assets/sfx/riposte.webm",
+  "assets/sfx/roomTone.wav": "assets/sfx/roomTone.webm",
+  "assets/sfx/scoreAdd.wav": "assets/sfx/scoreAdd.webm",
+  "assets/sfx/scroll.wav": "assets/sfx/scroll.webm",
+  "assets/sfx/shardLand.wav": "assets/sfx/shardLand.webm",
+  "assets/sfx/shieldBreak.wav": "assets/sfx/shieldBreak.webm",
+  "assets/sfx/slash.wav": "assets/sfx/slash.webm",
+  "assets/sfx/sleep.wav": "assets/sfx/sleep.webm",
+  "assets/sfx/splat1.wav": "assets/sfx/splat1.webm",
+  "assets/sfx/splat2.wav": "assets/sfx/splat2.webm",
+  "assets/sfx/splat3.wav": "assets/sfx/splat3.webm",
+  "assets/sfx/splat4.wav": "assets/sfx/splat4.webm",
+  "assets/sfx/splat5.wav": "assets/sfx/splat5.webm",
+  "assets/sfx/splat6.wav": "assets/sfx/splat6.webm",
+  "assets/sfx/splat7.wav": "assets/sfx/splat7.webm",
+  "assets/sfx/splat8.wav": "assets/sfx/splat8.webm",
+  "assets/sfx/squeeze.wav": "assets/sfx/squeeze.webm",
+  "assets/sfx/step.wav": "assets/sfx/step.webm",
+  "assets/sfx/streamRush.wav": "assets/sfx/streamRush.webm",
+  "assets/sfx/swap.wav": "assets/sfx/swap.webm",
+  "assets/sfx/swell.wav": "assets/sfx/swell.webm",
+  "assets/sfx/trigger.wav": "assets/sfx/trigger.webm",
+  "assets/sfx/turnStart.wav": "assets/sfx/turnStart.webm",
+  "assets/sfx/typeKey.wav": "assets/sfx/typeKey.webm",
+  "assets/sfx/typing.wav": "assets/sfx/typing.webm",
+  "assets/sfx/uploadWhoosh.wav": "assets/sfx/uploadWhoosh.webm",
+  "assets/sfx/vanish.wav": "assets/sfx/vanish.webm",
+  "assets/sfx/victory.wav": "assets/sfx/victory.webm",
+  "assets/sfx/wake.wav": "assets/sfx/wake.webm",
+  "assets/sfx/warnDrone.wav": "assets/sfx/warnDrone.webm",
+  "assets/sfx/warnKlaxon.wav": "assets/sfx/warnKlaxon.webm",
+  "assets/sfx/whiff.wav": "assets/sfx/whiff.webm",
+  "assets/sfx/winSting.wav": "assets/sfx/winSting.webm",
+  "assets/stand/avatar-face0.png": "assets/stand/avatar-face0.webp",
+  "assets/stand/avatar-face1.png": "assets/stand/avatar-face1.webp",
+  "assets/stand/avatar-face2.png": "assets/stand/avatar-face2.webp",
+  "assets/stand/avatar-face3.png": "assets/stand/avatar-face3.webp",
+  "assets/stand/avatar-face4.png": "assets/stand/avatar-face4.webp",
+  "assets/stand/avatar-face5-shape.png": "assets/stand/avatar-face5-shape.webp",
+  "assets/stand/avatar-face5.png": "assets/stand/avatar-face5.webp",
+  "assets/stand/avatar-face6.png": "assets/stand/avatar-face6.webp",
+  "assets/stand/avatar-face7.png": "assets/stand/avatar-face7.webp",
+  "assets/stand/girl-face0.png": "assets/stand/girl-face0.webp",
+  "assets/stand/girl-face1.png": "assets/stand/girl-face1.webp",
+  "assets/stand/girl-face2.png": "assets/stand/girl-face2.webp",
+  "assets/stand/girl-face3.png": "assets/stand/girl-face3.webp",
+  "assets/stand/girl-face4.png": "assets/stand/girl-face4.webp",
+  "assets/stand/girl-face5.png": "assets/stand/girl-face5.webp",
+  "assets/stand/girl-face6.png": "assets/stand/girl-face6.webp",
+  "assets/stand/girl-face7.png": "assets/stand/girl-face7.webp",
+  "font-atlas/default.fontatlas": "font-atlas/default.fontatlas.gz",
+  "font-atlas/label.fontatlas": "font-atlas/label.fontatlas-webp",
+  "font-atlas/round.fontatlas": "font-atlas/round.fontatlas.gz",
+  "font-atlas/roundBig.fontatlas": "font-atlas/roundBig.fontatlas-webp"
+ },
+ "deferred": [
+  {
+   "path": "font-atlas/round.fontatlas",
+   "bytes": 244011,
+   "names": [
+    "round"
+   ]
+  },
+  {
+   "path": "font-atlas/roundBig.fontatlas",
+   "bytes": 716100,
+   "names": [
+    "roundBig"
+   ]
+  },
+  {
+   "path": "font-atlas/label.fontatlas",
+   "bytes": 9198,
+   "names": [
+    "label"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmTitle.wav",
+   "bytes": 928975,
+   "names": [
+    "bgmTitle"
+   ]
+  },
+  {
+   "path": "assets/art/opening-desk.png",
+   "bytes": 251160,
+   "names": [
+    "openingDesk"
+   ]
+  },
+  {
+   "path": "assets/art/opening-post.png",
+   "bytes": 9428,
+   "names": [
+    "openingPost"
+   ]
+  },
+  {
+   "path": "assets/art/talk-net.png",
+   "bytes": 92510,
+   "names": [
+    "talkArtNet"
+   ]
+  },
+  {
+   "path": "assets/art/talk-room.png",
+   "bytes": 111176,
+   "names": [
+    "talkArtRoom"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face0.png",
+   "bytes": 34468,
+   "names": [
+    "avatarFace0"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face1.png",
+   "bytes": 36274,
+   "names": [
+    "avatarFace1"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face2.png",
+   "bytes": 35586,
+   "names": [
+    "avatarFace2"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face3.png",
+   "bytes": 35732,
+   "names": [
+    "avatarFace3"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face4.png",
+   "bytes": 30748,
+   "names": [
+    "avatarFace4"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face5-shape.png",
+   "bytes": 13740,
+   "names": [
+    "avatarFace5Shape"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face5.png",
+   "bytes": 31942,
+   "names": [
+    "avatarFace5"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face6.png",
+   "bytes": 24480,
+   "names": [
+    "avatarFace6"
+   ]
+  },
+  {
+   "path": "assets/stand/avatar-face7.png",
+   "bytes": 24616,
+   "names": [
+    "avatarFace7"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face0.png",
+   "bytes": 30628,
+   "names": [
+    "girlFace0"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face1.png",
+   "bytes": 28000,
+   "names": [
+    "girlFace1"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face2.png",
+   "bytes": 29580,
+   "names": [
+    "girlFace2"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face3.png",
+   "bytes": 31320,
+   "names": [
+    "girlFace3"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face4.png",
+   "bytes": 27908,
+   "names": [
+    "girlFace4"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face5.png",
+   "bytes": 30712,
+   "names": [
+    "girlFace5"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face6.png",
+   "bytes": 19930,
+   "names": [
+    "girlFace6"
+   ]
+  },
+  {
+   "path": "assets/stand/girl-face7.png",
+   "bytes": 20276,
+   "names": [
+    "girlFace7"
+   ]
+  },
+  {
+   "path": "assets/battle/foe-lizard-attack.png",
+   "bytes": 53684,
+   "names": [
+    "fightFoe2_attack"
+   ]
+  },
+  {
+   "path": "assets/battle/foe-lizard-idle.png",
+   "bytes": 40336,
+   "names": [
+    "fightFoe2_idle"
+   ]
+  },
+  {
+   "path": "assets/battle/foe-slime-attack.png",
+   "bytes": 31094,
+   "names": [
+    "fightFoe0_attack"
+   ]
+  },
+  {
+   "path": "assets/battle/foe-slime-idle.png",
+   "bytes": 27338,
+   "names": [
+    "fightFoe0_idle"
+   ]
+  },
+  {
+   "path": "assets/battle/foe-zombie-attack.png",
+   "bytes": 31298,
+   "names": [
+    "fightFoe1_attack"
+   ]
+  },
+  {
+   "path": "assets/battle/foe-zombie-idle.png",
+   "bytes": 18776,
+   "names": [
+    "fightFoe1_idle"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-1.png",
+   "bytes": 17254,
+   "names": [
+    "heroFrame_attack_1"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-2.png",
+   "bytes": 20494,
+   "names": [
+    "heroFrame_attack_2"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-3.png",
+   "bytes": 23166,
+   "names": [
+    "heroFrame_attack_3"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-4.png",
+   "bytes": 24776,
+   "names": [
+    "heroFrame_attack_4"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-5.png",
+   "bytes": 20946,
+   "names": [
+    "heroFrame_attack_5"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-6.png",
+   "bytes": 20676,
+   "names": [
+    "heroFrame_attack_6"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack-7.png",
+   "bytes": 24358,
+   "names": [
+    "heroFrame_attack_7"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-attack.png",
+   "bytes": 34420,
+   "names": [
+    "heroPose_attack"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-1.png",
+   "bytes": 18122,
+   "names": [
+    "heroFrame_buff_1"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-2.png",
+   "bytes": 25736,
+   "names": [
+    "heroFrame_buff_2"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-3.png",
+   "bytes": 30402,
+   "names": [
+    "heroFrame_buff_3"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-4.png",
+   "bytes": 30306,
+   "names": [
+    "heroFrame_buff_4"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-5.png",
+   "bytes": 29602,
+   "names": [
+    "heroFrame_buff_5"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-6.png",
+   "bytes": 31178,
+   "names": [
+    "heroFrame_buff_6"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff-7.png",
+   "bytes": 33916,
+   "names": [
+    "heroFrame_buff_7"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-buff.png",
+   "bytes": 30772,
+   "names": [
+    "heroPose_buff"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-1.png",
+   "bytes": 16718,
+   "names": [
+    "heroFrame_debuff_1"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-2.png",
+   "bytes": 19074,
+   "names": [
+    "heroFrame_debuff_2"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-3.png",
+   "bytes": 23182,
+   "names": [
+    "heroFrame_debuff_3"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-4.png",
+   "bytes": 21822,
+   "names": [
+    "heroFrame_debuff_4"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-5.png",
+   "bytes": 22718,
+   "names": [
+    "heroFrame_debuff_5"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-6.png",
+   "bytes": 27120,
+   "names": [
+    "heroFrame_debuff_6"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff-7.png",
+   "bytes": 25072,
+   "names": [
+    "heroFrame_debuff_7"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-debuff.png",
+   "bytes": 26912,
+   "names": [
+    "heroPose_debuff"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-1.png",
+   "bytes": 17318,
+   "names": [
+    "heroFrame_guard_1"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-2.png",
+   "bytes": 20826,
+   "names": [
+    "heroFrame_guard_2"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-3.png",
+   "bytes": 22192,
+   "names": [
+    "heroFrame_guard_3"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-4.png",
+   "bytes": 24592,
+   "names": [
+    "heroFrame_guard_4"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-5.png",
+   "bytes": 23606,
+   "names": [
+    "heroFrame_guard_5"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-6.png",
+   "bytes": 22580,
+   "names": [
+    "heroFrame_guard_6"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard-7.png",
+   "bytes": 21552,
+   "names": [
+    "heroFrame_guard_7"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-guard.png",
+   "bytes": 27508,
+   "names": [
+    "heroPose_guard"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-1.png",
+   "bytes": 18090,
+   "names": [
+    "heroFrame_hurt_1"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-2.png",
+   "bytes": 23376,
+   "names": [
+    "heroFrame_hurt_2"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-3.png",
+   "bytes": 18558,
+   "names": [
+    "heroFrame_hurt_3"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-4.png",
+   "bytes": 19294,
+   "names": [
+    "heroFrame_hurt_4"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-5.png",
+   "bytes": 15608,
+   "names": [
+    "heroFrame_hurt_5"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-6.png",
+   "bytes": 15382,
+   "names": [
+    "heroFrame_hurt_6"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-hurt-7.png",
+   "bytes": 16934,
+   "names": [
+    "heroFrame_hurt_7"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-idle.png",
+   "bytes": 18554,
+   "names": [
+    "heroPose_idle"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-1.png",
+   "bytes": 14364,
+   "names": [
+    "heroFrame_rush_1"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-2.png",
+   "bytes": 17108,
+   "names": [
+    "heroFrame_rush_2"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-3.png",
+   "bytes": 17712,
+   "names": [
+    "heroFrame_rush_3"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-4.png",
+   "bytes": 19470,
+   "names": [
+    "heroFrame_rush_4"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-5.png",
+   "bytes": 18730,
+   "names": [
+    "heroFrame_rush_5"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-6.png",
+   "bytes": 18508,
+   "names": [
+    "heroFrame_rush_6"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush-7.png",
+   "bytes": 20570,
+   "names": [
+    "heroFrame_rush_7"
+   ]
+  },
+  {
+   "path": "assets/battle/hero-rush.png",
+   "bytes": 26850,
+   "names": [
+    "heroPose_rush"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmDay.wav",
+   "bytes": 246548,
+   "names": [
+    "bgmDay"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmDiffuse.wav",
+   "bytes": 47813,
+   "names": [
+    "bgmDiffuse"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmEnding.wav",
+   "bytes": 1358047,
+   "names": [
+    "bgmEnding"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmFight.wav",
+   "bytes": 472481,
+   "names": [
+    "bgmFight"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmGlitch.wav",
+   "bytes": 163761,
+   "names": [
+    "bgmGlitch"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmLose.wav",
+   "bytes": 99911,
+   "names": [
+    "bgmLose"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmNode.wav",
+   "bytes": 244717,
+   "names": [
+    "bgmNode"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmPuzzle.wav",
+   "bytes": 253478,
+   "names": [
+    "bgmPuzzle"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmResult.wav",
+   "bytes": 56385,
+   "names": [
+    "bgmResult"
+   ]
+  },
+  {
+   "path": "assets/sfx/bgmWin.wav",
+   "bytes": 175096,
+   "names": [
+    "bgmWin"
+   ]
+  },
+  {
+   "path": "assets/card/art/ACC_001.png",
+   "bytes": 22160,
+   "names": [
+    "cardArtACC_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/ACC_002.png",
+   "bytes": 18404,
+   "names": [
+    "cardArtACC_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/ACC_003.png",
+   "bytes": 19772,
+   "names": [
+    "cardArtACC_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/ACC_004.png",
+   "bytes": 20438,
+   "names": [
+    "cardArtACC_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/ACC_005.png",
+   "bytes": 28500,
+   "names": [
+    "cardArtACC_005"
+   ]
+  },
+  {
+   "path": "assets/card/art/ATK_001.png",
+   "bytes": 19352,
+   "names": [
+    "cardArtATK_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/ATK_002.png",
+   "bytes": 20690,
+   "names": [
+    "cardArtATK_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/ATK_003.png",
+   "bytes": 19584,
+   "names": [
+    "cardArtATK_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/ATK_004.png",
+   "bytes": 28136,
+   "names": [
+    "cardArtATK_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/ATK_005.png",
+   "bytes": 27402,
+   "names": [
+    "cardArtATK_005"
+   ]
+  },
+  {
+   "path": "assets/card/art/DEF_001.png",
+   "bytes": 18086,
+   "names": [
+    "cardArtDEF_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/DEF_002.png",
+   "bytes": 20212,
+   "names": [
+    "cardArtDEF_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/DEF_003.png",
+   "bytes": 22644,
+   "names": [
+    "cardArtDEF_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/DEF_004.png",
+   "bytes": 18320,
+   "names": [
+    "cardArtDEF_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/DEF_005.png",
+   "bytes": 25188,
+   "names": [
+    "cardArtDEF_005"
+   ]
+  },
+  {
+   "path": "assets/card/art/INT_001.png",
+   "bytes": 8060,
+   "names": [
+    "cardArtINT_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/INT_002.png",
+   "bytes": 15570,
+   "names": [
+    "cardArtINT_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/INT_003.png",
+   "bytes": 16176,
+   "names": [
+    "cardArtINT_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/INT_004.png",
+   "bytes": 13662,
+   "names": [
+    "cardArtINT_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/INT_005.png",
+   "bytes": 21716,
+   "names": [
+    "cardArtINT_005"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AA_001.png",
+   "bytes": 24700,
+   "names": [
+    "cardArtMIX_AA_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AA_002.png",
+   "bytes": 27022,
+   "names": [
+    "cardArtMIX_AA_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AD_001.png",
+   "bytes": 21786,
+   "names": [
+    "cardArtMIX_AD_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AD_002.png",
+   "bytes": 26332,
+   "names": [
+    "cardArtMIX_AD_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AI_001.png",
+   "bytes": 23600,
+   "names": [
+    "cardArtMIX_AI_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AI_002.png",
+   "bytes": 17748,
+   "names": [
+    "cardArtMIX_AI_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AT_001.png",
+   "bytes": 20996,
+   "names": [
+    "cardArtMIX_AT_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_AT_002.png",
+   "bytes": 25220,
+   "names": [
+    "cardArtMIX_AT_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_DA_001.png",
+   "bytes": 14550,
+   "names": [
+    "cardArtMIX_DA_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_DA_002.png",
+   "bytes": 22158,
+   "names": [
+    "cardArtMIX_DA_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_DI_001.png",
+   "bytes": 18622,
+   "names": [
+    "cardArtMIX_DI_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_DI_002.png",
+   "bytes": 12884,
+   "names": [
+    "cardArtMIX_DI_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_DT_001.png",
+   "bytes": 18300,
+   "names": [
+    "cardArtMIX_DT_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_DT_002.png",
+   "bytes": 24800,
+   "names": [
+    "cardArtMIX_DT_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_IA_001.png",
+   "bytes": 17396,
+   "names": [
+    "cardArtMIX_IA_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_IA_002.png",
+   "bytes": 17616,
+   "names": [
+    "cardArtMIX_IA_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_TA_001.png",
+   "bytes": 15902,
+   "names": [
+    "cardArtMIX_TA_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_TA_002.png",
+   "bytes": 23904,
+   "names": [
+    "cardArtMIX_TA_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_TI_001.png",
+   "bytes": 18776,
+   "names": [
+    "cardArtMIX_TI_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/MIX_TI_002.png",
+   "bytes": 19092,
+   "names": [
+    "cardArtMIX_TI_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/PENTA_001.png",
+   "bytes": 19800,
+   "names": [
+    "cardArtPENTA_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/QUAD_001.png",
+   "bytes": 25020,
+   "names": [
+    "cardArtQUAD_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/QUAD_002.png",
+   "bytes": 16518,
+   "names": [
+    "cardArtQUAD_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/QUAD_003.png",
+   "bytes": 16268,
+   "names": [
+    "cardArtQUAD_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/QUAD_004.png",
+   "bytes": 18982,
+   "names": [
+    "cardArtQUAD_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/QUAD_005.png",
+   "bytes": 20052,
+   "names": [
+    "cardArtQUAD_005"
+   ]
+  },
+  {
+   "path": "assets/card/art/TEC_001.png",
+   "bytes": 22436,
+   "names": [
+    "cardArtTEC_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/TEC_002.png",
+   "bytes": 14050,
+   "names": [
+    "cardArtTEC_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/TEC_003.png",
+   "bytes": 16220,
+   "names": [
+    "cardArtTEC_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/TEC_004.png",
+   "bytes": 19880,
+   "names": [
+    "cardArtTEC_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_001.png",
+   "bytes": 19976,
+   "names": [
+    "cardArtTRI_001"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_002.png",
+   "bytes": 19642,
+   "names": [
+    "cardArtTRI_002"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_003.png",
+   "bytes": 23058,
+   "names": [
+    "cardArtTRI_003"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_004.png",
+   "bytes": 18138,
+   "names": [
+    "cardArtTRI_004"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_005.png",
+   "bytes": 18526,
+   "names": [
+    "cardArtTRI_005"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_006.png",
+   "bytes": 18358,
+   "names": [
+    "cardArtTRI_006"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_007.png",
+   "bytes": 12430,
+   "names": [
+    "cardArtTRI_007"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_008.png",
+   "bytes": 17544,
+   "names": [
+    "cardArtTRI_008"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_009.png",
+   "bytes": 16472,
+   "names": [
+    "cardArtTRI_009"
+   ]
+  },
+  {
+   "path": "assets/card/art/TRI_010.png",
+   "bytes": 14342,
+   "names": [
+    "cardArtTRI_010"
+   ]
+  }
+ ],
+ "splash": {
+  "startPrompt": "Tap to start",
+  "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFOUlEQVR42uRbXWgcVRQ+M/m12TR04yotSIuhvgmmaH2qYmPbrZQWDPjgQ6tRURBSqD8Y8KVQqLQqGBAsajQ+FBR8EIr5aeqDebNgC9IXS0UpWDRki+6mJmmSlTPlTO/M3pm5P2c22cmBIUsyzM73feee890zmWbQiFzXvVVgjurKMvclYa5801E9180aeIyOzk3K9+qsBvA0wetmg1Nv4PUEr0KEux7Axy0Ldz2Ap2jf0FmNJSDL4JeXl6QkuPX48rUCPnYJNHq11wEvZoG7XpUPENBIJocLPGWBsxbBO26T1XVUlE9tCXCAb+7MewcRkRZ4dgK4wFOIn9MAz0oA15rf1NMLL05c9n6KyyEN8GwEcIAPq5978KFUlWcjgLPao+pbXv7I+7z9yBupg7cmgBM8qb9zx0bv59ZCq78M0gJvRQAneFrn9Up7awK4TQ6qj2o//eZQXcEbEcANPkn9cCvkBK/tBOPA37djL+zvLmrfQGtbB5RaAbrfPlDzt9lT5yC/CLC4MBf4/djsONy4+D1P9tmAP7Lnw1Xx+R7Rxbtkj4wPpktAGLwPvAowOnXMKv0Lj/RB7/Ez0A0Af8wsetWf4pL7C1yf/hpu/zMTmfoD+4ZhoDhsTIRrCn70/DFr8LS+CXTui0nt64xMDPrAiQg2AuLAcwUWP1SeFDcNUxJcVfAtXQVW8NT6yPFNvX8ysVOoktCe32xHgKzgPb9zCL668FZqra/y268156naYTFQILxXYwLiWh2XBwir/9f1eSkJKnaYdR4QBZCz3cnS+c/PjsLNa5dYW6VqLXBV1eUsfKgqtj5ZUEG0CZ126Jqm9isHzljt+ijtr45+UKN+mATZZAgL3WuHPvcP471AEvi4CkydQTf9ac+PJMiKn0q8sOsEfPLdS94RSXZLm70ROtx3usbz44Fx8NGj/med4icGqr9ULmkvBQRO6pf+m5FUbIDDu0/z7AbP/nS3Rx/a0u8dGPl7Ct5nlSIpa31Y/OICSaDzm5qapSTggfcRXgpnL57k2wugF6f49Nyrfg34cvrdwN9U1N+4+/XA71F9m/a6+bFnAhlBMV+6kf5ITJa6qnXk3x8+9oufzR6ftsWmhbDZ9IspE3RaHxU/0fRwmKu4QphqBuju+mQZlKQ+uUWTp0SpZoBuiOr3TP0IPdv6ISdMkGgyVInInpnLFxqTAFnrm/79W2/9i4UKjc3BvhOeN7j/gfa6TZfctNPfa5dPnqopfrICisSILrHhCUD1UVUxOItf3QjQcXvU1uKKlkrxC2eB7pNi8gfWBIzNjmuNuxEYuTZU/8rWx+8Yk6sL/rZXVX2bpbA/X4Sx0rg9AX//PGk0jHj2qePxrbGlLXDExa5t/VYmiaUGJPl9Ao/q9+O67yr46stqQ/jATiF7OkRZgBsv2X5AOgzZpz4YdVT/szpuIiwqP1Achkpnh1fRxeof2Mtvb9NSEjtH78rDkCvPJQ47CPzIxCAvATqjMdw99gycjz1HhwSsH9dG9twZdircrSp4bQKiyKis3IJvJt/xUrSlq+Clc5T6pllwZeiJwBOi5/a+BzlngxFoFicYl4oqz/lRVV0SxEDCWcyaSQZE9XDKAPLvuiEjjoxT2DqzuVVdApIMDLU0XeOiMntYur3ATwBovGOjOrhQbVec32kS87fKjv8aSRIJad7IagSCVzZCWQMvdYJRLxVlETypn5gBWVZeSoCYBVkFL6oPUe8Nyt6uyiL4yCUgOzGL4EHl1dlGz4YkMZWVbjQiVLPY5b5gI4HH+D8AAP//U6SdWb893dIAAAAASUVORK5CYII=",
+  "font": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAEWUlEQVR42uyc6a6jOhAGScT7vzJXR7qMkOXu/toLW6r+ZCZKANvl7YOc7wI/TUqAbdu24+ssrOOfdX4ECBpCaZTj/7f/aTn+8bOfz+fz9++/16slaClf+bmtIDq+9f3s55p7Yq2xrfeOJ/UKqIrhVVBGxtEC1OrCahy1fN531TJF19c0BagnOfbU/XX/d0tjHI+5UxsF9vfKz85o/PIcVh0cr005nnX9Viey5FDrYM0UvNaw+8lUY2vftc7TMyTXrsk6bk2kFiHKMiryKB2i/HzZDl7Z1OtqWgNEc44yzCvzU7QobHlv1ALVEz8zFZX1Ea0r1OmlawqIjClNtL57NLV2Ecp5agWrDcN3WCC2TBvHstZ6+OUrXXUdENkbLSBbet7ssikjkbqwU1foynwf7R66dwEzK3fUovPM6yN/gN9OAgEB4I0CjFgkKFscawuZXeyo3422qNHWy9vOKteTSU+9bVsmbcwERtI+cdaKuqWSRr/XkydkdghLIpqt5SM1CXvqQJ4C1O1JmVTVTMzsz3tHo9lR8MgsQP3crHxjzVakFUsqlV+Lf5U4WImWW0as2jmssObMUEaJdYcJ0HNQq0FVYaJ83kvElBy8VWyv0hURPKln36zKdozVK5QXt1qFUhpUqfS3rrpnS5A97upZEzW+WijvFmdNJqUw1t1Fq6dao9SI4fa44NqzfLUnquX1rk+Zdt/esWDiohpeIgEiwJLKAZ5gdLQa73kg9ak9JlXeKD604lLl3r6VXmW/650vkzQqqeAZkqjHzcbrzUFQuaf2tmzlA4xnhiIjzld7vDzaCZy9ej7znOuThrVsyqjsk1seAF2EFDHafmaDm+wWV0k5pSnAu5CeKWBJPCLW+/Dn2b8L6H1PuQuZnQ6tOlit4b0navV6Z22aKQMUNS6+YsjOypTp2VdMO+sb5rErpqFRo8rVdbSq843X4xbhLuGoXqc+Qj6jYq14WImlvV8yRWXriaXDMj25N1oVV/t9gHJf4S69csbI+sYR+adojXKJgMGFp4In9tAhv9E/cy590tBxp2vr+fHq1X/15HvX7cmvjBpXxc1VAdQ7a9EPQbPPqysJYfS5K29M9WYAl3a21h8ptNwNVCu4ZXg9QwDvXL1Tw6WLwDvtEa3n4WdW2vEcSnTrPcf4tP34d7nJX92KGqjnGq1bwOVrdI43hilrabL6JHDUm5bglqTaoFaaV57Hi2lbGi2KfVkoD9yy3T2pan2C5xE5AALkGhXgVRAFIwAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAD8478AAAD//2csZ5Vpg7EOAAAAAElFTkSuQmCC",
+  "glyphs": "0020000000050500210050000505002200a0000505002300f00005050024014000050500250190000505002601e00005050027023000050500280280000505002902d0000505002a0320000505002b0370000505002c03c0000505002d0410000505002e0460000505002f04b00005050030050000050500310550000505003205a0000505003305f00005050034064000050500350690000505003606e00005050037073000050500380780000505003900000b0505003a00500b0505003b00a00b0505003c00f00b0505003d01400b0505003e01900b0505003f01e00b0505004002300b0505004102800b0505004202d00b0505004303200b0505004403700b0505004503c00b0505004604100b0505004704600b0505004804b00b0505004905000b0505004a05500b0505004b05a00b0505004c05f00b0505004d06400b0505004e06900b0505004f06e00b0505005007300b0505005107800b05050052000016050500530050160505005400a0160505005500f01605050056014016050500570190160505005801e016050500590230160505005a0280160505005b02d0160505005c0320160505005d0370160505005e03c0160505005f041016050500600460160505006104b01605050062050016050500630550160505006405a0160505006505f01605050066064016050500670690160505006806e016050500690730160505006a0780160505006b0000210505006c0050210505006d00a0210505006e00f0210505006f014021050500700190210505007101e02105050072023021050500730280210505007402d02105050075032021050500760370210505007703c02105050078041021050500790460210505007a04b0210505007b0500210505007c0550210505007d05a0210505007e05f0210505",
+  "fontSize": 10,
+  "ascent": 9,
+  "descent": 2,
+  "cellH": 11
+ },
+ "wasmBrotli": "classes.wasm.br",
+ "boot": {
+  "assets": 1690645,
+  "assetsWire": 1083345,
+  "wasm": 2292552,
+  "wasmWire": 2360823
+ },
+ "serviceWorker": true
+}

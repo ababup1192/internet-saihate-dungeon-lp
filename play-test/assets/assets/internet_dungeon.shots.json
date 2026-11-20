@@ -1,0 +1,199 @@
+{
+  "title": "撮影の山札（動画の筋書きに名指しで要るカード）",
+  "version": 1,
+  "note": "src/render/ の動画だけが読む、撮影の筋書きに名指しで要るカードの並び（card.json の id。並んだ順が発動順）。ゲームは読まない。「解除の効果を持つカード」「COST 3 のカード」のように card.json から性質で引ける物はここに書かず、道具が card.json から引く。山札が無い・id が card.json に無いときは、その動画を撮らずに止まる（make の口が失敗する）。",
+  "decks": [
+    {
+      "name": "bfx_pace_foe",
+      "cards": [
+        "ACC_001",
+        "ACC_001",
+        "ATK_003",
+        "INT_001"
+      ],
+      "why": "make battle-fx-video の pace（加速・減速の狙い）の相手の山札。加速のカード 2 枚（動画では COST 1 にする。1 枚はこちらの減速で戻され、もう 1 枚が相手の扇で当たる）と、待ちカード 2 枚（急所ポスト 3・冷たい返信 2）。"
+    },
+    {
+      "name": "battle",
+      "cards": [
+        "ATK_002",
+        "DEF_002",
+        "ACC_001"
+      ],
+      "why": "make battle-video の 3 戦（スライム・ゾンビ・リザード）のこちらの山札。"
+    },
+    {
+      "name": "slime_win",
+      "cards": [
+        "ATK_003",
+        "ATK_002",
+        "ACC_001"
+      ],
+      "why": "勝つスライム戦（make battle-video-sfx の battle・make end-video の end_win と end_speed4・録画の win・make render の result）。会心の効果を持つカード（急所ポスト）は COST 1 にして、クリティカルの速報の帯を出す。"
+    },
+    {
+      "name": "hover",
+      "cards": [
+        "ATK_002",
+        "DEF_001",
+        "ATK_001"
+      ],
+      "why": "make reveal-hover-video。最初に発動するカードが着く所にマウスを置き続ける。"
+    },
+    {
+      "name": "tut_pause",
+      "cards": [
+        "ATK_002"
+      ],
+      "why": "make tut-pause-video の最初の夜のスライム戦の入り（1 枚だけ）。"
+    },
+    {
+      "name": "card_timing",
+      "cards": [
+        "ATK_003",
+        "DEF_001",
+        "ACC_001"
+      ],
+      "why": "make card-timing-video。動画で COST を 1・1・2 にして、2 枚が 1 ターン目に一緒に出て、3 枚目は 1 枚で出る並びにする。"
+    },
+    {
+      "name": "replay_lizard",
+      "cards": [
+        "ATK_003",
+        "ACC_003",
+        "DEF_002"
+      ],
+      "why": "負けるリザードマン戦（録画の make replay-video・make replay-fight-probe・make render の game_over と replay_player・決着の演出の動画の lose と make assist-video）。会心・盾の割れ・減速が全部出て、こちらが負ける。並んだ順が発動順。"
+    },
+    {
+      "name": "pick_hand",
+      "cards": [
+        "ATK_001",
+        "ATK_002",
+        "INT_004",
+        "INT_001"
+      ],
+      "why": "カードを取る画面の見本の手持ち（make pick-video と make render の候補・見積もり・束の場面）。引用攻撃・論破・粘着リプ・冷たい返信 = 速攻型の 4 枚。"
+    },
+    {
+      "name": "pick_first",
+      "cards": [
+        "MIX_AD_001",
+        "MIX_AD_002",
+        "DEF_003"
+      ],
+      "why": "1 回目の候補（make pick-video と make render の見積もり）。鉄壁カウンター = 全部 ▲ で型が変わる / 攻防一体レスバ = ⊘ と ▲ が混ざる / フォロワーの援護。"
+    },
+    {
+      "name": "pick_second",
+      "cards": [
+        "MIX_AD_001",
+        "INT_001",
+        "DEF_003"
+      ],
+      "why": "2 回目の候補。冷たい返信 = 手持ちの弱体と同じで全部 ⊘。"
+    },
+    {
+      "name": "pick_stack",
+      "cards": [
+        "MIX_AD_001",
+        "INT_004",
+        "DEF_003"
+      ],
+      "why": "重なりの見本の候補（make render の cards_look_a など）。粘着リプ = 手持ちと同じ毒のカード。"
+    },
+    {
+      "name": "deck_built",
+      "cards": [
+        "ATK_002",
+        "DEF_002",
+        "ACC_001",
+        "TEC_001",
+        "INT_002",
+        "MIX_AI_001",
+        "TRI_003"
+      ],
+      "why": "make render の組んだデッキ（出撃前の一覧・戦い・戦果で同じカードを見せる）。3 マッチで取ったカードそのものを持つ見本に上位複合 1 枚を混ぜ、戦いの窓に長い名前が並んだ姿も書き出す。"
+    },
+    {
+      "name": "deck_review",
+      "cards": [
+        "ATK_001",
+        "ATK_002",
+        "ATK_003",
+        "MIX_AI_001",
+        "ATK_004",
+        "TRI_003",
+        "DEF_001",
+        "DEF_002",
+        "DEF_003",
+        "TEC_001",
+        "INT_001",
+        "INT_002",
+        "ACC_001",
+        "ACC_003"
+      ],
+      "why": "make render の出撃前の一覧そのものを見る 2 枚。5 属性がそろった 14 枚で、行が窓に収まりきらず攻撃の行は 6 枚並ぶ（流れと行の詰まりを見張る）。"
+    },
+    {
+      "name": "pick_stacked",
+      "cards": [
+        "ATK_001",
+        "DEF_001",
+        "ATK_001",
+        "INT_001",
+        "DEF_002",
+        "ATK_004",
+        "INT_004",
+        "ATK_002",
+        "TEC_001",
+        "DEF_004"
+      ],
+      "why": "make render の cards_deck。束の多い 10 枚（同じカード 2 枚を含む）を持ってカードを選ぶ拍で、付箋の右の束が選ぶ画面の上へ浮かないかを見張る。"
+    },
+    {
+      "name": "look_deck",
+      "cards": [
+        "MIX_AD_001",
+        "ACC_001",
+        "ATK_001"
+      ],
+      "why": "make render の cards_look_a。デッキに攻防一体レスバと加速が入っていて、選んでいる候補（pick_stack）が攻防一体レスバの 2 枚目になる局面（下の欄の ▲ の大きさと濃さを見る）。"
+    },
+    {
+      "name": "look_first",
+      "cards": [
+        "ACC_001",
+        "ATK_001"
+      ],
+      "why": "make render の cards_look_a_first・cards_marks。look_deck から攻防一体レスバを抜いた物（同じ候補を 1 枚目として取る局面）。"
+    },
+    {
+      "name": "cards_dense",
+      "cards": [
+        "QUAD_004",
+        "PENTA_001",
+        "TRI_010"
+      ],
+      "why": "make render の cards_dense の候補 3 枚。効果の字の行が多いカード（4 行の QUAD と 8 行の PENTA）で、カードの下端と右の縁からはみ出さないか、行数で字が詰まるかを見張る（行の数は描いた字で決まるので、効果の数では引けない）。"
+    },
+    {
+      "name": "cards_cost1",
+      "cards": [
+        "ATK_005",
+        "DEF_005",
+        "ACC_005"
+      ],
+      "why": "make render の cards_cost1。COST 1 の軽いカード（即レス・既読スルー・速報）が並ぶ候補の姿（絵と COST 1 の字・1 行の効果を見る）。"
+    },
+    {
+      "name": "cards_marks",
+      "cards": [
+        "MIX_AD_001",
+        "TRI_002",
+        "INT_002"
+      ],
+      "why": "make render の cards_marks。効果タイルの印を見比べる候補: 上がる効果だけ（攻防一体レスバ）/ 上がると下がるの両方（炎上鎮圧）/ 下がる効果だけ（炎上封鎖）。"
+    }
+  ]
+}

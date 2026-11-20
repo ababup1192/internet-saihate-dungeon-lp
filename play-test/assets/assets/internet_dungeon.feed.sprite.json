@@ -1,0 +1,966 @@
+{
+  "title": "🐦 フィード画面のドット絵",
+  "version": 1,
+  "note": "夜の探索画面 (X 風タイムライン) のドット絵。移植元は debug/timeline-mock.html の SPRITES/ICONS (依頼主合意済み)。アバター 4 種 (16x16)・柴犬のイラスト (48x20)・アイコン 14 種 (10x10)。実色はコード側 ThemeDoc.resolver の feed* が正 (X 風の固定色 — 夜の 3 色からは導かない契約)。feedIcon の 1 色アイコンは描く側が resolver で色を差し替えて塗り分ける。 v4 で追加: ホームのイベントポスト用アバター 5 種 (feedFan/feedYuno/feedBot/feedNews/feedMutual)・犬と猫の部屋 feedDogCat (64x30)・グリッチ feedGlitch (64x24)・アイコン eye/qmark/pin。移植元は debug/home-feed-mock.html。 v5 で追加: ホームの作り直し（左レール・通知パネル）用に、つぎの相手の 32x32 の顔 3 種 (feedSlimeBig/feedZombieBig/feedLizardBig)・左レールの 16x16 アイコン 4 種 (feedRailHome/Search/Bell(3 コマ)/Mail)・封筒 feedIconSealed・剣 feedIconSwordBig・塗りのハート feedIconHeartFill・▶ feedIconNext。依頼主の「ドットを丁寧に打つ」に沿って atelier を経ずに直接足した（報告に明記）。新しい色キーの文字はギリシャ文字（α〜κ）— legend は 3 冊で共有・先勝ちで、ASCII の記号は戦闘の冊と取り合いになるため。 v6 で追加: リプツリーと決着のモーダル用に、決着の印 3 種 (feedResultWin/Clear/Lose。24x24) を足した。色キーの文字は λ〜τ。 機能アイコン（返信・リポスト・いいね・表示・ドクロ・王冠・鍵・チェック・星・戻る）は太すぎたので 10px の細い版に戻した（依頼主決定）。 v7: アバターを全部 32x32 で打ち直した（feedGirl/Fan/Yuno/Bot/News/Mutual/Moff）。敵の 16px アバター（feedSlime/Zombie/Lizard）は 32x32 の Big 版に統一して消した。色キーの文字は Cyrillic（б〜）。 v8: 丸アバター 8 種（feedGirl/Fan/Yuno/Mutual/Moff/SlimeBig/ZombieBig/LizardBig）は 64x64 の PNG（assets/feed/avatar-*.png。PNG が正）へ移したので、この冊から消した。feedBot/feedNews は 32x32 のまま。",
+  "paletteFile": "assets/internet_dungeon.palette.json",
+  "entityId": "internet_dungeon.feed.sprites",
+  "legend": {
+    "b": "feedGirlHairDark",
+    "g": "feedGirlMouth",
+    "h": "feedGirlEye",
+    "j": "feedGirlCheek",
+    "l": "feedGirlBg",
+    "q": "feedZombieInk",
+    "t": "feedZombieBg",
+    "w": "feedLizardEye",
+    "F": "feedDogLine",
+    "H": "feedDogFur",
+    "K": "feedDogCream",
+    "M": "feedDogShade",
+    "Q": "feedSky",
+    "S": "feedSkyLow",
+    "1": "feedSunCore",
+    "2": "feedSunEdge",
+    "3": "feedGrass",
+    "4": "feedGrassEdge",
+    "5": "feedIcon",
+    "6": "feedBadgeBlue",
+    "8": "feedFanRibbon",
+    "0": "feedYunoPin",
+    "@": "feedBotGray",
+    "%": "feedBotLight",
+    "&": "feedBotGlow",
+    "$": "feedNewsBg",
+    "~": "feedCatLine",
+    "!": "feedCatFur",
+    "<": "feedCatLight",
+    ">": "feedRoomFloor",
+    "(": "feedRoomRug",
+    "=": "feedWhite",
+    "a": "feedWinDark",
+    "c": "feedWinMid",
+    "d": "feedWinLight",
+    "e": "feedClearDark",
+    "f": "feedClearMid",
+    "i": "feedClearLight",
+    "k": "feedLoseDark",
+    "m": "feedLoseMid",
+    "n": "feedLoseLight",
+    "o": "feedBotDark",
+    "p": "feedBotEyeCore",
+    "r": "feedNewsLine",
+    "s": "feedPaperShade",
+    "u": "feedNewsText",
+    "v": "feedHandLine",
+    "x": "feedHandShade",
+    "y": "feedHandCuffDark"
+  },
+  "sprites": {
+    "feedDogPost": {
+      "note": "主人公が投稿した柴犬のイラスト (48x20。夕空 + 太陽 + 草地。ポストの添付画像として整数倍拡大で貼る)",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+          "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+          "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ2222QQQQ",
+          "QQQQQQQQQQQQQQQQQQFFQQQQQQQQFFQQQQQQQQQ211112QQQ",
+          "QQQQQQQQQQQQQQQQQFHFQQQQQQQQFHFQQQQQQQQ211112QQQ",
+          "QQQQQQQQQQQQQQQQQFHHHHHHHHHHHHFQQQQQQQQ211112QQQ",
+          "QQQQQQQQQQQQQQQQFHHHHHHHHHHHHHHFQQQQQQQ211112QQQ",
+          "QSQSQSQSQSQSQSQSFHHKKHHHHHHKKHHFQSQSQSQS2222QSQS",
+          "SQSQSQSQSQSQSQSQFHHMHHHHHHHHMHHFSQSQSQSQSQSQSQSQ",
+          "QSQSQSQSQSQSQSQSFHHKKKKKKKKKKHHFQSQSQSQSQSQSQSQS",
+          "SQSQSQSQSQSQSQSQFHHKKKKMMKKKKHHFSQSQSQSQSQSQSQSQ",
+          "SSSSSSSSSSSSSSSSSFHKKKKMMKKKKHFSSSSSSSSSSSSSSSSS",
+          "SSSSSSSSSSSSSSSSSSFHHHHHHHHHHFSSSSSSSSSSSSSSSSSS",
+          "SSSSSSSSSSSSSSSSSSFHHHKKKKHHHFHHSSSSSSSSSSSSSSSS",
+          "43434343434343434FHHHHKKKKHHHHFH4343434343434343",
+          "33333333333333333FHHHHKKKKHHHHF33333333333333333",
+          "33343333333333333FHHFHKKKKHFHHF33333333333333433",
+          "33343333333343333FHHHFKKKKFHHHF33333333334333433",
+          "333333343333433333FFFFFFFFFFFF333343333334333333",
+          "333333343333333333333343333333333343333333333333"
+        ]
+      }
+    },
+    "feedVerified": {
+      "note": "認証バッジ (10x10。青地に白チェック。2 色固定)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...6666...",
+          "..666666..",
+          ".66666666.",
+          ".66666656.",
+          ".65666566.",
+          ".66565666.",
+          ".66656666.",
+          "..666666..",
+          "...6666..."
+        ]
+      }
+    },
+    "feedIconReply": {
+      "note": "リプライ (吹き出し) (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "..555555..",
+          ".5......5.",
+          "5........5",
+          "5........5",
+          "5........5",
+          ".5......5.",
+          "..555555..",
+          "...55.....",
+          "..55......"
+        ]
+      }
+    },
+    "feedIconHeart": {
+      "note": "いいね (ハート) (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "..55..55..",
+          ".5..55..5.",
+          "5........5",
+          "5........5",
+          ".5......5.",
+          "..5....5..",
+          "...5..5...",
+          "....55...."
+        ]
+      }
+    },
+    "feedIconSkull": {
+      "note": "敵性ピルのドクロ (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "..555555..",
+          ".55555555.",
+          ".55555555.",
+          ".5..55..5.",
+          ".5..55..5.",
+          ".555..555.",
+          "..555555..",
+          "...5.5.5.."
+        ]
+      }
+    },
+    "feedIconSword": {
+      "note": "対処するの剣 (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          ".......55.",
+          "......55..",
+          ".....55...",
+          "....55....",
+          "..55555...",
+          "..55......",
+          ".55......."
+        ]
+      }
+    },
+    "feedIconLogo": {
+      "note": "X のロゴ (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "55......55",
+          ".55....55.",
+          "..55..55..",
+          "...5555...",
+          "....55....",
+          "...5555...",
+          "..55..55..",
+          ".55....55.",
+          "55......55"
+        ]
+      }
+    },
+    "feedIconDog": {
+      "note": "本文中の犬の顔 (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          ".55...55..",
+          ".55555555.",
+          ".55555555.",
+          ".5.5555.5.",
+          ".55555555.",
+          ".555..555.",
+          "..555555.."
+        ]
+      }
+    },
+    "feedBot": {
+      "note": "罠アカウントのロボのアバター (32x32。灰の金属の頭・アンテナ・シアンに光る四角い目・歯の格子の固定の笑い)",
+      "lint-sprite": "対象外(avatar) — X のアバター枠に嵌める正方形 1 枚で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...........tttttttttt...........",
+          "........tttttttttttttttt........",
+          "......ttttttttt=&ttttttttt......",
+          ".....ttttttttt&&&&ttttttttt.....",
+          "....ttttttttttto@ttttttttttt....",
+          "...tttttttttttto@tttttttttttt...",
+          "..ttttttttttttto@ttttttttttttt..",
+          "..ttttttttttttto@ttttttttttttt..",
+          ".tttttttoooooooooooooooottttttt.",
+          ".tttttto=============%@@otttttt.",
+          ".ttttto==============%@@@ottttt.",
+          "tttttto==%%%%%%%%%%%%%@@@otttttt",
+          "tttttto==ooooo%%%%ooooo@@otttttt",
+          "tttttto==o=&&o%%%%o=&&o@@otttttt",
+          "tttto@o==o&p&o%%%%o&p&o@@o@otttt",
+          "tttto@o==o&&&o%%%%o&&&o@@o@otttt",
+          "tttto@o==ooooo%%%%ooooo@@o@otttt",
+          "tttto@o==%%%%%%%%%%%%%@@@o@otttt",
+          "tttttto==%%%%%%%%%%%%%@@@otttttt",
+          "tttttto==o%%%%%%%%%%%%o@@otttttt",
+          "tttttto==%oooooooooooo@@@otttttt",
+          ".ttttto%%%==o==o==o==o@@@ottttt.",
+          ".ttttto%%%oooooooooooo@@@ottttt.",
+          ".ttttto@@@@@@@@@@@@@@@@@@ottttt.",
+          "..ttttto@@@@@@@@@@@@@@@@ottttt..",
+          "..ttttttooooooooooooooootttttt..",
+          "...tttttt%%%%%%%%%%@@@@tttttt...",
+          "....oooo%%%%%%%%%%%%@@@@oooo....",
+          ".....tt%%%%%%%%%%%%%%@@@@tt.....",
+          "......%%%%%%%%%%%%%%%%@@@@......",
+          "........%%%%%%%%%%%%%%%@........",
+          "...........%%%%%%%%%%..........."
+        ]
+      }
+    },
+    "feedNews": {
+      "note": "トレンド速報のアイコン (32x32。紺の地に新聞の紙面 — 赤い見出しの帯・青い写真の枠・記事の行)",
+      "lint-sprite": "対象外(avatar) — X のアバター枠に嵌める正方形 1 枚で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...........$$$$$$$$$$...........",
+          "........$$$$$$$$$$$$$$$$........",
+          "......$$$$$$$$$$$$$$$$$$$$......",
+          ".....$$$$$$$$$$$$$$$$$$$$$$.....",
+          "....$$$$$$$$$$$$$$$$$$$$$$$$....",
+          "...$$$$$$$$$$$$$$$$$$$$$$$$$$...",
+          "..$$$$$rrrrrrrrrrrrrrrr$$$$$$$..",
+          "..$$$$$r===============s$$$$$$..",
+          ".$$$$$$r=00000000000000sr$$$$$$.",
+          ".$$$$$$r=05050505050500sr$$$$$$.",
+          ".$$$$$$r=00000000000000sr$$$$$$.",
+          "$$$$$$$r===============sr$$$$$$$",
+          "$$$$$$$r=666666=uuuuuuusr$$$$$$$",
+          "$$$$$$$r=666666========sr$$$$$$$",
+          "$$$$$$$r=666656=uuuuuuusr$$$$$$$",
+          "$$$$$$$r=665666========sr$$$$$$$",
+          "$$$$$$$r=656566=uuuuuuusr$$$$$$$",
+          "$$$$$$$r=666666========sr$$$$$$$",
+          "$$$$$$$r===============sr$$$$$$$",
+          "$$$$$$$r=uuuuuuuuuuuuuusr$$$$$$$",
+          "$$$$$$$r===============sr$$$$$$$",
+          ".$$$$$$r=uuuuuuuuuuuuuusr$$$$$$.",
+          ".$$$$$$r===============sr$$$$$$.",
+          ".$$$$$$r=uuuuuuuuu=====sr$$$$$$.",
+          "..$$$$$r===============sr$$$$$..",
+          "..$$$$$rssssssssssssssssr$$$$$..",
+          "...$$$$rrrrrrrrrrrrrrrrrr$$$$...",
+          "....$$$$$$$$$$$$$$$$$$$$$$$$....",
+          ".....$$$$$$$$$$$$$$$$$$$$$$.....",
+          "......$$$$$$$$$$$$$$$$$$$$......",
+          "........$$$$$$$$$$$$$$$$........",
+          "...........$$$$$$$$$$..........."
+        ]
+      }
+    },
+    "feedDogCat": {
+      "note": "癒しポストの絵: 部屋のラグの上で柴犬と猫がじゃれあう (64x30。ポップアップに 3 倍で貼る)",
+      "lint-sprite": "対象外(illustration) — ポスト添付のイラスト 1 枚で、キャラ規格の対象外",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+          "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+          "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+          "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+          "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+          "llllllllllllllllllllllllllllllllllllllllllllllll8l8lllllllllllll",
+          "lllllllllllllllllllllllllllllllllllllllllllllll88888llllllllllll",
+          "llllllllllllllllllllllllllllllllllllllllllllllll888lllllllllllll",
+          "lllllllllllllllllllllllllllllllllllllllllllllllll8llllllllllllll",
+          "llllllllllllllllllllllllllllllwlllllllllllllllllllllllllllllllll",
+          "lllllllllllllllllllllllllllllwwwllllllllllllllllllllllllllllllll",
+          "llllllllllllllllllllllllllllllwlllllllllllllllllllllwlllllllllll",
+          "QlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQwwwQlQlQlQlQl",
+          "lQlQlQlQlQlFFQlQlQlQlFFQlQlQlQlQlQlQlQlQlQlQlQlQlQlQwQlQlQlQlQlQ",
+          "QlQlQlQlQlFHFlQlQlQlQFHFQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQlQl",
+          "lQlQlQlQlQFHHHHHHHHHHHHFlQlQlQlQlQlQ~~lQlQlQ~~lQlQlQlQlQlQlQlQlQ",
+          "QlQlQlQlQFHHHHHHHHHHHHHHFlQwQlQlQlQ~!j~lQl~j!~QlQlQlQlQlQlQlQlQl",
+          "QQQQQQQQQFHHKKHHHHHHKKHHFQwwwQQQQQQ~!!!~~~~!!!~QQQQQQQQQQQQQQQQQ",
+          "QQQQQQQQQFHHMHHHHHHHHMHHFQQwQQQQQQ~!!!!!!!!!!!!~QQQQQQQQQQQQQQQQ",
+          "QQQQQQQQQFHHKKKKKKKKKKHHFQQQQQQQQQ~!!!h!!!!h!!!~QQQQQQQQQQQQQQQQ",
+          "bbbbbbbbbFHHKKKKMMKKKKHHFbbbbbbbbb~!!!<<<<<<!!!~bbbbbbbbbbbbbbbb",
+          ">>>>>>>>>>FHKKKKMMKKKKHF>>>>>>>>>>~!!<<<hh<<<!!~>>>>>>>>>>>>>>>>",
+          ">>>>>>>>gggFHHHHHHHHHHFgggggggggggg~!!!!<<!!!!~ggggggggg>>>>>>>>",
+          ">>>>>>>>(((FHHHKKKKHHHFHH((((((((((~~!!!!!!!!~~(((((((((>>>>>>>>",
+          ">>>>>>>>((FHHHHKKKKHHHHFH((((((((((~!!<<<<!!!~~!((((((((>>>>>>>>",
+          "bbbbbbbb((FHHHHKKKKHHHHF((gg((gg((g~!!<<<<!!!~~!((gg((((bbbbbbbb",
+          ">>>>>>>>((FHHFHKKKKHFHHF(((((((((((~!!!<<!!!!~~!((((((((>>>>>>>>",
+          ">>>>>>>>((FHHHFKKKKFHHHF(((((((((((~!!!!!!!!!~~!((((((((>>>>>>>>",
+          ">>>>>>>>gggFFFFFFFFFFFFgggggggggggg~!!~gg~!!~~gggggggggg>>>>>>>>",
+          ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        ]
+      }
+    },
+    "feedGlitch": {
+      "note": "罠ポストを開いた瞬間のグリッチ画面 (64x24。走査線ノイズとドクロ)",
+      "lint-sprite": "対象外(illustration) — ノイズ演出の 1 枚で、キャラ規格の対象外",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "88qqqqqqqqqqq888888q88888qqqqqq888888888qqqqqqqqqqqqqqqqqqqqqqq8",
+          "88qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq8",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "6666qqqqqqqqqqqqqqqqqq66666qqqqqqqqqqqqqqqqqq666q666666666q666q6",
+          "qqqqqqqqqqqqqqqqqqqqqq66666qqqqqqqqqqqqqqqqqq666qqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqq======qqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqq========qqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqq========qqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqq&&&&&&&&&&qqqqqqqq=qq==&&=&&&&&qqqqqqq&&&&&&&&&qqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqq=qq==qq=qqqqqqqqqqqq&&&&&&&&&qqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqq===qq===qqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqq======qqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqq00000000q000000=0=q=0000qqqqqqqqqqqqqqqqqqqq00000",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqq666q66666q666666666q6666666q66666666qqqqqqqqqqqqqqqqqqq6",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq66666666qqqqqqqqqqqqqqqqqqqq",
+          "888888888q88888888q88888888qqqqqqqqqqqqqqq88888q888888888q888888",
+          "888888888qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+        ]
+      }
+    },
+    "feedIconEye": {
+      "note": "ポストを見る (目) (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...5555...",
+          ".55....55.",
+          "5..5555..5",
+          "5.55..55.5",
+          "5.55..55.5",
+          "5..5555..5",
+          ".55....55.",
+          "...5555..."
+        ]
+      }
+    },
+    "feedIconQmark": {
+      "note": "ひらくまで？ (疑問符) (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "..55555...",
+          ".55...55..",
+          "......55..",
+          ".....55...",
+          "....55....",
+          "....55....",
+          "..........",
+          "....55...."
+        ]
+      }
+    },
+    "feedIconPin": {
+      "note": "ピン留め (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...5555...",
+          "...5555...",
+          "...5555...",
+          "..555555..",
+          ".55555555.",
+          "....55....",
+          "....55....",
+          ".........."
+        ]
+      }
+    },
+    "feedRailHome": {
+      "note": "左レールのホーム (16x16 単色。塗りつぶし = いまここ。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................",
+          ".......55.......",
+          "......5555......",
+          ".....555555.....",
+          "....55555555....",
+          "...5555555555...",
+          "..555555555555..",
+          ".55555555555555.",
+          "..555555555555..",
+          "..555555555555..",
+          "..555555555555..",
+          "..55555..55555..",
+          "..5555....5555..",
+          "..5555....5555..",
+          "..5555....5555..",
+          "................"
+        ]
+      }
+    },
+    "feedRailSearch": {
+      "note": "左レールの検索 (16x16 単色・2px の線の虫めがね。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................",
+          "....555555......",
+          "...55555555.....",
+          "..555....555....",
+          "..55......55....",
+          "..55......55....",
+          "..55......55....",
+          "..55......55....",
+          "..555....555....",
+          "...55555555.....",
+          "....5555555.....",
+          "..........555...",
+          "...........555..",
+          "............555.",
+          ".............55.",
+          "................"
+        ]
+      }
+    },
+    "feedRailBell": {
+      "note": "左レールの通知のベル (16x16 単色・2px の線。left / idle / right の 3 コマで揺らす。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................",
+          ".......55.......",
+          ".....555555.....",
+          "....55555555....",
+          "...555....555...",
+          "...55......55...",
+          "...55......55...",
+          "...55......55...",
+          "..555......555..",
+          "..55........55..",
+          ".555........555.",
+          ".55555555555555.",
+          ".55555555555555.",
+          "................",
+          "......5555......",
+          ".......55......."
+        ],
+        "left": [
+          "................",
+          ".......55.......",
+          ".....555555.....",
+          "....55555555....",
+          "...555....555...",
+          "..55......55....",
+          "..55......55....",
+          "..55......55....",
+          ".555......555...",
+          ".55........55...",
+          "555........555..",
+          "55555555555555..",
+          "55555555555555..",
+          "................",
+          "....5555........",
+          ".....55........."
+        ],
+        "right": [
+          "................",
+          ".......55.......",
+          ".....555555.....",
+          "....55555555....",
+          "...555....555...",
+          "....55......55..",
+          "....55......55..",
+          "....55......55..",
+          "...555......555.",
+          "...55........55.",
+          "..555........555",
+          "..55555555555555",
+          "..55555555555555",
+          "................",
+          "........5555....",
+          ".........55....."
+        ]
+      }
+    },
+    "feedRailMail": {
+      "note": "左レールのメッセージ (16x16 単色・2px の線の封筒。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "................",
+          "................",
+          "................",
+          ".55555555555555.",
+          ".55555555555555.",
+          ".555........555.",
+          ".55.55....55.55.",
+          ".55..55..55..55.",
+          ".55...5555...55.",
+          ".55....55....55.",
+          ".55..........55.",
+          ".55..........55.",
+          ".55555555555555.",
+          ".55555555555555.",
+          "................",
+          "................"
+        ]
+      }
+    },
+    "feedIconSealed": {
+      "note": "開く前のポストの封じたチップの封筒 (10x8 単色。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "5555555555",
+          "55......55",
+          "5.5....5.5",
+          "5..5..5..5",
+          "5...55...5",
+          "5........5",
+          "5........5",
+          "5555555555"
+        ]
+      }
+    },
+    "feedIconSwordBig": {
+      "note": "「対処する」ボタンの剣 (12x12 単色。刃・鍔・柄。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "..........55",
+          ".........555",
+          "........555.",
+          ".......555..",
+          "......555...",
+          ".5...555....",
+          ".55.555.....",
+          "..5555......",
+          "...555......",
+          "..55.55.....",
+          ".55...5.....",
+          "55.........."
+        ]
+      }
+    },
+    "feedIconHeartFill": {
+      "note": "左レールの体力のハート (9x8 単色の塗り。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          ".55...55.",
+          "5555.5555",
+          "555555555",
+          "555555555",
+          ".5555555.",
+          "..55555..",
+          "...555...",
+          "....5...."
+        ]
+      }
+    },
+    "feedIconNext": {
+      "note": "進み具合リストのいまの相手の印 ▶ (5x7 単色。描く側が色を差す)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "5....",
+          "55...",
+          "555..",
+          "5555.",
+          "555..",
+          "55...",
+          "5...."
+        ]
+      }
+    },
+    "feedResultWin": {
+      "note": "決着のモーダルの勝ちの印: ぎざぎざの縁の緑のバッジ + 白いチェック (24x24。光源は左上)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "........................",
+          "........................",
+          "........ccc..caa........",
+          ".......cdddccccca.......",
+          ".......cddddcccca.......",
+          "....cccddddccccccaaa....",
+          "...cddddddcccccccccca...",
+          "...cdddddcccccccc=cca...",
+          "...cddddcccccccc==cca...",
+          "...cdddcccccccc==acca...",
+          "..cdddcccccccc==accaaa..",
+          ".cdddc=cccccc==accaaaaa.",
+          ".cddcc==cccc==accaaaaaa.",
+          "..ccccc==cc==accaaaaaa..",
+          "...cccca====accaaaaaa...",
+          "...ccccca==accaaaaaaa...",
+          "...ccccccaaccaaaaaaaa...",
+          "...cccccccccaaaaaaaaa...",
+          "....caaccccaaaaaaaaa....",
+          ".......cccaaaaaaa.......",
+          ".......ccaaaaaaaa.......",
+          "........caa..aaa........",
+          "........................",
+          "........................"
+        ]
+      }
+    },
+    "feedResultClear": {
+      "note": "決着のモーダルの潜り切った印: 金のトロフィー + 赤い星の飾り (24x24。光源は左上)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "........................",
+          "........................",
+          "........................",
+          ".....ffeeeeeeeeeeee.....",
+          "..ffffi=ifffffeeeeeeee..",
+          ".fe..fi=ifffffeeeee..ee.",
+          ".fe..fi=ifff0feeeee..ee.",
+          ".fe...fi=ff000eeee...ee.",
+          "..ff..fiifff0feeee..ee..",
+          "...ff..fifffffeee..ee...",
+          "....feeeifffffeeeeee....",
+          "........ffffffee........",
+          ".........fffffe.........",
+          "..........fffe..........",
+          "..........fffe..........",
+          "..........fffe..........",
+          ".........fffffe.........",
+          ".......iiiiifffff.......",
+          "......fffffeeeeeee......",
+          "......fffffeeeeeee......",
+          "......feeeeeeeeeee......",
+          "........................",
+          "........................",
+          "........................"
+        ]
+      }
+    },
+    "feedResultLose": {
+      "note": "決着のモーダルの力尽きた印: ひびの入った赤いハート (24x24。光源は左上)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "........................",
+          ".......m........k.......",
+          "....mmmnmmm..mkkmkkk....",
+          "....mnnnmmmm.kmmmmmk....",
+          "...mnnnmmmmm.kmmmmmmk...",
+          "...mnn=mmmm.kmmmmmmmk...",
+          "...mm=mmmmm.kmmmmmmmk...",
+          "...mm=mmmmmm.kmmmmmmk...",
+          "...mmmmmmmmmm.kmmmmkk...",
+          "...mmmmmmmmmm.kmmmkkk...",
+          "....mmmmmmmm.kmmmkkk....",
+          "....mmmmmmm.kmmmkkkk....",
+          ".....mmmmmm.kmkkkkk.....",
+          "......mmmmmm.kkkkk......",
+          "......mmmmmmk.kkkk......",
+          ".......mkmmk.kkkk.......",
+          ".........mkk.kk.........",
+          "..........m.kk..........",
+          "............k...........",
+          "........................",
+          "........................",
+          "........................",
+          "........................",
+          "........................"
+        ]
+      }
+    },
+    "feedIconRepost": {
+      "note": "リポスト (矢印の輪) (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "..........",
+          ".555555...",
+          ".5....5...",
+          ".5....5...",
+          "...5.555..",
+          "..555.5...",
+          "...5......",
+          "...5....5.",
+          "...555555."
+        ]
+      }
+    },
+    "feedIconViews": {
+      "note": "表示数 (棒グラフ) (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          ".......55.",
+          ".......55.",
+          "....55.55.",
+          "....55.55.",
+          ".55.55.55.",
+          ".55.55.55.",
+          ".55.55.55.",
+          ".55.55.55."
+        ]
+      }
+    },
+    "feedIconCrown": {
+      "note": "BOSS の王冠 (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          ".5......5.",
+          ".5..55..5.",
+          ".55.55.55.",
+          ".55555555.",
+          ".55555555.",
+          ".55555555."
+        ]
+      }
+    },
+    "feedIconLock": {
+      "note": "未解錠の鍵 (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...5555...",
+          "..5....5..",
+          "..5....5..",
+          ".55555555.",
+          ".55555555.",
+          ".555..555.",
+          ".555..555.",
+          ".55555555."
+        ]
+      }
+    },
+    "feedIconCheck": {
+      "note": "対処済みのチェック (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "........5.",
+          ".......55.",
+          "......55..",
+          "55...55...",
+          ".55.55....",
+          "..555.....",
+          "...5......"
+        ]
+      }
+    },
+    "feedIconStar": {
+      "note": "DANGER の星 (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "....55....",
+          "....55....",
+          "...5555...",
+          "5555555555",
+          "..555555..",
+          "...5555...",
+          "..55..55..",
+          ".55....55."
+        ]
+      }
+    },
+    "feedIconBack": {
+      "note": "戻る矢印 (10px 単色。描く側が色を差す — PxSprite.draw の resolver)",
+      "lint-sprite": "対象外(icon) — UI の記号で、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          "...5......",
+          "..55......",
+          ".55555555.",
+          "555555555.",
+          ".55555555.",
+          "..55......",
+          "...5......"
+        ]
+      }
+    },
+    "feedPointer": {
+      "note": "夜のフィードの指カーソル（Web のマウスの指・15×20）。押せる物の上に指先を置く。画素はこの Doc が正、指先の位置は View.feedPointerHotspot。",
+      "lint-sprite": "対象外(icon) — UI のカーソルで、接地の概念が無い",
+      "anchor": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "frames": {
+        "idle": [
+          ".....vv........",
+          "....v5=v.......",
+          "....v5=v.......",
+          "....v5=v.......",
+          "....v5=v.......",
+          "....v5=vvvv....",
+          "....v5=v5=vvvv.",
+          "....v5=v5=v5=v.",
+          "....v5=v5=v5=v.",
+          ".vv.v5=v5=v5=v.",
+          "v5=vv5==5==5=xv",
+          "v5===========xv",
+          ".v5==========xv",
+          "..v==========xv",
+          "...v========xv.",
+          "...v========xv.",
+          "...vxxxxxxxxxv.",
+          "...v666666666v.",
+          "...vyyyyyyyyyv.",
+          "...vvvvvvvvvvv."
+        ]
+      }
+    }
+  }
+}

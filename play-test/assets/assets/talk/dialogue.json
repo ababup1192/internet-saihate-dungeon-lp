@@ -1,0 +1,1025 @@
+{
+  "version": 1,
+  "note": "bin/fge yarn build が assets/talk/001_opening.yarn assets/talk/002_day1.yarn assets/talk/003_day2.yarn assets/talk/004_day3.yarn assets/talk/005_any_day.yarn から書いた木。手で直さない（.yarn を直して build する）",
+  "vocab": "assets/talk/vocab.json",
+  "files": [
+    "assets/talk/001_opening.yarn",
+    "assets/talk/002_day1.yarn",
+    "assets/talk/003_day2.yarn",
+    "assets/talk/004_day3.yarn",
+    "assets/talk/005_any_day.yarn"
+  ],
+  "nodes": [
+    {
+      "title": "op_desk",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 14,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 16,
+          "speaker": "girl",
+          "text": "私はイラストレーター志望の、どこにでもいる普通の女の子。",
+          "tags": [
+            {
+              "key": "face",
+              "value": "neutral"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 17,
+          "speaker": "girl",
+          "text": "……よし、できた！　近所のしばいぬ。ふわふわ感、がんばった！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "happy"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 18,
+          "speaker": "girl",
+          "text": "見てもらえるかな……。えいっ、投稿！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "excited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "op_post",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 22,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 24,
+          "speaker": "girl",
+          "text": "わぁ……！　いいね、どんどん広がってく……！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "happy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "op_antis",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 28,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 30,
+          "speaker": "girl",
+          "text": "……え、リプ？",
+          "tags": [
+            {
+              "key": "face",
+              "value": "surprised"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 31,
+          "speaker": "girl",
+          "text": "ひどい……そんな言い方しなくても……",
+          "tags": [
+            {
+              "key": "face",
+              "value": "sad"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "op_avatar",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 35,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 37,
+          "speaker": "girl",
+          "text": "な、なにこれ！？\nクソリプが……画面から出てきた！？",
+          "tags": [
+            {
+              "key": "face",
+              "value": "surprised"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 38,
+          "speaker": "avatar",
+          "text": "そこまでだ！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "determined"
+            },
+            {
+              "key": "name",
+              "value": "unknown"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 39,
+          "speaker": "girl",
+          "text": "誰！？",
+          "tags": [
+            {
+              "key": "face",
+              "value": "surprised"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 40,
+          "speaker": "avatar",
+          "text": "僕はSNS上での君自身...\nアンチなんか、僕がミュートしてやる！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "determined"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 41,
+          "speaker": "avatar",
+          "text": "ほら……あいつらが来たよ……！\n身構えて！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "serious"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tip_op_empty",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 45,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 47,
+          "speaker": "avatar",
+          "text": "やっぱりカードが無いんじゃ...\n勝ち目は..."
+        }
+      ]
+    },
+    {
+      "title": "op_lose",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 51,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 53,
+          "speaker": "girl",
+          "text": "…大丈夫！？。\n怪我はしていない！？",
+          "tags": [
+            {
+              "key": "face",
+              "value": "surprised"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 54,
+          "speaker": "avatar",
+          "text": "とりあえずここは逃げるぞ！\n今じゃ勝ち目がない！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "angry"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 55,
+          "speaker": "girl",
+          "text": "けどまたアンチが来たらどうしたら…",
+          "tags": [
+            {
+              "key": "face",
+              "value": "sad"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 56,
+          "speaker": "avatar",
+          "text": "あいつらに負けないだけの作品を描くんだ。\n君が描いた絵が、僕の力になるんだ。",
+          "tags": [
+            {
+              "key": "face",
+              "value": "serious"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 57,
+          "speaker": "girl",
+          "text": "私の描いた絵が力に……。",
+          "tags": [
+            {
+              "key": "face",
+              "value": "serious"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 58,
+          "speaker": "girl",
+          "text": "わかった。\n私、もう一度描いてみる！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "determined"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "thread",
+      "file": "assets/talk/001_opening.yarn",
+      "line": 66,
+      "headers": [
+        {
+          "key": "time",
+          "value": "1時間前"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 69,
+          "speaker": "me",
+          "text": "近所のいぬ、可愛いの暴力すぎて描くしかなかった\n癒やしの塊すぎる"
+        },
+        {
+          "kind": "line",
+          "line": 70,
+          "speaker": "jouikara_slime",
+          "text": "まあ悪くないんじゃない？\n俺ならこう描くけど"
+        },
+        {
+          "kind": "line",
+          "line": 71,
+          "speaker": "quote_zombie",
+          "text": "これが伸びるのが今のXって感じ",
+          "tags": [
+            {
+              "key": "quote",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 72,
+          "speaker": "pro_tensaku",
+          "text": "添削しました。\n耳の位置が解剖学的に違います"
+        }
+      ]
+    },
+    {
+      "title": "tip_feed_home",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 9,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 11,
+          "speaker": "avatar",
+          "text": "なんだ？ ポストが流れてきたぞ。ちょっと見てみよう！"
+        }
+      ]
+    },
+    {
+      "title": "tip_foe_note",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 15,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 17,
+          "speaker": "avatar",
+          "text": "あいつらはまた今夜やってくる...。\nまずはここを開いてみろ。"
+        }
+      ]
+    },
+    {
+      "title": "tip_intel",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 22,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 24,
+          "speaker": "avatar",
+          "text": "アンチの奴らの情報を調べよう。\n開示請求で詳しく見れるぞ！"
+        }
+      ]
+    },
+    {
+      "title": "intel_ask",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 28,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 30,
+          "speaker": "girl",
+          "text": "開示だな！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "excited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tip_pale_match",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 34,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 36,
+          "speaker": "avatar",
+          "text": "まずは赤ペンの所を消してみて！\n薄い色の絵では力は手に入らないよ"
+        }
+      ]
+    },
+    {
+      "title": "tip_card_match",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 40,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 42,
+          "speaker": "avatar",
+          "text": "次は色の濃い絵だ。\n絵柄に応じて、僕の力になるぞ！"
+        }
+      ]
+    },
+    {
+      "title": "tip_card_pick",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 47,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 49,
+          "speaker": "girl",
+          "text": "わっ、絵がカードになった！"
+        },
+        {
+          "kind": "line",
+          "line": 50,
+          "speaker": "avatar",
+          "text": "くわしく で中身を見て、\n今夜の戦いに備えて 1 枚を選ぼう。"
+        }
+      ]
+    },
+    {
+      "title": "puzzle_done",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 55,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 57,
+          "speaker": "girl",
+          "text": "……できた。できた、よね？"
+        }
+      ]
+    },
+    {
+      "title": "tip_fight_turn",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 61,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 63,
+          "speaker": "avatar",
+          "text": "ターンが進むと、コストの低いカードから順に発動するんだ！"
+        }
+      ]
+    },
+    {
+      "title": "tip_fight_fire",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 67,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 69,
+          "speaker": "avatar",
+          "text": "よし、さっきのカード、発動！"
+        }
+      ]
+    },
+    {
+      "title": "tip_speed",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 73,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 75,
+          "speaker": "avatar",
+          "text": "戦いのテンポを早くしたり遅くしたいときは、ここで調整してね！"
+        }
+      ]
+    },
+    {
+      "title": "post_sosuke",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 90,
+      "headers": [
+        {
+          "key": "time",
+          "value": "30分前"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 93,
+          "speaker": "sosuke_noodle",
+          "text": "深夜のラーメンは正義。異論は認める。"
+        },
+        {
+          "kind": "line",
+          "line": 94,
+          "text": "ラーメンの写真を眺めた"
+        }
+      ]
+    },
+    {
+      "title": "post_korone",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 98,
+      "headers": [
+        {
+          "key": "time",
+          "value": "12分前"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 101,
+          "speaker": "korone_fanart",
+          "text": "推し絵師さんの新作きた！！ずっと応援してます"
+        },
+        {
+          "kind": "line",
+          "line": 102,
+          "speaker": "me",
+          "text": "いつも見てくれて、ありがとう！"
+        }
+      ]
+    },
+    {
+      "title": "post_trend",
+      "file": "assets/talk/002_day1.yarn",
+      "line": 106,
+      "headers": [
+        {
+          "key": "time",
+          "value": "5分前"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 109,
+          "speaker": "trend_now_jp",
+          "text": "【トレンド】#カードバトル初心者あるある が急上昇中。"
+        },
+        {
+          "kind": "line",
+          "line": 110,
+          "text": "同じ種類の強化は、一番強い 1 枚だけが効く"
+        },
+        {
+          "kind": "line",
+          "line": 111,
+          "text": "ちがう種類の強化カードを集める",
+          "tags": [
+            {
+              "key": "point",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tip_day_two",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 7,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 9,
+          "speaker": "girl",
+          "text": "デッキ、また空っぽ？"
+        },
+        {
+          "kind": "line",
+          "line": 10,
+          "speaker": "avatar",
+          "text": "カードの力は夜を越えられないんだ。\n朝になると、ぜんぶ消えちゃう。"
+        },
+        {
+          "kind": "line",
+          "line": 11,
+          "speaker": "avatar",
+          "text": "でも、いいねのかけらは残ってる！\nまた絵を描いて、力を集めよう！"
+        },
+        {
+          "kind": "line",
+          "line": 12,
+          "speaker": "girl",
+          "text": "……うん。今日も描く！"
+        }
+      ]
+    },
+    {
+      "title": "tip_new_pieces",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 16,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 18,
+          "speaker": "avatar",
+          "text": "新しい力が解放されたよ！\n☆は技巧、ドクロは妨害。"
+        }
+      ]
+    },
+    {
+      "title": "tip_shard",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 23,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 25,
+          "speaker": "avatar",
+          "text": "かけらがあれば、{back} で\n好きな絵に描き直せるよ！"
+        }
+      ]
+    },
+    {
+      "title": "post_tensaku",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 31,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 34,
+          "speaker": "kaiga_support_24",
+          "text": "【拡散希望】フォロワー様限定で無料添削します！実績多数"
+        },
+        {
+          "kind": "line",
+          "line": 35,
+          "text": "呪いのチェーンポストだった"
+        }
+      ]
+    },
+    {
+      "title": "post_kensho",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 39,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 42,
+          "speaker": "kouryaku_matome",
+          "text": "【検証】引用ゾンビの毒、放っておくと重なって止まらない件"
+        },
+        {
+          "kind": "line",
+          "line": 43,
+          "text": "毒は重なり、攻撃力も下げてくる"
+        },
+        {
+          "kind": "line",
+          "line": 44,
+          "text": "毒は浄化で治せる・盾と回復で耐える",
+          "tags": [
+            {
+              "key": "point",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "post_tetsuya",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 48,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 51,
+          "speaker": "sosuke_noodle",
+          "text": "まだ起きてる人、作業通話しない？朝まで描こうぜ"
+        },
+        {
+          "kind": "line",
+          "line": 52,
+          "speaker": "me",
+          "text": "参加する！朝まで描こう"
+        },
+        {
+          "kind": "line",
+          "line": 53,
+          "text": "朝まで描いた"
+        }
+      ]
+    },
+    {
+      "title": "post_buzz",
+      "file": "assets/talk/003_day2.yarn",
+      "line": 57,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 60,
+          "speaker": "korone_fanart",
+          "text": "推し絵師さんのしばいぬ、タイムラインで回ってきた！めっちゃ伸びてる！"
+        },
+        {
+          "kind": "line",
+          "line": 61,
+          "text": "作品にいいねが集まった"
+        }
+      ]
+    },
+    {
+      "title": "post_egosearch",
+      "file": "assets/talk/004_day3.yarn",
+      "line": 11,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 14,
+          "speaker": "egosearch_alert",
+          "text": "あなたの名前を含むポストが 12 件見つかりました。のぞいてみますか？"
+        },
+        {
+          "kind": "line",
+          "line": 15,
+          "text": "自分の評判を読みあさった。心はすり減ったけど、得たものはあった"
+        }
+      ]
+    },
+    {
+      "title": "post_mofu",
+      "file": "assets/talk/004_day3.yarn",
+      "line": 19,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 22,
+          "speaker": "mofumofu_biyori",
+          "text": "うちの犬と猫、今日もじゃれあってる…"
+        },
+        {
+          "kind": "line",
+          "line": 23,
+          "text": "犬と猫の写真を見て、ほっとした"
+        }
+      ]
+    },
+    {
+      "title": "post_matiuke",
+      "file": "assets/talk/004_day3.yarn",
+      "line": 27,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 30,
+          "speaker": "sosuke_noodle",
+          "text": "あの柴犬、スマホの待ち受けにした。次の絵も楽しみにしてる"
+        },
+        {
+          "kind": "line",
+          "line": 31,
+          "speaker": "me",
+          "text": "ありがとう、次もたのしみに待ってて！"
+        }
+      ]
+    },
+    {
+      "title": "post_yuno",
+      "file": "assets/talk/004_day3.yarn",
+      "line": 35,
+      "headers": [
+        {
+          "key": "time",
+          "value": "たった今"
+        }
+      ],
+      "body": [
+        {
+          "kind": "line",
+          "line": 38,
+          "speaker": "yuno_sksk",
+          "text": "ねえ、次の相手のこと知ってる？ちょっと話せる？"
+        },
+        {
+          "kind": "line",
+          "line": 39,
+          "speaker": "yuno_sksk",
+          "text": "リザードマン、盾を積んで粘るタイプだよ"
+        },
+        {
+          "kind": "line",
+          "line": 40,
+          "speaker": "me",
+          "text": "殴っても通らないってこと…？"
+        },
+        {
+          "kind": "line",
+          "line": 41,
+          "speaker": "yuno_sksk",
+          "text": "通報（解除）なら盾ごと剥がせる。長引くと炎上するから早めにね"
+        },
+        {
+          "kind": "line",
+          "line": 42,
+          "text": "盾は解除ではがす・加速は減速で打ち消す",
+          "tags": [
+            {
+              "key": "point",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "post_yuno_low",
+      "file": "assets/talk/004_day3.yarn",
+      "line": 46,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 48,
+          "speaker": "yuno_sksk",
+          "text": "…って思ったけど、あんたボロボロじゃん"
+        },
+        {
+          "kind": "line",
+          "line": 49,
+          "speaker": "me",
+          "text": "ちょっと無理しすぎたかも…"
+        },
+        {
+          "kind": "line",
+          "line": 50,
+          "speaker": "yuno_sksk",
+          "text": "いったん深呼吸！あんたなら大丈夫、応援してる"
+        }
+      ]
+    },
+    {
+      "title": "tip_rush_piece",
+      "file": "assets/talk/004_day3.yarn",
+      "line": 54,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 56,
+          "speaker": "avatar",
+          "text": "新しい力が解放されたよ！\nそろえると、加速のカードになるよ！"
+        },
+        {
+          "kind": "line",
+          "line": 57,
+          "speaker": "avatar",
+          "text": "加速のカードは、COSTが重いカードを早めることができるんだ！"
+        }
+      ]
+    },
+    {
+      "title": "intel_ask_first",
+      "file": "assets/talk/005_any_day.yarn",
+      "line": 7,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 9,
+          "speaker": "avatar",
+          "text": "かけらを使えば、この相手の情報を開示請求できるよ。",
+          "tags": [
+            {
+              "key": "face",
+              "value": "neutral"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 10,
+          "speaker": "girl",
+          "text": "開示だな！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "excited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "assist_cheer",
+      "file": "assets/talk/005_any_day.yarn",
+      "line": 16,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 18,
+          "speaker": "avatar",
+          "text": "フォロワーのみんなからの応援で、力がみなぎってきた…！"
+        },
+        {
+          "kind": "line",
+          "line": 19,
+          "speaker": "avatar",
+          "text": "みんなの応援がさらに集まった…！ 今度こそ負けない！"
+        }
+      ]
+    },
+    {
+      "title": "rematch_first",
+      "file": "assets/talk/005_any_day.yarn",
+      "line": 23,
+      "headers": [],
+      "body": [
+        {
+          "kind": "line",
+          "line": 25,
+          "speaker": "girl",
+          "text": "まだ……負けるもんか……！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "determined"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        },
+        {
+          "kind": "line",
+          "line": 26,
+          "speaker": "avatar",
+          "text": "応援ももらった。今度はいける、もう一回！",
+          "tags": [
+            {
+              "key": "face",
+              "value": "determined"
+            },
+            {
+              "key": "backdrop",
+              "value": "fight"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
