@@ -2487,7 +2487,8 @@
  "boot": {
   "assets": 2514798,
   "assetsWire": 1587212,
-  "wasm": 2250080,
-  "wasmWire": 2318351
- }
+  "wasm": 2250222,
+  "wasmWire": 2318493
+ },
+ "serviceWorker": true
 }
