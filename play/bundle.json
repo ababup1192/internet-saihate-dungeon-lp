@@ -3,23 +3,11 @@
  "title": "インターネットダンジョン",
  "files": [
   "assets/OFL-Yuji.txt",
-  "assets/archetype.schema.json",
   "assets/battle-slash.fx.json",
-  "assets/battle.schema.json",
-  "assets/board.schema.json",
   "assets/board.terrain.json",
-  "assets/card.schema.json",
   "assets/card/layout.json",
-  "assets/chip.schema.json",
-  "assets/cue.schema.json",
-  "assets/cycle.schema.json",
   "assets/day.shader.json",
   "assets/desk.shader.json",
-  "assets/dungeon.schema.json",
-  "assets/enemy.schema.json",
-  "assets/feed.schema.json",
-  "assets/fx.schema.json",
-  "assets/instrument.schema.json",
   "assets/internet_dungeon.archetype.json",
   "assets/internet_dungeon.battle.json",
   "assets/internet_dungeon.battle.sprite.json",
@@ -44,25 +32,15 @@
   "assets/internet_dungeon.targets.json",
   "assets/internet_dungeon.theme.json",
   "assets/internet_dungeon.tutorial.json",
-  "assets/keys.schema.json",
-  "assets/mixer.schema.json",
   "assets/music/bgmFight.chip.json",
   "assets/music/internet_dungeon.instrument.json",
   "assets/music/jingle_victory.chip.json",
   "assets/music/sfx_decide.chip.json",
   "assets/music/sfx_notify.chip.json",
   "assets/night.shader.json",
-  "assets/opening.schema.json",
   "assets/player.keys.json",
   "assets/puzzle-pop.fx.json",
-  "assets/puzzle.schema.json",
-  "assets/relic.schema.json",
-  "assets/script.schema.json",
   "assets/sfx/README.md",
-  "assets/sfxtune.schema.json",
-  "assets/shader.schema.json",
-  "assets/shots.schema.json",
-  "assets/sprite.schema.json",
   "assets/talk/001_opening.yarn",
   "assets/talk/002_day1.yarn",
   "assets/talk/003_day2.yarn",
@@ -70,10 +48,6 @@
   "assets/talk/005_any_day.yarn",
   "assets/talk/dialogue.json",
   "assets/talk/vocab.json",
-  "assets/targets.schema.json",
-  "assets/terrain.schema.json",
-  "assets/theme.schema.json",
-  "assets/tutorial.schema.json",
   "assets/tutorial1.board.json",
   "assets/tutorial2.board.json",
   "assets/tutorial3.board.json",
@@ -1452,7 +1426,7 @@
   },
   {
    "path": "assets/sfx/bgmTitle.wav",
-   "bytes": 1311671,
+   "bytes": 514568,
    "names": [
     "bgmTitle"
    ]
@@ -1984,70 +1958,70 @@
   },
   {
    "path": "assets/sfx/bgmDay.wav",
-   "bytes": 335188,
+   "bytes": 111881,
    "names": [
     "bgmDay"
    ]
   },
   {
    "path": "assets/sfx/bgmDiffuse.wav",
-   "bytes": 64843,
+   "bytes": 24665,
    "names": [
     "bgmDiffuse"
    ]
   },
   {
    "path": "assets/sfx/bgmEnding.wav",
-   "bytes": 1928607,
+   "bytes": 754686,
    "names": [
     "bgmEnding"
    ]
   },
   {
    "path": "assets/sfx/bgmFight.wav",
-   "bytes": 662299,
+   "bytes": 257731,
    "names": [
     "bgmFight"
    ]
   },
   {
    "path": "assets/sfx/bgmGlitch.wav",
-   "bytes": 226692,
+   "bytes": 86292,
    "names": [
     "bgmGlitch"
    ]
   },
   {
    "path": "assets/sfx/bgmLose.wav",
-   "bytes": 140493,
+   "bytes": 48573,
    "names": [
     "bgmLose"
    ]
   },
   {
    "path": "assets/sfx/bgmNode.wav",
-   "bytes": 346510,
+   "bytes": 109055,
    "names": [
     "bgmNode"
    ]
   },
   {
    "path": "assets/sfx/bgmPuzzle.wav",
-   "bytes": 339761,
+   "bytes": 110452,
    "names": [
     "bgmPuzzle"
    ]
   },
   {
    "path": "assets/sfx/bgmResult.wav",
-   "bytes": 75350,
+   "bytes": 23401,
    "names": [
     "bgmResult"
    ]
   },
   {
    "path": "assets/sfx/bgmWin.wav",
-   "bytes": 240492,
+   "bytes": 90264,
    "names": [
     "bgmWin"
    ]
@@ -2485,10 +2459,10 @@
  },
  "wasmBrotli": "classes.wasm.br",
  "boot": {
-  "assets": 2514798,
-  "assetsWire": 1587212,
-  "wasm": 2250222,
-  "wasmWire": 2318493
+  "assets": 1525247,
+  "assetsWire": 917947,
+  "wasm": 2255730,
+  "wasmWire": 2324001
  },
  "serviceWorker": true
 }
